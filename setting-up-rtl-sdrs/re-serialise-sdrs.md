@@ -1,3 +1,7 @@
+---
+description: 'You can skip this step if you''re not using an RTLSDR radio (ie: bladeRF).'
+---
+
 # Re-Serialise SDRs
 
 As most RTL-SDRs ship with the same serial number, confusion may be caused if more than one SDR is ever present. It is a good rule of thumb to change your SDR serial numbers to match the frequencies they receive for.
