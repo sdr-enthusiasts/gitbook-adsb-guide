@@ -158,6 +158,8 @@ docker-compose pull
 docker-compose up -d
 ```
 
+As we have defined our `readsb` container with `restart: always`, the containers will be automatically started if the host is rebooted.
+
 ## Healthcheck
 
 Images can implement [healthchecks](https://docs.docker.com/engine/reference/builder/). A healthcheck is a script that docker runs within the container periodically thats tells docker whether the container is operating as expected.
