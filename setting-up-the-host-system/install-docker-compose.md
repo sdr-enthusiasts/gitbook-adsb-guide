@@ -1,6 +1,6 @@
 # Install Docker Compose
 
-Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create, start, stop, update, etec all the services from your configuration.
+Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create, start, stop, update, etc all the services defined for your application.
 
 Compose can be run as a container, which I highly recommend. The clever folks over at [linuxserver.io](https://www.linuxserver.io) have a great image that's easily installed.
 
