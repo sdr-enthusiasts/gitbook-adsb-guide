@@ -2,7 +2,7 @@
 
 ### Create a directory to host our project
 
-We need a directory to host our project. The name of this directory will be the name of our project. Accordingly, I prefer to use `/opt/adsb`, so our project is called "adsb":
+We need a directory to host our application. The name of this directory will be the name of our application. Accordingly, I prefer to use `/opt/adsb`, so our application is called "adsb":
 
 ```bash
 mkdir -p /opt/adsb
