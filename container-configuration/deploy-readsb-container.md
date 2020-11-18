@@ -179,7 +179,7 @@ CONTAINER ID        IMAGE                               COMMAND             CREA
 f936a37dd488        mikenye/readsb-protobuf:latest      "/init"             4 hours ago         Up 2 hours (healthy)      0.0.0.0:8080->8080/tcp   readsb
 ```
 
-Noticed that next to the container status, there is some information about the container's health. This may be one of the following:
+Notice that next to the container status, there is some information about the container's health. This may be one of the following:
 
 * No health information: Not all images have healthchecks implemented. If an image doesn't report health, this is why.
 * `(health: starting)`: The container will wait up to a predefined start-period (defined in the [Dockerfile](https://github.com/mikenye/docker-readsb-protobuf/blob/63a617e00d4c9bcd8a5d6a9d94cc2f2b32ac0489/Dockerfile#L286)) or until the healthcheck script returns a healthy result.
