@@ -12,18 +12,42 @@ If you are new to feeding ADS-B Exchange, you will need to generate a UUID for y
 
 In order to generate a feeder UUID, run the following command:
 
-```shell
+```bash
 docker run --rm -it --entrypoint uuidgen mikenye/adsbexchange -t
 ```
 
 Take note of the UUID returned.
 
+## Update `.env` file with ADS-B Exchange Details
+
+Inside your application directory (`/opt/adsb`), edit the `.env` using your favourite text editor. Beginners may find the editor `nano` easy to use:
+
+```bash
+nano /opt/adsb/.env
+```
+
+This file holds all of the commonly used variables \(such as our latitude, longitude and altitude\). We're going to add our ADS-B Exchange variables to this file. Add the following lines to the file:
+
+```text
+ADSBX_UUID=YOURUUID
+ADSBX_SITENAME=YOURSITENAME
+```
+
+* Replace `YOURSITENAME` with a unique name for your receiver, using only the characters "A-Z", "a-z", (`-`) and (`_`), and ending in a random number.
+* Replace `YOURUUID` with the UUID that was generated in the previous step.
+
+For example:
+
+```text
+ADSBX_UUID=4e8413e6-52eb-11ea-8681-1c1b0d925d3g
+ADSBX_SITENAME=johnsmith_123
+```
 
 ## Deploying ADS-B Exchange feeder container
 
 Open the `docker-compose.yml` file that was created when deploying `readsb`.
 
-Append the following lines to the end of the file:
+Append the following lines to the end of the file (inside the `services:` section:
 
 ```yaml
   adsbx:
@@ -31,69 +55,31 @@ Append the following lines to the end of the file:
     tty: true
     container_name: adsbx
     restart: always
+    depends_on:
+      - readsb
     environment:
       - BEASTHOST=readsb
-      - LAT=YOURLATITUDE
-      - LONG=YOURLONGITUDE
-      - ALT=YOURALTITUDE
-      - SITENAME=YOURSITENAME
-      - UUID=YOURUUID
-      - TZ=YOURTIMEZONE
-    networks:
-      - adsbnet
-```
-
-Be sure to change the following:
-
-* Replace `YOURLATITUDE` with the latitude of your antenna (xx.xxxxx)
-* Replace `YOURLONGITUDE` with the longitude of your antenna (xx.xxxxx)
-* Replace `YOURALTITUDE` with the altitude above sea level of your antenna. If specified in feet, add the suffix `ft`. If specified in metres, add the suffix `m`. Note: negative altitudes MUST be in meters, with no suffix.
-* Replace `YOURSITENAME` with a unique name for your receiver, using only the characters "A-Z", "a-z", (`-`) and (`_`)
-* Replace `YOURUUID` with the UUID that was generated in the previous step
-* Replace `YOURTIMEZONE` with your local timezone in "TZ database name" format (<https://en.wikipedia.org/wiki/List_of_tz_database_time_zones>).
-
-So, assuming:
-
-* Our latitude is -33.33333 and longitude is 111.11111
-* Our altitude is 95m
-* Our site name is `My_Cool_ADSB_Receiver`
-* Our generated UUID is `4e8413e6-52eb-11ea-8681-1c1b0d925d3g`
-* Our timezone is `Australia/Perth`
-
-...then our `docker-compose.yml` file would be appended with the following:
-
-```yaml
-  adsbx:
-    image: mikenye/adsbexchange:latest
-    tty: true
-    container_name: adsbx
-    restart: always
-    environment:
-      - BEASTHOST=readsb
-      - LAT=-33.33333
-      - LONG=111.11111
-      - ALT=95m
-      - SITENAME=My_Cool_ADSB_Receiver
-      - UUID=4e8413e6-52eb-11ea-8681-1c1b0d925d3g
-      - TZ=Australia/Perth
-    networks:
-      - adsbnet
+      - LAT=${FEEDER_LAT}
+      - LONG=${FEEDER_LONG}
+      - ALT=${FEEDER_ALT_M}m
+      - SITENAME=${ADSBX_SITENAME}
+      - UUID=${ADSBX_UUID}
+      - TZ=${FEEDER_TZ}
 ```
 
 To explain what's going on in this addition:
 
 * We're creating a container called `adsbx`, from the image `mikenye/adsbexchange:latest`.
-* We're connecting the container to the docker network `adsbnet`.
 * We're passing several environment variables to the container:
   * `BEASTHOST=readsb` to inform the feeder to get its ADSB data from the container `readsb` over our private `adsbnet` network.
-  * `LAT=-33.33333` to inform the feeder of the antenna's latitude
-  * `LONG=111.11111` to inform the feeder of the antenna's longitude
-  * `ALT=95m` to inform the feeder of the antenna's altitude
-  * `SITENAME=My_Cool_ADSB_Receiver` to inform the feeder of our site name
-  * `UUID=4e8413e6-52eb-11ea-8681-1c1b0d925d3g` to inform the feeder of our UUID
-  * `TZ=Australia/Perth` to inform the feeder of our local timezone.
+  * `LAT` will use the `FEEDER_LAT` variable from your `.env` file.
+  * `LONG` will use the `FEEDER_LONG` variable from your `.env` file.
+  * `ALT` will use the `FEEDER_ALT_M` variable from your `.env` file.
+  * `SITENAME` will use the `ADSBX_SITENAME` variable from your `.env` file.
+  * `UUID` will use the `ADSBX_UUID` variable from your `.env` file.
+  * `TZ` will use the `TZ` variable from your `.env` file.
 
-Once the file is created, issue the command `docker-compose up -d` to bring up the ADSB environment. You should see the following output:
+Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `adsbx` container. You should see the following output:
 
 ```text
 readsb is up-to-date
@@ -142,4 +128,4 @@ adsbx   | [mlat-client] Wed Feb 19 15:47:38 2020 Input connected to readsb:30005
 adsbx   | [mlat-client] Wed Feb 19 15:47:38 2020 Input format changed to BEAST, 12MHz clock
 ```
 
-After a few minutes, point your browser at <https://adsbexchange.com/myip/>. You should see two green smiley faces indicating that you are successfully sending data.
+After a few minutes, point your browser at <https://adsbexchange.com/myip/>. You should see green smiley faces indicating that you are successfully sending data.
