@@ -9,7 +9,7 @@ sudo sh get-docker.sh
 
 After the above installation script finishes running, you should be able to test your docker installation by issuing the command:
 
-```text
+```bash
 sudo docker run --rm hello-world
 ```
 
@@ -39,4 +39,3 @@ For more examples and ideas, visit:
 ```
 
 If you get stuck, you can try following the instructions located here: [https://docs.docker.com/install/](https://docs.docker.com/install/)
-
