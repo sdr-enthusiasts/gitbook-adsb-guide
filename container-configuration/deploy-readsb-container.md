@@ -1,3 +1,10 @@
+---
+description: >-
+  The ‘readsb‘ container is the heart of our adsb application. It receives
+  1090MHz signals from your SDR, and demodulates ADS-B messages, making them
+  available for all other containers.
+---
+
 # Deploy "readsb" Container
 
 In your favourite text editor, create a file named `docker-compose.yml` in your project directory \(`/opt/adsb`\) if following along verbatim.
