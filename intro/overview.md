@@ -7,6 +7,8 @@ This document aims to guide you through:
 * **Storing** data in a time series database \([InfluxDB](https://docs.influxdata.com/influxdb/)\)
 * **Visualising** data with various tools such as [`tar1090`](https://hub.docker.com/r/mikenye/tar1090) and [Grafana](https://grafana.com)
 
+...whilst also building a basic understanding of Docker.
+
 The core set of containers consists of: [`readsb-protobuf`](https://hub.docker.com/r/mikenye/readsb-protobuf), [`adsbexchange`](https://hub.docker.com/r/mikenye/adsbexchange) and [`tar1090`](https://hub.docker.com/r/mikenye/tar1090). This will provide you with:
 
 * ADS-B reception via `readsb`
