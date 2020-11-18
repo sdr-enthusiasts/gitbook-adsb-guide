@@ -102,7 +102,7 @@ local                 adsb_readsbpb_autogain
 local                 adsb_readsbpb_rrd
 ```
 
-### Viewing Live Data
+## Viewing Live Data
 
 To see the data being received and decoded by our new container, run the command `docker exec -it readsb viewadsb`. This should display a real-time departure-lounge-style screen showing all the aircraft being tracked, for example:
 
@@ -142,3 +142,4 @@ To see the data being received and decoded by our new container, run the command
 Press `CTRL-C` to escape this screen.
 
 You should also be able to point your web browser at [http://docker.host.ip.addr:8080/](http://dockerhost:8080/) to view the web interface \(change `docker.host.ip.addr` to the IP address of your docker host\). You should see a map showing your currently tracked aircraft, and a link to the "Performance Graphs".
+

@@ -1,3 +1,10 @@
+---
+description: >-
+  Now we have our first container up and running, common management and
+  monitoring tasks and information are outlined below, and will apply to the
+  remainder of this guide.
+---
+
 # Common Tasks & Info
 
 The following tasks and information will be useful as you continue through this guide. Familiarise yourself with the commands and information on this page.
@@ -94,3 +101,4 @@ The first line is showing that we've received messages from the SDR in the past 
 ### Disabling Healthchecks
 
 On systems with with low spec CPU/memory, you may wish to disable healthchecks to gain back some precious CPU cycles. There are ways to disable the docker healthchecks in the `docker-compose.yml` file. However, I publish versions of my images that have the healthcheck removed, so it may be easier to simply change the image's `latest` tag to `latest_nohealthcheck`.
+
