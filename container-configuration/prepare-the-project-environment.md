@@ -1,6 +1,6 @@
 # Prepare the Project Environment
 
-### Create a directory to host our project
+## Create a directory to host our project
 
 We need a directory to host our application. The name of this directory will be the name of our application. Accordingly, I prefer to use `/opt/adsb`, so our application is called "adsb":
 

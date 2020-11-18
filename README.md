@@ -25,5 +25,3 @@ This document is intended to be "living". Please feel free to fork the [GitHub r
 
 This guide is made available under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
 
-
-

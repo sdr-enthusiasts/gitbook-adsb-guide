@@ -28,5 +28,3 @@ docker pull linuxserver/docker-compose
 docker image prune -f
 ```
 
-
-

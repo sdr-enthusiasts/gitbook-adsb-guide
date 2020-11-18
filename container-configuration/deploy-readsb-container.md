@@ -8,7 +8,7 @@ version: '3.8'
 volumes:
   readsbpb_rrd:
   readsbpb_autogain:
-  
+
 services:
   readsb:
     image: mikenye/readsb-protobuf:latest
@@ -145,7 +145,7 @@ You should also be able to point your web browser at [http://docker.host.ip.addr
 
 ## Controlling our `adsb` application
 
-If you need to bring the environment down \(for example, if you need to unplug the RTL-SDR USB dongle for maintenance\), you can issue the command `docker-compose down` from the application directory (the directory containing your `docker-compose.yml` file).
+If you need to bring the environment down \(for example, if you need to unplug the RTL-SDR USB dongle for maintenance\), you can issue the command `docker-compose down` from the application directory \(the directory containing your `docker-compose.yml` file\).
 
 To start the environment, or apply any changes made to your `docker-compose.yml` file, you can issue the command `docker-compose up -d` from the application directory.
 
@@ -182,7 +182,7 @@ f936a37dd488        mikenye/readsb-protobuf:latest      "/init"             4 ho
 Notice that next to the container status, there is some information about the container's health. This may be one of the following:
 
 * No health information: Not all images have healthchecks implemented. If an image doesn't report health, this is why.
-* `(health: starting)`: The container will wait up to a predefined start-period (defined in the [Dockerfile](https://github.com/mikenye/docker-readsb-protobuf/blob/63a617e00d4c9bcd8a5d6a9d94cc2f2b32ac0489/Dockerfile#L286)) or until the healthcheck script returns a healthy result.
+* `(health: starting)`: The container will wait up to a predefined start-period \(defined in the [Dockerfile](https://github.com/mikenye/docker-readsb-protobuf/blob/63a617e00d4c9bcd8a5d6a9d94cc2f2b32ac0489/Dockerfile#L286)\) or until the healthcheck script returns a healthy result.
 * `(healthy)`: The container is operating as expected.
 * `(unhealthy)`: The container is not operating as expected.
 
@@ -192,9 +192,9 @@ Where practical, I try to include healthchecks in all my images, so as you go th
 
 ### Why is my container healthy/unhealthy?
 
-You can inspect the container for some (hopefully) meaningful output from the healthcheck script.
+You can inspect the container for some \(hopefully\) meaningful output from the healthcheck script.
 
-If you issue the command `docker inspect CONTAINER` (replacing `CONTAINER` with the name of the container you're interested in), you'll see lots of information about the container, including the output of the most recent run of the healthcheck script. This output is in JSON format, so if you have the `jq` utility installed, we can easily find our `readsb` container's most recent health information with the following command:
+If you issue the command `docker inspect CONTAINER` \(replacing `CONTAINER` with the name of the container you're interested in\), you'll see lots of information about the container, including the output of the most recent run of the healthcheck script. This output is in JSON format, so if you have the `jq` utility installed, we can easily find our `readsb` container's most recent health information with the following command:
 
 ```bash
 docker inspect readsb | jq .[0].State.Health.Log | jq .[-1]
@@ -202,7 +202,7 @@ docker inspect readsb | jq .[0].State.Health.Log | jq .[-1]
 
 Which will return something like this:
 
-```json
+```javascript
 {
   "Start": "2020-11-18T20:50:56.939989864+08:00",
   "End": "2020-11-18T20:50:57.210787023+08:00",
@@ -230,8 +230,9 @@ abnormal death count for service telegraf_socat_vrs_json is 0: HEALTHY
 abnormal death count for service telegraf is 0: HEALTHY
 ```
 
-The first line is showing that we've received messages from the SDR in the past 15 minutes. The remaining lines show the number of times a service has had an "abnormal death" (crashed for some reason).
+The first line is showing that we've received messages from the SDR in the past 15 minutes. The remaining lines show the number of times a service has had an "abnormal death" \(crashed for some reason\).
 
 ### Disabling Healthchecks
 
 On systems with with low spec CPU/memory, you may wish to disable healthchecks to gain back some precious CPU cycles. There are ways to disable the docker healthchecks in the `docker-compose.yml` file. However, I publish versions of my images that have the healthcheck removed, so it may be easier to simply change the image's `latest` tag to `latest_nohealthcheck`.
+
