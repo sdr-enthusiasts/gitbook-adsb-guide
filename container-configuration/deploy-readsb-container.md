@@ -87,11 +87,19 @@ CONTAINER ID        IMAGE                               COMMAND             CREA
 f936a37dd488        mikenye/readsb-protobuf:latest      "/init"             4 hours ago         Up 2 hours (healthy)      0.0.0.0:8080->8080/tcp   readsb
 ```
 
-...and see the `adsb_default` network with the command `docker network ls`:
+We can see the `adsb_default` network with the command `docker network ls`:
 
 ```text
 NETWORK ID          NAME                      DRIVER              SCOPE
 2a4ef415c4d3        adsb_adsbnet              bridge              local
+```
+
+We can see the `adsb_readsbpb_*` volumes with the command `docker volume ls`:
+
+```text
+DRIVER                VOLUME NAME
+local                 adsb_readsbpb_autogain
+local                 adsb_readsbpb_rrd
 ```
 
 ### Viewing Live Data
@@ -135,7 +143,20 @@ Press `CTRL-C` to escape this screen.
 
 You should also be able to point your web browser at [http://docker.host.ip.addr:8080/](http://dockerhost:8080/) to view the web interface \(change `docker.host.ip.addr` to the IP address of your docker host\). You should see a map showing your currently tracked aircraft, and a link to the "Performance Graphs".
 
-If you need to bring the environment down \(for example, if you need to unplug the RTL-SDR USB dongle for maintenance\), you can issue the command `docker-compose down` from the directory containing your `docker-compose.yml` file.
+## Controlling our `adsb` application
+
+If you need to bring the environment down \(for example, if you need to unplug the RTL-SDR USB dongle for maintenance\), you can issue the command `docker-compose down` from the application directory (the directory containing your `docker-compose.yml` file).
+
+To start the environment, or apply any changes made to your `docker-compose.yml` file, you can issue the command `docker-compose up -d` from the application directory.
+
+To "tail" the consolidated logs of all containers that make up the `adsb` application, you can issue the command `docker-compose logs -f` from the application directory. Individual container logs can be "tailed" with `docker logs -f CONTAINER`.
+
+If you would like to manually update your containers to the latest versions of their images, you can run the following commands from the application directory:
+
+```bash
+docker-compose pull
+docker-compose up -d
+```
 
 ## Healthcheck
 
