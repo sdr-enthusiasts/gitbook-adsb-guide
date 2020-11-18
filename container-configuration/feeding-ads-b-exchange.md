@@ -20,7 +20,7 @@ Take note of the UUID returned.
 
 ## Update `.env` file with ADS-B Exchange Details
 
-Inside your application directory (`/opt/adsb`), edit the `.env` using your favourite text editor. Beginners may find the editor `nano` easy to use:
+Inside your application directory (`/opt/adsb`), edit the `.env` file using your favourite text editor. Beginners may find the editor `nano` easy to use:
 
 ```bash
 nano /opt/adsb/.env
@@ -47,7 +47,7 @@ ADSBX_SITENAME=johnsmith_123
 
 Open the `docker-compose.yml` file that was created when deploying `readsb`.
 
-Append the following lines to the end of the file (inside the `services:` section:
+Append the following lines to the end of the file (inside the `services:` section):
 
 ```yaml
   adsbx:
