@@ -77,7 +77,7 @@ To explain what's going on in this addition:
   * `ALT` will use the `FEEDER_ALT_M` variable from your `.env` file.
   * `SITENAME` will use the `ADSBX_SITENAME` variable from your `.env` file.
   * `UUID` will use the `ADSBX_UUID` variable from your `.env` file.
-  * `TZ` will use the `TZ` variable from your `.env` file.
+  * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
 
 Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `adsbx` container. You should see the following output:
 
