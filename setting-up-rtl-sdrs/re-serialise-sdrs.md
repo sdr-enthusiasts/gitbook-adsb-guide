@@ -8,7 +8,7 @@ As most RTL-SDRs ship with the same serial number, confusion may be caused if mo
 
 The remainder of this guide assumes that:
 
-* The SDR used for ADS-B ES \(1090MHz\) reception will have a serial number of `00001090`
+* The SDR used for ADS-B Mode-S \(1090MHz\) reception will have a serial number of `00001090`
 * The SDR used for ADS-B UAT \(978MHz\) reception \(if used\) will have a serial number of `00000978`.
 
 To set these serial numbers:
