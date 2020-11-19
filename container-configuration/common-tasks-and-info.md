@@ -28,12 +28,12 @@ As we have defined our `readsb` container with `restart: always`, the containers
 
 ## Information on Healthchecks
 
-Images can implement [healthchecks](https://docs.docker.com/engine/reference/builder/). A healthcheck is a script that docker runs within the container periodically thats tells docker whether the container is operating as expected.
+Images can implement [healthchecks](https://docs.docker.com/engine/reference/builder/). A healthcheck is a script that docker runs within the container periodically that tells docker whether the container is operating as expected.
 
 For example, in the `mikenye/readsb-protobuf` container, the [healthcheck script](https://github.com/mikenye/docker-readsb-protobuf/blob/main/rootfs/scripts/healthcheck.sh) does the following:
 
 * For each expected network connection, make sure the connection exists
-* Make sure that messages are being recieved from the SDR
+* Make sure that messages are being received from the SDR
 * Make sure that the services running within the container aren't dying over and over for some reason
 
 If all of the checks above pass, the container is considered healthy. If any fail, the container is considered unhealthy.
