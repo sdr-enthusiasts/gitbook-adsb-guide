@@ -9,7 +9,13 @@ matrix:
       - .spellcheck_wordlist.txt
     encoding: utf-8
   pipeline:
-  - pyspelling.filters.markdown:
+  - pyspelling.parsers.markdown_parser:
+      markdown_extensions:
+      - markdown.extensions.toc:
+          slugify: !!python/name:pymdownx.slugs.uslugify
+          permalink: "\ue157"
+      - markdown.extensions.admonition
+      - markdown.extensions.smarty
   - pyspelling.filters.html:
     comments: false
     ignores:
