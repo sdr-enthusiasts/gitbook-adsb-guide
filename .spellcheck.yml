@@ -1,23 +1,23 @@
 matrix:
-  - name: Markdown
-    sources:
-      - '**/*.md'
-    aspell:
-      lang: en
-    dictionary:
-      wordlists:
-        - .spellcheck_wordlist.txt
-      encoding: utf-8
-    pipeline:
-      - pyspelling.filters.markdown:
-        markdown_extensions:
-          - pymdownx.superfences:
-          - pymdownx.highlight:
-      - pyspelling.filters.html:
-        comments: false
-        ignores:
-          - ':matches(code, pre)'
-          - 'code'
-          - 'pre'
-      - pyspelling.filters.url:
-    default_encoding: utf-8
+- name: Markdown
+  sources:
+  - '**/*.md'
+  aspell:
+    lang: en
+  dictionary:
+    wordlists:
+      - .spellcheck_wordlist.txt
+    encoding: utf-8
+  pipeline:
+  - pyspelling.filters.markdown:
+    markdown_extensions:
+    - pymdownx.superfences:
+    - pymdownx.highlight:
+  - pyspelling.filters.html:
+    comments: false
+    ignores:
+    - ':matches(code, pre)'
+    - 'code'
+    - 'pre'
+  - pyspelling.filters.url:
+  default_encoding: utf-8
