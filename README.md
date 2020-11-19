@@ -2,7 +2,7 @@
 
 Automatic Dependent Surveillance-Broadcast \(ADS-B\) is a surveillance technology in which an aircraft determines its position via satellite navigation and periodically broadcasts it, enabling it to be tracked.
 
-This ADSB-B data can be received by ~~nerds~~ enthusiasts using Software Defined Radio \(SDR\), and used for fun and profit. For example:
+This ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined Radio \(SDR\), and used for fun and profit. For example:
 
 **Fun:**
 
