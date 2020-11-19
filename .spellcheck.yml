@@ -17,7 +17,8 @@ matrix:
           - title
           - alt
         ignores:
-          - :is(code, pre)
+          - code
+          - pre
       - pyspelling.filters.url:
     sources:
       - '**/*.md'
