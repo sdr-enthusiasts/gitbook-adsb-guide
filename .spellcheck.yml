@@ -1,13 +1,13 @@
 matrix:
   - name: Markdown
     sources:
-    - '**/*.md'
+      - '**/*.md'
     aspell:
       lang: en
     dictionary:
-      wordlists:
-        - .spellcheck_wordlist.txt
-      encoding: utf-8
+    wordlists:
+      - .spellcheck_wordlist.txt
+    encoding: utf-8
     pipeline:
       - pyspelling.filters.markdown:
         markdown_extensions:
@@ -15,9 +15,6 @@ matrix:
           - pymdownx.highlight:
       - pyspelling.filters.html:
         comments: false
-        attributes:
-          - title
-          - alt
         ignores:
           - ':matches(code, pre)'
           - 'code'
