@@ -1,4 +1,4 @@
-name: Spellcheck Action
+name: Check Spelling
 on: push
 
 jobs:
