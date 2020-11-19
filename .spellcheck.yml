@@ -4,15 +4,20 @@ matrix:
       lang: en
     dictionary:
       wordlists:
-        - .wordlist.txt
+        - .spellcheck_wordlist.txt
       encoding: utf-8
     pipeline:
       - pyspelling.filters.markdown:
+        markdown_extensions:
+          - pymdownx.superfences:
+          - pymdownx.highlight:
       - pyspelling.filters.html:
         comments: false
+        attributes:
+          - title
+          - alt
         ignores:
-          - code
-          - pre
+          - :is(code, pre)
       - pyspelling.filters.url:
     sources:
       - '**/*.md'
