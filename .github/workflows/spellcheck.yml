@@ -7,5 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+      with:
+        ref: ${{ github.ref }}
     - uses: rojopolis/spellcheck-github-actions@0.5.0
       name: Spellcheck
