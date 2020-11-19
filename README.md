@@ -6,7 +6,7 @@ This ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined 
 
 **Fun:**
 
-* [ADSBExchange](https://adsbexchange.com/)
+* [ADS-B Exchange](https://adsbexchange.com/)
 * [OpenSky Network](https://opensky-network.org)
 * [ADSBHub](https://www.adsbhub.org)
 * [https://plane.watch/](https://plane.watch/)
