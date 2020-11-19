@@ -1,5 +1,7 @@
 matrix:
   - name: Markdown
+    sources:
+    - '**/*.md'
     aspell:
       lang: en
     dictionary:
@@ -17,9 +19,8 @@ matrix:
           - title
           - alt
         ignores:
-          - code
-          - pre
+          - ':matches(code, pre)'
+          - 'code'
+          - 'pre'
       - pyspelling.filters.url:
-    sources:
-      - '**/*.md'
     default_encoding: utf-8
