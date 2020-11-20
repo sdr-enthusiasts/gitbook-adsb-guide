@@ -23,4 +23,4 @@ jobs:
         python3 ./setup.py install
         popd || exit 1
     - name: Spell check
-      run: python3 -m pyspelling -c ./.spellcheck.yml
+      run: pyspelling
