@@ -15,8 +15,6 @@ jobs:
         python -m pip install --upgrade pip setuptools
         python -m pip install pyspelling
     - name: Install Aspell
-      run: |
-        sudo apt-get install -y aspell aspell-en
+      run: sudo apt-get install -y aspell aspell-en
     - name: Spell check
-       run: |
-        python -m pyspelling -c ./.spellcheck.yml
+       run: python -m pyspelling -c ./.spellcheck.yml
