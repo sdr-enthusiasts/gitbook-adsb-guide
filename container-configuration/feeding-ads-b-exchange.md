@@ -4,7 +4,7 @@ description: 'If you wish to feed ADS-B Exchange, follow the steps below.'
 
 # Feeding ADS-B Exchange
 
-[ADSBexchange.com](https://adsbexchange.com/) is a co-op of ADS-B/Mode S/MLAT feeders from around the world, and the world’s largest source of unfiltered flight data.
+[ADSBExchange.com](https://adsbexchange.com/) is a co-op of ADS-B/Mode S/MLAT feeders from around the world, and the world’s largest source of unfiltered flight data.
 
 ## Generating a UUID for your receiver
 
