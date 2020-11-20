@@ -1,6 +1,6 @@
 ---
 description: >-
-  The ‘readsb‘ container is the heart of our adsb application. It receives
+  The `readsb` container is the heart of our `adsb` application. It receives
   1090MHz signals from your SDR, and demodulates ADS-B messages, making them
   available for all other containers.
 ---

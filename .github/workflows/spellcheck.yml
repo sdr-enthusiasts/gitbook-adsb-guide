@@ -1,0 +1,30 @@
+name: Check Spelling
+on: 
+  push:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  spelling:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python3 -m pip install --upgrade pip setuptools
+    - name: Install Aspell
+      run: sudo apt-get install -y aspell aspell-en
+    - name: Install pyspelling
+      run: |
+        git clone https://github.com/facelessuser/pyspelling.git /tmp/pyspelling
+        pushd /tmp/pyspelling || exit 1
+        git checkout $(git tag --sort='-creatordate' | head -1)
+        python3 ./setup.py install
+        popd || exit 1
+    - name: Spell check
+      run: pyspelling

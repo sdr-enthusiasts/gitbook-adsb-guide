@@ -1,5 +1,5 @@
 ---
-description: 'You can skip this step if you''re not using an RTLSDR radio (ie: bladeRF).'
+description: 'You can skip this step if you''re not using an RTLSDR radio (eg: bladeRF).'
 ---
 
 # Blacklist Kernel Modules
