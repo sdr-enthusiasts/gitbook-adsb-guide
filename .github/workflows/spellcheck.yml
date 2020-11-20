@@ -1,5 +1,9 @@
 name: Check Spelling
-on: push
+on: 
+  push:
+  pull_request:
+    branches:
+      - main
 
 jobs:
   spelling:
