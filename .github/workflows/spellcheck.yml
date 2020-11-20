@@ -6,15 +6,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Set up Python 3.7
+    - name: Set up Python
       uses: actions/setup-python@v1
       with:
-        python-version: 3.7
+        python-version: 3.6
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip setuptools
-        python -m pip install pyspelling
+        python3 -m pip install --upgrade pip setuptools
     - name: Install Aspell
       run: sudo apt-get install -y aspell aspell-en
+    - name: Install pyspelling
+      run: |
+        git clone https://github.com/facelessuser/pyspelling.git /tmp/pyspelling
+        pushd /tmp/pyspelling || exit 1
+        git checkout $(git tag --sort='-creatordate' | head -1)
+        python3 ./setup.py install
+        popd || exit 1
     - name: Spell check
-      run: python -m pyspelling -c ./.spellcheck.yml
+      run: python3 -m pyspelling -c ./.spellcheck.yml
