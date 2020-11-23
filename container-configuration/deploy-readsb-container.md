@@ -1,13 +1,13 @@
 ---
 description: >-
-  The `readsb` container is the heart of our `adsb` application. It receives
-  1090MHz signals from your SDR, and demodulates ADS-B messages, making them
+  The "readsb" container is the heart of our "adsb" application. It receives
+  1090MHz RF signals from your SDR, and demodulates ADS-B messages, making them
   available for all other containers.
 ---
 
 # Deploy "readsb" Container
 
-In your favourite text editor, create a file named `docker-compose.yml` in your project directory \(`/opt/adsb`\) if following along verbatim.
+In your favourite text editor, create a file named `docker-compose.yml` in your application directory \(`/opt/adsb`\) if following along verbatim.
 
 ```yaml
 version: '3.8'
@@ -44,7 +44,7 @@ services:
 
 The above will:
 
-* Create two docker volumes - `readsbpb_rrd` and `readsb_autogain`, which are used to store the RRD files and autogain state files respectively.
+* Create two docker volumes, `readsbpb_rrd` and `readsb_autogain`, which are used to store the RRD files and autogain state files respectively.
 * Create a service named `readsb` that will run the `mikenye/readsb-protobuf` container.
   * We're presenting the USB bus through to this container \(so `readsb` can talk to the USB-attached SDR\).
   * We're mapping TCP port `8080` through to the container so we can access the web interface.
@@ -148,5 +148,5 @@ To see the data being received and decoded by our new container, run the command
 
 Press `CTRL-C` to escape this screen.
 
-You should also be able to point your web browser at [http://docker.host.ip.addr:8080/](http://dockerhost:8080/) to view the web interface \(change `docker.host.ip.addr` to the IP address of your docker host\). You should see a map showing your currently tracked aircraft, and a link to the "Performance Graphs".
+You should also be able to point your web browser at `http://docker.host.ip.addr:8080/` to view the web interface \(change `docker.host.ip.addr` to the IP address of your docker host\). You should see a map showing your currently tracked aircraft, and a link to the "Performance Graphs".
 

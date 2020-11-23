@@ -1,5 +1,7 @@
 ---
-description: 'You can skip this step if you''re not using an RTLSDR radio (for example: bladeRF).'
+description: >-
+  In this step we set the serial numbers of our RTL-SDR device(s). You can skip
+  this step if you're not using an RTLSDR radio (for example: bladeRF).
 ---
 
 # Re-Serialise SDRs

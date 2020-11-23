@@ -1,4 +1,10 @@
-# Prepare the Project Environment
+---
+description: >-
+  In this step, we prepare the folder structure for our "adsb" application, and
+  create a ".env" file containing our basic details.
+---
+
+# Prepare the Application Environment
 
 ## Create a directory to host our project
 

@@ -56,7 +56,7 @@ Later in this guide we will implement a method to automatically restart any unhe
 
 Where practical, I try to include healthchecks in all my images, so as you go through this guide and deploy more containers, you should see a health status whenever you issue the `docker ps` command.
 
-### Why is my container healthy/unhealthy?
+### Reason for healthy/unhealthy?
 
 You can inspect the container for some \(hopefully\) meaningful output from the healthcheck script.
 
