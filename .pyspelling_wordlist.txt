@@ -20,7 +20,6 @@ FlightAirMap
 FlightAware
 FlightRadar
 grafana
-grafana
 healthcheck
 healthchecks
 hostname
@@ -34,6 +33,7 @@ mlat
 OpenSky
 OpenSSL
 OwnCloud
+PiAware
 plex
 protobuf
 py
