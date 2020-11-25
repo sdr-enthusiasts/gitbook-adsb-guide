@@ -13,7 +13,7 @@ jobs:
       uses: pipeline-components/markdown-spellcheck@v0.6.0
       with:
         directory: "**/*.md"
-        options: --report
+        options: --en-au --ignore-acronyms --report
 
 # spelling:
 #     runs-on: ubuntu-latest
