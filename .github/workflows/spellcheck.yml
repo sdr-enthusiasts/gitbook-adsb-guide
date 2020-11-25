@@ -5,12 +5,15 @@ on:
     branches:
       - master
 
-jobs:
+jobs:  
   markdown-spellcheck:
-    stage: linting
-    image: pipelinecomponents/markdown-spellcheck:latest
-    script:
-      - mdspell --report '**/*.md'
+    runs-on: ubuntu-latest
+    steps:
+    - name: pipeline-components-markdown-spellcheck
+      uses: pipeline-components/markdown-spellcheck@latest
+      with:
+        directory: "**/*.md"
+        options: --report
 
 # spelling:
 #     runs-on: ubuntu-latest
