@@ -121,7 +121,7 @@ RADARBOX_SHARING_KEY=g45643ab345af3c5d5g923a99ffc0de9
 
 ### SegFault Fix
 
-As the `rbfeeder` binary is designed to run on a Rasbperry Pi, the `rbfeeder` binary expects a file `/sys/class/thermal/thermal_zone0/temp` to be present, and contain the CPU temperature. If this file doesn't exist, the `rbfeeder` binary will crash and restart every few minutes. For more information, see [here](https://github.com/mikenye/docker-radarbox/issues/16#issuecomment-699627387).
+As the `rbfeeder` binary is designed to run on a Raspberry Pi, the `rbfeeder` binary expects a file `/sys/class/thermal/thermal_zone0/temp` to be present, and contain the CPU temperature. If this file doesn't exist, the `rbfeeder` binary will crash and restart every few minutes. For more information, see [here](https://github.com/mikenye/docker-radarbox/issues/16#issuecomment-699627387).
 
 The `mikenye/radarbox` container is multi-architecture, and accordingly you might not be running on a Raspberry Pi.
 
