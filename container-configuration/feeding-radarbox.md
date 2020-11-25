@@ -87,13 +87,13 @@ Pass the key as environment var SHARING_KEY on next launch!
 [s6-finish] sending all processes the KILL signal and exiting.
 ```
 
-As you can see from the output above, the sharing key given to us from Radarbox is `g45643ab345af3c5d5g923a99ffc0de9`.  
-  
+As you can see from the output above, the sharing key given to us from Radarbox is `g45643ab345af3c5d5g923a99ffc0de9`.
+
 You should now claim your receiver:
 
 1. Go to [https://www.radarbox.com/](https://www.radarbox.com/)
-2. Create an account or sign in
-3. Claim your receiver by visiting [https://www.radarbox.com/raspberry-pi/claim](https://www.radarbox.com/raspberry-pi/claim) and following the instructions
+1. Create an account or sign in
+1. Claim your receiver by visiting [https://www.radarbox.com/raspberry-pi/claim](https://www.radarbox.com/raspberry-pi/claim) and following the instructions
 
 ## Update `.env` file with sharing key
 
@@ -145,7 +145,6 @@ Open the `docker-compose.yml` file that was created when deploying `readsb`.
 Add the following lines below the `version:` section, and before the `services:` section:
 
 ```yaml
-
 volumes:
   radarbox_segfault_fix:
     driver: local
@@ -153,7 +152,6 @@ volumes:
       type: none
       device: /opt/adsb/data/radarbox_segfault_fix
       o: bind
-      
 ```
 
 This creates a volume containing our fake directory structure. We will map this through to the feeder container to prevent the SegFault from occurring.
