@@ -29,7 +29,7 @@ You'll need a _sharing key_. To get one, you can temporarily run the container, 
 
 Inside your application directory \(`/opt/adsb`\), run the following commands:
 
-```text
+```bash
 docker pull mikenye/piaware:latest
 source ./.env
 timeout 60 docker run \
@@ -47,7 +47,7 @@ The command will run the container for one minute, which should be ample time fo
 
 For example:
 
-```text
+```
 [s6-init] making user provided files available at /var/run/s6/etc...exited 0.
 [s6-init] ensuring user provided files have correct perms...exited 0.
 [fix-attrs.d] applying ownership & permissions fixes...
@@ -105,7 +105,7 @@ nano /opt/adsb/.env
 
 This file holds all of the commonly used variables \(such as our latitude, longitude and altitude\). We're going to add our `rbfeeder` sharing key to this file. Add the following line to the file:
 
-```text
+```bash
 RADARBOX_SHARING_KEY=YOURSHARINGKEY
 ```
 
@@ -113,7 +113,7 @@ RADARBOX_SHARING_KEY=YOURSHARINGKEY
 
 For example:
 
-```text
+```bash
 RADARBOX_SHARING_KEY=g45643ab345af3c5d5g923a99ffc0de9
 ```
 
