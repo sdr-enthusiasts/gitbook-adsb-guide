@@ -1,8 +1,14 @@
+# markdown-spellcheck spelling configuration file
+# Format - lines begining # are comments
+# global dictionary is at the start, file overrides afterwards
+# one word per line, to define a file override use ' - filename'
+# where filename is relative to this configuration file
 acars
 adsb
 ADSBExchange
 ADSBHub
 AirBand
+AirNav
 amd
 autogain
 bandpass
@@ -20,7 +26,6 @@ FlightAirMap
 FlightAware
 FlightRadar
 grafana
-grafana
 healthcheck
 healthchecks
 hostname
@@ -34,10 +39,13 @@ mlat
 OpenSky
 OpenSSL
 OwnCloud
+PiAware
 plex
 protobuf
 py
 radarbox
+RadarBox
+rbfeeder
 readsb
 readsbpb
 realtek
@@ -47,6 +55,7 @@ rtl
 rtlsdr
 sdr
 SDRs
+SegFault
 sudo
 tcp
 tty

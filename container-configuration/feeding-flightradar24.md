@@ -26,7 +26,7 @@ cat /etc/fr24feed.ini | grep fr24key
 
 If you're already running PiAware and you've followed the steps in the previous command, you can skip this section.
 
-First-time users should obtain a FlighRadar24 sharing key \(a _fr24key_\). To get one, you can run through the signup process. This will ask a series of questions allowing you to sign up with FlightRadar24 and get a _fr24key_.
+First-time users should obtain a FlightRadar24 sharing key \(a _fr24key_\). To get one, you can run through the sign-up process. This will ask a series of questions allowing you to sign up with FlightRadar24 and get a _fr24key_.
 
 Run the command:
 
@@ -34,7 +34,7 @@ Run the command:
 docker run --rm -it --entrypoint fr24feed mikenye/fr24feed --signup
 ```
 
-This will take you through the signup process. At the end of the signup process, you'll be presented with:
+This will take you through the sign-up process. At the end of the sign-up process, you'll be presented with:
 
 ```text
 Congratulations! You are now registered and ready to share ADS-B data with Flightradar24.
