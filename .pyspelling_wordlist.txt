@@ -3,6 +3,7 @@ adsb
 ADSBExchange
 ADSBHub
 AirBand
+AirNav
 amd
 autogain
 bandpass
@@ -38,6 +39,7 @@ plex
 protobuf
 py
 radarbox
+RadarBox
 readsb
 readsbpb
 realtek
