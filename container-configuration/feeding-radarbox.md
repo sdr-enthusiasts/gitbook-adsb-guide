@@ -47,7 +47,7 @@ The command will run the container for one minute, which should be ample time fo
 
 For example:
 
-```
+```text
 [s6-init] making user provided files available at /var/run/s6/etc...exited 0.
 [s6-init] ensuring user provided files have correct perms...exited 0.
 [fix-attrs.d] applying ownership & permissions fixes...
@@ -92,8 +92,8 @@ As you can see from the output above, the sharing key given to us from Radarbox 
 You should now claim your receiver:
 
 1. Go to [https://www.radarbox.com/](https://www.radarbox.com/)
-1. Create an account or sign in
-1. Claim your receiver by visiting [https://www.radarbox.com/raspberry-pi/claim](https://www.radarbox.com/raspberry-pi/claim) and following the instructions
+2. Create an account or sign in
+3. Claim your receiver by visiting [https://www.radarbox.com/raspberry-pi/claim](https://www.radarbox.com/raspberry-pi/claim) and following the instructions
 
 ## Update `.env` file with sharing key
 

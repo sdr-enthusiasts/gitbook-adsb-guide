@@ -30,4 +30,5 @@
 * [Feeding FlightAware \(piaware\)](container-configuration/feeding-flightaware-piaware.md)
 * [Feeding FlightRadar24](container-configuration/feeding-flightradar24.md)
 * [Feeding RadarBox](container-configuration/feeding-radarbox.md)
+* [Feeding PlaneFinder](container-configuration/feeding-planefinder.md)
 

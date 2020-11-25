@@ -91,14 +91,14 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 To explain what's going on in this addition:
 
-* We're creating a container called `piaware`, from the image `mikenye/piaware:latest`.
+* We're creating a container called `fr24`, from the image `mikenye/fr24feed:latest`.
 * We're passing several environment variables to the container:
-  * `BEASTHOST=readsb` to inform the feeder to get its ADSB data from the container `readsb` over our private `adsbnet` network.
+  * `BEASTHOST=readsb` to inform the feeder to get its ADSB data from the container `readsb` network.
   * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
   * `FR24KEY` will use the `FR24_SHARING_KEY` variable from your `.env` file.
   * We're enabling MLAT with `MLAT=yes`.
 
-Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `piaware` container. You should see the following output:
+Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `fr24` container. You should see the following output:
 
 ```text
 readsb is up-to-date
