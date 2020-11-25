@@ -26,7 +26,7 @@ cat /etc/fr24feed.ini | grep fr24key
 
 If you're already running PiAware and you've followed the steps in the previous command, you can skip this section.
 
-First-time users should obtain a FlighRadar24 sharing key \(a _fr24key_\). To get one, you can run through the signup process. This will ask a series of questions allowing you to sign up with FlightRadar24 and get a _fr24key_.
+First-time users should obtain a FlightRadar24 sharing key \(a _fr24key_\). To get one, you can run through the signup process. This will ask a series of questions allowing you to sign up with FlightRadar24 and get a _fr24key_.
 
 Run the command:
 
