@@ -136,7 +136,7 @@ mkdir -p ./data/radarbox_segfault_fix/thermal_zone0
 echo 24000 > ./data/radarbox_segfault_fix/thermal_zone0/temp
 ```
 
-This creates a fake directory structure that contains a fake CPU temperature file that reads 24 degrees celcius.
+This creates a fake directory structure that contains a fake CPU temperature file that reads 24 degrees Celsius.
 
 #### Create docker volume
 
