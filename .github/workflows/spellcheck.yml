@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: pipeline-components-markdown-spellcheck
-      uses: pipeline-components/markdown-spellcheck@latest
+      uses: pipeline-components/markdown-spellcheck@v0.6.0
       with:
         directory: "**/*.md"
         options: --report
