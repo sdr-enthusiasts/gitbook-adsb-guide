@@ -50,6 +50,7 @@ rtl
 rtlsdr
 sdr
 SDRs
+SegFault
 sudo
 tcp
 tty
