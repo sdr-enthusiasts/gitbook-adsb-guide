@@ -6,14 +6,15 @@ on:
       - master
 
 jobs:  
-  markdown-spellcheck:
+
+  spellcheck:
     runs-on: ubuntu-latest
     steps:
-    - name: pipeline-components-markdown-spellcheck
-      uses: pipeline-components/markdown-spellcheck@v0.6.0
-      with:
-        directory: "**/*.md"
-        options: --en-au --ignore-acronyms --report
+    - uses: actions/checkout@v2
+    - name: Pull pipelinecomponents/markdown-spellcheck Image
+      run: docker pull pipelinecomponents/markdown-spellcheck
+    - name: Spellcheck Markdown Files
+      run: docker run --rm -i -v "$PWD:/github/workspace" --workdir /github/workspace -e FORCE_COLOR=1 pipelinecomponents/markdown-spellcheck --report "**/*.md" -n -a
 
 # spelling:
 #     runs-on: ubuntu-latest

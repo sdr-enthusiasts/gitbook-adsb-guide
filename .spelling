@@ -3,9 +3,13 @@
 # global dictionary is at the start, file overrides afterwards
 # one word per line, to define a file override use ' - filename'
 # where filename is relative to this configuration file
+1090MHz
+20m
+978MHz
 acars
 adsb
 ADSBExchange
+ADSBExchange.com
 ADSBHub
 AirBand
 AirNav
@@ -16,6 +20,8 @@ BaseStation
 bda
 BeastReduce
 bladeRF
+BY-NC
+center
 collectd
 CPython
 dev
@@ -24,22 +30,30 @@ dvb
 eg
 FlightAirMap
 FlightAware
-FlightRadar
+FlightRadar24
+fr24key
 grafana
 healthcheck
 healthchecks
 hostname
+htm
 InfluxDB
 io
 json
 KerberosSDR
 linuxserver
+linuxserver.io
+maps.google.com
 mikenye
 mlat
 OpenSky
 OpenSSL
 OwnCloud
 PiAware
+piaware
+Pis
+PlaneFinder
+planefinder.net
 plex
 protobuf
 py
@@ -56,8 +70,12 @@ rtlsdr
 sdr
 SDRs
 SegFault
+SkyAware
+spec
+standalone
 sudo
 tcp
+timezone
 tty
 tz
 uat
@@ -68,4 +86,8 @@ VirtualRadarServer
 vm
 vrs
 wakeup
+www.planefinder.net
+www.radarbox.com
+www.flightradar24.com
+www.freemaptools.com
 yaml
