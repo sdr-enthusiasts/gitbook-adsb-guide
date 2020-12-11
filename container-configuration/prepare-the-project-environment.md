@@ -37,7 +37,7 @@ FEEDER_TZ=<your timezone>
 * `FEEDER_ALT_M` is set to your antenna's height in metres
 * `FEEDER_LAT` is set to your antenna's latitude
 * `FEEDER_LONG` is set to your antenna's longitude
-* `FEEDER_TZ` is set to your timezone, in ["TZ database name" format](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones>).
+* `FEEDER_TZ` is set to your timezone, in ["TZ database name" format](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
 
 For example:
 
