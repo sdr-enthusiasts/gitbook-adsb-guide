@@ -12,7 +12,7 @@ description: >-
 For example:
 
 ```text
-STATUS                    
+STATUS
 Up 2 hours (healthy)
 ```
 
