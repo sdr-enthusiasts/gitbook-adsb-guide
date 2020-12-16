@@ -6,7 +6,7 @@ description: 'If you wish to feed PlaneFinder, follow the steps below.'
 
 [PlaneFinder](https://planefinder.net/) provides live flight tracking data to industries around the world with customised products for aviation, business intelligence and emerging markets alongside world class apps.
 
-The docker image  [`mikenye/planefinder`](https://github.com/mikenye/docker-planefinder) contains PlaneFinder's `pfclient` feeder software and all of its required prerequisites and libraries. This needs to run in conjunction with `readsb` \(or another Beast provider\).
+The docker image [`mikenye/planefinder`](https://github.com/mikenye/docker-planefinder) contains PlaneFinder's `pfclient` feeder software and all of its required prerequisites and libraries. This needs to run in conjunction with `readsb` \(or another Beast provider\).
 
 ## Getting a Share Code
 
