@@ -21,11 +21,11 @@
 * [Blacklist Kernel Modules](setting-up-rtl-sdrs/blacklist-kernel-modules.md)
 * [Re-Serialise SDRs](setting-up-rtl-sdrs/re-serialise-sdrs.md)
 
-## Receiver Container
+## Foundations
 
-* [Prepare the Application Environment](receiver-container/prepare-the-project-environment.md)
-* [Deploy "readsb" Container](receiver-container/deploy-readsb-container.md)
-* [Container Monitoring and Management](receiver-container/common-tasks-and-info.md)
+* [Prepare the Application Environment](foundations/prepare-the-project-environment.md)
+* [Deploy "readsb" Container](foundations/deploy-readsb-container.md)
+* [Container Monitoring and Management](foundations/common-tasks-and-info.md)
 
 ## Feeder Containers
 

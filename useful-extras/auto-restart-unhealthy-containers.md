@@ -7,7 +7,7 @@ description: >-
 
 # Auto-Restart Unhealthy Containers
 
-[As previously discussed](../receiver-container/common-tasks-and-info.md#information-on-healthchecks), I try to include [healthchecks](https://docs.docker.com/engine/reference/builder/) in all my images. You should see a health status in the `STATUS` column of each container created in this guide whenever you issue the `docker ps` command.
+[As previously discussed](../foundations/common-tasks-and-info.md#information-on-healthchecks), I try to include [healthchecks](https://docs.docker.com/engine/reference/builder/) in all my images. You should see a health status in the `STATUS` column of each container created in this guide whenever you issue the `docker ps` command.
 
 For example:
 
