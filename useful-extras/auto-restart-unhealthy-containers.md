@@ -16,7 +16,7 @@ STATUS
 Up 2 hours (healthy)
 ```
 
-If a container becomes unhealthy for any reason \(ie, perhaps the SDR hardware "wedges", perhaps a program running in a container becomes deadlocked, etc\), then we would naturally want to restart it. Ideally, we'd want this to happen automatically.
+If a container becomes unhealthy for any reason \(for example: perhaps the SDR hardware "wedges", perhaps a program running in a container becomes deadlocked, etc\), then we would naturally want to restart it. Ideally, we'd want this to happen automatically.
 
 Unfortunately, Docker does not yet offer this functionality. [It has been proposed but not yet implemented](https://github.com/moby/moby/pull/22719).
 
