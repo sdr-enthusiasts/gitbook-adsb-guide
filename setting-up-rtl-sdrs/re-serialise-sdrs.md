@@ -10,18 +10,18 @@ As most RTL-SDRs ship with the same serial number, confusion may be caused if mo
 
 The remainder of this guide assumes that:
 
-* The SDR used for ADS-B Mode-S \(1090MHz\) reception will have a serial number of `00001090`
-* The SDR used for ADS-B UAT \(978MHz\) reception \(if used\) will have a serial number of `00000978`.
+* The SDR used for ADS-B Mode-S \(1090MHz\) reception will have a serial number of `1090`
+* The SDR used for ADS-B UAT \(978MHz\) reception \(if used\) will have a serial number of `978`.
 
 To set these serial numbers:
 
 Unplug all SDRs, leaving only the SDR to be used for 1090MHz reception plugged in. Issue the following command:
 
 ```text
-sudo docker run --rm -it --device /dev/bus/usb --entrypoint rtl_eeprom mikenye/readsb-protobuf -s 00001090
+sudo docker run --rm -it --device /dev/bus/usb --entrypoint rtl_eeprom mikenye/readsb-protobuf -s 1090
 ```
 
-You should be presented with the following. Your details may differ slightly, however ensure the device's new serial number will be `00001090`. Press `y` to proceed.
+You should be presented with the following. Your details may differ slightly, however ensure the device's new serial number will be `1090`. Press `y` to proceed.
 
 ```text
 Found 1 device(s):
@@ -48,7 +48,7 @@ Vendor ID:              0x0bda
 Product ID:             0x2832
 Manufacturer:           Realtek
 Product:                RTL2832U
-Serial number:          00001090
+Serial number:          1090
 Serial number enabled:  yes
 IR endpoint enabled:    no
 Remote wakeup enabled:  no
@@ -65,7 +65,7 @@ Next, if you intend on receiving ADS-B UAT \(978MHz\) data with a second SDR, Un
 sudo docker run --rm -it --device /dev/bus/usb --entrypoint rtl_eeprom mikenye/readsb-protobuf -s 00000978
 ```
 
-You should be presented with the following. Your details may differ slightly, however ensure the device's new serial number will be `00000978`. Press `y` to proceed.
+You should be presented with the following. Your details may differ slightly, however ensure the device's new serial number will be `978`. Press `y` to proceed.
 
 ```text
 Found 1 device(s):
@@ -92,7 +92,7 @@ Vendor ID:              0x0bda
 Product ID:             0x2832
 Manufacturer:           Realtek
 Product:                RTL2832U
-Serial number:          00000978
+Serial number:          978
 Serial number enabled:  yes
 IR endpoint enabled:    no
 Remote wakeup enabled:  no

@@ -177,7 +177,7 @@ Note that any containers you added the `label:` directive to were recreated by `
 
 The container does not log any output, so check it is running by issuing the command `docker ps` and finding the `autoheal` container. It should have a status of `Up 20 seconds (healthy)` or similar.
 
-The `autoheal` container logs when it restarts an unhealthy container, for example:
+The `autoheal` container logs messages when it restarts an unhealthy container, for example:
 
 ```text
 15-12-2020 20:17:06 Container /adsbx (51bc3e3511f5) found to be unhealthy - Restarting container now with 10s timeout

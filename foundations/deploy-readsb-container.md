@@ -1,11 +1,11 @@
 ---
 description: >-
   The "readsb" container is the heart of our "adsb" application. It receives
-  1090MHz RF signals from your SDR, and demodulates ADS-B messages, making them
-  available for all other containers.
+  1090MHz ADS-B ES RF signals from your SDR, and demodulates ADS-B messages,
+  making them available for all other containers.
 ---
 
-# Deploy "readsb" Container
+# Deploy "readsb"
 
 In your favourite text editor, create a file named `docker-compose.yml` in your application directory \(`/opt/adsb`\) if following along verbatim.
 
@@ -30,7 +30,7 @@ services:
     environment:
       - TZ=${FEEDER_TZ}
       - READSB_DEVICE_TYPE=rtlsdr
-      - READSB_RTLSDR_DEVICE=00001090
+      - READSB_RTLSDR_DEVICE=1090
       - READSB_GAIN=autogain
       - READSB_LAT=${FEEDER_LAT}
       - READSB_LON=${FEEDER_LONG}

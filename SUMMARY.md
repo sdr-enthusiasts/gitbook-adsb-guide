@@ -24,7 +24,8 @@
 ## Foundations
 
 * [Prepare the Application Environment](foundations/prepare-the-project-environment.md)
-* [Deploy "readsb" Container](foundations/deploy-readsb-container.md)
+* [Deploy "readsb"](foundations/deploy-readsb-container.md)
+* [Deploy "dump978" \(USA Only\)](foundations/deploy-dump978-usa-only.md)
 * [Container Monitoring and Management](foundations/common-tasks-and-info.md)
 
 ## Feeder Containers
@@ -40,4 +41,5 @@
 ## Useful Extras
 
 * [Auto-Restart Unhealthy Containers](useful-extras/auto-restart-unhealthy-containers.md)
+* [Auto-Upgrade Containers](useful-extras/auto-upgrade-containers.md)
 
