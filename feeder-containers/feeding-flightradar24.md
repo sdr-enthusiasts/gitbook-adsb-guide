@@ -24,9 +24,44 @@ cat /etc/fr24feed.ini | grep fr24key
 
 ### New to `fr24feed`?
 
-If you're already running PiAware and you've followed the steps in the previous command, you can skip this section.
+If you're already feeding FlightRadar24 and you've followed the steps in the previous command, you can skip this section.
 
 First-time users should obtain a FlightRadar24 sharing key \(a _fr24key_\). To get one, you can run through the sign-up process. This will ask a series of questions allowing you to sign up with FlightRadar24 and get a _fr24key_.
+
+There's an automated script that you can run, however if this breaks (please let me know so I can fix it), you can also use the manual sign-up method.
+
+#### Automatic Sign-Up Script Method
+
+Run these commands from within your application directory (`/opt/adsb`):
+
+```shell
+source ./.env
+docker run \
+  --rm \
+  -it \
+  -e FEEDER_LAT="$FEEDER_LAT" \
+  -e FEEDER_LONG="$FEEDER_LONG" \
+  -e FEEDER_ALT_FT="$FEEDER_ALT_FT" \
+  -e FR24_EMAIL="YOUR@EMAIL.ADDRESS" \
+  --entrypoint /scripts/signup.sh \
+  mikenye/fr24feed
+```
+
+Be sure to replace `YOUR@EMAIL.ADDRESS` with your actual email address!
+
+After about 30 seconds or so, if the script method was successful, you should see output similar to this:
+
+```shell
+FR24_SHARING_KEY=5fa9ca2g9049b615
+FR24_RADAR_ID=T-XXXX123
+```
+
+Simply copy these lines and paste them into your `.env` file.
+
+If something went wrong, please take a moment to let me know, then try the manual method below.
+
+
+#### Manual Sign-Up Method
 
 Run the command:
 
@@ -42,23 +77,13 @@ Congratulations! You are now registered and ready to share ADS-B data with Fligh
 + Your radar id is X-XXXXXXX, please include it in all email communication with us.
 ```
 
-Take a note of the sharing key, as you'll need it when launching the container.
-
-## Update `.env` file with sharing key
-
-Inside your application directory \(`/opt/adsb`\), edit the `.env` file using your favourite text editor. Beginners may find the editor `nano` easy to use:
-
-```bash
-nano /opt/adsb/.env
-```
-
-This file holds all of the commonly used variables \(such as our latitude, longitude and altitude\). We're going to add our `fr24feed` sharing key to this file. Add the following line to the file:
+Copy the sharing key you are given, and add the following line to your `.env` file:
 
 ```text
 FR24_SHARING_KEY=YOURSHARINGKEY
 ```
 
-* Replace `YOURSHARINGKEY` with the sharing key that was generated in the previous step.
+* Replace `YOURSHARINGKEY` with the sharing key from the output of the manual sign-up process.
 
 For example:
 
