@@ -87,6 +87,12 @@ Pass the key as environment var SHARING_KEY on next launch!
 [s6-finish] sending all processes the KILL signal and exiting.
 ```
 
+In the output above, see the line:
+
+```
+[rbfeeder] [2020-11-20 08:55:05]  Your new key is g45643ab345af3c5d5g923a99ffc0de9.
+```
+
 As you can see from the output above, the sharing key given to us from Radarbox is `g45643ab345af3c5d5g923a99ffc0de9`.
 
 You should now claim your receiver:
