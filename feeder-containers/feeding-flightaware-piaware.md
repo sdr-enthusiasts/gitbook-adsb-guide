@@ -105,6 +105,13 @@ Append the following lines to the end of the file \(inside the `services:` secti
       - FEEDER_ID=${PIAWARE_FEEDER_ID}
 ```
 
+If you are in the USA and are also running the `dump978` container with a second SDR, add the following additional lines to the `environment:` section:
+
+```yaml
+      - UAT_RECEIVER_TYPE=relay
+      - UAT_RECEIVER_HOST=dump978
+```
+
 To explain what's going on in this addition:
 
 * We're creating a container called `piaware`, from the image `mikenye/piaware:latest`.
@@ -114,6 +121,9 @@ To explain what's going on in this addition:
   * `LONG` will use the `FEEDER_LONG` variable from your `.env` file.
   * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
   * `FEEDER_ID` will use the `PIAWARE_FEEDER_ID` variable from your `.env` file.
+* For people running `dump978`:
+  * `UAT_RECEIVER_TYPE=relay` tells the container to pull UAT data from another host over the network.
+  * `UAT_RECEIVER_HOST=dump978` specifies the host to pull UAT data from; in this instance our `dump978` container.
 
 Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `piaware` container. You should see the following output:
 
