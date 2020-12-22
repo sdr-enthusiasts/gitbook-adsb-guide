@@ -112,5 +112,9 @@ Press `CTRL-C` to escape this screen.
 
 You should also be able to point your web browser at `http://docker.host.ip.addr:8080/` to view the web interface \(change `docker.host.ip.addr` to the IP address of your docker host\). You should see a map showing your currently tracked aircraft, and the UAT aircraft will be denoted by a different colour in the list.
 
+## Feeder Configuration
 
+The majority of feeders will happily accept a combined 1090MHz & 978MHz feed coming from `readsb`, so there should be nothing further to do.
+
+The current exception is the `piaware` container, as FlightAware have separate feeder binaries for 1090MHz and 978MHz. The additional configuration directives are discussed on that comtainer's page.
 
