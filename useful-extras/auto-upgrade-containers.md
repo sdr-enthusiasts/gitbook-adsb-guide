@@ -13,7 +13,7 @@ The containers used in this guide are regularly updated - most of them daily. Th
 * Receiver \(`readsb`\), feeders, visualisation services \(`tar1090`\) etc are also regularly updated. This ensures that updates are captured in these containers.
 * As issues are raised and fixed, it ensures that fixes are present in these containers.
 
-We can configure a container to regularly \(daily\) check DockerHub for new versions of  underlying images, automaticlly pull the new versions and recreate your containers.
+We can configure a container to regularly \(daily\) check DockerHub for new versions of  underlying images, automatically pull the new versions and recreate your containers.
 
 This can be a double-edged sword, as container functionality may change between versions \(for example, if a feeder drastically changes how their application behaves\). Rest assured that if behaviour does change, I'll make every effort to ensure backwards compatibility. Accordingly, if you implement auto-upgrade, I'd suggest a regular check of your environment to ensure it is operating as expected.
 
