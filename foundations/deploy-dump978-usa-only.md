@@ -88,6 +88,8 @@ services:
 
 To explain this addition, the `readsb` container will connect to the `dump978` container on port `37981` and receive UAT data.
 
+The UAT data will be sent out over BEAST connections from the feeder containers to the `readsb` container.
+
 ## Refresh running containers
 
 At this point, you can issue the command `docker-compose up -d` to refresh both the `readsb` and `dump978` containers.
