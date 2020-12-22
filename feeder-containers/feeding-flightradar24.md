@@ -60,7 +60,6 @@ Simply copy these lines and paste them into your `.env` file.
 
 If something went wrong, please take a moment to let me know, then try the manual method below.
 
-
 #### Manual Sign-Up Method
 
 Run the command:
