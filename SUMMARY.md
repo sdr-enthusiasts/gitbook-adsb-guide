@@ -4,6 +4,7 @@
 
 ## Intro
 
+* [Changes From the Old Guide](intro/changes-from-the-old-guide.md)
 * [Overview](intro/overview.md)
 * [How to Get Help](intro/how-to-get-help.md)
 * [Why Docker?](intro/why-docker.md)

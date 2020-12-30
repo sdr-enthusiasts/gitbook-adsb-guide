@@ -28,13 +28,13 @@ If you're already feeding FlightRadar24 and you've followed the steps in the pre
 
 First-time users should obtain a FlightRadar24 sharing key \(a _fr24key_\). To get one, you can run through the sign-up process. This will ask a series of questions allowing you to sign up with FlightRadar24 and get a _fr24key_.
 
-There's an automated script that you can run, however if this breaks (please let me know so I can fix it), you can also use the manual sign-up method.
+There's an automated script that you can run, however if this breaks \(please let me know so I can fix it\), you can also use the manual sign-up method.
 
 #### Automatic Sign-Up Script Method
 
-Run these commands from within your application directory (`/opt/adsb`):
+Run these commands from within your application directory \(`/opt/adsb`\):
 
-```shell
+```text
 source ./.env
 docker run \
   --rm \
@@ -51,7 +51,7 @@ Be sure to replace `YOUR@EMAIL.ADDRESS` with your actual email address!
 
 After about 30 seconds or so, if the script method was successful, you should see output similar to this:
 
-```shell
+```text
 FR24_SHARING_KEY=5fa9ca2g9049b615
 FR24_RADAR_ID=T-XXXX123
 ```

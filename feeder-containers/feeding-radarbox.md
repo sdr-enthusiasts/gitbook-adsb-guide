@@ -89,7 +89,7 @@ Pass the key as environment var SHARING_KEY on next launch!
 
 In the output above, see the line:
 
-```
+```text
 [rbfeeder] [2020-11-20 08:55:05]  Your new key is g45643ab345af3c5d5g923a99ffc0de9.
 ```
 
