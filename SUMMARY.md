@@ -41,6 +41,7 @@
 
 ## Useful Extras
 
+* [Improved Visualisation with tar1090](useful-extras/improved-visualisation-with-tar1090.md)
 * [Auto-Restart Unhealthy Containers](useful-extras/auto-restart-unhealthy-containers.md)
 * [Auto-Upgrade Containers](useful-extras/auto-upgrade-containers.md)
 

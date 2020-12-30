@@ -148,10 +148,9 @@ This creates a fake directory structure that contains a fake CPU temperature fil
 
 Open the `docker-compose.yml` file that was created when deploying `readsb`.
 
-Add the following lines below the `version:` section, and before the `services:` section:
+Add the following lines to the `volumes:` section below the `version:` section, and before the `services:` section:
 
 ```yaml
-volumes:
   radarbox_segfault_fix:
     driver: local
     driver_opts:
