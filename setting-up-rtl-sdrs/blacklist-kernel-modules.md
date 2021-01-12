@@ -15,6 +15,7 @@ To do this, create a file `/etc/modprobe.d/blacklist-rtl2832.conf` containing th
 blacklist rtl2832
 blacklist dvb_usb_rtl28xxu
 blacklist rtl2832_sdr
+blacklist rtl8xxxu
 ```
 
 Ensure the modules are unloaded by running the following commands:
@@ -23,6 +24,7 @@ Ensure the modules are unloaded by running the following commands:
 sudo rmmod rtl2832_sdr
 sudo rmmod dvb_usb_rtl28xxu
 sudo rmmod rtl2832
+sudo rmmod rtl8xxxu
 ```
 
 Failure to do the steps above will result in the error below being spammed to the `readsb` container log.
