@@ -47,7 +47,7 @@ Append the following lines to the end of the file:
       - 8082:80
     volumes:
       - "tar1090_heatmap:/var/globe_history"
-      - "tar1090_json:/run/readsb" 
+      - "tar1090_json:/run/readsb"
 ```
 
 Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `tar1090` container.
