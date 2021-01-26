@@ -48,11 +48,13 @@ Open a shell inside the ZeroTier container with the following command.
 ```yaml
  sudo docker exec -it ZeroTier bash
 ```
+
 and then join your network
 
 ```yaml
  zerotier-cli join xxxxxxxxxxxxxxxx
 ```
+
 where xxxxxxxxxxxxxxxx is the 16 digit ID of your network.
 
 finally exit the shell with the command
