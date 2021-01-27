@@ -1,6 +1,6 @@
-# markdown-spellcheck spelling configuration file
 # Format - lines begining # are comments
 # global dictionary is at the start, file overrides afterwards
+# markdown-spellcheck spelling configuration file
 # one word per line, to define a file override use ' - filename'
 # where filename is relative to this configuration file
 1090MHz
@@ -15,6 +15,7 @@ AirBand
 AirNav
 amd
 autogain
+autoheal
 bandpass
 BaseStation
 bda
@@ -26,31 +27,37 @@ collectd
 CPython
 dev
 dockerfile
+DockerHub
+dump978
 dvb
 eg
 FlightAirMap
 FlightAware
 FlightRadar24
 fr24key
+GitBook
 grafana
 healthcheck
 healthchecks
+heatmap
 hostname
 htm
 InfluxDB
 io
 json
 KerberosSDR
+LAN
 linuxserver
 linuxserver.io
 maps.google.com
+Mictronics
 mikenye
 mlat
 OpenSky
 OpenSSL
 OwnCloud
-PiAware
 piaware
+PiAware
 Pis
 PlaneFinder
 planefinder.net
@@ -73,9 +80,13 @@ SegFault
 SkyAware
 spec
 standalone
+statistic.php
 sudo
+tar1090
 tcp
 timezone
+TIS-B
+Todo
 tty
 tz
 uat
@@ -86,17 +97,13 @@ VirtualRadarServer
 vm
 vrs
 wakeup
-www.planefinder.net
-www.radarbox.com
+wiedehopf
+www.adsbhub.org
 www.flightradar24.com
 www.freemaptools.com
-yaml
-www.adsbhub.org
-statistic.php
+www.planefinder.net
+www.radarbox.com
 xx.xxxxx
-Todo
-autoheal
-TIS-B
-dump978
-DockerHub
-GitBook
+xxxxxxxxxxxxxxxx
+yaml
+ZeroTier
