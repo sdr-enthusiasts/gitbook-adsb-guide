@@ -6,7 +6,7 @@ description: >-
 
 # Managing a remote station using ZeroTier
 
-[`ZeroTier`](https://www.zerotier.com/) is a peer to peer networking tool that is free (for up to 50 devices). Unlike other tools such as [`OpenVpn`](https://openvpn.net/) which route all traffic over the VPN, ZeroTier selectively routes only some of your traffic. In practice if both your remote station and local computer are 'members' of the same ZeroTier network then they appear to be on the same local lan. This guide assumes you have physical access to the machine you wish to install ZeroTier on.
+[`ZeroTier`](https://www.zerotier.com/) is a peer to peer networking tool that is free (for up to 50 devices). Unlike other tools such as [`OpenVpn`](https://openvpn.net/) which route all traffic over the VPN, ZeroTier selectively routes only some of your traffic. In practice if both your remote station and local computer are 'members' of the same ZeroTier network then they appear to be on the same local LAN. This guide assumes you have physical access to the machine you wish to install ZeroTier on.
 
 ## Getting Started - Install ZeroTier on your local machine
 
