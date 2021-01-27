@@ -6,7 +6,7 @@ description: >-
 
 # Managing a remote station using ZeroTier
 
-[`ZeroTier`](https://www.zerotier.com/) is a peer to peer networking tool that is free (for up to 50 devices). Unlike other tools such as [`OpenVpn`](https://openvpn.net/) which route all traffic over the VPN, ZeroTier selectively routes only some of your traffic. In practice if both your remote station and local computer are 'members' of the same ZeroTier network then they appear to be on the same local lan. This guide assumes you have physical access to the machine you wish to install ZeroTier on.
+[`ZeroTier`](https://www.zerotier.com/) is a peer to peer networking tool that is free (for up to 50 devices). Unlike other tools such as [`OpenVpn`](https://openvpn.net/) which route all traffic over the VPN, ZeroTier selectively routes only some of your traffic. In practice if both your remote station and local computer are 'members' of the same ZeroTier network then they appear to be on the same local LAN. This guide assumes you have physical access to the machine you wish to install ZeroTier on.
 
 ## Getting Started - Install ZeroTier on your local machine
 
@@ -25,12 +25,12 @@ The next step is to deploy a ZeroTier container on your remote station, feel fre
 Open the `docker-compose.yml` file that was created when deploying `readsb`. Append the following lines to the end of the file:
 
 ```yaml
-  ZeroTier:
+  zerotier:
     image: bltavares/zerotier:latest
+    container_name: zerotier
+    restart: always
     devices:
      - /dev/net/tun
-    container_name: ZeroTier
-    restart: always
     environment:
      - net=host
      - cap-add=NET_ADMIN
@@ -39,14 +39,14 @@ Open the `docker-compose.yml` file that was created when deploying `readsb`. App
       - '/var/lib/zerotier-one:/var/lib/zerotier-one'
 ```
 
-Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `Zerotier` container.
+Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `zerotier` container.
 
 ## Joining your Network
 
-Open a shell inside the ZeroTier container with the following command.
+Open a shell inside the `zerotier` container with the following command.
 
 ```yaml
- sudo docker exec -it ZeroTier bash
+ sudo docker exec -it zerotier bash
 ```
 
 and then join your network
