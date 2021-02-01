@@ -27,12 +27,15 @@ Ensure the modules are unloaded by running the following commands:
 ```bash
 sudo rmmod rtl2832_sdr
 ```
+
 ```bash
 sudo rmmod dvb_usb_rtl28xxu
 ```
+
 ```bash
 sudo rmmod rtl2832
 ```
+
 ```bash
 sudo rmmod rtl8xxxu
 ```
