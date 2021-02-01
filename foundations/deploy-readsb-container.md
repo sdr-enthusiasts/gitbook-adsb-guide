@@ -54,7 +54,7 @@ The above will:
   * We're mapping TCP port `8080` through to the container so we can access the web interface.
   * We're passing several environment variables through, including our timezone, latitude and longitude from the `.env` file \(denoted by `${VARIABLE}`\).
 
-Once this file is created, issue the command `sudo docker-compose up -d` to bring up the environment. 
+Once this file is created, issue the command `sudo docker-compose up -d` to bring up the environment.
 
 ```bash
 sudo docker-compose up -d
