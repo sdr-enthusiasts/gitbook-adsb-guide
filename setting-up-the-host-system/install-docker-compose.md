@@ -6,8 +6,10 @@ Compose can be run as a container, which I highly recommend. The clever folks ov
 
 You can simply run the following commands on your system and you should have a functional install that you can call from anywhere as `docker-compose`:
 
-```text
+```bash
 sudo curl -L --fail https://raw.githubusercontent.com/linuxserver/docker-docker-compose/master/run.sh -o /usr/local/bin/docker-compose
+```
+```bash
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
