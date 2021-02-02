@@ -11,6 +11,10 @@ Before we can plug in our RTL-SDR dongle, we need to blacklist the kernel module
 
 To do this, create a file `/etc/modprobe.d/blacklist-rtl2832.conf` containing the following:
 
+```bash
+sudo nano /etc/modprobe.d/blacklist-rtl2832.conf
+```
+
 ```text
 blacklist rtl2832
 blacklist dvb_usb_rtl28xxu
@@ -20,10 +24,19 @@ blacklist rtl8xxxu
 
 Ensure the modules are unloaded by running the following commands:
 
-```text
+```bash
 sudo rmmod rtl2832_sdr
+```
+
+```bash
 sudo rmmod dvb_usb_rtl28xxu
+```
+
+```bash
 sudo rmmod rtl2832
+```
+
+```bash
 sudo rmmod rtl8xxxu
 ```
 

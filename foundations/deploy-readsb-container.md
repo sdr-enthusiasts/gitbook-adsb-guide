@@ -9,6 +9,10 @@ description: >-
 
 In your favourite text editor, create a file named `docker-compose.yml` in your application directory \(`/opt/adsb`\) if following along verbatim.
 
+```bash
+sudo nano docker-compose.yml
+```
+
 ```yaml
 version: '3.8'
 
@@ -50,7 +54,13 @@ The above will:
   * We're mapping TCP port `8080` through to the container so we can access the web interface.
   * We're passing several environment variables through, including our timezone, latitude and longitude from the `.env` file \(denoted by `${VARIABLE}`\).
 
-Once this file is created, issue the command `docker-compose up -d` to bring up the environment. You should see the following output:
+Once this file is created, issue the command `sudo docker-compose up -d` to bring up the environment.
+
+```bash
+sudo docker-compose up -d
+```
+
+You should see the following output:
 
 ```text
 Creating network "adsb_default" with the default driver

@@ -11,7 +11,10 @@ description: >-
 We need a directory to host our application. The name of this directory will be the name of our application. Accordingly, I prefer to use `/opt/adsb`, so our application is called "adsb":
 
 ```bash
-mkdir -p /opt/adsb
+sudo mkdir -p /opt/adsb
+```
+
+```bash
 cd /opt/adsb
 ```
 
@@ -20,7 +23,7 @@ cd /opt/adsb
 Inside this directory, create a file named `.env` using your favourite text editor. Beginners may find the editor `nano` easy to use:
 
 ```bash
-nano /opt/adsb/.env
+sudo nano /opt/adsb/.env
 ```
 
 This file will hold all of the commonly used variables \(such as our latitude, longitude and altitude\). Initially, add the contents of the file as follows \(replacing the values enclosed in `<>` with values for your environment:
