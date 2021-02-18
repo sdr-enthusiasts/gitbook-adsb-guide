@@ -4,13 +4,13 @@ Before starting any containers, you'll want to configure docker container log ro
 
 It should be noted that on a fresh docker install, the file `/etc/docker/daemon.json` will likely not exist. If this is the case, just create a new file at that path and populate it with the following:
 
-```javascript
+```json
 {
-"log-driver": "json-file",
-"log-opts": {
+  "log-driver": "local",
+  "log-opts": {
     "max-size": "10m",
     "max-file": "3"
-    }
+  }
 }
 ```
 
