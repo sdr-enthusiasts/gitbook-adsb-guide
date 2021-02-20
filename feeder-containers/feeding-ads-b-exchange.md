@@ -67,6 +67,8 @@ Append the following lines to the end of the file \(inside the `services:` secti
       - SITENAME=${ADSBX_SITENAME}
       - UUID=${ADSBX_UUID}
       - TZ=${FEEDER_TZ}
+     tmpfs:
+      - /run:rw,nosuid,nodev,exec,relatime,size=64M,uid=1000,gid=1000
 ```
 
 To explain what's going on in this addition:
