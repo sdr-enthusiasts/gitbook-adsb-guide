@@ -18,7 +18,6 @@ Add the following lines to the  `volumes:` section at the top of the file \(belo
 
 ```yaml
   tar1090_heatmap:
-  tar1090_json:
 ```
 
 This creates the volumes that will contain `tar1090`’s application data.
@@ -47,7 +46,10 @@ Append the following lines to the end of the file:
       - 8082:80
     volumes:
       - "tar1090_heatmap:/var/globe_history"
-      - "tar1090_json:/run/readsb"
+    tmpfs:
+      - /run:exec,size=64M
+      - /var/log
+   
 ```
 
 Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `tar1090` container.
