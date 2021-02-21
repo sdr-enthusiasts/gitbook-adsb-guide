@@ -84,6 +84,8 @@ services:
     volumes:
       - readsbpb_rrd:/run/collectd
       - readsbpb_autogain:/run/autogain
+     tmpfs:
+      - /run/readsb
 ```
 
 To explain this addition, the `readsb` container will connect to the `dump978` container on port `37981` and receive UAT data.
