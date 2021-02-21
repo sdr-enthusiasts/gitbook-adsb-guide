@@ -44,6 +44,8 @@ services:
     volumes:
       - readsbpb_rrd:/run/collectd
       - readsbpb_autogain:/run/autogain
+    tmpfs:
+      - /run/readsb
 ```
 
 The above will:
