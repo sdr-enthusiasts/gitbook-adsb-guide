@@ -105,7 +105,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
       - FEEDER_ID=${PIAWARE_FEEDER_ID}
      tmpfs:
       - /run:exec,size=64M
-      - /var/log   
+      - /var/log
 ```
 
 If you are in the USA and are also running the `dump978` container with a second SDR, add the following additional lines to the `environment:` section:
