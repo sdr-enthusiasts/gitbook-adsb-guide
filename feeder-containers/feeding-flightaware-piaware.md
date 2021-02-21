@@ -103,7 +103,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
       - LONG=${FEEDER_LONG}
       - TZ=${FEEDER_TZ}
       - FEEDER_ID=${PIAWARE_FEEDER_ID}
-     tmpfs:
+    tmpfs:
       - /run:exec,size=64M
       - /var/log
 ```
