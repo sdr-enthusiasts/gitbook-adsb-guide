@@ -146,6 +146,9 @@ Append the following lines to the end of the file \(inside the `services:` secti
       - ALT=${FEEDER_ALT_M}
       - OPENSKY_USERNAME=${OPENSKY_USERNAME}
       - OPENSKY_SERIAL=${OPENSKY_SERIAL}
+    tmpfs:
+      - /run:exec,size=64M
+      - /var/log
 ```
 
 To explain what's going on in this addition:
@@ -159,6 +162,9 @@ To explain what's going on in this addition:
   * `ALT` will use the `FEEDER_ALT_M` variable from your `.env` file \(as metres are required for this feeder\).
   * `OPENSKY_USERNAME` will use the `OPENSKY_USERNAME` variable from your `.env` file.
   * `OPENSKY_SERIAL` will use the `OPENSKY_SERIAL` variable from your `.env` file.
+* We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
+  * The size of the container, by not writing changes to the underlying container; and
+  * SD Card or SSD wear
 
 Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `adsbhub` container. You should see the following output:
 

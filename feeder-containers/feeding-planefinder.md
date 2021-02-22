@@ -97,6 +97,9 @@ Append the following lines to the end of the file \(inside the `services:` secti
       - LAT=${FEEDER_LAT}
       - LONG=${FEEDER_LONG}
       - SHARECODE=${PLANEFINDER_SHARECODE}
+    tmpfs:
+      - /run:exec,size=64M
+      - /var/log
 ```
 
 To explain what's going on in this addition:
@@ -108,6 +111,9 @@ To explain what's going on in this addition:
   * `LAT` will use the `FEEDER_LAT` variable from your `.env` file.
   * `LONG` will use the `FEEDER_LONG` variable from your `.env` file.
   * `SHARECODE` will use the `PLANEFINDER_SHARECODE` variable from your `.env` file.
+* We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
+  * The size of the container, by not writing changes to the underlying container; and
+  * SD Card or SSD wear
 
 Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `pfclient` container. You should see the following output:
 

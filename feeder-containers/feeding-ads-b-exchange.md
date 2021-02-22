@@ -68,7 +68,8 @@ Append the following lines to the end of the file \(inside the `services:` secti
       - UUID=${ADSBX_UUID}
       - TZ=${FEEDER_TZ}
      tmpfs:
-      - /run:rw,nosuid,nodev,exec,relatime,size=64M,uid=1000,gid=1000
+      - /run:exec,size=64M,uid=1000,gid=1000
+      - /var/log
 ```
 
 To explain what's going on in this addition:
@@ -82,6 +83,9 @@ To explain what's going on in this addition:
   * `SITENAME` will use the `ADSBX_SITENAME` variable from your `.env` file.
   * `UUID` will use the `ADSBX_UUID` variable from your `.env` file.
   * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
+* We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
+  * The size of the container, by not writing changes to the underlying container; and
+  * SD Card or SSD wear
 
 Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `adsbx` container. You should see the following output:
 

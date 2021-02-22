@@ -30,6 +30,8 @@ Append the following lines to the end of the file \(inside the `services:` secti
     environment:
       - TZ=${FEEDER_TZ}
       - DUMP978_RTLSDR_DEVICE=978
+    tmpfs:
+      - /run/readsb
 ```
 
 To explain what's going on in this addition:
@@ -84,7 +86,7 @@ services:
     volumes:
       - readsbpb_rrd:/run/collectd
       - readsbpb_autogain:/run/autogain
-     tmpfs:
+    tmpfs:
       - /run/readsb
 ```
 

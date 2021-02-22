@@ -127,6 +127,9 @@ To explain what's going on in this addition:
 * For people running `dump978`:
   * `UAT_RECEIVER_TYPE=relay` tells the container to pull UAT data from another host over the network.
   * `UAT_RECEIVER_HOST=dump978` specifies the host to pull UAT data from; in this instance our `dump978` container.
+* We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
+  * The size of the container, by not writing changes to the underlying container; and
+  * SD Card or SSD wear
 
 Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `piaware` container. You should see the following output:
 
