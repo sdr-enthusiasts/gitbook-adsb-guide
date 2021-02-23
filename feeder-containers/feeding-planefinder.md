@@ -99,7 +99,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
       - SHARECODE=${PLANEFINDER_SHARECODE}
     tmpfs:
       - /run:exec,size=64M
-      - /var/log
+      - /var/log/pfclient
 ```
 
 To explain what's going on in this addition:
