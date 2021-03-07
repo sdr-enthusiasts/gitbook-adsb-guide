@@ -67,7 +67,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
       - SITENAME=${ADSBX_SITENAME}
       - UUID=${ADSBX_UUID}
       - TZ=${FEEDER_TZ}
-     tmpfs:
+    tmpfs:
       - /run:exec,size=64M,uid=1000,gid=1000
       - /var/log
 ```
