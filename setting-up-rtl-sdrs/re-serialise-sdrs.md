@@ -62,7 +62,7 @@ Please replug the device for changes to take effect.
 Next, if you intend on receiving ADS-B UAT \(978MHz\) data with a second SDR, Unplug all SDRs, leaving only the SDR to be used for 978MHz reception plugged in. Issue the following command:
 
 ```text
-sudo docker run --rm -it --device /dev/bus/usb --entrypoint rtl_eeprom mikenye/readsb-protobuf -s 00000978
+sudo docker run --rm -it --device /dev/bus/usb --entrypoint rtl_eeprom mikenye/readsb-protobuf -s 978
 ```
 
 You should be presented with the following. Your details may differ slightly, however ensure the device's new serial number will be `978`. Press `y` to proceed.
