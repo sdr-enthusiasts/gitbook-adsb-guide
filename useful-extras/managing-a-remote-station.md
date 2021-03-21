@@ -31,10 +31,11 @@ Open the `docker-compose.yml` file that was created when deploying `readsb`. App
     restart: always
     devices:
      - /dev/net/tun
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
     environment:
      - net=host
-     - cap-add=NET_ADMIN
-     - cap-add=SYS_ADMIN
     volumes:
       - '/var/lib/zerotier-one:/var/lib/zerotier-one'
 ```
