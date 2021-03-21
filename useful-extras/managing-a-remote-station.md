@@ -30,7 +30,7 @@ Open the `docker-compose.yml` file that was created when deploying `readsb`. App
     container_name: zerotier
     restart: always
     devices:
-     - /dev/net/tun
+      - /dev/net/tun
     cap_add:
       - NET_ADMIN
       - SYS_ADMIN
