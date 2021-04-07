@@ -2,7 +2,7 @@
 
 This document aims to guide you through:
 
-* **Receiving** ADSB data with [`readsb-protobuf`](https://hub.docker.com/r/mikenye/readsb-protobuf)\`\`
+* **Receiving** ADSB data with [`readsb-protobuf`](https://hub.docker.com/r/mikenye/readsb-protobuf)
 * **Feeding** data to online services using [`adsbexchange`](https://hub.docker.com/r/mikenye/adsbexchange), [`piaware`](https://hub.docker.com/r/mikenye/piaware), [`fr24feed`](https://hub.docker.com/r/mikenye/fr24feed) and others...
 * **Storing** data in a time series database \([InfluxDB](https://docs.influxdata.com/influxdb/)\)
 * **Visualising** data with various tools such as [`tar1090`](https://hub.docker.com/r/mikenye/tar1090) and [Grafana](https://grafana.com)
