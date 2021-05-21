@@ -34,6 +34,7 @@ RV_FEEDER_KEY=YOURFEEDERKEY
 ```
 
 * Replace `YOURFEEDERKEY` with the key you received in response to your email.
+
 For example:
 
 ```text
@@ -111,13 +112,14 @@ Most log messages are self-explanatory and have suggestions on how to trouble-sh
 
 * Sometimes, the logs may show error messages that it cannot connect to your `SOURCE_HOST`. If these messages show every few seconds, you have a problem (read below). If there are no new messages after a bit, it means that your station finally connected to the `SOURCE_HOST`. This connection delay is often caused by RadarVirtuel becoming "up and running" before `tar1090` or `readsb` do. This will fix itself within less than a minute.
 * This message keeps on scrolling and it doesn't stop after a while. In that case, `tar1090` or `readsb` cannot be reached.
-  * If you configured `readsb`, try adding this parameter to the `environment:` section in `docker-compose.yml`: 
+  * If you configured `readsb`, try adding this parameter to the `environment:` section in `docker-compose.yml`:
     `- READSB_NET_RAW_OUTPUT_PORT=30002`
   * If you configured `tar1090`, there's nothing else to configure. Make sure the `tar1090` container is up and running and is receiving data!
 * You see log messages about the Feeder Key being incorrect. This is quite self-explanatory: check your feeder key.
 * You see messages about not being able to reach the RadarVirtuel Server. This may be a temporary outage. If the message consists for several hours, please contact support@adsbnetwork.com to see if there's something going on.
 
 ## More information and support
+
 * There is extensive documentation available on the container's [GitHub](https://github.com/kx1t/docker-radarvirtuel) page.
 * RadarVirtuel and ADSBNetwork are owned and operated by Laurent Duval, who can be reached at support@adsbnetwork.com
 * You can always find help on the #adsb-containers channel on the [SDR Enthusiasts Discord server](https://discord.gg/m42azbZydy). This channel is meant for Noobs (beginners) and Experts alike.
