@@ -38,6 +38,7 @@
 * [Feeding PlaneFinder](feeder-containers/feeding-planefinder.md)
 * [Feeding ADSBHub](feeder-containers/feeding-adsbhub.md)
 * [Feeding OpenSky Network](feeder-containers/feeding-opensky-network.md)
+* [Feeding RadarVirtuel](feeder-containers/feeding-radarvirtuel.md)
 
 ## Useful Extras
 
