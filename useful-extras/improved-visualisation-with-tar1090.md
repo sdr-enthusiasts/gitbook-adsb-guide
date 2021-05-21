@@ -61,5 +61,11 @@ You should also be able to point your web browser at:
 
 Remember to change `docker.host.ip.addr` to the IP address of your docker host.
 
+## Displaying MLAT aircraft in tar1090
 
+Add the following line to the environment section of the `tar1090` section of `docker-compose.yml`:
+```yaml
+      - MLATHOST=adsbx
+```
+if using the `adsbx` image, or `MLATHOST=piaware` if using the `piaware` image.
 
