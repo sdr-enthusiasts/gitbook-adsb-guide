@@ -17,7 +17,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 To ensure your installation has completed successfully, you can run `docker-compose version` which will show you version information:
 
 ```text
-# sudo docker-compose version
+sudo docker-compose version
 ```
 
 ```text
