@@ -18,6 +18,9 @@ To ensure your installation has completed successfully, you can run `docker-comp
 
 ```text
 # sudo docker-compose version
+```
+
+```text
 docker-compose version 1.27.4, build 4052419
 docker-py version: 4.3.1
 CPython version: 3.7.7
