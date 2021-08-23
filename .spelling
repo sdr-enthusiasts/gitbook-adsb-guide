@@ -11,6 +11,7 @@ adsb
 ADSBExchange
 ADSBExchange.com
 ADSBHub
+ADSBNetwork
 AirBand
 AirNav
 amd
@@ -29,9 +30,11 @@ dev
 dockerfile
 DockerHub
 dump978
+Duval
 dvb
 eg
 env
+favorite
 FlightAirMap
 FlightAware
 FlightRadar24
@@ -48,8 +51,10 @@ io
 json
 KerberosSDR
 LAN
+Lat
 linuxserver
 linuxserver.io
+Lon
 maps.google.com
 Mictronics
 mikenye
@@ -67,6 +72,7 @@ protobuf
 py
 radarbox
 RadarBox
+RadarVirtuel
 rbfeeder
 readsb
 readsbpb
@@ -106,6 +112,7 @@ www.freemaptools.com
 www.planefinder.net
 www.radarbox.com
 xx.xxxxx
+xxxx
 xxxxxxxxxxxxxxxx
 yaml
 ZeroTier
