@@ -49,7 +49,6 @@ Append the following lines to the end of the file:
     tmpfs:
       - /run:exec,size=64M
       - /var/log
-      - /var/globe_history
 ```
 
 Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `tar1090` container.
