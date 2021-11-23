@@ -30,7 +30,7 @@ You'll need a _sharing key_. To get one, you can temporarily run the container, 
 Inside your application directory \(`/opt/adsb`\), run the following commands:
 
 ```bash
-docker pull mikenye/piaware:latest
+docker pull mikenye/radarbox:latest
 source ./.env
 timeout 60 docker run \
     --rm \
