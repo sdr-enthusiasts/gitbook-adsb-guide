@@ -122,5 +122,9 @@ You should also be able to point your web browser at `http://docker.host.ip.addr
 
 The majority of feeders will happily accept a combined 1090MHz & 978MHz feed coming from `readsb`, so there should be nothing further to do.
 
-The current exception is the `piaware` container, as FlightAware have separate feeder binaries for 1090MHz and 978MHz. The additional configuration directives are discussed on that container's page.
+The current exceptions are:
+*  `piaware` - FlightAware has separate feeder binaries for 1090MHz and 978MHz. 
+*  `radarbox` - Radarbox needs some additonal paramters to support both 1090MHz and 978MHz. 
+
+The additional configuration directives are discussed on each container's page.
 

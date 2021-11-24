@@ -189,6 +189,12 @@ Append the following lines to the end of the file \(inside the `services:` secti
       - /var/log
 ```
 
+If you are in the USA and are also running the `dump978` container with a second SDR, add the following additional lines to the `environment:` section:
+
+```yaml
+      - UAT_RECEIVER_HOST=dump978
+```
+
 To explain what's going on in this addition:
 
 * We're creating a container called `rbfeeder`, from the image `mikenye/rbfeeder:latest`.
@@ -199,6 +205,8 @@ To explain what's going on in this addition:
   * `ALT` will use the `FEEDER_ALT_M` variable from your `.env` file.
   * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
   * `SHARING_KEY` will use the `RADARBOX_SHARING_KEY` variable from your `.env` file.
+* For people running `dump978`:
+  * `UAT_RECEIVER_HOST=dump978` specifies the host to pull UAT data from; in this instance our `dump978` container.
 * We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
   * The size of the container, by not writing changes to the underlying container; and
   * SD Card or SSD wear
