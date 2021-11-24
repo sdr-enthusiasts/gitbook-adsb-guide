@@ -124,8 +124,8 @@ The majority of feeders will happily accept a combined 1090MHz & 978MHz feed com
 
 The current exceptions are:
 
-*  `piaware` - FlightAware has separate feeder binaries for 1090MHz and 978MHz.
-*  `radarbox` - Radarbox needs some additional parameters to support both 1090MHz and 978MHz.
+* `piaware` - FlightAware has separate feeder binaries for 1090MHz and 978MHz.
+* `radarbox` - Radarbox needs some additional parameters to support both 1090MHz and 978MHz.
 
 The additional configuration directives are discussed on each container's page.
 
