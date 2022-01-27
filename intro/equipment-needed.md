@@ -22,7 +22,7 @@ This is particularly helpful to the hobbyist community as there are still thousa
 
 UAT ground stations also broadcast NEXRAD weather radar and METARs to all UAT receivers, although this data may not be particulary useful to the average hobbyist.
 
-It should be noted that pucks are only generated when aircraft of any type is located within 15 nm and 3,500 vertical feet of GA aircraft are reporting their position via UAT. Receiving UAT services from a tower does not guarantee "seeing" every single aircraft in your area. Also, the signals being broadcast by ADS-B ground stations typically only reach 5 nm from the tower at ground level. Therefore, most UAT receivers will only receive position data from nearby airborne GA aircraft unless they are themsevles airborne or located especially close to a ground station.
+It should be noted that pucks are only generated when aircraft of any type is located within 15 nm and 3,500 vertical feet of GA aircraft that are reporting their position via UAT. Receiving UAT services from a tower does not guarantee "seeing" every single aircraft in your area. Also, the signals being broadcast by ADS-B ground stations typically only reach 5 nm from the tower at ground level. Therefore, most UAT receivers will only receive position data from nearby airborne GA aircraft unless they are themsevles airborne or located especially close to a ground station.
 
 ## A computer running Linux
 
