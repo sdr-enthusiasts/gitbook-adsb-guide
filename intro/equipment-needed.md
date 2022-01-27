@@ -12,6 +12,12 @@ If you're just getting started and don't want to spend a lot of cash, a [$20 USB
 
 I use an eBay version of [this](https://www.amazon.com/dp/B00WZL6WPO/ref=cm_sw_em_r_mt_dp_U_CxltEb9JS155W). You could also [make your own](https://discussions.flightaware.com/t/three-easy-diy-antennas-for-beginners/16348).
 
+## **Optional: A SDR that can receive 978MHz**
+
+**Note:** for US-based readers only.
+
+Universal Access Transmitter/Transceiver (UAT) is a service operated by the FAA on 978MHz and is aimed at supporting the General Aviation community. UAT broadcasts NEXRAD weather radar and METARs free of charge to all aircraft and receivers capable of decoding and displaying the data contained in those transmissions. Aircraft that broadcast their position via UAT also receive customised data packages in return that contain all air traffic within 15 nm and 3,500 feet in altitude. The cylindrical shape of this 30-nm x 3,500-ft traffic package is commonly referred to as a "puck". Each puck contains all aircraft known to the National Airspace System (NAS) regardless of how the FAA has determined their position -- ground-based radar and transponder data, ADS-B 1090, or UAT 978. All aircraft (and ground stations) capable of receiving UAT ground services will receive all weather data and traffic pucks being broadcast by all towers within range of the receiver, regardless of the intended recipient. The UAT signal being broadcast by ADS-B towers typically only reaches 5 nm at ground level. Therfore, most aircraft and receivers monitoring 978MHz at ground level will only detect position reports being sent by nearby airborne GA aircraft. Most hobby enthusiasts cannot reasonably expect to receive the additional data services.
+
 ## A computer running Linux
 
 Capable of running Docker, with at least one free USB port. This can be a Raspberry Pi or an x86.
