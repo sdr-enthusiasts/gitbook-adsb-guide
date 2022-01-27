@@ -1,6 +1,6 @@
 ---
 description: >-
-  The "dump978" container is receives 978MHz UAT signals from your SDR, and
+  The "dump978" container receives 978MHz UAT signals from your SDR, and
   demodulates ADS-B UAT messages, making them available for all other
   containers.
 ---
