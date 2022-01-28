@@ -12,7 +12,7 @@ If you're just getting started and don't want to spend a lot of cash, a [$20 USB
 
 I use an eBay version of [this](https://www.amazon.com/dp/B00WZL6WPO/ref=cm_sw_em_r_mt_dp_U_CxltEb9JS155W). You could also [make your own](https://discussions.flightaware.com/t/three-easy-diy-antennas-for-beginners/16348).
 
-## **Optional: A SDR that can receive 978MHz**
+## **Optional: A SDR that can receive 978MHz (and antenna)**
 
 **Note:** USA-only
 
