@@ -12,18 +12,6 @@ If you're just getting started and don't want to spend a lot of cash, a [$20 USB
 
 I use an eBay version of [this](https://www.amazon.com/dp/B00WZL6WPO/ref=cm_sw_em_r_mt_dp_U_CxltEb9JS155W). You could also [make your own](https://discussions.flightaware.com/t/three-easy-diy-antennas-for-beginners/16348).
 
-## **Optional: A SDR that can receive 978MHz (and antenna)**
-
-**Note:** USA-only
-
-In the USA, the FAA operates a supplemental data service on 978MHz aimed at the General Aviation community, called Universal Access Transmitter/Transceiver (UAT). This service is similar to ADS-B on 1090MHz, but provides additional services beyond position reporting. GA aircraft are able to broadcast their position data just like aircraft utilizing ADS-B on 1090ES. However, UAT ground stations that receive position reports from airborne aircraft respond with data packages containing all other traffic located within 15 nm and 3,500 vertical feet of the reporting aircraft. All UAT receivers within range are able to process the position reports directly from reporting aircraft as well as the custom data packages (called "pucks" due to the shape of the included airspace) that are transmitted by ADS-B/UAT ground stations, regardless of the intended recipient.
-
-This is particularly helpful to the hobbyist community as there are still thousands of airborne aircraft whose positions are only known to the National Airspace System (NAS). Multilateration (MLAT) is an attempt at recreating the positions of that hidden traffic. These traffic packages being broadcast by the ground stations expose the precise locations of the aircraft that would normally be estimated via MLAT or completely hidden in areas not covered by enough hobbyist receivers. It only takes one receiver near a tower to cover hundreds of square miles of airspace.
-
-UAT ground stations also broadcast NEXRAD weather radar and METARs to all UAT receivers, although this data may not be particularly useful to the average hobbyist.
-
-It should be noted that pucks are only generated when aircraft of any type is located within 15 nm and 3,500 vertical feet of GA aircraft that are reporting their position via UAT. Receiving UAT services from a tower does not guarantee "seeing" every single aircraft in your area. Also, the signals being broadcast by ADS-B ground stations typically only reach 5 nm from the tower at ground level. Therefore, most UAT receivers will only receive position data from nearby airborne GA aircraft unless they are themselves airborne or located especially close to a ground station.
-
 ## A computer running Linux
 
 Capable of running Docker, with at least one free USB port. This can be a Raspberry Pi or an x86.
@@ -38,3 +26,14 @@ Coaxial cable to connect the antenna to the SDR. As my SDR is located just below
 
 There's a whole bunch of additional equipment that you could purchase and use, such as 1090MHz bandpass filters \(recommended\), amplifiers, etc etc. This is somewhat outside the scope of this document. If you want more information, I'd refer you to: [https://flightaware.com/adsb/piaware/build](https://flightaware.com/adsb/piaware/build)
 
+## **Optional: A SDR that can receive 978MHz (and antenna)**
+
+**Note:** USA-only
+
+In the USA, the FAA operates a supplemental data service on 978MHz aimed at the General Aviation community, called Universal Access Transmitter/Transceiver (UAT). This service is similar to ADS-B on 1090MHz, but provides additional services beyond position reporting. GA aircraft are able to broadcast their position data just like aircraft utilizing ADS-B on 1090ES. However, UAT ground stations that receive position reports from airborne aircraft respond with data packages containing all other traffic located within 15 nm and 3,500 vertical feet of the reporting aircraft. All UAT receivers within range are able to process the position reports directly from reporting aircraft as well as the custom data packages (called "pucks" due to the shape of the included airspace) that are transmitted by ADS-B/UAT ground stations, regardless of the intended recipient.
+
+This is particularly helpful to the hobbyist community as there are still thousands of airborne aircraft whose positions are only known to the National Airspace System (NAS). Multilateration (MLAT) is an attempt at recreating the positions of that hidden traffic. These traffic packages being broadcast by the ground stations expose the precise locations of the aircraft that would normally be estimated via MLAT or completely hidden in areas not covered by enough hobbyist receivers. It only takes one receiver near a tower to cover hundreds of square miles of airspace.
+
+UAT ground stations also broadcast NEXRAD weather radar and METARs to all UAT receivers, although this data may not be particularly useful to the average hobbyist.
+
+It should be noted that pucks are only generated when aircraft of any type is located within 15 nm and 3,500 vertical feet of GA aircraft that are reporting their position via UAT. Receiving UAT services from a tower does not guarantee "seeing" every single aircraft in your area. Also, the signals being broadcast by ADS-B ground stations typically only reach 5 nm from the tower at ground level. Therefore, most UAT receivers will only receive position data from nearby airborne GA aircraft unless they are themselves airborne or located especially close to a ground station.
