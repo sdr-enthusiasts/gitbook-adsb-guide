@@ -1,6 +1,6 @@
 ---
 description: >-
-  The "dump978" container is receives 978MHz UAT signals from your SDR, and
+  The "dump978" container receives 978MHz UAT signals from your SDR, and
   demodulates ADS-B UAT messages, making them available for all other
   containers.
 ---
@@ -26,7 +26,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
     container_name: dump978
     restart: always
     devices:
-      - /dev/bus/usb
+      - /dev/bus/usb:/dev/bus/usb
     environment:
       - TZ=${FEEDER_TZ}
       - DUMP978_RTLSDR_DEVICE=978
