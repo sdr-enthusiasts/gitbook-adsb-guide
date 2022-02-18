@@ -30,7 +30,7 @@ You'll need a _sharing key_. To get one, you can temporarily run the container, 
 Inside your application directory \(`/opt/adsb`\), run the following commands:
 
 ```bash
-docker pull mikenye/piaware:latest
+docker pull mikenye/radarbox:latest
 source ./.env
 timeout 60 docker run \
     --rm \
@@ -161,6 +161,24 @@ Add the following lines to the `volumes:` section below the `version:` section, 
 
 This creates a volume containing our fake directory structure. We will map this through to the feeder container to prevent the SegFault from occurring.
 
+### CPU Serial Workaround
+
+As the `rbfeeder` binary is designed to run on a Raspberry Pi, the `rbfeeder` binary expects a CPU serial number to be present in `/proc/cpuinfo`. On non-Raspberry Pi systems, the CPU serial number may not be present. This causes `rbfeeder` to crash.
+
+As a workaround, we can "fake" the CPU serial number by performing the following additional steps:
+
+```bash
+# make a directory to hold our fake data
+mkdir -p /opt/adsb/data
+
+# generate a fake cpuinfo file
+# start by taking our current cpuinfo file
+cp /proc/cpuinfo /opt/adsb/data/fake_cpuinfo
+
+# ... and add a fake serial number to the end
+echo -e "serial\t\t: $(hexdump -n 8 -e '4/4 "%08X" 1 "\n"' /dev/urandom | tr '[:upper:]' '[:lower:]')" >> /opt/adsb/data/fake_cpuinfo
+```
+
 ### Create `rbfeeder` container
 
 Open the `docker-compose.yml` file that was created when deploying `readsb`.
@@ -177,6 +195,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
       - readsb
     volumes:
       - "radarbox_segfault_fix:/sys/class/thermal:ro"
+      - "/opt/adsb/data/fake_cpuinfo:/proc/cpuinfo"
     environment:
       - BEASTHOST=readsb
       - LAT=${FEEDER_LAT}
@@ -189,6 +208,12 @@ Append the following lines to the end of the file \(inside the `services:` secti
       - /var/log
 ```
 
+If you are in the USA and are also running the `dump978` container with a second SDR, add the following additional lines to the `environment:` section:
+
+```yaml
+      - UAT_RECEIVER_HOST=dump978
+```
+
 To explain what's going on in this addition:
 
 * We're creating a container called `rbfeeder`, from the image `mikenye/rbfeeder:latest`.
@@ -199,6 +224,8 @@ To explain what's going on in this addition:
   * `ALT` will use the `FEEDER_ALT_M` variable from your `.env` file.
   * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
   * `SHARING_KEY` will use the `RADARBOX_SHARING_KEY` variable from your `.env` file.
+* For people running `dump978`:
+  * `UAT_RECEIVER_HOST=dump978` specifies the host to pull UAT data from; in this instance our `dump978` container.
 * We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
   * The size of the container, by not writing changes to the underlying container; and
   * SD Card or SSD wear
