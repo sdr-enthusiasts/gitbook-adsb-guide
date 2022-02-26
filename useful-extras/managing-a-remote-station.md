@@ -31,6 +31,7 @@ Open the `docker-compose.yml` file that was created when deploying `readsb`. App
     restart: always
     devices:
       - /dev/net/tun
+    network_mode: host
     cap_add:
       - NET_ADMIN
       - SYS_ADMIN
