@@ -30,7 +30,7 @@ You'll need a _sharing key_. To get one, you can temporarily run the container, 
 Inside your application directory \(`/opt/adsb`\), run the following commands:
 
 ```bash
-docker pull mikenye/radarbox:latest
+docker pull ghcr.io/sdr-enthusiasts/docker-radarbox:latest
 source ./.env
 timeout 60 docker run \
     --rm \
@@ -216,7 +216,7 @@ If you are in the USA and are also running the `dump978` container with a second
 
 To explain what's going on in this addition:
 
-* We're creating a container called `rbfeeder`, from the image `mikenye/rbfeeder:latest`.
+* We're creating a container called `rbfeeder`, from the image `ghcr.io/sdr-enthusiasts/docker-radarbox:latest`.
 * We're passing several environment variables to the container:
   * `BEASTHOST=readsb` to inform the feeder to get its ADSB data from the container `readsb` over our private `adsbnet` network.
   * `LAT` will use the `FEEDER_LAT` variable from your `.env` file.
