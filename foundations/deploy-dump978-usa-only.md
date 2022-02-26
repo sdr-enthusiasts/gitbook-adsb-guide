@@ -32,6 +32,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
       - DUMP978_RTLSDR_DEVICE=978
     tmpfs:
       - /run/readsb
+      - /run/uat2json
 ```
 
 To explain what's going on in this addition:
