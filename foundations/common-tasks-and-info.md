@@ -48,7 +48,7 @@ All of the containers defined within this document will be configured with the d
 
 Images can implement [healthchecks](https://docs.docker.com/engine/reference/builder/). A healthcheck is a script that docker runs within the container periodically that tells docker whether the container is operating as expected.
 
-For example, in the `mikenye/readsb-protobuf` container, the [healthcheck script](https://github.com/mikenye/docker-readsb-protobuf/blob/main/rootfs/scripts/healthcheck.sh) does the following:
+For example, in the `ghcr.io/sdr-enthusiasts/docker-readsb-protobuf` container, the [healthcheck script](https://github.com/sdr-enthusiasts/docker-readsb-protobuf/blob/main/rootfs/scripts/healthcheck.sh) does the following:
 
 * For each expected network connection, make sure the connection exists
 * Make sure that messages are being received from the SDR
@@ -59,14 +59,14 @@ If all of the checks above pass, the container is considered healthy. If any fai
 Earlier, we ran the command `docker ps`, to see our newly created `readsb` container up and running:
 
 ```text
-CONTAINER ID        IMAGE                               COMMAND             CREATED             STATUS                    PORTS                    NAMES
-f936a37dd488        mikenye/readsb-protobuf:latest      "/init"             4 hours ago         Up 2 hours (healthy)      0.0.0.0:8080->8080/tcp   readsb
+CONTAINER ID   IMAGE                                                   COMMAND   CREATED        STATUS                  PORTS                                       NAMES
+7b9c4be5a410   ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest   "/init"   17 hours ago   Up 17 hours (healthy)   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   readsb
 ```
 
 Notice that next to the container status, there is some information about the container's health. This may be one of the following:
 
 * No health information: Not all images have healthchecks implemented. If an image doesn't report health, this is why.
-* `(health: starting)`: The container will wait up to a predefined start-period \(defined in the [Dockerfile](https://github.com/mikenye/docker-readsb-protobuf/blob/63a617e00d4c9bcd8a5d6a9d94cc2f2b32ac0489/Dockerfile#L286)\) or until the healthcheck script returns a healthy result.
+* `(health: starting)`: The container will wait up to a predefined start-period \(defined in the [Dockerfile](https://github.com/sdr-enthusiasts/docker-readsb-protobuf/blob/main/Dockerfile#L231)\) or until the healthcheck script returns a healthy result.
 * `(healthy)`: The container is operating as expected.
 * `(unhealthy)`: The container is not operating as expected.
 

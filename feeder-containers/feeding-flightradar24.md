@@ -8,7 +8,7 @@ description: 'If you wish to feed FlightAware, follow the steps below.'
 
 `fr24feed` is a FlightRadar24 client program to securely transmit ADS-B and Mode S data to the commercial entity FlightRadar24.
 
-I've created a docker image [`mikenye/fr24feed`](https://github.com/mikenye/docker-flightradar24) that contains `fr24feed` and all of its required prerequisites and libraries.
+I've created a docker image [`ghcr.io/sdr-enthusiasts/docker-flightradar24`](https://github.com/sdr-enthusiasts/docker-flightradar24) that contains `fr24feed` and all of its required prerequisites and libraries.
 
 ## Getting a Sharing Key
 
@@ -44,7 +44,7 @@ docker run \
   -e FEEDER_ALT_FT="$FEEDER_ALT_FT" \
   -e FR24_EMAIL="YOUR@EMAIL.ADDRESS" \
   --entrypoint /scripts/signup.sh \
-  mikenye/fr24feed
+  ghcr.io/sdr-enthusiasts/docker-flightradar24
 ```
 
 Be sure to replace `YOUR@EMAIL.ADDRESS` with your actual email address!
@@ -65,7 +65,7 @@ If something went wrong, please take a moment to let me know, then try the manua
 Run the command:
 
 ```text
-docker run --rm -it --entrypoint fr24feed mikenye/fr24feed --signup
+docker run --rm -it --entrypoint fr24feed ghcr.io/sdr-enthusiasts/docker-flightradar24 --signup
 ```
 
 This will take you through the sign-up process. At the end of the sign-up process, you'll be presented with:
@@ -98,7 +98,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 ```yaml
   fr24:
-    image: mikenye/fr24feed:latest
+    image: ghcr.io/sdr-enthusiasts/docker-flightradar24:latest
     tty: true
     container_name: fr24
     restart: always
@@ -117,7 +117,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 To explain what's going on in this addition:
 
-* We're creating a container called `fr24`, from the image `mikenye/fr24feed:latest`.
+* We're creating a container called `fr24`, from the image `ghcr.io/sdr-enthusiasts/docker-flightradar24:latest`.
 * We're passing several environment variables to the container:
   * `BEASTHOST=readsb` to inform the feeder to get its ADSB data from the container `readsb` network.
   * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.

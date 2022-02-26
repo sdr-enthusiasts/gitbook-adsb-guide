@@ -15,8 +15,8 @@ In the old guide, Python’s `pip` is used to install `docker-compose`. In this 
 The author of `readsb` \([Mictronics](https://github.com/Mictronics)\), has deprecated `readsb` in favour of the newer and better [readsb-protobuf](https://github.com/Mictronics/readsb-protobuf). Some notable differences are:
 
 * No JSON output. This means that tools such as `graphs1090` which relied on the old JSON files will no longer work. Fortunately, the `readsb-protobuf` web interface includes ”performance graphs” which offers the same functionality.
-* Different container deployment. The `mikenye/readsb-protobuf` is not a drop-in replacement for `mikenye/readsb`. With `mikenye/readsb`, the command line arguments to the container were passed through to the `readsb` binary. With `miknye/readsb-protobuf`, environment variables are used instead. This makes it easier to implement container healthchecks.
-* The `mikenye/readsb-protobuf` container includes ”autogain”, which will \(over a period of several weeks\) determine the best gain level for your environment. You can still specify a manual gain setting if preferred.
+* Different container deployment. The `ghcr.io/sdr-enthusiasts/docker-readsb-protobuf` is not a drop-in replacement for `mikenye/readsb`. With `mikenye/readsb`, the command line arguments to the container were passed through to the `readsb` binary. With `ghcr.io/sdr-enthusiasts/docker-readsb-protobuf`, environment variables are used instead. This makes it easier to implement container healthchecks.
+* The `ghcr.io/sdr-enthusiasts/docker-readsb-protobuf` container includes ”autogain”, which will \(over a period of several weeks\) determine the best gain level for your environment. You can still specify a manual gain setting if preferred.
 
 ## Changes to how USB devices are passed through
 

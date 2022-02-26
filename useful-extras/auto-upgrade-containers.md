@@ -91,8 +91,8 @@ INFO[0001] Starting Watchtower and scheduling first run: 2020-12-17 18:19:28 +08
 The `watchtower` container logs messages when it upgrades a container, for example:
 
 ```text
-INFO[86450] Found new mikenye/adsbexchange:latest image (sha256:34cb2559e08a7907b2b30912437f814f4d34bf144a3dd39cf2a0aa6483a2ceb1)
-INFO[87119] Stopping /adsbx (9eeeba84c5a8b45c49c269b8c4a50a3deedeee06b52d376ea76ae0ec205ce6b3) with SIGTERM
-INFO[87123] Creating /adsbx
+INFO[864207] Found new ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest image (cc3a1b572023)
+INFO[864334] Stopping /readsb (38bd04997c8d) with SIGTERM
+INFO[864339] Creating /readsb
 ```
 

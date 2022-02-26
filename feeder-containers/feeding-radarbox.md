@@ -12,7 +12,7 @@ In exchange for your data, RadarBox will give you a Business Plan. If this is so
 
 Personally, I really like their visualisation. Overlaying the flight data with precipitation and cloud cover looks fantastic.
 
-The docker image [`mikenye/radarbox`](https://github.com/mikenye/docker-radarbox) contains `rbfeeder` and all of its required prerequisites and libraries. This needs to run in conjunction with `readsb` \(or another Beast provider\).
+The docker image [`ghcr.io/sdr-enthusiasts/docker-radarbox`](https://github.com/sdr-enthusiasts/docker-radarbox) contains `rbfeeder` and all of its required prerequisites and libraries. This needs to run in conjunction with `readsb` \(or another Beast provider\).
 
 ## Getting a Sharing Key
 
@@ -30,7 +30,7 @@ You'll need a _sharing key_. To get one, you can temporarily run the container, 
 Inside your application directory \(`/opt/adsb`\), run the following commands:
 
 ```bash
-docker pull mikenye/radarbox:latest
+docker pull ghcr.io/sdr-enthusiasts/docker-radarbox:latest
 source ./.env
 timeout 60 docker run \
     --rm \
@@ -40,7 +40,7 @@ timeout 60 docker run \
     -e LAT=${FEEDER_LAT} \
     -e LONG=${FEEDER_LONG} \
     -e ALT=${FEEDER_ALT_M} \
-    mikenye/radarbox
+    ghcr.io/sdr-enthusiasts/docker-radarbox
 ```
 
 The command will run the container for one minute, which should be ample time for the container to connect to RadarBox receive a sharing key.
@@ -127,9 +127,9 @@ RADARBOX_SHARING_KEY=g45643ab345af3c5d5g923a99ffc0de9
 
 ### SegFault Fix
 
-As the `rbfeeder` binary is designed to run on a Raspberry Pi, the `rbfeeder` binary expects a file `/sys/class/thermal/thermal_zone0/temp` to be present, and contain the CPU temperature. If this file doesn't exist, the `rbfeeder` binary will crash and restart every few minutes. For more information, see [here](https://github.com/mikenye/docker-radarbox/issues/16#issuecomment-699627387).
+As the `rbfeeder` binary is designed to run on a Raspberry Pi, the `rbfeeder` binary expects a file `/sys/class/thermal/thermal_zone0/temp` to be present, and contain the CPU temperature. If this file doesn't exist, the `rbfeeder` binary will crash and restart every few minutes. For more information, see [here](https://github.com/sdr-enthusiasts/docker-radarbox/issues/16#issuecomment-699627387).
 
-The `mikenye/radarbox` container is multi-architecture, and accordingly you might not be running on a Raspberry Pi.
+The `ghcr.io/sdr-enthusiasts/docker-radarbox` container is multi-architecture, and accordingly you might not be running on a Raspberry Pi.
 
 As a workaround, we can "fake" this file by performing the following additional steps:
 
@@ -187,7 +187,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 ```yaml
   rbfeeder:
-    image: mikenye/radarbox:latest
+    image: ghcr.io/sdr-enthusiasts/docker-radarbox:latest
     tty: true
     container_name: rbfeeder
     restart: always
@@ -216,7 +216,7 @@ If you are in the USA and are also running the `dump978` container with a second
 
 To explain what's going on in this addition:
 
-* We're creating a container called `rbfeeder`, from the image `mikenye/rbfeeder:latest`.
+* We're creating a container called `rbfeeder`, from the image `ghcr.io/sdr-enthusiasts/docker-radarbox:latest`.
 * We're passing several environment variables to the container:
   * `BEASTHOST=readsb` to inform the feeder to get its ADSB data from the container `readsb` over our private `adsbnet` network.
   * `LAT` will use the `FEEDER_LAT` variable from your `.env` file.

@@ -30,7 +30,7 @@ Append the following lines to the end of the file:
 
 ```yaml
   tar1090:
-    image: mikenye/tar1090:latest
+    image: ghcr.io/sdr-enthusiasts/docker-tar1090:latest
     tty: true
     container_name: tar1090
     restart: always
