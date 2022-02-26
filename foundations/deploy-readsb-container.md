@@ -22,7 +22,7 @@ volumes:
 
 services:
   readsb:
-    image: mikenye/readsb-protobuf:latest
+    image: ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest
     tty: true
     container_name: readsb
     hostname: readsb
@@ -52,7 +52,7 @@ services:
 The above will:
 
 * Create two docker volumes, `readsbpb_rrd` and `readsb_autogain`, which are used to store the RRD files and autogain state files respectively.
-* Create a service named `readsb` that will run the `mikenye/readsb-protobuf` container.
+* Create a service named `readsb` that will run the `ghcr.io/sdr-enthusiasts/docker-readsb-protobuf` container.
   * We're presenting the USB bus through to this container \(so `readsb` can talk to the USB-attached SDR\).
   * We're mapping TCP port `8080` through to the container so we can access the web interface.
   * We're passing several environment variables through, including our timezone, latitude and longitude from the `.env` file \(denoted by `${VARIABLE}`\).
@@ -106,8 +106,8 @@ We can view the logs for the environment with the command `docker-compose logs`,
 We can see our container running with the command `docker ps`:
 
 ```text
-CONTAINER ID        IMAGE                               COMMAND             CREATED             STATUS                    PORTS                    NAMES
-f936a37dd488        mikenye/readsb-protobuf:latest      "/init"             4 hours ago         Up 2 hours (healthy)      0.0.0.0:8080->8080/tcp   readsb
+CONTAINER ID   IMAGE                                                   COMMAND   CREATED        STATUS                  PORTS                                       NAMES
+7b9c4be5a410   ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest   "/init"   17 hours ago   Up 17 hours (healthy)   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   readsb
 ```
 
 We can see the `adsb_default` network with the command `docker network ls`:
