@@ -6,7 +6,7 @@ description: 'If you wish to feed ADS-B Exchange, follow the steps below.'
 
 [ADSBExchange.com](https://adsbexchange.com/) is a co-op of ADS-B/Mode S/MLAT feeders from around the world, and the world’s largest source of unfiltered flight data.
 
-The docker image [`mikenye/adsbexchange`](https://github.com/mikenye/docker-adsbexchange) contains the ADS-B Exchange feeder software and all of its required prerequisites and libraries. This needs to run in conjunction with `readsb` \(or another Beast provider\).
+The docker image [`mikenye/adsbexchange`](https://github.com/mikenye/docker-adsbexchange) contains the ADS-B Exchange feeder software and all of its required prerequisites and libraries. This needs to run in conjunction with `readsb-protobuf` \(or another Beast provider\).
 
 ## Generating a UUID
 
