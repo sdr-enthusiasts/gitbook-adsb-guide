@@ -21,7 +21,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 ```yaml
   dump978:
-    image: mikenye/dump978:latest
+    image: ghcr.io/sdr-enthusiasts/docker-dump978:latest
     tty: true
     container_name: dump978
     restart: always
@@ -37,7 +37,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 To explain what's going on in this addition:
 
-* Create a service named `dump978` that will run the `mikenye/dump978` container.
+* Create a service named `dump978` that will run the `ghcr.io/sdr-enthusiasts/docker-dump978` container.
   * We're presenting the USB bus through to this container \(so `dump978` can talk to the USB-attached SDR\).
   * We're passing several environment variables to the container:
     * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
@@ -64,7 +64,7 @@ volumes:
 
 services:
   readsb:
-    image: mikenye/readsb-protobuf:latest
+    image: ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest
     tty: true
     container_name: readsb
     hostname: readsb
