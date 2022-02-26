@@ -10,7 +10,7 @@ description: 'If you wish to feed FlightAware, follow the steps below.'
 
 In exchange for your data, FlightAware will give you an Enterprise Membership. If this is something of interest, you may wish to feed your data to them.
 
-The docker image [`mikenye/piaware`](https://github.com/mikenye/docker-piaware) contains `piaware` and all of its required prerequisites and libraries. This can run standalone \(without the `readsb` container\), however for flexibility it is recommended to run with `readsb`, and this is the deployment method that will be used in this guide.
+The docker image [`ghcr.io/sdr-enthusiasts/docker-piaware`](https://github.com/sdr-enthusiasts/docker-piaware) contains `piaware` and all of its required prerequisites and libraries. This can run standalone \(without the `readsb` container\), however for flexibility it is recommended to run with `readsb`, and this is the deployment method that will be used in this guide.
 
 ## Getting a Feeder ID
 
@@ -33,17 +33,17 @@ You'll need a _feeder-id_. To get one, you can temporarily run the container, to
 Inside your application directory \(`/opt/adsb`\), run the following commands:
 
 ```text
-docker pull mikenye/piaware:latest
+docker pull ghcr.io/sdr-enthusiasts/docker-piaware:latest
 source ./.env
-timeout 60 docker run --rm -e LAT="$FEEDER_LAT" -e LONG="$FEEDER_LONG" mikenye/piaware:latest | grep "my feeder ID"
+timeout 60 docker run --rm -e LAT="$FEEDER_LAT" -e LONG="$FEEDER_LONG" ghcr.io/sdr-enthusiasts/docker-piaware:latest | grep "my feeder ID"
 ```
 
-The command will run the container for 30 seconds, which should be ample time for the container to receive a feeder-id.
+The command will run the container for 60 seconds, which should be ample time for the container to receive a feeder-id.
 
 For example:
 
 ```text
-$ timeout 30 docker run --rm LAT="$FEEDER_LAT" -e LONG="$FEEDER_LONG" mikenye/piaware:latest | grep "my feeder ID"
+$ timeout 60 docker run --rm LAT="$FEEDER_LAT" -e LONG="$FEEDER_LONG" ghcr.io/sdr-enthusiasts/docker-piaware:latest | grep "my feeder ID"
 Set allow-mlat to yes in /etc/piaware.conf:1
 Set allow-modeac to yes in /etc/piaware.conf:2
 Set allow-auto-updates to no in /etc/piaware.conf:3
@@ -89,7 +89,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 ```yaml
   piaware:
-    image: mikenye/piaware:latest
+    image: ghcr.io/sdr-enthusiasts/docker-piaware:latest
     tty: true
     container_name: piaware
     restart: always
@@ -117,7 +117,7 @@ If you are in the USA and are also running the `dump978` container with a second
 
 To explain what's going on in this addition:
 
-* We're creating a container called `piaware`, from the image `mikenye/piaware:latest`.
+* We're creating a container called `piaware`, from the image `ghcr.io/sdr-enthusiasts/docker-piaware:latest`.
 * We're passing several environment variables to the container:
   * `BEASTHOST=readsb` to inform the feeder to get its ADSB data from the container `readsb` over our private `adsbnet` network.
   * `LAT` will use the `FEEDER_LAT` variable from your `.env` file.
