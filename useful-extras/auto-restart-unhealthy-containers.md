@@ -110,7 +110,7 @@ volumes:
 
 services:
   readsb:
-    image: mikenye/readsb-protobuf:latest
+    image: ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest
     tty: true
     container_name: readsb
     hostname: readsb
