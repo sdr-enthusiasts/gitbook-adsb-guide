@@ -6,7 +6,7 @@ description: 'If you wish to feed ADS-B Exchange, follow the steps below.'
 
 [ADSBExchange.com](https://adsbexchange.com/) is a co-op of ADS-B/Mode S/MLAT feeders from around the world, and the world’s largest source of unfiltered flight data.
 
-The docker image [`mikenye/adsbexchange`](https://github.com/mikenye/docker-adsbexchange) contains the ADS-B Exchange feeder software and all of its required prerequisites and libraries. This needs to run in conjunction with `readsb-protobuf` \(or another Beast provider\).
+The docker image [`ghcr.io/sdr-enthusiasts/docker-adsbexchange`](https://github.com/sdr-enthusiasts/docker-adsbexchange) contains the ADS-B Exchange feeder software and all of its required prerequisites and libraries. This needs to run in conjunction with `readsb-protobuf` \(or another Beast provider\).
 
 ## Generating a UUID
 
@@ -15,7 +15,7 @@ If you are new to feeding ADS-B Exchange, you will need to generate a UUID for y
 In order to generate a feeder UUID, run the following command:
 
 ```bash
-docker run --rm -it --entrypoint uuidgen mikenye/adsbexchange -t
+docker run --rm -it --entrypoint uuidgen ghcr.io/sdr-enthusiasts/docker-adsbexchange -t
 ```
 
 Take note of the UUID returned.
@@ -53,7 +53,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 ```yaml
   adsbx:
-    image: mikenye/adsbexchange:latest
+    image: ghcr.io/sdr-enthusiasts/docker-adsbexchange:latest
     tty: true
     container_name: adsbx
     restart: always
@@ -74,7 +74,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 To explain what's going on in this addition:
 
-* We're creating a container called `adsbx`, from the image `mikenye/adsbexchange:latest`.
+* We're creating a container called `adsbx`, from the image `ghcr.io/sdr-enthusiasts/docker-adsbexchange:latest`.
 * We're passing several environment variables to the container:
   * `BEASTHOST=readsb` to inform the feeder to get its ADSB data from the container `readsb` over our private `adsbnet` network.
   * `LAT` will use the `FEEDER_LAT` variable from your `.env` file.
