@@ -103,7 +103,7 @@ At this point, you can issue the command `docker-compose up -d` to refresh both 
 
 Firstly, it should be noted that there is generally vastly less UAT traffic than ADS-B 1090MHz traffic, so don't immediately assume the `dump978` container isn't working if you can't immediately see UAT flights. Provided the container is running and healthy
 
-To see the data being received and decoded by our new container, run the command `docker exec -it readsb viewadsb`. This should display a real-time departure-lounge-style screen showing all the aircraft being tracked. Look for entries in the `Mode` column listed as `blort`.
+To see the data being received and decoded by our new container, run the command `docker exec -it readsb viewadsb`. This should display a real-time departure-lounge-style screen showing all the aircraft being tracked. Look for entries in the `Mode` column listed as `ADS-R`/`UAT`.
 
 For example:
 
