@@ -6,7 +6,7 @@ description: 'If you wish to feed ADSBHub, follow the steps below.'
 
 The main goal of [ADSBHub](https://adsbhub.org/) is to become a ADS-B data sharing centre and valuable data source for all enthusiasts and professionals interested in development of ADS-B related software.
 
-The docker image [`mikenye/adsbhub`](https://github.com/mikenye/docker-adsbhub) contains the required feeder software and all required prerequisites and libraries. This needs to run in conjunction with `readsb` \(or another Beast provider\).
+The docker image [`ghcr.io/sdr-enthusiasts/docker-adsbhub`](https://github.com/sdr-enthusiasts/docker-adsbhub) contains the required feeder software and all required prerequisites and libraries. This needs to run in conjunction with `readsb` \(or another Beast provider\).
 
 ## Getting a Station Key
 
@@ -55,7 +55,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 ```yaml
   adsbhub:
-    image: mikenye/adsbhub:latest
+    image: ghcr.io/sdr-enthusiasts/docker-adsbhub:latest
     tty: true
     container_name: adsbhub
     restart: always
@@ -67,7 +67,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 To explain what's going on in this addition:
 
-* We're creating a container called `adsbhub`, from the image `mikenye/adsbhub:latest`.
+* We're creating a container called `adsbhub`, from the image `ghcr.io/sdr-enthusiasts/docker-adsbhub/adsbhub:latest`.
 * We're passing several environment variables to the container:
   * `SBSHOST=readsb` to inform the feeder to get its ADSB data from the container `readsb`
   * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
