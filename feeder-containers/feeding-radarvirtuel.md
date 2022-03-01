@@ -6,7 +6,7 @@ description: 'If you wish to feed RadarVirtuel, follow the steps below.'
 
 The main goal of [RadarVirtuel](https://radarvirtuel.com/) is to collect data about flights. Although RadarVirtuel welcomes feeding stations from all over the world, their differentiator is to collect information about traffic around smaller airports around the world.
 
-The docker image [`kx1t/radarvirtuel`](https://github.com/kx1t/docker-radarvirtuel) contains the required feeder software and all required prerequisites and libraries. This needs to run in conjunction with `readsb`, `tar1090`, or another RAW provider.
+The docker image [`ghcr.io/sdr-enthusiasts/docker-radarvirtuel`](https://github.com/sdr-enthusiasts/docker-radarvirtuel) contains the required feeder software and all required prerequisites and libraries. This needs to run in conjunction with `readsb`, `tar1090`, or another RAW provider.
 
 ## Setting up Your Station
 
@@ -49,7 +49,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 ```yaml
   radarvirtuel:
-    image: kx1t/radarvirtuel
+    image: ghcr.io/sdr-enthusiasts/docker-radarvirtuel:latest
     tty: true
     container_name: radarvirtuel
     hostname: radarvirtuel
@@ -59,6 +59,11 @@ Append the following lines to the end of the file \(inside the `services:` secti
       - SOURCE_HOST=tar1090:30002
       - RV_SERVER=mg2.adsbnetwork.com:50050
       - VERBOSE=OFF
+      - MLAT_SERVER=mlat.adsbnetwork.com:50000
+      - MLAT_HOST=tar1090:30005
+      - LAT=${FEEDER_LAT}
+      - LON=${FEEDER_LONG}
+      - ALT=${FEEDER_ALT_M}
     depends_on:
       - tar1090
     tmpfs:
@@ -70,12 +75,13 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 To explain what's going on in this addition:
 
-* We're creating a container called `radarvirtuel`, from the image `kx1t/radarvirtuel`.
+* We're creating a container called `radarvirtuel`, from the image `ghcr.io/sdr-enthusiasts/docker-radarvirtuel`.
 * We're passing several environment variables to the container:
   * `FEEDER_KEY` contains the key that you added to `.env` as per the instructions above
   * `SOURCE_HOST` indicates where to get the RAW data from
   * `RV_SERVER` is the address of the RadarVirtuel server where your data will be sent. Please do not change this unless you're specifically instructed to
   * `VERBOSE` can be `ON` (meaning: show lots of information in the docker logs) or `OFF` (show only errors in the docker logs)
+  * Enabling receiving MLAT RAW data and sending latitude, longitude and altitude from the .env file 
 * The mounted volumes make sure that the container will use the same timezone as your host system
 
 Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `radarvirtuel` container. You should see the following output:
@@ -120,6 +126,6 @@ Most log messages are self-explanatory and have suggestions on how to trouble-sh
 
 ## More information and support
 
-* There is extensive documentation available on the container's [GitHub](https://github.com/kx1t/docker-radarvirtuel) page.
+* There is extensive documentation available on the container's [GitHub](https://github.com/sdr-enthusiasts/docker-radarvirtuel) page.
 * RadarVirtuel and ADSBNetwork are owned and operated by Laurent Duval, who can be reached at support@adsbnetwork.com
 * You can always find help on the #adsb-containers channel on the [SDR Enthusiasts Discord server](https://discord.gg/m42azbZydy). This channel is meant for Noobs (beginners) and Experts alike.
