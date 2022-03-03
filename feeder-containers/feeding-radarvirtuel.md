@@ -81,7 +81,7 @@ To explain what's going on in this addition:
   * `SOURCE_HOST` indicates where to get the RAW data from
   * `RV_SERVER` is the address of the RadarVirtuel server where your data will be sent. Please do not change this unless you're specifically instructed to
   * `VERBOSE` can be `ON` (meaning: show lots of information in the docker logs) or `OFF` (show only errors in the docker logs)
-  * Enabling receiving MLAT RAW data and sending latitude, longitude and altitude from the .env file 
+  * Enabling receiving MLAT RAW data and sending latitude, longitude and altitude from the .env file
 * The mounted volumes make sure that the container will use the same timezone as your host system
 
 Once the file has been updated, issue the command `docker-compose pull radarvirtuel && docker-compose up -d` in the application directory to apply the changes and bring up the `radarvirtuel` container. You should see the following output:

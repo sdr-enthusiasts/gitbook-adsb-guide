@@ -125,60 +125,6 @@ RADARBOX_SHARING_KEY=g45643ab345af3c5d5g923a99ffc0de9
 
 ## Deploying `rbfeeder`
 
-### SegFault Fix
-
-As the `rbfeeder` binary is designed to run on a Raspberry Pi, the `rbfeeder` binary expects a file `/sys/class/thermal/thermal_zone0/temp` to be present, and contain the CPU temperature. If this file doesn't exist, the `rbfeeder` binary will crash and restart every few minutes. For more information, see [here](https://github.com/sdr-enthusiasts/docker-radarbox/issues/16#issuecomment-699627387).
-
-The `ghcr.io/sdr-enthusiasts/docker-radarbox` container is multi-architecture, and accordingly you might not be running on a Raspberry Pi.
-
-As a workaround, we can "fake" this file by performing the following additional steps:
-
-#### Create "fake" directory structure
-
-Inside your application directory \(assumed to be`/opt/adsb`\), run the following commands:
-
-```bash
-mkdir -p ./data/radarbox_segfault_fix/thermal_zone0
-echo 24000 > ./data/radarbox_segfault_fix/thermal_zone0/temp
-```
-
-This creates a fake directory structure that contains a fake CPU temperature file that reads 24 degrees Celsius.
-
-#### Create docker volume
-
-Open the `docker-compose.yml` file that was created when deploying `readsb`.
-
-Add the following lines to the `volumes:` section below the `version:` section, and before the `services:` section:
-
-```yaml
-  radarbox_segfault_fix:
-    driver: local
-    driver_opts:
-      type: none
-      device: /opt/adsb/data/radarbox_segfault_fix
-      o: bind
-```
-
-This creates a volume containing our fake directory structure. We will map this through to the feeder container to prevent the SegFault from occurring.
-
-### CPU Serial Workaround
-
-As the `rbfeeder` binary is designed to run on a Raspberry Pi, the `rbfeeder` binary expects a CPU serial number to be present in `/proc/cpuinfo`. On non-Raspberry Pi systems, the CPU serial number may not be present. This causes `rbfeeder` to crash.
-
-As a workaround, we can "fake" the CPU serial number by performing the following additional steps:
-
-```bash
-# make a directory to hold our fake data
-mkdir -p /opt/adsb/data
-
-# generate a fake cpuinfo file
-# start by taking our current cpuinfo file
-cp /proc/cpuinfo /opt/adsb/data/fake_cpuinfo
-
-# ... and add a fake serial number to the end
-echo -e "serial\t\t: $(hexdump -n 8 -e '4/4 "%08X" 1 "\n"' /dev/urandom | tr '[:upper:]' '[:lower:]')" >> /opt/adsb/data/fake_cpuinfo
-```
-
 ### Create `rbfeeder` container
 
 Open the `docker-compose.yml` file that was created when deploying `readsb`.
@@ -193,9 +139,6 @@ Append the following lines to the end of the file \(inside the `services:` secti
     restart: always
     depends_on:
       - readsb
-    volumes:
-      - "radarbox_segfault_fix:/sys/class/thermal:ro"
-      - "/opt/adsb/data/fake_cpuinfo:/proc/cpuinfo"
     environment:
       - BEASTHOST=readsb
       - LAT=${FEEDER_LAT}
