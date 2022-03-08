@@ -38,10 +38,10 @@ FEEDER_TZ=<your timezone>
 
 ...where:
 
-* `FEEDER_ALT_FT` is set your your antenna's height in feet
+* `FEEDER_ALT_FT` is set your your antenna's height in feet above [mean sea level](https://www.freemaptools.com/elevation-finder.htm)
 * `FEEDER_ALT_M` is set to your antenna's height in metres above [mean sea level](https://www.freemaptools.com/elevation-finder.htm)
-* `FEEDER_LAT` is set to your antenna's latitude
-* `FEEDER_LONG` is set to your antenna's longitude
+* `FEEDER_LAT` is set to your antenna's latitude (also available at link above)
+* `FEEDER_LONG` is set to your antenna's longitude (also availabe at link above)
 * `FEEDER_TZ` is set to your timezone, in ["TZ database name" format](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
 
 For example:
