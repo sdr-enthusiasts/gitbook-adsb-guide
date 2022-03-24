@@ -6,7 +6,7 @@ description: 'If you wish to feed PlaneFinder, follow the steps below.'
 
 [PlaneFinder](https://planefinder.net/) provides live flight tracking data to industries around the world with customised products for aviation, business intelligence and emerging markets alongside world class apps.
 
-The docker image [`mikenye/planefinder`](https://github.com/mikenye/docker-planefinder) contains PlaneFinder's `pfclient` feeder software and all of its required prerequisites and libraries. This needs to run in conjunction with `readsb` \(or another Beast provider\).
+The docker image [`ghcr.io/sdr-enthusiasts/docker-planefinder`](https://github.com/sdr-enthusiasts/docker-planefinder) contains PlaneFinder's `pfclient` feeder software and all of its required prerequisites and libraries. This needs to run in conjunction with `readsb` \(or another Beast provider\).
 
 ## Getting a Share Code
 
@@ -33,7 +33,7 @@ docker run \
     --name pfclient_temp \
     --entrypoint pfclient \
     -p 30053:30053 \
-    mikenye/planefinder
+    ghcr.io/sdr-enthusiasts/docker-planefinder
 ```
 
 Once the container has started, you should see a message such as:
@@ -85,7 +85,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 ```yaml
   pfclient:
-    image: mikenye/planefinder:latest
+    image: ghcr.io/sdr-enthusiasts/docker-planefinder:latest
     tty: true
     container_name: pfclient
     restart: always
@@ -104,7 +104,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 To explain what's going on in this addition:
 
-* We're creating a container called `pfclient`, from the image `mikenye/planefinder:latest`.
+* We're creating a container called `pfclient`, from the image `ghcr.io/sdr-enthusiasts/docker-planefinder:latest`.
 * We're passing several environment variables to the container:
   * `BEASTHOST=readsb` to inform the feeder to get its ADSB data from the container `readsb`
   * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.

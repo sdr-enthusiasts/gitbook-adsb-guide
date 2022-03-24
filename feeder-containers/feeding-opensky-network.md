@@ -6,7 +6,7 @@ description: 'If you wish to feed OpenSky Network, follow the steps below.'
 
 The [OpenSky Network](https://opensky-network.org/) is a non-profit association based in Switzerland. It aims at improving the security, reliability and efficiency of the air space usage by providing open access of real-world air traffic control data to the public.
 
-The docker image [`mikenye/opensky-network`](https://github.com/mikenye/docker-opensky-network) contains the required feeder software and all required prerequisites and libraries. This needs to run in conjunction with `readsb` \(or another Beast provider\).
+The docker image [`ghcr.io/sdr-enthusiasts/docker-opensky-network`](https://github.com/sdr-enthusiasts/docker-opensky-network) contains the required feeder software and all required prerequisites and libraries. This needs to run in conjunction with `readsb` \(or another Beast provider\).
 
 ## Obtaining an OpenSky Network Feeder Serial Number
 
@@ -27,7 +27,7 @@ timeout 60s docker run \
     -e ALT=YOURALTITUDE \
     -e BEASTHOST=readsb\
     -e OPENSKY_USERNAME=YOUROPENSKYUSERNAME \
-    mikenye/opensky-network
+    ghcr.io/sdr-enthusiasts/docker-opensky-network
 ```
 
 Be sure to change the following:
@@ -134,7 +134,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 ```yaml
   opensky:
-    image: mikenye/opensky-network:latest
+    image: ghcr.io/sdr-enthusiasts/docker-opensky-network:latest
     tty: true
     container_name: opensky
     restart: always
@@ -153,7 +153,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 To explain what's going on in this addition:
 
-* We're creating a container called `opensky`, from the image `mikenye/opensky-network:latest`.
+* We're creating a container called `opensky`, from the image `ghcr.io/sdr-enthusiasts/docker-opensky-network:latest`.
 * We're passing several environment variables to the container:
   * `BEASTHOST=readsb` to inform the feeder to get its ADSB data from the container `readsb`
   * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
