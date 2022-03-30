@@ -45,7 +45,7 @@ RV_FEEDER_KEY=xxxx:432143214473214732017432014747382140723
 
 Open the `docker-compose.yml` file that was created when deploying `readsb`.
 
-Append the following lines to the end of the file \(inside the `services:` section\). If you aren't running the `tar1090` container, then make these replacements: `SOURCE_HOST=readsb:30002` and `depends_on: readsb`:
+Append the following lines to the end of the file \(inside the `services:` section\).
 
 ```yaml
   radarvirtuel:
@@ -56,16 +56,16 @@ Append the following lines to the end of the file \(inside the `services:` secti
     restart: always
     environment:
       - FEEDER_KEY=${RV_FEEDER_KEY}
-      - SOURCE_HOST=tar1090:30002
+      - SOURCE_HOST=readsb:30002
       - RV_SERVER=mg2.adsbnetwork.com:50050
       - VERBOSE=OFF
       - MLAT_SERVER=mlat.adsbnetwork.com:50000
-      - MLAT_HOST=tar1090:30005
+      - MLAT_HOST=readsb:30005
       - LAT=${FEEDER_LAT}
       - LON=${FEEDER_LONG}
       - ALT=${FEEDER_ALT_M}
     depends_on:
-      - tar1090
+      - readsb
     tmpfs:
       - /tmp:rw,nosuid,nodev,noexec,relatime,size=128M
     volumes:
