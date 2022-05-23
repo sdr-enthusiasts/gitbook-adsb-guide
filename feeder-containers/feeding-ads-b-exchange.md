@@ -15,7 +15,7 @@ If you are new to feeding ADS-B Exchange, you will need to generate a UUID for y
 In order to generate a feeder UUID, run the following command:
 
 ```bash
-docker run --rm -it --entrypoint uuidgen ghcr.io/sdr-enthusiasts/docker-adsbexchange -t
+cat /proc/sys/kernel/random/uuid
 ```
 
 Take note of the UUID returned.
@@ -145,4 +145,5 @@ adsbx             | [mlat-client] Accepted Beast-format results connection from 
 ```
 
 After a few minutes, point your browser at [https://adsbexchange.com/myip/](https://adsbexchange.com/myip/). You should see green smiley faces indicating that you are successfully sending data.
+Also check if your MLAT is synchronized: <https://map.adsbexchange.com/mlat-map/>
 
