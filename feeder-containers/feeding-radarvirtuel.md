@@ -57,7 +57,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
     environment:
       - FEEDER_KEY=${RV_FEEDER_KEY}
       - SOURCE_HOST=readsb:30002
-      - RV_SERVER=mg2.adsbnetwork.com:50050
+      - RV_SERVER=mg22.adsbnetwork.com:50050
       - VERBOSE=OFF
       - MLAT_SERVER=mlat.adsbnetwork.com:50000
       - MLAT_HOST=readsb:30005
