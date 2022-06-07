@@ -19,7 +19,7 @@ First-time users should obtain a RadarVirtuel Feeder key. To request one, email 
 * Your Raspberry Pi model (or other hardware if not Raspberry Pi)
 * Mention that you will feed using a Docker container.
 
-### Update `.env` file with ADSBHub Station Key
+### Update `.env` file with RadarVirtuel Feeder Key
 
 Inside your application directory \(`/opt/adsb`\), edit the `.env` file using your favorite text editor. Beginners may find the editor `nano` easy to use:
 
@@ -27,7 +27,7 @@ Inside your application directory \(`/opt/adsb`\), edit the `.env` file using yo
 nano /opt/adsb/.env
 ```
 
-This file holds all of the commonly used variables \(such as our latitude, longitude and altitude\). We're going to add our ADSBHub Station Key to this file. Add the following line to the file:
+This file holds all of the commonly used variables \(such as our latitude, longitude and altitude\). We're going to add our RadarVirtuel Feeder Key to this file. Add the following line to the file:
 
 ```text
 RV_FEEDER_KEY=YOURFEEDERKEY
