@@ -6,7 +6,6 @@ This ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined 
 
 **Fun:**
 
-* [ADS-B Exchange](https://adsbexchange.com/)
 * [OpenSky Network](https://opensky-network.org)
 * [ADSBHub](https://www.adsbhub.org)
 * [https://plane.watch/](https://plane.watch/)
@@ -19,6 +18,7 @@ This ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined 
 * [https://www.radarbox.com](https://www.radarbox.com)
 * [https://planefinder.net](https://planefinder.net)
 * [https://radarvirtuel.com](https://radarvirtuel.com)
+* [ADS-B Exchange](https://adsbexchange.com/)
 
 This guide will walk you through the process to deploy and configure Docker containers to allow reception and decoding of ADS-B data, as well as submission to various flight tracking services, both open and commercial, and the visualisation of this data.
 
