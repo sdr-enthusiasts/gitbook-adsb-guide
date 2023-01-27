@@ -6,8 +6,8 @@ description: 'If you wish to feed ADS-B Exchange, follow the steps below.'
 
 [ADSBExchange.com](https://adsbexchange.com/) collects data from over 10,000 receivers located around the world, aggregating the data onto a real-time web-based display for enthusiasts, and raw-data products for professional and commercial usage. It has recently been sold to a private firm called JETNET, for more information, please see:
 
-* https://www.rtl-sdr.com/ads-b-exchange-acquired-by-private-firm-jetnet/
-* https://www.jetnet.com/news/jetnet-acquires-ads-b-exchange.html
+* <https://www.rtl-sdr.com/ads-b-exchange-acquired-by-private-firm-jetnet/>
+* <https://www.jetnet.com/news/jetnet-acquires-ads-b-exchange.html>
 
 The docker image [`ghcr.io/sdr-enthusiasts/docker-adsbexchange`](https://github.com/sdr-enthusiasts/docker-adsbexchange) contains the ADS-B Exchange feeder software and all of its required prerequisites and libraries. This needs to run in conjunction with `readsb-protobuf` \(or another Beast provider\).
 
