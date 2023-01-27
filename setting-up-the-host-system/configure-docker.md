@@ -19,4 +19,3 @@ After making the above change, you'll need to restart docker:
 ```bash
 service docker restart
 ```
-

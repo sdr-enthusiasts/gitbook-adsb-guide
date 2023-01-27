@@ -119,4 +119,3 @@ The first line is showing that we've received messages from the SDR in the past 
 ### Disabling Healthchecks
 
 On systems with with low spec CPU/memory, you may wish to disable healthchecks to gain back some precious CPU cycles. There are ways to disable the docker healthchecks in the `docker-compose.yml` file. However, I publish versions of my images that have the healthcheck removed, so it may be easier to simply change the image's `latest` tag to `latest_nohealthcheck`.
-

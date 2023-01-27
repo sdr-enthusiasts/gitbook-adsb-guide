@@ -129,4 +129,3 @@ The current exceptions are:
 * `radarbox` - Radarbox needs some additional parameters to support both 1090MHz and 978MHz.
 
 The additional configuration directives are discussed on each container's page.
-

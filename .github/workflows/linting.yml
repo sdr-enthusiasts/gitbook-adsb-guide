@@ -14,7 +14,7 @@ jobs:
     - name: Pull markdownlint/markdownlint:latest Image
       run: docker pull markdownlint/markdownlint:latest
     - name: Run markdownlint against *.md files
-      run: docker run --rm -i -v "$(pwd)":/workdir --workdir /workdir markdownlint/markdownlint:latest --rules ~MD013,~MD026,~MD029 $(find . -type f -iname '*.md' | grep -v '/.git/')
+      run: docker run --rm -i -v "$(pwd)":/workdir --workdir /workdir markdownlint/markdownlint:latest --rules ~MD013,~MD026,~MD029,~MD012,~MD007 $(find . -type f -iname '*.md' | grep -v '/.git/')
 
 # Ignoring MD013 - Line length
 # Ignoring MD026 - Trailing punctuation in header

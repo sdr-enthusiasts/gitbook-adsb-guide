@@ -33,4 +33,3 @@ In order to update the Compose image, you can run the following commands:
 docker pull linuxserver/docker-compose
 docker image prune -f
 ```
-
