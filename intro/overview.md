@@ -9,10 +9,10 @@ This document aims to guide you through:
 
 ...whilst also building a basic understanding of Docker.
 
-The core set of containers consists of: [`readsb-protobuf`](https://github.com/sdr-enthusiasts/docker-readsb-protobuf), [`adsbexchange`](https://hub.docker.com/r/mikenye/adsbexchange) and [`tar1090`](https://github.com/sdr-enthusiasts/docker-tar1090). This will provide you with:
+The core set of containers consists of: [`readsb-protobuf`](https://github.com/sdr-enthusiasts/docker-readsb-protobuf), one or more feeder containers and [`tar1090`](https://github.com/sdr-enthusiasts/docker-tar1090). This will provide you with:
 
 * ADS-B reception via `readsb`
-* Feed ADSBExchange, and also receive MLAT data
+* Feeder containers to feed your preferred services
 * Local visualisation of ADS-B and MLAT data with `tar1090`
 
 These are deployed \(in conjunction with RTL-SDR hardware\) as follows:
@@ -29,7 +29,7 @@ To explain the flowchart above:
   * `fr24` - this container reads Beast protocol data from `readsb` and submits flight data to the [FlightRadar24](https://www.flightradar24.com) service, and get their "Business Plan" in return.
 * Flight data is visualised using `tar1090`, presenting a web interface allowing you to view the flight data received by you set-up in real time.
 
-There are other feeder packages available \(eg: OpenSky Network, Radarbox, etc\) that you may wish to consider too. They are all explained in this document.
+There are other feeder packages available \(eg: Plane.watch, OpenSky Network, Radarbox, etc\) that you may wish to consider too. They are all explained in this document.
 
 There are also other visualisation packages available \(eg: FlightAirMap/VirtualRadarServer/Grafana\) that you may wish to consider, however keep in mind that these may require more horsepower than a humble Raspberry Pi can provide. `tar1090` is very lightweight which is why it is recommended here.
 
