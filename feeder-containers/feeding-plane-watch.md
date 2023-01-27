@@ -4,7 +4,7 @@ description: 'If you wish to feed Plane.watch, follow the steps below.'
 
 # Feeding plane.watch
 
-Plane.watch is the end product of a ***Wouldn't it be cool if?*** statement. It is an ADS-B aggregation project by members of SDR-Enthusiasts. It is currently completely non-commercial, run by members of the community as a passion project, and backed by an Australian Not-For-Profit association.
+Plane.watch is the end product of a ***Wouldn't it be cool if?*** statement. It is an ADS-B aggregation project by members of SDR-Enthusiasts. It is currently completely non-commercial, run by members of the community as a passion project, and backed by an Australian-based Not-for-Profit association.
 
 The docker image [`ghcr.io/plane-watch/docker-plane-watch`](https://github.com/plane-watch/docker-plane-watch) contains the plane.watch feeder software and all of its required prerequisites and libraries. This needs to run in conjunction with `readsb-protobuf` \(or another Beast provider\).
 
