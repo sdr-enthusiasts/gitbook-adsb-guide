@@ -55,4 +55,3 @@ FEEDER_TZ=Australia/Perth
 ```
 
 **Note for beginners:** If you run an `ls` command in that directory, you won't see your `.env` file. Files beginning with a period are treated as hidden files. To see the file, you can run `ls -a` \(`-a` for all files\).
-

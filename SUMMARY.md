@@ -31,7 +31,7 @@
 
 ## Feeder Containers
 
-* [Feeding ADS-B Exchange](feeder-containers/feeding-ads-b-exchange.md)
+* [Feeding Plane.watch](feeder-containers/feeding-plane-watch.md)
 * [Feeding FlightAware \(piaware\)](feeder-containers/feeding-flightaware-piaware.md)
 * [Feeding FlightRadar24](feeder-containers/feeding-flightradar24.md)
 * [Feeding RadarBox](feeder-containers/feeding-radarbox.md)
@@ -39,6 +39,7 @@
 * [Feeding ADSBHub](feeder-containers/feeding-adsbhub.md)
 * [Feeding OpenSky Network](feeder-containers/feeding-opensky-network.md)
 * [Feeding RadarVirtuel](feeder-containers/feeding-radarvirtuel.md)
+* [Feeding ADS-B Exchange](feeder-containers/feeding-ads-b-exchange.md)
 
 ## Useful Extras
 
