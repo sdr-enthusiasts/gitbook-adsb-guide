@@ -39,6 +39,7 @@
 * [Feeding ADSBHub](feeder-containers/feeding-adsbhub.md)
 * [Feeding OpenSky Network](feeder-containers/feeding-opensky-network.md)
 * [Feeding RadarVirtuel](feeder-containers/feeding-radarvirtuel.md)
+* [Feeding "new" aggregators](feeder-containers/feeding-new-aggregators.md)
 * [Feeding ADS-B Exchange](feeder-containers/feeding-ads-b-exchange.md)
 
 ## Useful Extras
