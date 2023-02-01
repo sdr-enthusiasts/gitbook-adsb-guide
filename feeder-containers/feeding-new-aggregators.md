@@ -46,7 +46,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
 ```
 
 ### Using the MLAT results
-See https://github.com/sdr-enthusiasts/docker-multifeeder#receiving-mlat-results for more details on how to configure this.
+See [https://github.com/sdr-enthusiasts/docker-multifeeder#receiving-mlat-results](https://github.com/sdr-enthusiasts/docker-multifeeder#receiving-mlat-results) for more details on how to configure this.
 
 ### What's going on?
 To explain what's going on in this addition:
