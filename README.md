@@ -10,7 +10,7 @@ This ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined 
 * [OpenSky Network](https://opensky-network.org)
 * [ADSBHub](https://www.adsbhub.org)
 * [https://twinfan.gitbook.io/livetraffic/](https://twinfan.gitbook.io/livetraffic/)
-* "New" aggregator services such as adsb.fi, adsb.one, and adsb.lol
+* "New" aggregator services such as [adsb.fi](https://globe.adsb.fi/), [adsb.one](https://adsb.one/), and [adsb.lol](https://adsb.lol/)
 
 **Profit:**
 
