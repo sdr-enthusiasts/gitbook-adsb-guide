@@ -27,6 +27,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
 - `MLAT_CONFIG` - add any additional "new aggregators" to the end of the line separated by `;`. The format is `feeder_mlat_hostname,feeder_mlat_port,local_mlat_results_port`
 
 ```yaml
+  multifeeder:
     image: ghcr.io/sdr-enthusiasts/docker-multifeeder
     tty: true
     container_name: multifeeder
