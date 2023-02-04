@@ -47,9 +47,11 @@ Append the following lines to the end of the file \(inside the `services:` secti
 ```
 
 ### Using the MLAT results
+
 See [https://github.com/sdr-enthusiasts/docker-multifeeder#receiving-mlat-results](https://github.com/sdr-enthusiasts/docker-multifeeder#receiving-mlat-results) for more details on how to configure this.
 
 ### What's going on?
+
 To explain what's going on in this addition:
 
 * We're creating a container called `multifeeder`, from the image `ghcr.io/sdr-enthusiasts/docker-multifeeder`.
@@ -72,7 +74,7 @@ We can view the logs for the environment with the command `docker logs multifeed
 [s6-init] making user provided files available at /var/run/s6/etc...exited 0.
 [s6-init] ensuring user provided files have correct perms...exited 0.
 ...
-[cont-init.d] 01-print-container-version: executing... 
+[cont-init.d] 01-print-container-version: executing...
 [Wed Feb  1 16:38:50 EST 2023][INIT] Container Version: 20230201-184212_489b3d0_main, build date 2023-02-01 13:42:12 -0500
 [cont-init.d] 01-print-container-version: exited 0.
 [cont-init.d] done.
@@ -80,7 +82,7 @@ We can view the logs for the environment with the command `docker logs multifeed
 [Wed Feb  1 16:38:50 EST 2023][multifeeder/mlat-client] Started as an s6 service
 [2023/02/01 16:38:50][readsb] invoked by: /usr/local/bin/readsb --net --quiet --lat 42.xxxx --lon -71.xxxx --write-json=/run/readsb --heatmap-dir /var/globe_history --heatmap 15 --write-state=/var/globe_history --write-state-only-on-exit --json-trace-interval 15 --json-reliable 1 --net-ri-port=30001 --net-ro-port=30002 --net-sbs-port=30003 --net-bi-port=30004,30104 --net-bo-port=30005 --net-beast-reduce-out-port=30006 --net-json-port=30047 --net-api-port=30152 --net-sbs-in-port=32006 --net-connector=readsb,30005,beast_in --net-connector=dump978,30978,raw_in --net-connector=feed.adsb.fi,30004,beast_out --net-connector=feed.adsb.one,64004,beast_out --net-connector=in.adsb.lol,30004,beast_out
 [2023/02/01 16:38:50][readsb] Wed Feb  1 16:38:50 2023 EST  readsb starting up.
-...     
+...
 [Wed Feb  1 16:38:50 EST 2023][./run] starting: /usr/bin/mlat-client --input-type auto --input-connect localhost:30005 --server feed.adsb.fi:31090 --lat 42.40487 --lon -71.16615 --alt 18m --user kx1t-test --results beast,listen,39000
 [2023/02/01 16:38:50][readsb] Beast TCP input: Connection established: readsb port 30105
 [2023/02/01 16:38:50][readsb] Raw TCP input: Connection established: dump978 port 30978
