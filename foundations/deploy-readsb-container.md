@@ -55,6 +55,7 @@ The above will:
 * Create a service named `readsb` that will run the `ghcr.io/sdr-enthusiasts/docker-readsb-protobuf` container.
   * We're presenting the USB bus through to this container \(so `readsb` can talk to the USB-attached SDR\).
   * We're mapping TCP port `8080` through to the container so we can access the web interface.
+  * The variable `READSB_RTLSDR_DEVICE` tells `readsb` to look for an RTLSDR device with the serial of `1090` (that we re-serialized in an earlier step).
   * We're passing several environment variables through, including our timezone, latitude and longitude from the `.env` file \(denoted by `${VARIABLE}`\).
 * We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
   * The size of the container, by not writing changes to the underlying container; and
