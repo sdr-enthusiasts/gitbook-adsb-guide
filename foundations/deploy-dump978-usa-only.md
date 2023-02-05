@@ -29,6 +29,8 @@ Append the following lines to the end of the file \(inside the `services:` secti
       - /dev/bus/usb:/dev/bus/usb
     environment:
       - TZ=${FEEDER_TZ}
+      - LAT=${FEEDER_LAT}
+      - LON=${FEEDER_LONG}
       - DUMP978_RTLSDR_DEVICE=978
     tmpfs:
       - /run/readsb

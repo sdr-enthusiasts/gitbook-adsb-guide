@@ -127,4 +127,4 @@ We can view the logs for the environment with the command `docker-compose logs`,
 [mlat-client] Fri Jan 27 12:17:57 2023 Input format changed to BEAST, 12MHz clock
 ```
 
-After a few minutes, browse to [https://atc.plane.watch/](https://atc.plane.watch/). Your feeder should be listed as "online".
+After a few minutes, browse to [https://atc.plane.watch/](https://atc.plane.watch/). Your feeder should be listed as "online". It can take up to 10 minutes for the status to update.
