@@ -4,12 +4,13 @@ description: 'If you wish to feed the new ADS-B aggregators, follow the steps be
 
 # New Aggregators
 
-After ADSBExchange was acquired by a data aggregator, several of the collaborators of this group split off and started their own ADS-B aggretation services based on @wiedehopf's open source software. Rather than developing a separate container for each of them, we created a `multifeeder` container that can be configured to feed them all.
+After ADSBExchange was acquired by a data aggregator, several of the collaborators of this group split off and started their own ADS-B aggregation services based on @wiedehopf's open source software. Rather than developing a separate container for each of them, we created a `multifeeder` container that can be configured to feed them all.
 
 `multifeeder` supports:
-- feeding ADS-B data to these aggregators
-- feeding MLAT data to the aggregators
-- receiving MLAT results from each of the aggregators
+
+* feeding ADS-B data to these aggregators
+* feeding MLAT data to the aggregators
+* receiving MLAT results from each of the aggregators
 
 The docker image [`ghcr.io/sdr-enthusiasts/docker-multifeeder`](https://github.com/sdr-enthusiasts/docker-multifeeder) contains the required feeder software and all required prerequisites and libraries. This needs to run in conjunction with `readsb`, `tar1090`, or another Beast format data provider.
 
@@ -20,11 +21,12 @@ The docker image [`ghcr.io/sdr-enthusiasts/docker-multifeeder`](https://github.c
 Open the `docker-compose.yml` file that was created when deploying `readsb`.
 
 Append the following lines to the end of the file \(inside the `services:` section\). Please edit the following parameters:
-- `READSB_NET_CONNECTOR`
-    -- remove `dump978,30978,raw_in;` if you don't have a UAT (978MHz) dongle
-    -- add any additional "new aggregators" to the end of the line separated by `;`. The format is `feeder_hostname,feeder_beast_port,beast_out`
-- `MLAT_USER` - set this to a somewhat unique/recognizable station name
-- `MLAT_CONFIG` - add any additional "new aggregators" to the end of the line separated by `;`. The format is `feeder_mlat_hostname,feeder_mlat_port,local_mlat_results_port`
+
+* `READSB_NET_CONNECTOR`
+  * remove `dump978,30978,raw_in;` if you don't have a UAT (978MHz) dongle
+  * add any additional "new aggregators" to the end of the line separated by `;`. The format is `feeder_hostname,feeder_beast_port,beast_out`
+* `MLAT_USER` - set this to a somewhat unique/recognizable station name
+* `MLAT_CONFIG` - add any additional "new aggregators" to the end of the line separated by `;`. The format is `feeder_mlat_hostname,feeder_mlat_port,local_mlat_results_port`
 
 ```yaml
   multifeeder:
