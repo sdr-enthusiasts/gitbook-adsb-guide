@@ -4,7 +4,7 @@ description: 'If you wish to feed the new ADS-B aggregators, follow the steps be
 
 # New Aggregators
 
-After ADSBExchange was acquired by a data aggregator, several of the collaborators of this group split off and started their own ADS-B aggretation services based on @wiedehopf's open source software. Rather than developing a separate container for each of them, we created a `multifeeder` container that can be configured to feed them all.
+After ADSBExchange was acquired by a data aggregator, several of the collaborators of this group split off and started their own ADS-B aggregation services based on @wiedehopf's open source software. Rather than developing a separate container for each of them, we created a `multifeeder` container that can be configured to feed them all.
 
 `multifeeder` supports:
 
