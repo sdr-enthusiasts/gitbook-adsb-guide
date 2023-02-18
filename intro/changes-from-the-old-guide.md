@@ -29,30 +29,3 @@ To address this, the entire USB bus is passed through. The old method still work
 ## Removal of `adsbnet`
 
 By default, `docker-compose` will place all containers defined in an application into a default network. Accordingly, in an effort to simplify the configuration, I’ve removed this explicit network declaration.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

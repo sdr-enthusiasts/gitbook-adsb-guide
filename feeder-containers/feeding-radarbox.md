@@ -10,8 +10,6 @@ description: 'If you wish to feed AirNav RadarBox, follow the steps below.'
 
 In exchange for your data, RadarBox will give you a Business Plan. If this is something of interest, you may wish to feed your data to them.
 
-[@mikenye](https://github.com/mikenye) really likes their visualisation. He says overlaying the flight data with precipitation and cloud cover looks fantastic.
-
 The docker image [`ghcr.io/sdr-enthusiasts/docker-radarbox`](https://github.com/sdr-enthusiasts/docker-radarbox) contains `rbfeeder` and all of its required prerequisites and libraries. This needs to run in conjunction with `readsb` \(or another Beast provider\).
 
 ## Getting a Sharing Key

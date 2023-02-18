@@ -8,7 +8,7 @@ description: 'If you wish to feed FlightAware, follow the steps below.'
 
 `fr24feed` is a FlightRadar24 client program to securely transmit ADS-B and Mode S data to the commercial entity FlightRadar24.
 
-[@mikenye](https://github.com/mikenye) created a docker image [`ghcr.io/sdr-enthusiasts/docker-flightradar24`](https://github.com/sdr-enthusiasts/docker-flightradar24) that contains `fr24feed` and all of its required prerequisites and libraries.
+We've created a docker image [`ghcr.io/sdr-enthusiasts/docker-flightradar24`](https://github.com/sdr-enthusiasts/docker-flightradar24) that contains `fr24feed` and all of its required prerequisites and libraries.
 
 ## Getting a Sharing Key
 
@@ -28,7 +28,7 @@ If you're already feeding FlightRadar24 and you've followed the steps in the pre
 
 First-time users should obtain a FlightRadar24 sharing key \(a _fr24key_\). To get one, you can run through the sign-up process. This will ask a series of questions allowing you to sign up with FlightRadar24 and get a _fr24key_.
 
-There's an automated script that you can run, however if this breaks \(please let [@mikenye](https://github.com/mikenye) know so he can fix it\), you can also use the manual sign-up method.
+There's an automated script that you can run, however if this breaks please let us know by raising an issue on [GitHub](https://github.com/sdr-enthusiasts/docker-flightradar24/issues). You can also use the manual sign-up method.
 
 #### Automatic Sign-Up Script Method
 

@@ -7,7 +7,7 @@ description: >-
 
 # Auto-Restart Unhealthy Containers
 
-[As previously discussed](../foundations/common-tasks-and-info.md#information-on-healthchecks), I try to include [healthchecks](https://docs.docker.com/engine/reference/builder/) in all my images. You should see a health status in the `STATUS` column of each container created in this guide whenever you issue the `docker ps` command.
+[As previously discussed](../foundations/common-tasks-and-info.md#information-on-healthchecks), we try to include [healthchecks](https://docs.docker.com/engine/reference/builder/) in all our images. You should see a health status in the `STATUS` column of each container created in this guide whenever you issue the `docker ps` command.
 
 For example:
 
@@ -182,4 +182,3 @@ The `autoheal` container logs messages when it restarts an unhealthy container, 
 ```text
 15-12-2020 20:17:06 Container /adsbx (51bc3e3511f5) found to be unhealthy - Restarting container now with 10s timeout
 ```
-
