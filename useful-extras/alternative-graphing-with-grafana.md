@@ -119,5 +119,12 @@ Clicking `Save & Test` should return a green message indicating success. The das
 3. Select `readsb` from the bottom drop down list
 4. Click `Import` on the subsequent dialogue box
 
-At this point you should see a very nice dashboard that was created by [Mike](https://github.com/mikenye) \(Thanks!\).
+At this point you should see a very nice dashboard that was created by [Mike](https://github.com/mikenye) \(Thanks!\). The final step is to add the radar plugin required by this dashboard:
+
+1. Hover over the `cog` icon in the sidebar, click `Plugins`
+2. Enter `radar` into the `Search Grafana plugins` box, at this point `Radar Graph` should appear below
+3. Click on `Radar Graph` in the main section
+4. Click `Install`
+
+Full functionality of the dashboard is now available, you can find it under `General` in the `Dashboards` section.
 
