@@ -10,7 +10,7 @@ jobs:
   spellcheck:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Pull pipelinecomponents/markdown-spellcheck Image
       run: docker pull pipelinecomponents/markdown-spellcheck
     - name: Spellcheck Markdown Files
