@@ -121,7 +121,7 @@ Clicking `Save & Test` should return a green message indicating success. The das
 
 At this point you should see a very nice dashboard that was created by [Mike](https://github.com/mikenye) \(Thanks!\). The final step is to add the radar plugin required by this dashboard:
 
-1. Hover over the `cog` icon in the sidebar, click `Plugins`
+1. Hover over the `cog` icon in the lower area of the sidebar, click `Plugins`
 2. Enter `radar` into the `Search Grafana plugins` box, at this point `Radar Graph` should appear below
 3. Click on `Radar Graph` in the main section
 4. Click `Install`
