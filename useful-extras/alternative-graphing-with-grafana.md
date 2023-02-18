@@ -9,6 +9,8 @@ description: >-
 
 In this guide we will be using [`InfluxDB`](https://www.influxdata.com/) as the data repository.
 
+Using Grafana and InfluxDB in this configuration does not require a plan, account, or credentials for their respective cloud offerings.
+
 ## Create docker volumes
 
 Open the `docker-compose.yml` file that was created when deploying `readsb`.
