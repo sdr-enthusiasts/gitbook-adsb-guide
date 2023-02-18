@@ -38,6 +38,10 @@ dvb
 eg
 env
 favorite
+feed.adsb.fi
+feed.adsb.lol
+feed.adsb.one
+feed.theairtraffic.com
 FlightAirMap
 FlightAware
 FlightRadar24
@@ -64,6 +68,8 @@ METARs
 Mictronics
 mikenye
 mlat
+mlat_port
+mlat_url
 Multilateration
 OpenSky
 OpenSSL
@@ -83,6 +89,8 @@ RadarBox
 RadarVirtuel
 rbfeeder
 readsb
+readsb_port
+readsb_url
 readsbpb
 realtek
 replug
@@ -99,6 +107,7 @@ statistic.php
 sudo
 tar1090
 tcp
+theairtraffic.com
 timezone
 TIS-B
 Todo
