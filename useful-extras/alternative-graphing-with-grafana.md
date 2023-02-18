@@ -97,7 +97,7 @@ After you have logged into the `grafana` console the following manual steps are 
 
 1. Click `Add your first data source` in the main panel
 2. Click `InfluxDB` from the list of options provided
-3. Input or select the following options, if the option is not listed, do not input anything
+3. Input or select the following options, if the option is not listed, do not input anything for that option:
 
 Option | Input
 ------------- | -------------
