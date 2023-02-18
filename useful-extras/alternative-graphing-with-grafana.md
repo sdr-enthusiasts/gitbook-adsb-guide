@@ -29,7 +29,7 @@ This creates the volumes that will contain `influxdb` and `grafana`’s applicat
 
 Open the `.env` file that was created when deploying `readsb`.
 
-Append the following lines to the end of the file; avoid using surrounding "" for the variables, which can be set to any value you like and token should be though of as a very strong password:
+Append the following lines to the end of the file; avoid using surrounding "" for the variables, which can be set to any value you like and token should be thought of as a very strong password:
 
 ```
 INFLUXDB_USER=<your influxdb username>
