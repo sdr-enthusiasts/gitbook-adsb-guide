@@ -10,11 +10,11 @@ If you're just getting started and don't want to spend a lot of cash, a [cheap D
 
 ## An antenna optimised for 1090MHz
 
-I use an eBay version of [this](https://www.amazon.com/dp/B00WZL6WPO/ref=cm_sw_em_r_mt_dp_U_CxltEb9JS155W). You could also [make your own](https://discussions.flightaware.com/t/three-easy-diy-antennas-for-beginners/16348).
+I use an eBay version of [this](https://www.amazon.com/dp/B00WZL6WPO/ref=cm_sw_em_r_mt_dp_U_CxltEb9JS155W). You could also [make your own](https://discussions.flightaware.com/t/three-easy-diy-antennas-for-beginners/16348). An indoor antenna works to get started. But in most cases an outdoor antenna will give you far better results.
 
 ## A computer running Linux
 
-Capable of running Docker, with at least one free USB port. This can be a Raspberry Pi or an x86.
+Capable of running Docker, with at least one free USB port. This can be a Raspberry Pi (or similar single board computer (SBC), given frequent supply issues with the Pi) or an x86.
 
 ## Cables
 
