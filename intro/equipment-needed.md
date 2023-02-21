@@ -24,7 +24,7 @@ Coaxial cable to connect the antenna to the SDR. As my SDR is located just below
 
 ## Other Stuff
 
-There's a whole bunch of additional equipment that you could purchase and use, such as 1090MHz bandpass filters \(recommended\), amplifiers, etc etc. This is somewhat outside the scope of this document. If you want more information, I'd refer you to: [https://flightaware.com/adsb/piaware/build](https://flightaware.com/adsb/piaware/build)
+There's a whole bunch of additional equipment that you could purchase and use, such as 1090MHz bandpass filters \(recommended\), amplifiers, etc etc. This is somewhat outside the scope of this document. If you want more information, we'd recommend you read this guide: [https://flightaware.com/adsb/piaware/build](https://flightaware.com/adsb/piaware/build)
 
 ## **Optional: A SDR that can receive 978MHz (and antenna)**
 

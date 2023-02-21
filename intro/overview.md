@@ -3,8 +3,8 @@
 This document aims to guide you through:
 
 * **Receiving** ADSB data with [`readsb-protobuf`](https://github.com/sdr-enthusiasts/docker-readsb-protobuf)
-* **Feeding** data to online services using [`adsbexchange`](https://hub.docker.com/r/mikenye/adsbexchange), [`piaware`](https://github.com/sdr-enthusiasts/docker-piaware), [`fr24feed`](https://github.com/sdr-enthusiasts/docker-flightradar24) and others...
-* **Storing** data in a time series database \([InfluxDB](https://docs.influxdata.com/influxdb/)\)
+* **Feeding** data to online services using [`adsbexchange`](https://github.com/sdr-enthusiasts/docker-adsbexchange), [`piaware`](https://github.com/sdr-enthusiasts/docker-piaware), [`fr24feed`](https://github.com/sdr-enthusiasts/docker-flightradar24) and others...
+* **Storing** data in a time series database such as [InfluxDB](https://docs.influxdata.com/influxdb/) or [Prometheus](https://prometheus.io/)
 * **Visualising** data with various tools such as [`tar1090`](https://github.com/sdr-enthusiasts/docker-tar1090) and [Grafana](https://grafana.com)
 
 ...whilst also building a basic understanding of Docker.
@@ -42,4 +42,3 @@ All of the containers in this guide will run on:
 This mix of architectures allows you to run this set-up this on almost any Linux machine.
 
 If there's another feeder you'd like added as a container, please reach out to me via the methods outlined below.
-

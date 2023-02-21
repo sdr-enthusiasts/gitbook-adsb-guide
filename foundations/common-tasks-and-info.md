@@ -72,7 +72,7 @@ Notice that next to the container status, there is some information about the co
 
 Later in this guide we will implement a method to automatically restart any unhealthy containers. This way, if your SDR "wedges", the container will eventually go unhealthy and be restarted.
 
-Where practical, I try to include healthchecks in all my images, so as you go through this guide and deploy more containers, you should see a health status whenever you issue the `docker ps` command.
+Where practical, we try to include healthchecks in all our images, so as you go through this guide and deploy more containers, you should see a health status whenever you issue the `docker ps` command.
 
 ### Reason for healthy/unhealthy?
 
@@ -99,7 +99,7 @@ The `Start` and `End` sections show when the healthcheck script was started and 
 
 An `ExitCode` of `0` represents a healthy result. An `ExitCode` of `1` represents an unhealthy result.
 
-The `Output` section shows the output from the healthcheck script. For my images, I try to explain why the script came to its healthy/unhealthy conclusion in the output of the script. Note that newlines are printed as `\n`, so the output above is as follows:
+The `Output` section shows the output from the healthcheck script. For our images, we try to explain why the script came to its healthy/unhealthy conclusion in the output of the script. Note that newlines are printed as `\n`, so the output above is as follows:
 
 ```text
 last_15min:local_accepted is 15891: HEALTHY
@@ -118,4 +118,4 @@ The first line is showing that we've received messages from the SDR in the past 
 
 ### Disabling Healthchecks
 
-On systems with with low spec CPU/memory, you may wish to disable healthchecks to gain back some precious CPU cycles. There are ways to disable the docker healthchecks in the `docker-compose.yml` file. However, I publish versions of my images that have the healthcheck removed, so it may be easier to simply change the image's `latest` tag to `latest_nohealthcheck`.
+On systems with with low spec CPU/memory, you may wish to disable healthchecks to gain back some precious CPU cycles. There are ways to disable the docker healthchecks in the `docker-compose.yml` file. However, versions of these images have been published that have the healthcheck removed, so it may be easier to simply change the image's `latest` tag to `latest_nohealthcheck`.
