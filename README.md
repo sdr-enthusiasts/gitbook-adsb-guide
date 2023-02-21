@@ -1,8 +1,8 @@
 # ADS-B Reception, Decoding & Sharing with Docker
 
-Automatic Dependent Surveillance-Broadcast \(ADS-B\) is a surveillance technology in which an aircraft determines its position via satellite navigation and periodically broadcasts it, enabling it to be tracked.
+Automatic Dependent Surveillance-Broadcast \(ADS-B\) is a safety and surveillance technology in which an aircraft determines its position via satellite navigation and periodically broadcasts it, enabling it to be tracked.
 
-This ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined Radio \(SDR\), and used for fun and profit. For example:
+These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined Radio \(SDR\), and used for fun and profit.
 
 **Fun:**
 
