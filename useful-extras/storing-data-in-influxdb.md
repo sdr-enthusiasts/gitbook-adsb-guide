@@ -117,10 +117,10 @@ Field keys should be as-per the `StatisticEntry` message schema from [`readsb.pr
 | `local_modeac`                  | float | Number of Mode A / C messages decoded. |
 | `local_modes`                   | float | Number of Mode S preambles received. This is *not* the number of valid messages! |
 | `local_noise`                   | float | Calculated receiver noise floor level. |
-| `local_peak_signal`             | float | Peak signal power of a successfully received message, in dbFS; always negative. |
+| `local_peak_signal`             | float | Peak signal power of a successfully received message, in dBFS; always negative. |
 | `local_samples_dropped`         | float | Number of sample blocks dropped before processing. A non-zero value means CPU overload. |
 | `local_samples_processed`       | float | Number of sample blocks processed. |
-| `local_signal`                  | float | Mean signal power of successfully received messages, in dbFS; always negative. |
+| `local_signal`                  | float | Mean signal power of successfully received messages, in dBFS; always negative. |
 | `local_strong_signals`          | float | Number of messages received that had a signal power above -3 dBFS. |
 | `local_unknown_icao`            | float | Number of Mode S messages which looked like they might be valid but we didn't recognize the ICAO address and it was one of the message types where we can't be sure it's valid in this case. |
 | `max_distance_in_metres`        | float | Maximum range in metres |
