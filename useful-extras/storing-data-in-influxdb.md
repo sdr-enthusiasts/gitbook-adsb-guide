@@ -33,7 +33,7 @@ Within this database are the following measurements:
 
 Tags and fields used for this measurement should match [Virtual Radar Server's JSON response ("the new way")](https://www.virtualradarserver.co.uk/Documentation/Formats/AircraftList.aspx).
 
-| Tag Key  | Type | Description |
+| Tag Key | Type | Description |
 |----------|------|-------------|
 | `Call`   | String | The aircraft's callsign. |
 | `Gnd`    | Boolean | True if the aircraft is on the ground. |
@@ -100,7 +100,7 @@ Field keys should be as-per the `StatisticEntry` message schema from [`readsb.pr
 |---------|------|-------|
 | `cpr_airborne`                  | float | Total number of airborne CPR messages received |
 | `cpr_global_bad`                | float | Global positions that were rejected because they were inconsistent |
-| `cpr_global_ok`                 | float | Global positions successfuly derived |
+| `cpr_global_ok`                 | float | Global positions successfully derived |
 | `cpr_global_range`              | float | Global positions that were rejected because they exceeded the receiver max range |
 | `cpr_global_skipped`            | float | Global position attempts skipped because we did not have the right data (e.g. even/odd messages crossed a zone boundary) |
 | `cpr_global_speed`              | float | Global positions that were rejected because they failed the inter-position speed check |
@@ -117,11 +117,11 @@ Field keys should be as-per the `StatisticEntry` message schema from [`readsb.pr
 | `local_modeac`                  | float | Number of Mode A / C messages decoded. |
 | `local_modes`                   | float | Number of Mode S preambles received. This is *not* the number of valid messages! |
 | `local_noise`                   | float | Calculated receiver noise floor level. |
-| `local_peak_signal`             | float | Peak signal power of a successfully received message, in dbFS; always negative. |
-| `local_samples_dropped`         | float | Number of sample blocks dropped before processing. A nonzero value means CPU overload. |
+| `local_peak_signal`             | float | Peak signal power of a successfully received message, in dBFS; always negative. |
+| `local_samples_dropped`         | float | Number of sample blocks dropped before processing. A non-zero value means CPU overload. |
 | `local_samples_processed`       | float | Number of sample blocks processed. |
-| `local_signal`                  | float | Mean signal power of successfully received messages, in dbFS; always negative. |
-| `local_strong_signals`          | float | Number of messages received that had a signal power above -3dBFS. |
+| `local_signal`                  | float | Mean signal power of successfully received messages, in dBFS; always negative. |
+| `local_strong_signals`          | float | Number of messages received that had a signal power above -3 dBFS. |
 | `local_unknown_icao`            | float | Number of Mode S messages which looked like they might be valid but we didn't recognize the ICAO address and it was one of the message types where we can't be sure it's valid in this case. |
 | `max_distance_in_metres`        | float | Maximum range in metres |
 | `max_distance_in_nautical_miles`| float | Maximum range in nautical miles |
@@ -130,7 +130,7 @@ Field keys should be as-per the `StatisticEntry` message schema from [`readsb.pr
 | `remote_modeac`                 | float | Number of Mode A / C messages received. |
 | `remote_modes`                  | float | Number of Mode S messages received. |
 | `tracks_mlat_position`          | float | Tracks consisting of a position derived from MLAT |
-| `tracks_new`                    | float | Total tracks (aircrafts) created. Each track represents a unique aircraft and persists for up to 5 minutes. |
+| `tracks_new`                    | float | Total tracks (aircraft) created. Each track represents a unique aircraft and persists for up to 5 minutes. |
 | `tracks_single_message`         | float | Tracks consisting of only a single message. These are usually due to message decoding errors that produce a bad aircraft address. |
 | `tracks_with_position`          | float | Tracks consisting of a position. |
 
@@ -141,8 +141,8 @@ These variables control exposing flight data and `readsb` metrics to [Prometheus
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `ENABLE_PROMETHEUS` | Set to any string to enable Prometheus support | Unset |
-| `PROMETHEUSPORT` | The port that the prometheus client will listen on | `9273` |
-| `PROMETHEUSPATH` | The path that the prometheus client will publish metrics on | `/metrics` |
+| `PROMETHEUSPORT` | The port that the Prometheus client will listen on | `9273` |
+| `PROMETHEUSPATH` | The path that the Prometheus client will publish metrics on | `/metrics` |
 
 ## Grafana Dashboard
 

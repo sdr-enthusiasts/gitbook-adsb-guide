@@ -33,7 +33,7 @@ Append the following lines to the end of the file; avoid using surrounding "" fo
 
 ```
 INFLUXDB_USER=<your influxdb username>
-INFLUXDB_PASSWORD=<your influxdb password> 
+INFLUXDB_PASSWORD=<your influxdb password>
 INFLUXDB_ADMIN_TOKEN=<your influxdb token>
 ```
 
