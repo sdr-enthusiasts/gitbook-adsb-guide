@@ -6,6 +6,7 @@ The [docker-install.sh](https://github.com/sdr-enthusiasts/docker-install) scrip
 The script is written to be used on a Debian (Ubuntu or Raspberry Pi OS) system that is "barebones", i.e., where Docker has not yet been installed. Debian OS versions Stretch, Buster, and Bullseye are supported.
 
 It will **check**, and if necessary **install** the following components and settings:
+
 - `docker`
   - install Docker
   - (optional) add the current user to the `sudoers` group and enable password-free use of `sudo`
