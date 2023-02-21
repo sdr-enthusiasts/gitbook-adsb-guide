@@ -15,7 +15,7 @@ The containers used in this guide are regularly updated - most of them daily. Th
 
 We can configure a container to regularly \(daily\) check DockerHub for new versions of underlying images, automatically pull the new versions and recreate your containers.
 
-This can be a double-edged sword, as container functionality may change between versions \(for example, if a feeder drastically changes how their application behaves\). Rest assured that if behaviour does change, I'll make every effort to ensure backwards compatibility. Accordingly, if you implement auto-upgrade, I'd suggest a regular check of your environment to ensure it is operating as expected.
+This can be a double-edged sword, as container functionality may change between versions \(for example, if a feeder drastically changes how their application behaves\). Rest assured that if behaviour does change, we will make every effort to ensure backwards compatibility. Accordingly, if you implement auto-upgrade, we'd suggest a regular check of your environment to ensure it is operating as expected.
 
 The container `containrrr/watchtower` has been created to automatically update containers when a new image is released.
 
@@ -95,4 +95,3 @@ INFO[864207] Found new ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest ima
 INFO[864334] Stopping /readsb (38bd04997c8d) with SIGTERM
 INFO[864339] Creating /readsb
 ```
-

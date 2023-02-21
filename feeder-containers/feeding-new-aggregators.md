@@ -107,13 +107,15 @@ We can view the logs for the environment with the command `docker logs multifeed
 [2023/02/01 16:38:50][./run][feed.adsb.fi] Connected to multilateration server at feed.adsb.fi:31090, handshaking
 ...
 ```
+
 ## List of Aggregators
+
 | **Site**          | **readsb_url**         | **readsb_port** | **mlat_url**           | **mlat_port** |
 |-------------------|------------------------|-----------------|------------------------|---------------|
-| adsb.fi           | feed.adsb.fi           |           30004 | feed.adsb.fi           |         31090 |
-| adsb.one          | feed.adsb.one          |           64004 | feed.adsb.one          |         64006 |
-| adsb.lol          | feed.adsb.lol          |            1337 | feed.adsb.lol          |          1338 |
-| theairtraffic.com | feed.theairtraffic.com |           30004 | feed.theairtraffic.com |         31090 |
+| [adsb.fi](https://adsb.fi/)           | feed.adsb.fi           |           30004 | feed.adsb.fi           |         31090 |
+| [adsb.one](https://adsb.one/)          | feed.adsb.one          |           64004 | feed.adsb.one          |         64006 |
+| [adsb.lol](https://adsb.lol/)          | feed.adsb.lol          |            1337 | feed.adsb.lol          |          1338 |
+| [theairtraffic.com](https://theairtraffic.com/) | feed.theairtraffic.com |           30004 | feed.theairtraffic.com |         31090 |
 
 ## More information and support
 

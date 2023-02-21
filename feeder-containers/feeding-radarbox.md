@@ -10,8 +10,6 @@ description: 'If you wish to feed AirNav RadarBox, follow the steps below.'
 
 In exchange for your data, RadarBox will give you a Business Plan. If this is something of interest, you may wish to feed your data to them.
 
-Personally, I really like their visualisation. Overlaying the flight data with precipitation and cloud cover looks fantastic.
-
 The docker image [`ghcr.io/sdr-enthusiasts/docker-radarbox`](https://github.com/sdr-enthusiasts/docker-radarbox) contains `rbfeeder` and all of its required prerequisites and libraries. This needs to run in conjunction with `readsb` \(or another Beast provider\).
 
 ## Getting a Sharing Key
@@ -231,4 +229,3 @@ We can view the logs for the environment with the command `docker-compose logs`,
 We can see our container running with the command `docker ps`.
 
 Once running, you can visit the RadarBox website, and go to "Account" &gt; "Stations" and click your station to see your live data.
-
