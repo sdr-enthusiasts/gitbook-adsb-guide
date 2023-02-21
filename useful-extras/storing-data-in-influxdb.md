@@ -33,7 +33,7 @@ Within this database are the following measurements:
 
 Tags and fields used for this measurement should match [Virtual Radar Server's JSON response ("the new way")](https://www.virtualradarserver.co.uk/Documentation/Formats/AircraftList.aspx).
 
-| Tag Key  | Type | Description |
+| Tag Key | Type | Description |
 |----------|------|-------------|
 | `Call`   | String | The aircraft's callsign. |
 | `Gnd`    | Boolean | True if the aircraft is on the ground. |
