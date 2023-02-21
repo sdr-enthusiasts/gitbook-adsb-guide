@@ -70,7 +70,7 @@ Remember to change `docker.host.ip.addr` to the IP address of your docker host.
 
 ## Configuring data source and dashboard in Grafana
 
-After you have logged into the `grafana` console the following manual steps are required to connect to `influxdb` as the data source
+After you have logged into the `grafana` console the following manual steps are required to connect to `prometheus` as the data source
 
 1. Click `Add your first data source` in the main panel
 2. Click `Prometheus` from the list of options provided
