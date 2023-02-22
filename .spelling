@@ -33,6 +33,7 @@ collectd
 CPython
 dBFS
 dev
+DietPi
 dockerfile
 DockerHub
 dump978
@@ -69,6 +70,7 @@ LAN
 Lat
 linuxserver
 linuxserver.io
+LiveTraffic
 Lon
 maps.google.com
 METARs
@@ -95,6 +97,7 @@ py
 radarbox
 RadarBox
 RadarVirtuel
+radarvirtuel.com
 rbfeeder
 readsb
 readsb_port
@@ -105,12 +108,14 @@ replug
 rrd
 rtl
 rtlsdr
+SBCs
 sdr
 SDRs
 SegFault
 SkyAware
 Spd
 spec
+SSH'ing
 standalone
 statistic.php
 sudo
@@ -130,6 +135,7 @@ usb
 uuid
 v1
 v2
+vi
 VirtualRadarServer
 vm
 vrs
