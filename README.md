@@ -1,25 +1,27 @@
 # ADS-B Reception, Decoding & Sharing with Docker
 
-Automatic Dependent Surveillance-Broadcast \(ADS-B\) is a surveillance technology in which an aircraft determines its position via satellite navigation and periodically broadcasts it, enabling it to be tracked.
+Automatic Dependent Surveillance-Broadcast \(ADS-B\) is a safety and surveillance technology in which an aircraft determines its position via satellite navigation and periodically broadcasts it, enabling it to be tracked.
 
-This ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined Radio \(SDR\), and used for fun and profit. For example:
+These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined Radio \(SDR\), and used for fun and profit.
 
 **Fun:**
 
 * [ADSBHub](https://www.adsbhub.org)
+* [adsb.fi](https://globe.adsb.fi/)
+* [ADSB.lol](https://adsb.lol/)
+* [ADSB One](https://adsb.one/)
+* [LiveTraffic](https://twinfan.gitbook.io/livetraffic/)
 * [OpenSky Network](https://opensky-network.org)
 * [Plane Watch](https://plane.watch/)
 * [The Air Traffic](https://theairtraffic.com/)
-* [https://twinfan.gitbook.io/livetraffic/](https://twinfan.gitbook.io/livetraffic/)
-* "New" aggregator services such as [adsb.fi](https://globe.adsb.fi/), [adsb.one](https://adsb.one/), and [adsb.lol](https://adsb.lol/)
 
 **Profit:**
 
-* [https://flightaware.com/adsb/piaware/](https://flightaware.com/adsb/piaware/)
-* [https://www.flightradar24.com/share-your-data](https://www.flightradar24.com/share-your-data)
-* [https://planefinder.net](https://planefinder.net)
-* [https://www.radarbox.com](https://www.radarbox.com)
-* [https://radarvirtuel.com](https://radarvirtuel.com)
+* [FlightAware](https://flightaware.com/adsb/piaware/)
+* [FlightRadar24](https://www.flightradar24.com/share-your-data)
+* [Plane Finder](https://planefinder.net)
+* [RadarBox](https://www.radarbox.com)
+* [radarvirtuel.com](https://radarvirtuel.com)
 * [ADS-B Exchange](https://adsbexchange.com/)
 
 This guide will walk you through the process to deploy and configure Docker containers to allow reception and decoding of ADS-B data, as well as submission to various flight tracking services, both open and commercial, and the visualisation of this data.
