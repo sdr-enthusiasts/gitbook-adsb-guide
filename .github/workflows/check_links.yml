@@ -19,4 +19,4 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Run markdown-link-check against *.md files
-      run: find "$(pwd)" -iname \*.md -print0 | xargs -0 -n1 markdown-link-check
+      run: find "$(pwd)" -iname \*.md -print0 | xargs -0 -n1 markdown-link-check --config "$(pwd)/.markdown-link-check.json" --quiet
