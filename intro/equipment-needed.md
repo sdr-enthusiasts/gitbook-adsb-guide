@@ -4,13 +4,13 @@ To get started, you'll need:
 
 ## **A SDR that can receive 1090MHz**
 
-I started with a [FlightAware Pro Stick Plus](https://www.amazon.com/dp/B07J2RJQ9Z/ref=cm_sw_em_r_mt_dp_U_uwltEbJ8ER2KN). However, eventually you may wish to expand into other areas of SDR. I have moved onto a [KerberosSDR](https://othernet.is/products/kerberossdr-4x-coherent-rtlsdr), which is four RTL-SDRs in one. This lets me dedicate one SDR to ADS-B reception, and three others for things like [AirBand](https://en.wikipedia.org/wiki/Airband), [ACARS](https://app.airframes.io), etc. Note that KerberosSDR has reached EOL and it has been replaced by the [KrakenSDR](https://www.crowdsupply.com/krakenrf/krakensdr) outfitted with 5 SDRs.
+I started with a [FlightAware Pro Stick Plus](https://flightaware.com/adsb/prostick/). However, eventually you may wish to expand into other areas of SDR. I have moved onto a [KerberosSDR](https://othernet.is/products/kerberossdr-4x-coherent-rtlsdr), which is four RTL-SDRs in one. This lets me dedicate one SDR to ADS-B reception, and three others for things like [AirBand](https://en.wikipedia.org/wiki/Airband), [ACARS](https://app.airframes.io), etc. Note that KerberosSDR is no longer available. It has been replaced by the [KrakenSDR](https://www.crowdsupply.com/krakenrf/krakensdr) now has five SDRs.
 
 If you're just getting started and don't want to spend a lot of cash, a [cheap DVB-T RTL2832U WITH R820T2 dongle](https://www.amazon.com/dp/B07K47P7XD) will do the job.
 
 ## An antenna optimised for 1090MHz
 
-I use an eBay version of [this](https://www.amazon.com/dp/B00WZL6WPO/ref=cm_sw_em_r_mt_dp_U_CxltEb9JS155W). You could also [make your own](https://discussions.flightaware.com/t/three-easy-diy-antennas-for-beginners/16348). An indoor antenna works to get started. But in most cases an outdoor antenna will give you far better results.
+I use a cheap eBay "vertical collinear" antenna. You could also [make your own](https://discussions.flightaware.com/t/three-easy-diy-antennas-for-beginners/16348). An indoor antenna works to get started. But in most cases an outdoor antenna will give you far better results.
 
 ## A computer running Linux
 

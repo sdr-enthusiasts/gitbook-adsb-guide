@@ -14,7 +14,7 @@ You should create a ZeroTier Account, and install the ZeroTier client on the mac
 
 ## Create a ZeroTier network
 
-Now you need to create a ZeroTier 'network' for your devices to connect to - this is as simple as clicking on the `Create a Network` button once you have logged in to ZeroTier. If you need help, have a look at this [`guide`](https://www.stratospherix.com/support/setupvpn_01.php) (but stop before the step where you assign IP address ranges).
+Now you need to create a ZeroTier 'network' for your devices to connect to - this is as simple as clicking on the `Create a Network` button once you have logged in to ZeroTier. If you need help, have a look at the [`Getting Started`](https://docs.zerotier.com/getting-started/getting-started/) guide (but stop before the step where you assign IP address ranges).
 
 You should now have a unique 16 character Network ID e.g. `255724d630f06682`. Make a note of this as you will need it in the next steps.
 

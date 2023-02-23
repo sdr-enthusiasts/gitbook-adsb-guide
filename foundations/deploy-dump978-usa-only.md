@@ -9,7 +9,7 @@ description: >-
 
 ## USA Only!
 
-The FAA has adopted 1090MHz for all flight levels, and UAT only for operations below 18,000 feet. UAT supports two-way links, and the FAA provides additional services on the uplink including [TIS-B](https://www.faa.gov/nextgen/equipadsb/capabilities/ins_outs/#tisb), and [ADS-R](https://www.faa.gov/nextgen/equipadsb/capabilities/ins_outs/#adsr), as well as [FIS-B](https://www.faa.gov/nextgen/equipadsb/capabilities/ins_outs/#fisb), for weather and aeronautical information. Dual 1090/UAT systems have not been adopted in any other country.
+The FAA has adopted 1090MHz for all flight levels, and UAT only for operations below 18,000 feet. UAT supports two-way links, and the FAA provides additional services on the uplink including [TIS-B](https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs/#tisb), and [ADS-R](https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#adsr), as well as [FIS-B](https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#fisb), for weather and aeronautical information. Dual 1090/UAT systems have not been adopted in any other country.
 
 **If you live outside of the USA \(or only have one SDR\), you can skip this section!**
 
