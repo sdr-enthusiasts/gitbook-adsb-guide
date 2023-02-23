@@ -4,7 +4,7 @@ Automatic Dependent Surveillance-Broadcast \(ADS-B\) is a safety and surveillanc
 
 These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined Radio \(SDR\), and shared with aggregators, which collect, combine, and redistribute flight information for fun and profit.
 
-### Fun and Non-Profit Aggregators
+## Fun and Non-Profit Aggregators
 
 * [ADSBHub](https://www.adsbhub.org)
 * [adsb.fi](https://globe.adsb.fi/)
@@ -15,7 +15,7 @@ These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined
 * [Plane Watch](https://plane.watch/)
 * [The Air Traffic](https://theairtraffic.com/)
 
-### For-Profit Aggregators
+## For-Profit Aggregators
 
 * [FlightAware](https://flightaware.com/adsb/piaware/)
 * [FlightRadar24](https://www.flightradar24.com/share-your-data)
