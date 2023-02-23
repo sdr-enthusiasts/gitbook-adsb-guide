@@ -1,0 +1,22 @@
+name: Check Links
+
+on:
+  push:
+  pull_request:
+    branches: 
+      - master
+      - main
+  workflow_dispatch:
+
+jobs:
+  markdown-link-check:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Install markdown-link-check
+      run: sudo npm install -g markdown-link-check
+
+    - uses: actions/checkout@v3
+
+    - name: Run markdown-link-check against *.md files
+      run: find "$(pwd)" -iname \*.md -print0 | xargs -0 -n1 markdown-link-check
