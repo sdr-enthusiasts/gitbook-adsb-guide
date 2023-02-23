@@ -166,3 +166,12 @@ To see the data being received and decoded by our new container, run the command
 Press `CTRL-C` to escape this screen.
 
 You should also be able to point your web browser at `http://docker.host.ip.addr:8080/` to view the web interface \(change `docker.host.ip.addr` to the IP address of your docker host\). You should see a map showing your currently tracked aircraft, and a link to the "Performance Graphs".
+
+It is possible that you won't see any planes, either with the docker command above or when pointing your web browser at the readsb container. This can have a number of root causes - a common one being that active radio transmissions in other frequency bands that are reasonably "close" to the ADS-B band are completely overwhelming your SDR at the default starting gain of 49.6. It may be necessary to lower the starting point for the autogain script to at least allow the detection of some planes in order for the script to work. So if even after a few minutes you don't see any planes at all (and no ADS-B messages in the "Performance Graphs"), you may want to try to force a lower starting gain value into the autogain algorithm. To do this, please execute the following command. You may have to try different values instead of the value of `34` suggested here:
+
+```bash
+docker exec -it readsb sh -c "/bin/echo 34 > /run/autogain/autogain_current_value"
+docker restart readsb
+```
+
+This first changes the gain value that the autogain script should try next and then stops and restarts the `readasb` container.
