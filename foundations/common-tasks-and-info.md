@@ -78,10 +78,10 @@ Where practical, we try to include healthchecks in all our images, so as you go 
 
 You can inspect the container for some \(hopefully\) meaningful output from the healthcheck script.
 
-If you issue the command `docker inspect CONTAINER` \(replacing `CONTAINER` with the name of the container you're interested in\), you'll see lots of information about the container, including the output of the most recent run of the healthcheck script. This output is in JSON format, so if you have the `jq` utility installed, we can easily find our `readsb` container's most recent health information with the following command:
+If you issue the command `docker inspect CONTAINER` \(replacing `CONTAINER` with the name of the container you're interested in\), you'll see lots of information about the container, including the output of the most recent run of the healthcheck script. This output is in JSON format, so with the help of the `jq` utility we can easily find our `readsb` container's most recent health information. First make sure `jq` is installed with `sudo apt install -y jq`, then we can check the `readsb` container's health with the following command:
 
 ```bash
-docker inspect readsb | jq .[0].State.Health.Log | jq .[-1]
+docker inspect readsb | jq .[0].State.Health.Log | jq .[-1].Output | awk '{gsub(/\\n/,"\n")}1'
 ```
 
 Which will return something like this:
@@ -99,7 +99,7 @@ The `Start` and `End` sections show when the healthcheck script was started and 
 
 An `ExitCode` of `0` represents a healthy result. An `ExitCode` of `1` represents an unhealthy result.
 
-The `Output` section shows the output from the healthcheck script. For our images, we try to explain why the script came to its healthy/unhealthy conclusion in the output of the script. Note that newlines are printed as `\n`, so the output above is as follows:
+The `Output` section shows the output from the healthcheck script. For our images, we try to explain why the script came to its healthy/unhealthy conclusion in the output of the script.
 
 ```text
 last_15min:local_accepted is 15891: HEALTHY
