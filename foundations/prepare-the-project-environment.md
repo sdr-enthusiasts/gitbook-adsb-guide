@@ -18,12 +18,18 @@ sudo mkdir -p /opt/adsb
 cd /opt/adsb
 ```
 
+You will likely also want to change the ownership of this directory to your regular user account, so you don't have to use `sudo` to edit the files within. To do this:
+
+```bash
+chown $(id -u) /opt/adsb
+```
+
 ## Create a `.env` file to hold our environment's variables
 
 Inside this directory, create a file named `.env` using your favourite text editor. Beginners may find the editor `nano` easy to use:
 
 ```bash
-sudo nano /opt/adsb/.env
+nano /opt/adsb/.env
 ```
 
 This file will hold all of the commonly used variables \(such as our latitude, longitude and altitude\). Initially, add the contents of the file as follows \(replacing the values enclosed in `<>` with values for your environment:
