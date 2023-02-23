@@ -13,6 +13,7 @@
 
 ## Setting Up The Host System
 
+* [Preparing Your System](setting-up-the-host-system/preparing-your-system.md)
 * [Install Docker](setting-up-the-host-system/running-docker-install.md)
 * [Configure Docker](setting-up-the-host-system/configure-docker.md)
 

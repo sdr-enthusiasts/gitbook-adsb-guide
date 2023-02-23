@@ -2,9 +2,9 @@
 
 Automatic Dependent Surveillance-Broadcast \(ADS-B\) is a safety and surveillance technology in which an aircraft determines its position via satellite navigation and periodically broadcasts it, enabling it to be tracked.
 
-These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined Radio \(SDR\), and used for fun and profit.
+These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined Radio \(SDR\), and shared with aggregators, which collect, combine, and redistribute flight information for fun and profit.
 
-**Fun:**
+## Fun and Non-Profit Aggregators
 
 * [ADSBHub](https://www.adsbhub.org)
 * [adsb.fi](https://globe.adsb.fi/)
@@ -15,7 +15,7 @@ These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined
 * [Plane Watch](https://plane.watch/)
 * [The Air Traffic](https://theairtraffic.com/)
 
-**Profit:**
+## For-Profit Aggregators
 
 * [FlightAware](https://flightaware.com/adsb/piaware/)
 * [FlightRadar24](https://www.flightradar24.com/share-your-data)
@@ -23,6 +23,8 @@ These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined
 * [RadarBox](https://www.radarbox.com)
 * [radarvirtuel.com](https://radarvirtuel.com)
 * [ADS-B Exchange](https://adsbexchange.com/)
+
+## Objective
 
 This guide will walk you through the process to deploy and configure Docker containers to allow reception and decoding of ADS-B data, as well as submission to various flight tracking services, both open and commercial, and the visualisation of this data.
 
