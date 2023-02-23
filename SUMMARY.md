@@ -7,6 +7,7 @@
 * [Changes From the Old Guide](intro/changes-from-the-old-guide.md)
 * [Overview](intro/overview.md)
 * [How to Get Help](intro/how-to-get-help.md)
+* [What is Docker?](intro/what-is-docker.md)
 * [Why Docker?](intro/why-docker.md)
 * [Equipment Needed](intro/equipment-needed.md)
 * [Information Needed](intro/information-needed.md)
