@@ -27,14 +27,14 @@ jobs:
       - run: cat $GITHUB_OUTPUT
       - run: |
           set -x
-          echo ${{ needs.generate-matrix.output.matrix }} | jq .
+          echo ${{ needs.generate-matrix.outputs.matrix }} | jq .
 
   markdown-link-check:
     runs-on: ubuntu-latest
     needs: [generate-matrix]
     strategy:
       matrix:
-        file_to_check: ${{ fromJson(needs.generate-matrix.output.matrix) }}
+        file_to_check: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
     steps:
 
     - name: Install markdown-link-check
