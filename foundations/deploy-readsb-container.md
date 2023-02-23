@@ -10,7 +10,7 @@ description: >-
 In your favourite text editor, create a file named `docker-compose.yml` in your application directory \(`/opt/adsb`\) if following along verbatim.
 
 ```bash
-sudo nano docker-compose.yml
+nano docker-compose.yml
 ```
 
 ```yaml
@@ -61,10 +61,10 @@ The above will:
   * The size of the container, by not writing changes to the underlying container; and
   * SD Card or SSD wear
 
-Once this file is created, issue the command `sudo docker-compose up -d` to bring up the environment.
+Once this file is created, issue the command `docker compose up -d` to bring up the environment.
 
 ```bash
-sudo docker-compose up -d
+docker compose up -d
 ```
 
 You should see the following output:
@@ -74,7 +74,7 @@ Creating network "adsb_default" with the default driver
 Creating readsb         ... done
 ```
 
-We can view the logs for the environment with the command `docker-compose logs`, or continually "tail" them with `docker-compose logs -f`. At this stage, the logs will be fairly unexciting and look like this:
+We can view the logs for the environment with the command `docker compose logs`, or continually "tail" them with `docker compose logs -f`. At this stage, the logs will be fairly unexciting and look like this:
 
 ```text
 [s6-init] making user provided files available at /var/run/s6/etc...exited 0.
