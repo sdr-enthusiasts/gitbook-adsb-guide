@@ -13,7 +13,7 @@
 
 ## Setting Up The Host System
 
-* [Install Docker](setting-up-the-host-system/install-docker.md)
+* [Install Docker](setting-up-the-host-system/running-docker-install.md)
 * [Configure Docker](setting-up-the-host-system/configure-docker.md)
 * [Install Docker Compose](setting-up-the-host-system/install-docker-compose.md)
 
