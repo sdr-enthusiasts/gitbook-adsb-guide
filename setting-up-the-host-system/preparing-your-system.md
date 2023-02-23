@@ -10,4 +10,12 @@ If SSH'ing into a server and editing a text file with nano or vi is something yo
 
 ## Hints for Linux Newbies
 
-Collecting ADS-B data with an SDR is a great project to learn about Linux. When you initially prepare your device by installing an OS, you might do so by connecting a display, keyboard, and mouse directly to your device, much as you would any traditional desktop PC. However, after some intial configuration, you might move your computer to another location, at which point it might be helpful to access your new Linux device remotely.
+Collecting ADS-B data with an SDR is a great project to learn about Linux. While this guide isn't a Linux crash course, it's worth pointing out a few basic concepts to ease into things.
+
+### Entering Commands
+
+Throughout this guide, you'll be presented with commands to copy/paste into your new device. If you're accessing your new Linux device directly with a keyboard, mouse, and display like a traditional desktop PC, you'll be entering these via the "terminal," "command line," or "command prompt." If you're using something with a fancy graphical user interface, such as Raspberry Pi OS with a mouse, keyboard, and display plugged in like a traditional desktop computer, it's likely there's a "Terminal" app you can access with a few clicks. 
+
+### Remote Access: SSH
+
+Once you've connected your Linux device to your network, it's possible to access and manage it with SSH. On macOS, you can do this via the Terminal app, on Windows, you can use [PuTTY](https://www.putty.org/). You can connect to your new device via SSH entering this command `ssh username@new.device.ip.addresss` in Terminal/PuTTY.
