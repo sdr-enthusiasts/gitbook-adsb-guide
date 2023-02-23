@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: set-matrix
-        run: echo "::set-output name=matrix::$(find "$(pwd)"" -type f -iname \*.md | jq -R -s -c 'split("\n")[:-1]')"
+        run: echo "::set-output name=matrix::$(find "$(pwd)" -type f -iname \*.md | jq -R -s -c 'split("\n")[:-1]')"
 
   markdown-link-check:
     runs-on: ubuntu-latest
