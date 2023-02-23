@@ -24,9 +24,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: [generate-matrix]
     steps:
+      - run: cat $GITHUB_OUTPUT
       - run: |
           set -x
-          echo "${{ needs.generate-matrix.output.matrix }}" | jq .
+          echo ${{ needs.generate-matrix.output.matrix }} | jq .
 
   markdown-link-check:
     runs-on: ubuntu-latest
