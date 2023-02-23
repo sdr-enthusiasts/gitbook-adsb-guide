@@ -67,7 +67,7 @@ To explain what's going on in this addition:
   * `TZ=${FEEDER_TZ}` So that the container's logs are in our local timezone.
 * We're passing through the docker socket `/var/run/docker.sock` so that autoheal can control docker \(to restart containers\).
 
-Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `watchtower` container. You should see the following output:
+Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `watchtower` container. You should see the following output:
 
 ```text
 readsb is up-to-date

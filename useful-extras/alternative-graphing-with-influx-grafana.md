@@ -84,7 +84,7 @@ Append the following lines to the end of the file:
       - grafana_data:/var/lib/grafana
 ```
 
-Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `influxdb` and `grafana` containers. This will also restart the `readsb` container, which will now use `telegraf` to feed data to `influxdb`.
+Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `influxdb` and `grafana` containers. This will also restart the `readsb` container, which will now use `telegraf` to feed data to `influxdb`.
 
 You should also be able to point your web browser at:
 

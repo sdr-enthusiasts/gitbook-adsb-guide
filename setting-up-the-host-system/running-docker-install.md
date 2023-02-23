@@ -13,8 +13,8 @@ It will **check**, and if necessary **install** the following components and set
   - configure log limits for Docker
   - configure $PATH environment for Docker
   - add current user to `docker` group
-- `docker-compose`
-  - Install latest stable `docker-compose` from Github (and not the older version from the Debian Repo)
+- `docker compose`
+  - Install latest stable `docker compose` plugin
 - Make sure that `libseccomp2` is of a new enough version to support Bullseye-based Docker containers
 - Update `udev` rules for use with RTL-SDR dongles
 - Blacklist SDR drivers so the `SDR-Enthusiasts`' ADSB and ACARS containers can access the RTL-SDR dongles. Unload any preloaded drivers.

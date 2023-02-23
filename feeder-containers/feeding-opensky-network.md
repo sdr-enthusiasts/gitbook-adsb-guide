@@ -166,7 +166,7 @@ To explain what's going on in this addition:
   * The size of the container, by not writing changes to the underlying container; and
   * SD Card or SSD wear
 
-Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `adsbhub` container. You should see the following output:
+Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `adsbhub` container. You should see the following output:
 
 ```text
 readsb is up-to-date

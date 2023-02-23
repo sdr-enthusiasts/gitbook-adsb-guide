@@ -39,7 +39,7 @@ ADSBHUB_STATION_KEY='YOURSTATIONKEY'
 ```
 
 * Replace `YOURSTATIONKEY` with the station key you retrieved earlier.
-* The single quotes \(`'`\) are important, as the station key from ADSBHub contains special characters that would confuse docker-compose if the single quotes were missing.
+* The single quotes \(`'`\) are important, as the station key from ADSBHub contains special characters that would confuse `docker compose` if the single quotes were missing.
 
 For example:
 
@@ -73,7 +73,7 @@ To explain what's going on in this addition:
   * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
   * `CLIENTKEY` will use the `ADSBHUB_STATION_KEY` variable from your `.env` file.
 
-Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `adsbhub` container. You should see the following output:
+Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `adsbhub` container. You should see the following output:
 
 ```text
 readsb is up-to-date
