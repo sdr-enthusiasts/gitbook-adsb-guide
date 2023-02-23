@@ -131,7 +131,7 @@ To explain what's going on in this addition:
   * The size of the container, by not writing changes to the underlying container; and
   * SD Card or SSD wear
 
-Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `piaware` container. You should see the following output:
+Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `piaware` container. You should see the following output:
 
 ```text
 readsb is up-to-date
@@ -139,7 +139,7 @@ adsbx is up-to-date
 Creating piaware
 ```
 
-We can view the logs for the environment with the command `docker-compose logs`, or continually "tail" them with `docker-compose logs -f`. At this stage, the logs will be fairly unexciting and look like this:
+We can view the logs for the environment with the command `docker compose logs`, or continually "tail" them with `docker compose logs -f`. At this stage, the logs will be fairly unexciting and look like this:
 
 ```text
 piaware           | [s6-init] making user provided files available at /var/run/s6/etc...exited 0.
@@ -203,5 +203,5 @@ We can see our container running with the command `docker ps`.
 
 Once running, you can visit `http://docker.host.ip.addr:8081/` to access PiAware's "SkyAware". From there you need to configure your location and altitude on the FlightAware's website. To do this, click on the blue button marked `Go to my ADS-B Statistics Page` on your "SkyAware". When the FA website loads, click on the gear icon near your feeder name and configure your location and height *using the same values you set in your .env file*. If you do not configure these values via the FA website MLAT will not work for your PiAware feeder.  You can also log onto FlightAware's website and click on the `My ADSB` link at the top of the page, and see your statistics, configure your location and altitude and other settings.
 
-Remember, if you change your location and altitude on FlightAware's website, you'll need to update your `.env` file locally \(and re-run `docker-compose up -d` from your application directory\)!
+Remember, if you change your location and altitude on FlightAware's website, you'll need to update your `.env` file locally \(and re-run `docker compose up -d` from your application directory\)!
 

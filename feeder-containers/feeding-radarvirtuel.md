@@ -84,7 +84,7 @@ To explain what's going on in this addition:
   * Enabling receiving MLAT RAW data and sending latitude, longitude and altitude from the .env file
 * The mounted volumes make sure that the container will use the same timezone as your host system
 
-Once the file has been updated, issue the command `docker-compose pull radarvirtuel && docker-compose up -d` in the application directory to apply the changes and bring up the `radarvirtuel` container. You should see the following output:
+Once the file has been updated, issue the command `docker compose pull radarvirtuel && docker compose up -d` in the application directory to apply the changes and bring up the `radarvirtuel` container. You should see the following output:
 
 ```text
 readsb is up-to-date

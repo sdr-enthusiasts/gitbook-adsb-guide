@@ -41,7 +41,7 @@ Open the `docker-compose.yml` file that was created when deploying `readsb`. App
       - '/var/lib/zerotier-one:/var/lib/zerotier-one'
 ```
 
-Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `zerotier` container.
+Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `zerotier` container.
 
 ## Joining your Network
 

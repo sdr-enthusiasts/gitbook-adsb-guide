@@ -13,15 +13,15 @@ The following tasks and information will be useful as you continue through this 
 
 ### Stopping the `adsb` application
 
-If you need to bring the environment down \(for example, if you need to unplug the RTL-SDR USB dongle for maintenance\), you can issue the command `docker-compose down` from the application directory \(the directory containing your `docker-compose.yml` file\).
+If you need to bring the environment down \(for example, if you need to unplug the RTL-SDR USB dongle for maintenance\), you can issue the command `docker compose down` from the application directory \(the directory containing your `docker-compose.yml` file\).
 
 ### Starting the `adsb` application
 
-To start the environment, or apply any changes made to your `docker-compose.yml` file, you can issue the command `docker-compose up -d` from the application directory.
+To start the environment, or apply any changes made to your `docker-compose.yml` file, you can issue the command `docker compose up -d` from the application directory.
 
 ### Viewing container logs
 
-To "tail" the consolidated logs of all containers that make up the `adsb` application, you can issue the command `docker-compose logs -f` from the application directory.
+To "tail" the consolidated logs of all containers that make up the `adsb` application, you can issue the command `docker compose logs -f` from the application directory.
 
 Individual container logs can be "tailed" with `docker logs -f CONTAINER`.
 
@@ -32,13 +32,13 @@ If you want to limit the output to, for example, the last 100 lines, you can add
 If you would like to manually update your containers to the latest versions of their images, you can run the following commands from the application directory:
 
 ```bash
-docker-compose pull
-docker-compose up -d
+docker compose pull
+docker compose up -d
 ```
 
 ### Updating container configuration
 
-If you need to update a container's configuration in `docker-compose.yml` or in the `.env` file, once complete, issue the command `docker-compose up -d` \(in the `docker-compose.yml` file's directory\) and the affected containers will be recreated by `docker-compose` to reflect the updated configuration.
+If you need to update a container's configuration in `docker-compose.yml` or in the `.env` file, once complete, issue the command `docker compose up -d` \(in the `docker-compose.yml` file's directory\) and the affected containers will be recreated by `docker compose` to reflect the updated configuration.
 
 ### Start containers on system boot
 

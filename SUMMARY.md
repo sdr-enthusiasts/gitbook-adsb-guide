@@ -4,9 +4,9 @@
 
 ## Intro
 
-* [Changes From the Old Guide](intro/changes-from-the-old-guide.md)
 * [Overview](intro/overview.md)
 * [How to Get Help](intro/how-to-get-help.md)
+* [What is Docker?](intro/what-is-docker.md)
 * [Why Docker?](intro/why-docker.md)
 * [Equipment Needed](intro/equipment-needed.md)
 * [Information Needed](intro/information-needed.md)
@@ -44,8 +44,9 @@
 ## Useful Extras
 
 * [Improved Visualisation with tar1090](useful-extras/improved-visualisation-with-tar1090.md)
-* [Alternative Graphing with Influx and Grafana](useful-extras/alternative-graphing-with-influx-grafana.md)
-* [Alternative Graphing with Prometheus and Grafana](useful-extras/alternative-graphing-with-prometheus-grafana.md)
+* [Storing Data and Metrics in a Time Series Database](useful-extras/storing-time-series-data.md)
+* [Graphing Data and Metrics with Influx and Grafana](useful-extras/alternative-graphing-with-influx-grafana.md)
+* [Graphing Data and Metrics with Prometheus and Grafana](useful-extras/alternative-graphing-with-prometheus-grafana.md)
 * [Auto-Restart Unhealthy Containers](useful-extras/auto-restart-unhealthy-containers.md)
 * [Auto-Upgrade Containers](useful-extras/auto-upgrade-containers.md)
 * [Managing a remote station using ZeroTier](useful-extras/managing-a-remote-station.md)

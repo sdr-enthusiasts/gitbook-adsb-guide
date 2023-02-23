@@ -1,12 +1,12 @@
 ---
 description: >-
   If you wish to store data from readsb in a time series database such as
-  InfluxDB, use the information below.
+  InfluxDB or Prometheus, review the information below.
 ---
 
 # Storing Data and Metrics in a Time Series Database
 
-The `readsb-protobuf` container also contains InfluxData's [Telegraf](https://docs.influxdata.com/telegraf/), and can send flight data and `readsb` metrics to InfluxDB or Prometheus. [Telegraf](https://docs.influxdata.com/telegraf/) is not started by default. `INFLUXDBURL` must be set in order to start the built-in [Telegraf](https://docs.influxdata.com/telegraf/) instance.
+The `readsb-protobuf` container also contains InfluxData's [Telegraf](https://docs.influxdata.com/telegraf/), and can send flight data and `readsb` metrics to [InfluxDB](https://docs.influxdata.com/influxdb/) or [Prometheus](https://prometheus.io). [Telegraf](https://docs.influxdata.com/telegraf/) is not started by default. `INFLUXDBURL` must be set in order to start the built-in [Telegraf](https://docs.influxdata.com/telegraf/) instance.
 
 ## InfluxDB Options
 
@@ -144,8 +144,3 @@ These variables control exposing flight data and `readsb` metrics to [Prometheus
 | `PROMETHEUSPORT` | The port that the Prometheus client will listen on | `9273` |
 | `PROMETHEUSPATH` | The path that the Prometheus client will publish metrics on | `/metrics` |
 
-## Grafana Dashboard
-
-If you're using `INFLUXDBURL` and pushing metrics into InfluxDB, [@mikenye](https://github.com/mikenye) has put together a sample Grafana dashboard, which can be found [here](https://grafana.com/grafana/dashboards/13168).
-
-Due to the performance requirements it is not recommended to run Grafana on a Raspberry Pi.

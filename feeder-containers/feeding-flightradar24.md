@@ -125,7 +125,7 @@ To explain what's going on in this addition:
   * The size of the container, by not writing changes to the underlying container; and
   * SD Card or SSD wear
 
-Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `fr24` container. You should see the following output:
+Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `fr24` container. You should see the following output:
 
 ```text
 readsb is up-to-date
@@ -134,7 +134,7 @@ piaware is up-to-date
 Creating fr24
 ```
 
-We can view the logs for the environment with the command `docker-compose logs`, or continually "tail" them with `docker-compose logs -f`. At this stage, the logs will be fairly unexciting and look like this:
+We can view the logs for the environment with the command `docker compose logs`, or continually "tail" them with `docker compose logs -f`. At this stage, the logs will be fairly unexciting and look like this:
 
 ```text
 [s6-init] making user provided files available at /var/run/s6/etc...exited 0.

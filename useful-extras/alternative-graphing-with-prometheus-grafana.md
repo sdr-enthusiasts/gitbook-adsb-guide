@@ -59,13 +59,13 @@ Append the following lines to the end of the file:
       - grafana_data:/var/lib/grafana
 ```
 
-Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `prometheus` and `grafana` containers. This will also restart the `readsb` container, which will now use `telegraf` to feed data to `prometheus`.
+Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `prometheus` and `grafana` containers. This will also restart the `readsb` container, which will now use `telegraf` to feed data to `prometheus`.
 
 At this point we will need to add a collector definition to `prometheus` and restart with the new configuration.
 
 1. Issue the command `docker exec -it prometheus sh -c "echo -e \"  - job_name: 'readsb'\n    static_configs:\n      - targets: ['readsb:9273']\" >> /etc/prometheus/prometheus.yml"`
 2. Issue the command `docker stop prometheus`
-3. Issue the command `docker-compose up -d`
+3. Issue the command `docker compose up -d`
 
 You should also be able to point your web browser at:
 

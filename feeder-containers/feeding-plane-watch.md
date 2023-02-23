@@ -85,7 +85,7 @@ To explain what's going on in this addition:
   * The size of the container, by not writing changes to the underlying container; and
   * SD Card or SSD wear
 
-Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `planewatch` container. You should see the following output:
+Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `planewatch` container. You should see the following output:
 
 ```text
 readsb is up-to-date
@@ -94,7 +94,7 @@ Creating planewatch
 
 You can see from the output above that the `readsb` container was left alone \(as the configuration for this container did not change\), and a new container `planewatch` was created.
 
-We can view the logs for the environment with the command `docker-compose logs`, or continually "tail" them with `docker-compose logs -f`. We should now see logs from our newly created `planewatch` container:
+We can view the logs for the environment with the command `docker compose logs`, or continually "tail" them with `docker compose logs -f`. We should now see logs from our newly created `planewatch` container:
 
 ```text
 [s6-init] making user provided files available at /var/run/s6/etc...exited 0.

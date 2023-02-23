@@ -70,7 +70,7 @@ To explain what's going on in this addition:
 * We're creating a container called `multifeeder`, from the image `ghcr.io/sdr-enthusiasts/docker-multifeeder`.
 * We're passing several environment variables to the container (see above)one as your host system
 
-Once the file has been updated, issue the command `docker-compose pull && docker-compose up -d` in the application directory to apply the changes and bring up the `multifeeder` container. You should see the following output:
+Once the file has been updated, issue the command `docker compose pull && docker compose up -d` in the application directory to apply the changes and bring up the `multifeeder` container. You should see the following output:
 
 ```text
 readsb is up-to-date

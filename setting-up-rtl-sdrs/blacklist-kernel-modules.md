@@ -7,6 +7,8 @@ description: >-
 
 # Blacklist Kernel Modules
 
+**NOTE: If you used the [docker-install.sh](https://github.com/sdr-enthusiasts/docker-install) script, you can skip this section.**
+
 Before we can plug in our RTL-SDR dongle, we need to blacklist the kernel modules for the RTL-SDR USB device from being loaded into the host's kernel and taking ownership of the device.
 
 To do this, we will create a blacklist file at `/etc/modprobe.d/blacklist-rtlsdr.conf` with the following command. Please copy and paste all lines at once, and press enter after to ensure the final line is given allowing it to run.

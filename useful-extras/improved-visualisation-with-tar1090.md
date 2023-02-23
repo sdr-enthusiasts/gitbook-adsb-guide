@@ -51,7 +51,7 @@ Append the following lines to the end of the file:
       - /var/log
 ```
 
-Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `tar1090` container.
+Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `tar1090` container.
 
 You should also be able to point your web browser at:
 

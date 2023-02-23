@@ -47,7 +47,7 @@ To explain what's going on in this addition:
 
 ## Update `readsb` container configuration
 
-Before running `docker-compose`, we also want to update the configuration of the `readsb` container, so that it pulls the demodulated UAT data from the `dump978` container.
+Before running `docker compose`, we also want to update the configuration of the `readsb` container, so that it pulls the demodulated UAT data from the `dump978` container.
 
 Open the `docker-compose.yml` and add the following environment variable to the `readsb` service:
 
@@ -99,7 +99,7 @@ The UAT data will be sent out over BEAST connections from the readsb container t
 
 ## Refresh running containers
 
-At this point, you can issue the command `docker-compose up -d` to refresh both the `readsb` and `dump978` containers.
+At this point, you can issue the command `docker compose up -d` to refresh both the `readsb` and `dump978` containers.
 
 ## Viewing Live Data
 

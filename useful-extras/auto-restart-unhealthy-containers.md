@@ -64,7 +64,7 @@ To explain what's going on in this addition:
   * `AUTOHEAL_CONTAINER_ALL=all` to inform autoheal to monitor all containers
 * We're passing through the docker socket `/var/run/docker.sock` so that autoheal can control docker \(to restart containers\).
 
-Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `autoheal` container. You should see the following output:
+Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `autoheal` container. You should see the following output:
 
 ```text
 readsb is up-to-date
@@ -159,7 +159,7 @@ To explain what's going on in this addition:
 * We're creating a container called `autoheal`, from the image `willfarrell/autoheal:latest`.
 * We're passing through the docker socket `/var/run/docker.sock` so that autoheal can control docker \(to restart containers\).
 
-Once the file has been updated, issue the command `docker-compose up -d` in the application directory to apply the changes and bring up the `autoheal` container. You should see the following output:
+Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `autoheal` container. You should see the following output:
 
 ```text
 Recreating readsb
@@ -173,7 +173,7 @@ opensky is up-to-date
 Creating autoheal
 ```
 
-Note that any containers you added the `label:` directive to were recreated by `docker-compose` to reflect the updated configuration. Cool huh?
+Note that any containers you added the `label:` directive to were recreated by `docker compose` to reflect the updated configuration. Cool huh?
 
 The container does not log any output, so check it is running by issuing the command `docker ps` and finding the `autoheal` container. It should have a status of `Up 20 seconds (healthy)` or similar.
 
