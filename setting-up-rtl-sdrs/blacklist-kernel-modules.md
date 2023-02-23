@@ -18,6 +18,7 @@ To do this, we will create a blacklist file at `/etc/modprobe.d/blacklist-rtlsdr
 sudo tee /etc/modprobe.d/blacklist-rtlsdr.conf > /dev/null <<TEXT1
 # Blacklist host from loading modules for RTL-SDRs to ensure they
 # are left available for the Docker guest.
+
 blacklist dvb_core
 blacklist dvb_usb_rtl2832u
 blacklist dvb_usb_rtl28xxu
