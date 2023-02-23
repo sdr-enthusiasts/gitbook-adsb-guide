@@ -1,7 +1,6 @@
 name: Check Links
 
 on:
-  push:
   pull_request:
     branches: 
       - master
