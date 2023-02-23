@@ -17,12 +17,12 @@ These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined
 
 **Profit:**
 
-* [ADS-B Exchange](https://adsbexchange.com/)
 * [FlightAware](https://flightaware.com/adsb/piaware/)
 * [FlightRadar24](https://www.flightradar24.com/share-your-data)
 * [Plane Finder](https://planefinder.net)
 * [RadarBox](https://www.radarbox.com)
 * [radarvirtuel.com](https://radarvirtuel.com)
+* [ADS-B Exchange](https://adsbexchange.com/)
 
 This guide will walk you through the process to deploy and configure Docker containers to allow reception and decoding of ADS-B data, as well as submission to various flight tracking services, both open and commercial, and the visualisation of this data.
 
