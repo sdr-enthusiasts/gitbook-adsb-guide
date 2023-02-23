@@ -4,7 +4,7 @@ description: 'If you wish to feed RadarVirtuel, follow the steps below.'
 
 # Feeding RadarVirtuel
 
-The main goal of [RadarVirtuel](https://radarvirtuel.com/) is to collect data about flights. Although RadarVirtuel welcomes feeding stations from all over the world, their differentiator is to collect information about traffic around smaller airports around the world.
+The main goal of [RadarVirtuel](https://www.radarvirtuel.com/) is to collect data about flights. Although RadarVirtuel welcomes feeding stations from all over the world, their differentiator is to collect information about traffic around smaller airports around the world.
 
 The docker image [`ghcr.io/sdr-enthusiasts/docker-radarvirtuel`](https://github.com/sdr-enthusiasts/docker-radarvirtuel) contains the required feeder software and all required prerequisites and libraries. This needs to run in conjunction with `readsb`, `tar1090`, or another RAW provider.
 
