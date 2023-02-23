@@ -31,4 +31,4 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Run markdown-link-check against *.md files
-      run: markdown-link-check --config "$(pwd)/.markdown-link-check.json" --quiet "${{ martix.manifest }}"
+      run: markdown-link-check --config "$(pwd)/.markdown-link-check.json" --quiet "${{ matrix.manifest }}"
