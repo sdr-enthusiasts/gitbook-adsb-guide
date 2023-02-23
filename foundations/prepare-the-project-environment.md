@@ -21,7 +21,7 @@ cd /opt/adsb
 You will likely also want to change the ownership of this directory to your regular user account, so you don't have to use `sudo` to edit the files within. To do this:
 
 ```bash
-chown $(id -u) /opt/adsb
+sudo chown $(id -u) /opt/adsb
 ```
 
 ## Create a `.env` file to hold our environment's variables
