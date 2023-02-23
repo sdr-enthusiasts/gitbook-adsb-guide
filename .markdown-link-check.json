@@ -14,5 +14,6 @@
                 "Connection": "keep-alive"
             }
         }
-    ]
+    ],
+    "aliveStatusCodes": [200,206,403]
 }
