@@ -18,7 +18,15 @@ jobs:
       - id: set-matrix
         run: |
           set -x
-          echo "matrix=$(find "$(pwd)" -type f -iname \*.md | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
+          echo "matrix=$(find "$(pwd)" -type f -iname \*.md | jq -R -s 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
+
+  troubleshoot:
+    runs-on: ubuntu-latest
+    needs: [generate-matrix]
+    steps:
+      - run: |
+          set -x
+          echo "${{ needs.generate-matrix.output.matrix }}" | jq .
 
   markdown-link-check:
     runs-on: ubuntu-latest
