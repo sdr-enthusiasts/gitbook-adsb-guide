@@ -38,9 +38,9 @@ Append the following lines to the end of the file \(inside the `services:` secti
     restart: always
     environment:
       - TZ=${FEEDER_TZ}
-      - READSB_NET_CONNECTOR=readsb,30005,beast_in;dump978,30978,raw_in;feed.adsb.fi,30004,beast_reduce_plus_out;feed.adsb.one,64004,beast_reduce_plus_out;in.adsb.lol,30004,beast_reduce_plus_out
+      - READSB_NET_CONNECTOR=readsb,30005,beast_in;dump978,30978,raw_in;feed.adsb.fi,30004,beast_reduce_plus_out;feed.adsb.one,64004,beast_reduce_plus_out;in.adsb.lol,30004,beast_reduce_plus_out;feed.theairtraffic.com,30004,beast_out;feed.planespotters.net,30004,beast_reduce_plus_out
       - UUID=00000000-0000-0000-0000-000000000000
-      - MLAT_CONFIG=feed.adsb.fi,31090,39000;feed.adsb.one,64006,39001;in.adsb.lol,31090,39002
+      - MLAT_CONFIG=feed.adsb.fi,31090,39000;feed.adsb.one,64006,39001;in.adsb.lol,31090,39002;feed.theairtraffic.com,31090,39003;mlat.planespotters.net,31090,39004
       - READSB_LAT=${FEEDER_LAT}
       - READSB_LON=${FEEDER_LONG}
       - READSB_ALT=${FEEDER_ALT_M}m
@@ -113,9 +113,10 @@ We can view the logs for the environment with the command `docker logs multifeed
 | **Site**          | **readsb_url**         | **readsb_port** | **mlat_url**           | **mlat_port** |
 |-------------------|------------------------|-----------------|------------------------|---------------|
 | [adsb.fi](https://adsb.fi/)           | feed.adsb.fi           |           30004 | feed.adsb.fi           |         31090 |
-| [adsb.one](https://adsb.one/)          | feed.adsb.one          |           64004 | feed.adsb.one          |         64006 |
-| [adsb.lol](https://adsb.lol/)          | feed.adsb.lol          |            1337 | feed.adsb.lol          |          1338 |
-| [theairtraffic.com](https://theairtraffic.com/) | feed.theairtraffic.com |           30004 | feed.theairtraffic.com |         31090 |
+| [ADSB.lol](https://adsb.lol/)          | feed.adsb.lol          |            1337 | feed.adsb.lol          |          1338 |
+| [ADSB One](https://adsb.one/)          | feed.adsb.one          |           64004 | feed.adsb.one          |         64006 |
+| [Planespotters.net](https://www.planespotters.net/)          | feed.planespotters.net          |           30004 | mlat.planespotters.net         |         31090 |
+| [The Air Traffic](https://theairtraffic.com/) | feed.theairtraffic.com |           30004 | feed.theairtraffic.com |         31090 |
 
 ## More information and support
 
