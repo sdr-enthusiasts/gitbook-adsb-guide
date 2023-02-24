@@ -11,7 +11,8 @@ These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined
 * [ADSB.lol](https://adsb.lol/)
 * [ADSB One](https://adsb.one/)
 * [LiveTraffic](https://twinfan.gitbook.io/livetraffic/)
-* [OpenSky Network](https://opensky-network.org)
+* [OpenSky Network](https://opensky-network.org/)
+* [Planespotters.net](https://www.planespotters.net/)
 * [Plane Watch](https://plane.watch/)
 * [The Air Traffic](https://theairtraffic.com/)
 
