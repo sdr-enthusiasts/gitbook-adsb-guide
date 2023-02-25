@@ -7,10 +7,9 @@ These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined
 ## Fun and Non-Profit Aggregators
 
 * [ADSBHub](https://www.adsbhub.org)
-* [adsb.fi](https://globe.adsb.fi/)
+* [adsb.fi](https://adsb.fi/)
 * [ADSB.lol](https://adsb.lol/)
 * [ADSB One](https://adsb.one/)
-* [LiveTraffic](https://twinfan.gitbook.io/livetraffic/)
 * [OpenSky Network](https://opensky-network.org/)
 * [Planespotters.net](https://www.planespotters.net/)
 * [Plane Watch](https://plane.watch/)
