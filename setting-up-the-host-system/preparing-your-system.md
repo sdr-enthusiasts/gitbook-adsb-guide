@@ -20,12 +20,12 @@ Throughout this guide, you'll be presented with commands to copy/paste into your
 
 Once you've connected your Linux device to your network, it's possible to access and manage it with SSH. On macOS, you can do this via the Terminal app, on Windows, you can use [PuTTY](https://www.putty.org/). You can connect to your new device via SSH entering this command `ssh username@new.device.ip.addresss` in Terminal/PuTTY.
 
-### DHCPCD issue Raspberry Pi
-Some users have reported issues with Raspberry Pi devices loosing network connectivity when running multiple containers. In effort to prevent this, run the following command ```sudo nano /etc/dhcpcd.conf``` and insert the following ```denyinterfaces veth*```. The file will look something like this:  
+### Raspberry Pi DHCPCD Issue
+
+Some users have reported issues with Raspberry Pi devices loosing network connectivity when running multiple containers. In effort to prevent this, run the following command `echo "denyinterfaces veth*" >> /etc/dhcpd.conf`. The file will look something like this:  
 
 ```# A sample configuration for dhcpcd.
 # See dhcpcd.conf(5) for details.
-denyinterfaces veth*
 
 # Allow users of this group to interact with dhcpcd via the control socket.
 #controlgroup wheel
@@ -67,7 +67,7 @@ require dhcp_server_identifier
 slaac private
 
 # Example static IP configuration:
-#interface eth0
+#interface eth0echo "denyinterfaces veth*" >> /etc/dhcpd.conf
 #static ip_address=192.168.0.10/24
 #static ip6_address=fd51:42f8:caae:d92e::ff/64
 #static routers=192.168.0.1
@@ -82,6 +82,10 @@ slaac private
 
 # fallback to static profile on eth0
 #interface eth0
-#fallback static_eth0```
+#fallback static_eth0
+denyinterfaces veth*```
 
-After saving this file, restart DHCPCD ```sudo systemctl restart dhcpcd``` 
+After saving this file, restart DHCPCD 
+```
+sudo systemctl restart dhcpcd
+``` 
