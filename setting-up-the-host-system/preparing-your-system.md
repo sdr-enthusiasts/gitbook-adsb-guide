@@ -22,9 +22,10 @@ Once you've connected your Linux device to your network, it's possible to access
 
 ### Raspberry Pi DHCPCD Issue
 
-Some users have reported issues with Raspberry Pi devices loosing network connectivity when running multiple containers. In effort to prevent this, run the following command `echo "denyinterfaces veth*" >> /etc/dhcpd.conf`. The file will look something like this:  
+Some users have reported issues with Raspberry Pi devices loosing network connectivity when running multiple containers. In effort to prevent this, run the following command `echo "denyinterfaces veth*" >> /etc/dhcpcd.conf`. The file will look something like this:  
 
-```# A sample configuration for dhcpcd.
+```
+# A sample configuration for dhcpcd.
 # See dhcpcd.conf(5) for details.
 
 # Allow users of this group to interact with dhcpcd via the control socket.
@@ -83,9 +84,11 @@ slaac private
 # fallback to static profile on eth0
 #interface eth0
 #fallback static_eth0
-denyinterfaces veth*```
+denyinterfaces veth*
+```
 
-After saving this file, restart DHCPCD 
+After saving this file, restart DHCPCD
+
 ```
 sudo systemctl restart dhcpcd
 ``` 
