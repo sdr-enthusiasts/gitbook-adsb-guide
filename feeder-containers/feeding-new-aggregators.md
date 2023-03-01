@@ -23,7 +23,7 @@ Open the `docker-compose.yml` file that was created when deploying `readsb`.
 Append the following lines to the end of the file \(inside the `services:` section\). Please edit the following parameters:
 
 * `READSB_NET_CONNECTOR`
-  * remove `dump978,30978,raw_in;` if you don't have a UAT (978MHz) dongle
+  * remove `dump978,37981,raw_in;` if you don't have a UAT (978MHz) dongle
   * add any additional "new aggregators" to the end of the line separated by `;`. The format is `feeder_hostname,feeder_beast_port,beast_out`
 * `UUID` - enter your UUID here -- see below on how to generate this
 * `MLAT_CONFIG` - add any additional "new aggregators" to the end of the line separated by `;`. The format is `feeder_mlat_hostname,feeder_mlat_port,local_mlat_results_port`
@@ -38,7 +38,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
     restart: always
     environment:
       - TZ=${FEEDER_TZ}
-      - READSB_NET_CONNECTOR=readsb,30005,beast_in;dump978,30978,raw_in;feed.adsb.fi,30004,beast_reduce_plus_out;feed.adsb.one,64004,beast_reduce_plus_out;in.adsb.lol,30004,beast_reduce_plus_out;feed.theairtraffic.com,30004,beast_out;feed.planespotters.net,30004,beast_reduce_plus_out
+      - READSB_NET_CONNECTOR=readsb,30005,beast_in;dump978,37981,raw_in;feed.adsb.fi,30004,beast_reduce_plus_out;feed.adsb.one,64004,beast_reduce_plus_out;in.adsb.lol,30004,beast_reduce_plus_out;feed.theairtraffic.com,30004,beast_out;feed.planespotters.net,30004,beast_reduce_plus_out
       - UUID=00000000-0000-0000-0000-000000000000
       - MLAT_CONFIG=feed.adsb.fi,31090,39000;feed.adsb.one,64006,39001;in.adsb.lol,31090,39002;feed.theairtraffic.com,31090,39003;mlat.planespotters.net,31090,39004
       - READSB_LAT=${FEEDER_LAT}
@@ -53,7 +53,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 If you already have a `UUID` that was generated for the ADSBExchange service, feel free to reuse that one. If you don't have one, you can generate one by logging onto you Linux machine (Raspberry Pi, etc.) and giving this command:
 
-```
+```bash
 cat  /proc/sys/kernel/random/uuid
 ```
 
