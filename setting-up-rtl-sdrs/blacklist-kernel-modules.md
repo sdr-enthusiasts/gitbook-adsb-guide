@@ -18,6 +18,7 @@ Before we can plug in our RTL-SDR dongle, we need to blacklist the kernel module
 3. Updating the initramfs boot image to remove any references to our now blacklisted modules
 
 ### 1. Blacklist Modules
+
 To do this, we will create a blacklist file at `/etc/modprobe.d/blacklist-rtlsdr.conf` with the following command. While logged in as root, please copy and paste all lines at once, and press enter after to ensure the final line is given allowing it to run.
 
 ```bash
@@ -64,6 +65,7 @@ TEXT1
 ```
 
 ### 2. Unload Modules
+
 Next, ensure the modules are unloaded by running the following commands:
 
 ```bash
