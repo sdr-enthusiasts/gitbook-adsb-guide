@@ -96,34 +96,13 @@ As you can see from the output above, the sharing key given to us from Radarbox 
 If the script doesn't output the sharing key, it can be found by using the following command:
 
 ```shell
-docker exec -it rbfeeder /bin/sh -c "cat /etc/rbfeeder.ini"
+docker exec -it rbfeeder /bin/sh -c "cat /etc/rbfeeder.ini" | grep key
 ```
 
 Command output:
 
 ```
-[client]
-network_mode=true
-log_file=/var/log/rbfeeder.log
-debug_level=0
-
-lat=40.00
-lon=-111.00
-alt=1420
-
-key=7a0148c894e57464d9757ea666ddcea2
-
-sn=EXTRPI000000
-
-[network]
-mode=beast
-  
-external_port=30005
-external_host=111.11.1.1
-
-[mlat]
-mlat_cmd=/usr/bin/python3 /usr/local/bin/mlat-client --results beast,listen,30105
-autostart_mlat=true
+key=g45643ab345af3c5d5g923a99ffc0de9
 ```
 
 ## Claiming Your Receiver
