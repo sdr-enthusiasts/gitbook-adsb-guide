@@ -93,7 +93,19 @@ In the output above, see the line:
 
 As you can see from the output above, the sharing key given to us from Radarbox is `g45643ab345af3c5d5g923a99ffc0de9`.
 
-You should now claim your receiver:
+If the script doesn't output the sharing key, it can be found by using the following command:
+
+```shell
+docker exec -it rbfeeder /bin/sh -c "cat /etc/rbfeeder.ini" | grep key
+```
+
+Command output:
+
+```
+key=g45643ab345af3c5d5g923a99ffc0de9
+```
+
+## Claiming Your Receiver
 
 1. Go to [https://www.radarbox.com/](https://www.radarbox.com/)
 2. Create an account or sign in
