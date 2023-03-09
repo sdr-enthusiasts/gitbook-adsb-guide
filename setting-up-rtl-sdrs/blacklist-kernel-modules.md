@@ -11,11 +11,12 @@ description: >-
 
 Before we can plug in our RTL-SDR dongle, we need to blacklist the kernel modules for the RTL-SDR USB device from being loaded into the host's kernel and taking ownership of the device.
 
-## **There are three parts to this.**
+## **There are four parts to this.**
 
 1. Blacklist modules from being directly loaded AND blacklist modules from being loaded as a dependency of other modules
-2. Unload any of our blacklisted modules from memory
-3. Updating the initramfs boot image to remove any references to our now blacklisted modules
+1. Unload any of our blacklisted modules from memory
+1. Rebuid module dependency database
+1. Updating the initramfs boot image to remove any references to our now blacklisted modules
 
 ### 1. Blacklist Modules
 
@@ -84,7 +85,17 @@ sudo modprobe -r rtl8xxxu
 
 ```
 
-#### 3. Update the Boot Image
+### 3. Rebuild module dependency database
+
+Next we rebuild the module dependency database with this command:
+
+```
+depmod -a
+```
+
+This may appear to initially not be doing anything, but after a short wait will begin outputting many lines of status updates as it runs until it finishes.
+
+### 3. Update the Boot Image
 
 Now we need to update our boot image to ensure any references to the modules we've blacklisted are removed
 
