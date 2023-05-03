@@ -69,8 +69,8 @@ Append the following lines to the end of the file:
     ports:
       - 8086:8086
     volumes:
-      - influxdb_data:/var/lib/influxdb
-      - influxdb_config:/etc/influxdb
+      - influxdb_data:/var/lib/influxdb2
+      - influxdb_config:/etc/influxdb2
 
   grafana:
     image: grafana/grafana-oss:latest
