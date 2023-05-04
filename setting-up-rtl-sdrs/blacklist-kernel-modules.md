@@ -37,8 +37,6 @@ blacklist rtl2830
 blacklist rtl2832
 blacklist rtl2832_sdr
 blacklist rtl2838
-blacklist rtl8192cu
-blacklist rtl8xxxu
 
 # This alone will not prevent a module being loaded if it is a
 # required or an optional dependency of another module. Some kernel
@@ -58,8 +56,6 @@ install rtl2830 /bin/false
 install rtl2832 /bin/false
 install rtl2832_sdr /bin/false
 install rtl2838 /bin/false
-install rtl8192cu /bin/false
-install rtl8xxxu /bin/false
 
 TEXT1
 
@@ -70,19 +66,15 @@ TEXT1
 Next, ensure the modules are unloaded by running the following commands:
 
 ```bash
-sudo modprobe -r rtl2832_sdr
+sudo modprobe -r dvb_core
 sudo modprobe -r dvb_usb_rtl2832u
 sudo modprobe -r dvb_usb_rtl28xxu
 sudo modprobe -r dvb_usb_v2
-sudo modprobe -r 8192cu
 sudo modprobe -r r820t
 sudo modprobe -r rtl2830
 sudo modprobe -r rtl2832
+sudo modprobe -r rtl2832_sdr
 sudo modprobe -r rtl2838
-sudo modprobe -r rtl8192cu
-sudo modprobe -r rtl8xxxu
-sudo modprobe -r dvb_core
-
 ```
 
 ### 3. Rebuild module dependency database
