@@ -108,7 +108,6 @@ Append the following lines to the end of the file \(inside the `services:` secti
       - 8754:8754
     environment:
       - BEASTHOST=readsb
-      - TZ=${FEEDER_TZ}
       - FR24KEY=${FR24_SHARING_KEY}
     tmpfs:
       - /var/log
@@ -119,7 +118,6 @@ To explain what's going on in this addition:
 * We're creating a container called `fr24`, from the image `ghcr.io/sdr-enthusiasts/docker-flightradar24:latest`.
 * We're passing several environment variables to the container:
   * `BEASTHOST=readsb` to inform the feeder to get its ADSB data from the container `readsb` network.
-  * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
   * `FR24KEY` will use the `FR24_SHARING_KEY` variable from your `.env` file.
 * We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
   * The size of the container, by not writing changes to the underlying container; and
