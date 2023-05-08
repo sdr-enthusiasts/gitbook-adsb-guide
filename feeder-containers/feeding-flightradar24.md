@@ -102,8 +102,6 @@ Append the following lines to the end of the file \(inside the `services:` secti
     tty: true
     container_name: fr24
     restart: always
-    depends_on:
-      - ultrafeeder
     ports:
       - 8754:8754
     environment:

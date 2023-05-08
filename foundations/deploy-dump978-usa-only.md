@@ -7,7 +7,7 @@ description: >-
 
 # Deploy "dump978" \(USA Only\)
 
-## USA Only!
+## USA Only
 
 The FAA has adopted 1090MHz for all flight levels, and UAT only for operations below 18,000 feet. UAT supports two-way links, and the FAA provides additional services on the uplink including [TIS-B](https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs/#tisb), and [ADS-R](https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#adsr), as well as [FIS-B](https://www.faa.gov/air_traffic/technology/equipadsb/capabilities/ins_outs#fisb), for weather and aeronautical information. Dual 1090/UAT systems have not been adopted in any other country.
 
@@ -24,17 +24,25 @@ Append the following lines to the end of the file \(inside the `services:` secti
     image: ghcr.io/sdr-enthusiasts/docker-dump978:latest
     tty: true
     container_name: dump978
-    restart: always
-    devices:
-      - /dev/bus/usb:/dev/bus/usb
+    restart: unless-stopped
+    device_cgroup_rules:
+      - 'c 189:* rwm'
     environment:
       - TZ=${FEEDER_TZ}
       - LAT=${FEEDER_LAT}
       - LON=${FEEDER_LONG}
-      - DUMP978_RTLSDR_DEVICE=978
+      - DUMP978_RTLSDR_DEVICE=${UAT_SDR_SERIAL}
+      - DUMP978_SDR_AGC=true
+      - DUMP978_SDR_GAIN=${UAT_SDR_GAIN}
+      - DUMP978_SDR_PPM=${UAT_SDR_PPM}
+    volumes:
+      - /opt/adsb/dump978/autogain:/run/autogain
+      - /dev:/dev:ro
+    ports:
+      - 30980:80
     tmpfs:
       - /run/readsb
-      - /run/uat2json
+      - /tmp
 ```
 
 To explain what's going on in this addition:
@@ -42,70 +50,31 @@ To explain what's going on in this addition:
 * Create a service named `dump978` that will run the `ghcr.io/sdr-enthusiasts/docker-dump978` container.
   * We're presenting the USB bus through to this container \(so `dump978` can talk to the USB-attached SDR\).
   * We're passing several environment variables to the container:
-    * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
-    * `DUMP978_RTLSDR_DEVICE=978` tells `dump978` to use the RTL-SDR device with the serial `978`.
+    * `TZ` will use the `FEEDER_TZ` variable from your `.env` file
+    * `DUMP978_RTLSDR_DEVICE=978` tells `dump978` to use the RTL-SDR device with the serial from your `.env` file
+    * The container will use the SDR gain, PPM, and Device Serial values from your `.env` file
 
 ## Update `ultrafeeder` container configuration
 
 Before running `docker compose`, we also want to update the configuration of the `readsb` container, so that it pulls the demodulated UAT data from the `dump978` container.
 
-Open the `docker-compose.yml` and add the following environment variable to the `readsb` service:
+Open the `docker-compose.yml` and make the following environment value is part of the `ULTRAFEEDER_CONFIG` variable to the `ultrafeeder` service:
 
 ```yaml
-      - READSB_NET_CONNECTOR=dump978,37981,raw_in
+      - ULTRAFEEDER_CONFIG=adsb,dump978,30978,uat_in;
 ```
 
-So, if your `readsb` service has not been modified from the previous step, it should look now look like this:
-
-```yaml
-version: '3.8'
-
-volumes:
-  readsbpb_rrd:
-  readsbpb_autogain:
-
-services:
-  readsb:
-    image: ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest
-    tty: true
-    container_name: readsb
-    hostname: readsb
-    restart: always
-    devices:
-      - /dev/bus/usb
-    ports:
-      - 8080:8080
-    environment:
-      - TZ=${FEEDER_TZ}
-      - READSB_DEVICE_TYPE=rtlsdr
-      - READSB_RTLSDR_DEVICE=1090
-      - READSB_GAIN=autogain
-      - READSB_LAT=${FEEDER_LAT}
-      - READSB_LON=${FEEDER_LONG}
-      - READSB_RX_LOCATION_ACCURACY=2
-      - READSB_STATS_RANGE=true
-      - READSB_NET_ENABLE=true
-      - READSB_NET_CONNECTOR=dump978,37981,raw_in
-    volumes:
-      - readsbpb_rrd:/run/collectd
-      - readsbpb_autogain:/run/autogain
-    tmpfs:
-      - /run/readsb
-```
-
-To explain this addition, the `readsb` container will connect to the `dump978` container on port `37981` and receive UAT data.
-
-The UAT data will be sent out over BEAST connections from the readsb container to the feeder containers.
+To explain this addition, the `ultrafeeder` container will connect to the `dump978` container on port `30978` and receive UAT data. This UAT data will then be included in any outbound data streams from `ultrafeeder`.
 
 ## Refresh running containers
 
-At this point, you can issue the command `docker compose up -d` to refresh both the `readsb` and `dump978` containers.
+At this point, you can issue the command `docker compose up -d` to refresh both the `ultrafeeder` and `dump978` containers.
 
 ## Viewing Live Data
 
 Firstly, it should be noted that there is generally vastly less UAT traffic than ADS-B 1090MHz traffic, so don't immediately assume the `dump978` container isn't working if you can't immediately see UAT flights. Provided the container is running and healthy
 
-To see the data being received and decoded by our new container, run the command `docker exec -it readsb viewadsb`. This should display a real-time departure-lounge-style screen showing all the aircraft being tracked. Look for entries in the `Mode` column listed as `ADS-R`/`UAT`.
+To see the data being received and decoded by our new container, run the command `docker exec -it ultrafeeder viewadsb`. This should display a real-time departure-lounge-style screen showing all the aircraft being tracked. Look for entries in the `Mode` column listed as `ADS-R`/`UAT`.
 
 For example:
 
@@ -119,11 +88,11 @@ For example:
 
 Press `CTRL-C` to escape this screen.
 
-You should also be able to point your web browser at `http://docker.host.ip.addr:8080/` to view the web interface \(change `docker.host.ip.addr` to the IP address of your docker host\). You should see a map showing your currently tracked aircraft, and the UAT aircraft will be denoted by a different colour in the list.
+You should also be able to point your web browser at `http://docker.host.ip.addr:30980/skyaware978` to view the web interface \(change `docker.host.ip.addr` to the IP address of your docker host\). You should see a map showing your currently tracked aircraft, and the UAT aircraft will be denoted by a different colour in the list.
 
 ## Feeder Configuration
 
-The majority of feeders will happily accept a combined 1090MHz & 978MHz feed coming from `readsb`, so there should be nothing further to do.
+The majority of feeders will happily accept a combined 1090MHz & 978MHz feed coming from `ultrafeeder`, so there should be nothing further to do.
 
 The current exceptions are:
 

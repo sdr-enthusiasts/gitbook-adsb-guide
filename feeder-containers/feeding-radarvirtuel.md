@@ -64,8 +64,6 @@ Append the following lines to the end of the file \(inside the `services:` secti
       - LAT=${FEEDER_LAT}
       - LON=${FEEDER_LONG}
       - ALT=${FEEDER_ALT_M}
-    depends_on:
-      - ultrafeeder
     tmpfs:
       - /tmp:rw,nosuid,nodev,noexec,relatime,size=128M
     volumes:

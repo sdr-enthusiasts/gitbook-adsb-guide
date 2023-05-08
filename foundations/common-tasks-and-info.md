@@ -66,7 +66,7 @@ CONTAINER ID   IMAGE                                                   COMMAND  
 Notice that next to the container status, there is some information about the container's health. This may be one of the following:
 
 * No health information: Not all images have healthchecks implemented. If an image doesn't report health, this is why.
-* `(health: starting)`: The container will wait up to a predefined start-period \(defined in the [Dockerfile](https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder/blob/main/Dockerfile#L231)\) or until the healthcheck script returns a healthy result.
+* `(health: starting)`: The container will wait up to a predefined start-period \(defined in the [Dockerfile](https://github.com/sdr-enthusiasts/docker-tar1090/blob/main/Dockerfile#L179)\) or until the healthcheck script returns a healthy result.
 * `(healthy)`: The container is operating as expected.
 * `(unhealthy)`: The container is not operating as expected.
 
@@ -86,34 +86,15 @@ docker inspect ultrafeeder | jq .[0].State.Health.Log | jq .[-1].Output | awk '{
 
 Which will return something like this:
 
-```javascript
-{
-  "Start": "2020-11-18T20:50:56.939989864+08:00",
-  "End": "2020-11-18T20:50:57.210787023+08:00",
-  "ExitCode": 0,
-  "Output": "last_15min:local_accepted is 15891: HEALTHY\nabnormal death count for service autogain is 0: HEALTHY\nabnormal death count for service collectd is 0: HEALTHY\nabnormal death count for service graphs_1h-24h is 0: HEALTHY\nabnormal death count for service graphs_7d-1y is 0: HEALTHY\nabnormal death count for service lighttpd is 0: HEALTHY\nabnormal death count for service ultrafeeder is 0: HEALTHY\nabnormal death count for service ultrafeederrrd is 0: HEALTHY\nabnormal death count for service telegraf_socat_vrs_json is 0: HEALTHY\nabnormal death count for service telegraf is 0: HEALTHY\n"
-}
+```text
+"readsb last updated: 1683575756.737, now: 1683575757.348255120, delta: .611255120. HEALTHY
+nginx deaths: 0. HEALTHY
+readsb deaths: 0. HEALTHY
+tar1090 deaths: 0. HEALTHY
+"
 ```
-
-The `Start` and `End` sections show when the healthcheck script was started and finished.
 
 An `ExitCode` of `0` represents a healthy result. An `ExitCode` of `1` represents an unhealthy result.
-
-The `Output` section shows the output from the healthcheck script. For our images, we try to explain why the script came to its healthy/unhealthy conclusion in the output of the script.
-
-```text
-last_15min:local_accepted is 15891: HEALTHY
-abnormal death count for service autogain is 0: HEALTHY
-abnormal death count for service collectd is 0: HEALTHY
-abnormal death count for service graphs_1h-24h is 0: HEALTHY
-abnormal death count for service graphs_7d-1y is 0: HEALTHY
-abnormal death count for service lighttpd is 0: HEALTHY
-abnormal death count for service ultrafeeder is 0: HEALTHY
-abnormal death count for service ultrafeederrrd is 0: HEALTHY
-abnormal death count for service telegraf_socat_vrs_json is 0: HEALTHY
-abnormal death count for service telegraf is 0: HEALTHY
-```
-
 The first line is showing that we've received messages from the SDR in the past 15 minutes. The remaining lines show the number of times a service has had an "abnormal death" \(crashed for some reason\).
 
 ### Disabling Healthchecks

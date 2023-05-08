@@ -11,17 +11,8 @@ description: >-
 We need a directory to host our application. The name of this directory will be the name of our application. Accordingly, we prefer to use `/opt/adsb`, so our application is called "adsb":
 
 ```bash
-sudo mkdir -p /opt/adsb
-```
-
-```bash
+sudo mkdir -p -m 777 /opt/adsb
 cd /opt/adsb
-```
-
-You will likely also want to change the ownership of this directory to your regular user account, so you don't have to use `sudo` to edit the files within. To do this:
-
-```bash
-sudo chown $(id -u) /opt/adsb
 ```
 
 ## Create a `.env` file to hold our environment's variables

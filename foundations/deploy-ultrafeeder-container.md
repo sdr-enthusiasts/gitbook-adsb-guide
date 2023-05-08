@@ -83,6 +83,7 @@ services:
       # --------------------------------------------------
       - UUID=${MULTIFEEDER_UUID}
       - MLAT_USER=${FEEDER_NAME}
+      - READSB_FORWARD_MLAT_SBS=true
       #
       # --------------------------------------------------
       # TAR1090 (Map Web Page) parameters:
@@ -140,7 +141,23 @@ The `docker-compose.yml` file above will:
   * The size of the container, by not writing changes to the underlying container; and
   * SD Card or SSD wear
 
-Once this file is created, issue the command `docker compose up -d` to bring up the environment.
+## How to generate a UUID
+
+If you already have a `UUID` that was generated for the ADSBExchange service, feel free to reuse that one. If you don't have one, you can generate one by logging onto you Linux machine (Raspberry Pi, etc.) and giving this command:
+
+```bash
+cat  /proc/sys/kernel/random/uuid
+```
+
+You can use the output string of this command (in format of `00000000-0000-0000-0000-000000000000`) as your UUID. Please use the same UUID consistently for each feeder of your station.
+
+## Using the MLAT results
+
+See [https://github.com/sdr-enthusiasts/docker-ultrafeeder#receiving-mlat-results](https://github.com/sdr-enthusiasts/docker-ultrafeeder#receiving-mlat-results) for more details on how to configure this.
+
+## Deploying `ultrafeeder`
+
+Once the `docker-compose.yml` file is created, issue the command `docker compose up -d` to bring up the environment.
 
 ```bash
 docker compose up -d
@@ -251,7 +268,7 @@ See [`readme-grafana.MD`](https://github.com/sdr-enthusiasts/docker-adsb-ultrafe
 
 ## Minimalist setup
 
-If you want to configure to run with a minimal CPU and RAM profile, and use it *only* as a SDR decoder but without any mapping or stats/graph websites, without MLAT connections or MLAT-hub, etc., then do the following:
+If you want to use `ultrafeeder` *only* as a SDR decoder but without any mapping or stats/graph websites, without MLAT connections or MLAT-hub, etc., for example to minimize CPU and RAM needs on a low CPU/memory single board computer, then do the following:
 
 * in the `ULTRAFEEDER_CONFIG` parameter, remove any entry that starts with `mlat` or `mlathub`. This will prevent any `mlat-client`s or `mlathub` instances to be launched. If you want to connect the `mlat-client`(s) to external MLAT servers but you don't want to run the overhead of a MLATHUB, you can leave any entries starting with `mlat` in the `ULTRAFEEDER_CONFIG` parameter, and set `MLATHUB_DISABLE=true`
 * Set the parameter `TAR1090_DISABLE=true`. This will prevent the `nginx` webserver and any websites to be launched

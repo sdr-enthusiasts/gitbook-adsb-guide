@@ -93,8 +93,6 @@ Append the following lines to the end of the file \(inside the `services:` secti
     tty: true
     container_name: piaware
     restart: always
-    depends_on:
-      - ultrafeeder
     ports:
       - 8081:8080
     environment:

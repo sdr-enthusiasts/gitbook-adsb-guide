@@ -60,8 +60,6 @@ Append the following lines to the end of the file \(inside the `services:` secti
     tty: true
     container_name: adsbx
     restart: always
-    depends_on:
-      - ultrafeeder
     environment:
       - BEASTHOST=ultrafeeder
       - LAT=${FEEDER_LAT}
