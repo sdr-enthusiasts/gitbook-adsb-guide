@@ -127,7 +127,9 @@ services:
       - /var/log:size=32M
 ```
 
-The above will:
+In the file above, you will find several parameters that have values denoted as `${xxxx}`. These values are read from a file in the same directory named `.env`. You can find an example of such file that you can download and edit [here](https://github.com/sdr-enthusiasts/docker-install/blob/main/sample-docker-compose.yml). Alternatively, you can simply replace `${xxxx}` with the value you want to use, for example `READSB_RTLSDR_DEVICE=${ADSB_SDR_SERIAL}` --> `READSB_RTLSDR_DEVICE=0000001090`.
+
+The `docker-compose.yml` file above will:
 
 * Create a few mapped docker volumes to store historic message values and autogain values (`/var/globe_history`), statistics for the graphs (`/var/lib/collectd`), and make the disk statistics (`/proc/diskstats`) and USB devices (`/dev') available to the container.
 * Create a service named `ultra` that will run the `ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder` container.
@@ -192,7 +194,17 @@ NETWORK ID     NAME           DRIVER    SCOPE
 74247d059bbb   none           null      local
 ```
 
-## Viewing Live Data
+## Ultrafeeder Web Pages
+
+If configured and started using the example above, the container will make a website available at port 8080 of your host machine. Here are a few web pages that are generated (replace `my_host_ip` with the name or IP address of your host machine):
+
+* http://my_host_ip:8080/ : `tar1090` map and table of all aircraft received
+* http://my_host_ip:8080/graphs1090 : page with graphs and operations statistics of your station
+* http://my_host_ip:8080?pTracks : showing all aircraft tracks received in the last 24 hours
+* http://my_host_ip:8080?heatmap&realheat : showing a heatmap of all aircrafts of the last 24 hours
+* http://my_host_ip:8080?replay : showing a timelapse replay of the past few days
+
+## Viewing Live Data in Text Format
 
 To see the data being received and decoded by our new container, run the command `docker exec -it ultrafeeder viewadsb`. This should display a real-time departure-lounge-style screen showing all the aircraft being tracked, for example:
 
