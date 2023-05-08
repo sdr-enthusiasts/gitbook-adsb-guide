@@ -42,7 +42,6 @@
 
 ## Useful Extras
 
-* [Improved Visualisation with tar1090](useful-extras/improved-visualisation-with-tar1090.md)
 * [Storing Data and Metrics in a Time Series Database](useful-extras/storing-time-series-data.md)
 * [Graphing Data and Metrics with Influx and Grafana](useful-extras/alternative-graphing-with-influx-grafana.md)
 * [Graphing Data and Metrics with Prometheus and Grafana](useful-extras/alternative-graphing-with-prometheus-grafana.md)
