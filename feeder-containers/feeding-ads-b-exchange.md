@@ -9,7 +9,7 @@ description: 'If you wish to feed ADS-B Exchange, follow the steps below.'
 * <https://www.rtl-sdr.com/ads-b-exchange-acquired-by-private-firm-jetnet/>
 * <https://www.jetnet.com/news/jetnet-acquires-ads-b-exchange.html>
 
-The docker image [`ghcr.io/sdr-enthusiasts/docker-adsbexchange`](https://github.com/sdr-enthusiasts/docker-adsbexchange) contains the ADS-B Exchange feeder software and all of its required prerequisites and libraries. This needs to run in conjunction with `readsb-protobuf` \(or another Beast provider\).
+The docker image [`ghcr.io/sdr-enthusiasts/docker-adsbexchange`](https://github.com/sdr-enthusiasts/docker-adsbexchange) contains the ADS-B Exchange feeder software and all of its required prerequisites and libraries. This needs to run in conjunction with `ultrafeeder` \(or another Beast provider\).
 
 ## Generating a UUID
 
@@ -50,7 +50,7 @@ ADSBX_SITENAME=johnsmith_123
 
 ## Deploying ADS-B Exchange feeder
 
-Open the `docker-compose.yml` file that was created when deploying `readsb`.
+Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
 Append the following lines to the end of the file \(inside the `services:` section\):
 
@@ -61,9 +61,9 @@ Append the following lines to the end of the file \(inside the `services:` secti
     container_name: adsbx
     restart: always
     depends_on:
-      - readsb
+      - ultrafeeder
     environment:
-      - BEASTHOST=readsb
+      - BEASTHOST=ultrafeeder
       - LAT=${FEEDER_LAT}
       - LONG=${FEEDER_LONG}
       - ALT=${FEEDER_ALT_M}m
@@ -79,7 +79,7 @@ To explain what's going on in this addition:
 
 * We're creating a container called `adsbx`, from the image `ghcr.io/sdr-enthusiasts/docker-adsbexchange:latest`.
 * We're passing several environment variables to the container:
-  * `BEASTHOST=readsb` to inform the feeder to get its ADSB data from the container `readsb` over our private `adsbnet` network.
+  * `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder` over our private `adsbnet` network.
   * `LAT` will use the `FEEDER_LAT` variable from your `.env` file.
   * `LONG` will use the `FEEDER_LONG` variable from your `.env` file.
   * `ALT` will use the `FEEDER_ALT_M` variable from your `.env` file.
@@ -93,11 +93,11 @@ To explain what's going on in this addition:
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `adsbx` container. You should see the following output:
 
 ```text
-readsb is up-to-date
+ultrafeeder is up-to-date
 Creating adsbx
 ```
 
-You can see from the output above that the `readsb` container was left alone \(as the configuration for this container did not change\), and a new container `adsbx` was created.
+You can see from the output above that the `ultrafeeder` container was left alone \(as the configuration for this container did not change\), and a new container `adsbx` was created.
 
 We can view the logs for the environment with the command `docker compose logs`, or continually "tail" them with `docker compose logs -f`. We should now see logs from our newly created `adsbx` container:
 

@@ -12,13 +12,13 @@ After ADSBExchange was acquired by a data aggregator, several of the collaborato
 * feeding MLAT data to the aggregators
 * receiving MLAT results from each of the aggregators
 
-The docker image [`ghcr.io/sdr-enthusiasts/docker-multifeeder`](https://github.com/sdr-enthusiasts/docker-multifeeder) contains the required feeder software and all required prerequisites and libraries. This needs to run in conjunction with `readsb`, `tar1090`, or another Beast format data provider.
+The docker image [`ghcr.io/sdr-enthusiasts/docker-multifeeder`](https://github.com/sdr-enthusiasts/docker-multifeeder) contains the required feeder software and all required prerequisites and libraries. This needs to run in conjunction with `ultrafeeder`, `tar1090`, or another Beast format data provider.
 
 ## Setting up Your Station
 
 ### Deploying feeder container
 
-Open the `docker-compose.yml` file that was created when deploying `readsb`.
+Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
 Append the following lines to the end of the file \(inside the `services:` section\). Please edit the following parameters:
 

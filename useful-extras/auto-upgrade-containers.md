@@ -10,7 +10,7 @@ description: >-
 The containers used in this guide are regularly updated - most of them daily. This ensures that:
 
 * Any security updates of the underlying containers \(for example: `debian/stable-slim`\) are captured in these containers.
-* Receiver \(`readsb`\), feeders, visualisation services \(`tar1090`\) etc are also regularly updated. This ensures that updates are captured in these containers.
+* Receiver \(`ultrafeeder`\), feeders, visualisation services \(`tar1090`\) etc are also regularly updated. This ensures that updates are captured in these containers.
 * As issues are raised and fixed, it ensures that fixes are present in these containers.
 
 We can configure a container to regularly \(daily\) check DockerHub for new versions of underlying images, automatically pull the new versions and recreate your containers.
@@ -38,7 +38,7 @@ The image has been around since 2015, has several thousand stars, [the source co
 
 ## Monitor and Upgrade All Containers
 
-Open the `docker-compose.yml` file that was created when deploying `readsb`.
+Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
 Append the following lines to the end of the file \(inside the `services:` section\):
 
@@ -70,7 +70,7 @@ To explain what's going on in this addition:
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `watchtower` container. You should see the following output:
 
 ```text
-readsb is up-to-date
+ultrafeeder is up-to-date
 adsbx is up-to-date
 piaware is up-to-date
 fr24 is up-to-date
@@ -91,7 +91,7 @@ INFO[0001] Starting Watchtower and scheduling first run: 2020-12-17 18:19:28 +08
 The `watchtower` container logs messages when it upgrades a container, for example:
 
 ```text
-INFO[864207] Found new ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest image (cc3a1b572023)
-INFO[864334] Stopping /readsb (38bd04997c8d) with SIGTERM
-INFO[864339] Creating /readsb
+INFO[864207] Found new ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder:latest image (cc3a1b572023)
+INFO[864334] Stopping /ultrafeeder (38bd04997c8d) with SIGTERM
+INFO[864339] Creating /ultrafeeder
 ```

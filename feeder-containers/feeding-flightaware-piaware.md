@@ -10,7 +10,7 @@ description: 'If you wish to feed FlightAware, follow the steps below.'
 
 In exchange for your data, FlightAware will give you an Enterprise Membership. If this is something of interest, you may wish to feed your data to them.
 
-The docker image [`ghcr.io/sdr-enthusiasts/docker-piaware`](https://github.com/sdr-enthusiasts/docker-piaware) contains `piaware` and all of its required prerequisites and libraries. This can run standalone \(without the `readsb` container\), however for flexibility it is recommended to run with `readsb`, and this is the deployment method that will be used in this guide.
+The docker image [`ghcr.io/sdr-enthusiasts/docker-piaware`](https://github.com/sdr-enthusiasts/docker-piaware) contains `piaware` and all of its required prerequisites and libraries. This can run standalone \(without the `ultrafeeder` container\), however for flexibility it is recommended to run with `ultrafeeder`, and this is the deployment method that will be used in this guide.
 
 ## Getting a Feeder ID
 
@@ -83,7 +83,7 @@ PIAWARE_FEEDER_ID=acbf1f88-09a4-3a47-a4a0-10ae138d0c1g
 
 ## Deploying piaware feeder
 
-Open the `docker-compose.yml` file that was created when deploying `readsb`.
+Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
 Append the following lines to the end of the file \(inside the `services:` section\):
 
@@ -94,11 +94,11 @@ Append the following lines to the end of the file \(inside the `services:` secti
     container_name: piaware
     restart: always
     depends_on:
-      - readsb
+      - ultrafeeder
     ports:
       - 8081:8080
     environment:
-      - BEASTHOST=readsb
+      - BEASTHOST=ultrafeeder
       - LAT=${FEEDER_LAT}
       - LONG=${FEEDER_LONG}
       - TZ=${FEEDER_TZ}
@@ -119,7 +119,7 @@ To explain what's going on in this addition:
 
 * We're creating a container called `piaware`, from the image `ghcr.io/sdr-enthusiasts/docker-piaware:latest`.
 * We're passing several environment variables to the container:
-  * `BEASTHOST=readsb` to inform the feeder to get its ADSB data from the container `readsb` over our private `adsbnet` network.
+  * `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder` over our private `adsbnet` network.
   * `LAT` will use the `FEEDER_LAT` variable from your `.env` file.
   * `LONG` will use the `FEEDER_LONG` variable from your `.env` file.
   * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
@@ -134,7 +134,7 @@ To explain what's going on in this addition:
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `piaware` container. You should see the following output:
 
 ```text
-readsb is up-to-date
+ultrafeeder is up-to-date
 adsbx is up-to-date
 Creating piaware
 ```
@@ -154,7 +154,7 @@ piaware           | Set allow-manual-updates to no in /etc/piaware.conf:3
 piaware           | Set allow-mlat to yes in /etc/piaware.conf:4
 piaware           | Set mlat-results to yes in /etc/piaware.conf:5
 piaware           | Set receiver-type to relay in /etc/piaware.conf:6
-piaware           | Set receiver-host to readsb in /etc/piaware.conf:7
+piaware           | Set receiver-host to ultrafeeder in /etc/piaware.conf:7
 piaware           | Set receiver-port to 30005 in /etc/piaware.conf:8
 piaware           | [cont-init.d] 01-piaware: exited 0.
 piaware           | [cont-init.d] done.
@@ -165,8 +165,8 @@ piaware           | [skyaware] 2020/11/20 14:51:15 2020-11-20 14:51:15: (server.
 piaware           | [dump1090] 2020/11/20 14:51:15 Fri Nov 20 14:51:15 2020 AWST  dump1090-fa unknown starting up.
 piaware           | [dump1090] 2020/11/20 14:51:15 Net-only mode, no SDR device or file open.
 piaware           | [beast-splitter] 2020/11/20 14:51:15 127.0.0.1:30004: connected to 127.0.0.1:30004 with settings
-piaware           | [beast-splitter] 2020/11/20 14:51:15 net(readsb:30005): connected to 172.30.0.12:30005
-piaware           | [beast-splitter] 2020/11/20 14:51:15 net(readsb:30005): configured with settings: BCdfGijk
+piaware           | [beast-splitter] 2020/11/20 14:51:15 net(ultrafeeder:30005): connected to 172.30.0.12:30005
+piaware           | [beast-splitter] 2020/11/20 14:51:15 net(ultrafeeder:30005): configured with settings: BCdfGijk
 piaware           | [piaware] 2020/11/20 14:51:15 ****************************************************
 piaware           | [piaware] 2020/11/20 14:51:15 piaware version 4.0 is running, process ID 329
 piaware           | [piaware] 2020/11/20 14:51:15 your system info is: Linux 4e041cdad755 4.4.0-179-generic #209-Ubuntu SMP Fri Apr 24 17:48:44 UTC 2020 x86_64 GNU/Linux
@@ -175,7 +175,7 @@ piaware           | [piaware] 2020/11/20 14:51:17 Connection with adept server a
 piaware           | [piaware] 2020/11/20 14:51:18 TLS handshake with adept server at piaware.flightaware.com/1200 completed
 piaware           | [piaware] 2020/11/20 14:51:18 FlightAware server certificate validated
 piaware           | [piaware] 2020/11/20 14:51:18 encrypted session established with FlightAware
-piaware           | [beast-splitter] 2020/11/20 14:51:18 net(readsb:30005): connected to a Beast-style receiver
+piaware           | [beast-splitter] 2020/11/20 14:51:18 net(ultrafeeder:30005): connected to a Beast-style receiver
 piaware           | [piaware] 2020/11/20 14:51:18 ADS-B data program 'dump1090' is listening on port 30005, so far so good
 piaware           | [piaware] 2020/11/20 14:51:18 Starting faup1090: /usr/lib/piaware/helpers/faup1090 --net-bo-ipaddr localhost --net-bo-port 30005 --stdout --lat -33.333 --lon 111.111
 piaware           | [piaware] 2020/11/20 14:51:18 Started faup1090 (pid 354) to connect to dump1090

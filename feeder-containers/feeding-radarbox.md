@@ -10,7 +10,7 @@ description: 'If you wish to feed AirNav RadarBox, follow the steps below.'
 
 In exchange for your data, RadarBox will give you a Business Plan. If this is something of interest, you may wish to feed your data to them.
 
-The docker image [`ghcr.io/sdr-enthusiasts/docker-radarbox`](https://github.com/sdr-enthusiasts/docker-radarbox) contains `rbfeeder` and all of its required prerequisites and libraries. This needs to run in conjunction with `readsb` \(or another Beast provider\).
+The docker image [`ghcr.io/sdr-enthusiasts/docker-radarbox`](https://github.com/sdr-enthusiasts/docker-radarbox) contains `rbfeeder` and all of its required prerequisites and libraries. This needs to run in conjunction with `ultrafeeder` \(or another Beast provider\).
 
 ## Getting a Sharing Key
 
@@ -34,7 +34,7 @@ timeout 60 docker run \
     --rm \
     -it \
     --network adsb_default \
-    -e BEASTHOST=readsb \
+    -e BEASTHOST=ultrafeeder \
     -e LAT=${FEEDER_LAT} \
     -e LONG=${FEEDER_LONG} \
     -e ALT=${FEEDER_ALT_M} \
@@ -137,7 +137,7 @@ RADARBOX_SHARING_KEY=g45643ab345af3c5d5g923a99ffc0de9
 
 ### Create `rbfeeder` container
 
-Open the `docker-compose.yml` file that was created when deploying `readsb`.
+Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
 Append the following lines to the end of the file \(inside the `services:` section\):
 
@@ -148,9 +148,9 @@ Append the following lines to the end of the file \(inside the `services:` secti
     container_name: rbfeeder
     restart: always
     depends_on:
-      - readsb
+      - ultrafeeder
     environment:
-      - BEASTHOST=readsb
+      - BEASTHOST=ultrafeeder
       - LAT=${FEEDER_LAT}
       - LONG=${FEEDER_LONG}
       - ALT=${FEEDER_ALT_M}
@@ -171,7 +171,7 @@ To explain what's going on in this addition:
 
 * We're creating a container called `rbfeeder`, from the image `ghcr.io/sdr-enthusiasts/docker-radarbox:latest`.
 * We're passing several environment variables to the container:
-  * `BEASTHOST=readsb` to inform the feeder to get its ADSB data from the container `readsb` over our private `adsbnet` network.
+  * `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder` over our private `adsbnet` network.
   * `LAT` will use the `FEEDER_LAT` variable from your `.env` file.
   * `LONG` will use the `FEEDER_LONG` variable from your `.env` file.
   * `ALT` will use the `FEEDER_ALT_M` variable from your `.env` file.
@@ -186,7 +186,7 @@ To explain what's going on in this addition:
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `rbfeeder` container. You should see the following output:
 
 ```text
-readsb is up-to-date
+ultrafeeder is up-to-date
 adsbx is up-to-date
 piaware is up-to-date
 fr24 is up-to-date

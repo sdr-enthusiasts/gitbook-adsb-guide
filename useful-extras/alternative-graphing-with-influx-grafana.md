@@ -5,7 +5,7 @@ description: >-
 
 # Alternative graphs with Grafana
 
-[`Grafana`](https://grafana.com/) is an analytics platform that can provide alternative graphs for `readsb`.
+[`Grafana`](https://grafana.com/) is an analytics platform that can provide alternative graphs for `ultrafeeder`.
 
 In this guide we will be using [`InfluxDB`](https://www.influxdata.com/) as the data repository.
 
@@ -13,7 +13,7 @@ Using Grafana and InfluxDB in this configuration does not require a plan, accoun
 
 ## Create docker volumes
 
-Open the `docker-compose.yml` file that was created when deploying `readsb`.
+Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
 Add the following lines to the  `volumes:` section at the top of the file \(below the `version:` section, and before the `services:` section\):
 
@@ -27,7 +27,7 @@ This creates the volumes that will contain `influxdb` and `grafana`’s applicat
 
 ## Deploying `influxdb` and `grafana` containers
 
-Open the `.env` file that was created when deploying `readsb`.
+Open the `.env` file that was created when deploying `ultrafeeder`.
 
 Append the following lines to the end of the file; avoid using surrounding "" for the variables, which can be set to any value you like and token should be thought of as a very strong password:
 
@@ -37,15 +37,15 @@ INFLUXDB_PASSWORD=<your influxdb password>
 INFLUXDB_ADMIN_TOKEN=<your influxdb token>
 ```
 
-Open the `docker-compose.yml` file that was created when deploying `readsb`.
+Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
-Add the following lines to the `environment` section of the `readsb` container definition \(in the `readsb:` section, below `environment:` and before the `volumes:` section\):
+Add the following lines to the `environment` section of the `ultrafeeder` container definition \(in the `ultrafeeder:` section, below `environment:` and before the `volumes:` section\):
 
 ```yaml
       - INFLUXDBURL=http://influxdb:8086
       - INFLUXDB_V2=true
-      - INFLUXDB_V2_BUCKET=readsb
-      - INFLUXDB_V2_ORG=readsb
+      - INFLUXDB_V2_BUCKET=ultrafeeder
+      - INFLUXDB_V2_ORG=ultrafeeder
       - INFLUXDB_V2_TOKEN=${INFLUXDB_ADMIN_TOKEN}
 ```
 
@@ -60,8 +60,8 @@ Append the following lines to the end of the file:
     restart: always
     environment:
       - DOCKER_INFLUXDB_INIT_MODE=setup
-      - DOCKER_INFLUXDB_INIT_BUCKET=readsb
-      - DOCKER_INFLUXDB_INIT_ORG=readsb
+      - DOCKER_INFLUXDB_INIT_BUCKET=ultrafeeder
+      - DOCKER_INFLUXDB_INIT_ORG=ultrafeeder
       - DOCKER_INFLUXDB_INIT_RETENTION=52w
       - DOCKER_INFLUXDB_INIT_USERNAME=${INFLUXDB_USER}
       - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUXDB_PASSWORD}
@@ -84,7 +84,7 @@ Append the following lines to the end of the file:
       - grafana_data:/var/lib/grafana
 ```
 
-Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `influxdb` and `grafana` containers. This will also restart the `readsb` container, which will now use `telegraf` to feed data to `influxdb`.
+Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `influxdb` and `grafana` containers. This will also restart the `ultrafeeder` container, which will now use `telegraf` to feed data to `influxdb`.
 
 You should also be able to point your web browser at:
 
@@ -103,13 +103,13 @@ After you have logged into the `grafana` console the following manual steps are 
 
 Option | Input
 ------------- | -------------
-Name | readsb
+Name | ultrafeeder
 Query Language | InfluxQL
 URL | http://influxdb:8086
 Custom HTTP Headers | Click `+ Add header`
 Header | Authorization
 Value | Token \<your influxdb token\>
-Database | readsb
+Database | ultrafeeder
 User | \<your influxdb username\>
 Password | \<your influxdb password\>
 HTTP Method | GET
@@ -118,7 +118,7 @@ Clicking `Save & Test` should return a green message indicating success. The das
 
 1. Hover over the `four squares` icon in the sidebar, click `+ Import`
 2. Enter `13168` into the `Import via grafana.com` section and click `Load`
-3. Select `readsb` from the bottom drop down list
+3. Select `ultrafeeder` from the bottom drop down list
 4. Click `Import` on the subsequent dialogue box
 
 At this point you should see a very nice dashboard that was created by [Mike](https://github.com/mikenye) \(Thanks!\). The final step is to add the radar plugin required by this dashboard:

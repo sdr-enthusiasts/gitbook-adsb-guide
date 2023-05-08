@@ -15,7 +15,7 @@ The FAA has adopted 1090MHz for all flight levels, and UAT only for operations b
 
 ## Deploying `dump978` container
 
-Open the `docker-compose.yml` file that was created when deploying `readsb`.
+Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
 Append the following lines to the end of the file \(inside the `services:` section\):
 
@@ -45,7 +45,7 @@ To explain what's going on in this addition:
     * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
     * `DUMP978_RTLSDR_DEVICE=978` tells `dump978` to use the RTL-SDR device with the serial `978`.
 
-## Update `readsb` container configuration
+## Update `ultrafeeder` container configuration
 
 Before running `docker compose`, we also want to update the configuration of the `readsb` container, so that it pulls the demodulated UAT data from the `dump978` container.
 

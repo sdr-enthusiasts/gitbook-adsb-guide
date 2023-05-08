@@ -41,7 +41,7 @@ The image has been around since 2017, has several hundred stars, [the source cod
 
 ## Monitor and Restart All Containers
 
-Open the `docker-compose.yml` file that was created when deploying `readsb`.
+Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
 Append the following lines to the end of the file \(inside the `services:` section\):
 
@@ -67,7 +67,7 @@ To explain what's going on in this addition:
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `autoheal` container. You should see the following output:
 
 ```text
-readsb is up-to-date
+ultrafeeder is up-to-date
 adsbx is up-to-date
 piaware is up-to-date
 fr24 is up-to-date
@@ -92,14 +92,14 @@ In order for us to inform`autoheal` which containers to monitor, we need to appl
 
 ### Label Existing Containers
 
-To tell `autoheal` to monitor your `readsb` container, you would add the following configuration directive under its service definition in your `docker-compose.yml` file:
+To tell `autoheal` to monitor your `ultrafeeder` container, you would add the following configuration directive under its service definition in your `docker-compose.yml` file:
 
 ```text
 labels:
   - "autoheal=true"
 ```
 
-Thus, your updated `readsb` service may then look like this \(note the added `labels:` section\):
+Thus, your updated `ultrafeeder` service may then look like this \(note the added `labels:` section\):
 
 ```yaml
 version: '3.8'
@@ -140,7 +140,7 @@ Update the service definitions for all of the containers you want `autoheal` to 
 
 ### Deploy the `autoheal` container
 
-Open the `docker-compose.yml` file that was created when deploying `readsb`.
+Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
 Append the following lines to the end of the file \(inside the `services:` section\):
 
@@ -162,7 +162,7 @@ To explain what's going on in this addition:
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `autoheal` container. You should see the following output:
 
 ```text
-Recreating readsb
+Recreating ultrafeeder
 adsbx is up-to-date
 piaware is up-to-date
 fr24 is up-to-date

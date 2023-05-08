@@ -6,7 +6,7 @@ description: 'If you wish to feed RadarVirtuel, follow the steps below.'
 
 The main goal of [RadarVirtuel](https://www.radarvirtuel.com/) is to collect data about flights. Although RadarVirtuel welcomes feeding stations from all over the world, their differentiator is to collect information about traffic around smaller airports around the world.
 
-The docker image [`ghcr.io/sdr-enthusiasts/docker-radarvirtuel`](https://github.com/sdr-enthusiasts/docker-radarvirtuel) contains the required feeder software and all required prerequisites and libraries. This needs to run in conjunction with `readsb`, `tar1090`, or another RAW provider.
+The docker image [`ghcr.io/sdr-enthusiasts/docker-radarvirtuel`](https://github.com/sdr-enthusiasts/docker-radarvirtuel) contains the required feeder software and all required prerequisites and libraries. This needs to run in conjunction with `ultrafeeder`, `tar1090`, or another RAW provider.
 
 ## Setting up Your Station
 
@@ -43,7 +43,7 @@ RV_FEEDER_KEY=xxxx:432143214473214732017432014747382140723
 
 ### Deploying feeder container
 
-Open the `docker-compose.yml` file that was created when deploying `readsb`.
+Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
 Append the following lines to the end of the file \(inside the `services:` section\).
 
@@ -56,16 +56,16 @@ Append the following lines to the end of the file \(inside the `services:` secti
     restart: always
     environment:
       - FEEDER_KEY=${RV_FEEDER_KEY}
-      - SOURCE_HOST=readsb:30002
+      - SOURCE_HOST=ultrafeeder:30002
       - RV_SERVER=mg22.adsbnetwork.com:50050
       - VERBOSE=OFF
       - MLAT_SERVER=mlat.adsbnetwork.com:50000
-      - MLAT_HOST=readsb:30005
+      - MLAT_HOST=ultrafeeder:30005
       - LAT=${FEEDER_LAT}
       - LON=${FEEDER_LONG}
       - ALT=${FEEDER_ALT_M}
     depends_on:
-      - readsb
+      - ultrafeeder
     tmpfs:
       - /tmp:rw,nosuid,nodev,noexec,relatime,size=128M
     volumes:
@@ -87,7 +87,7 @@ To explain what's going on in this addition:
 Once the file has been updated, issue the command `docker compose pull radarvirtuel && docker compose up -d` in the application directory to apply the changes and bring up the `radarvirtuel` container. You should see the following output:
 
 ```text
-readsb is up-to-date
+ultrafeeder is up-to-date
 adsbx is up-to-date
 piaware is up-to-date
 fr24 is up-to-date
@@ -116,10 +116,10 @@ Once running, you can visit [https://alpha.radarvirtuel.com/stations/xxxx](https
 
 Most log messages are self-explanatory and have suggestions on how to trouble-shoot your issue. Here is some additional information that may help:
 
-* Sometimes, the logs may show error messages that it cannot connect to your `SOURCE_HOST`. If these messages show every few seconds, you have a problem (read below). If there are no new messages after a bit, it means that your station finally connected to the `SOURCE_HOST`. This connection delay is often caused by RadarVirtuel becoming "up and running" before `tar1090` or `readsb` do. This will fix itself within less than a minute.
-* This message keeps on scrolling and it doesn't stop after a while. In that case, `tar1090` or `readsb` cannot be reached.
-  * If you configured `readsb`, try adding this parameter to the `environment:` section in `docker-compose.yml`:
-    `- READSB_NET_RAW_OUTPUT_PORT=30002`
+* Sometimes, the logs may show error messages that it cannot connect to your `SOURCE_HOST`. If these messages show every few seconds, you have a problem (read below). If there are no new messages after a bit, it means that your station finally connected to the `SOURCE_HOST`. This connection delay is often caused by RadarVirtuel becoming "up and running" before `tar1090` or `ultrafeeder` do. This will fix itself within less than a minute.
+* This message keeps on scrolling and it doesn't stop after a while. In that case, `tar1090` or `ultrafeeder` cannot be reached.
+  * If you configured `ultrafeeder`, try adding this parameter to the `environment:` section in `docker-compose.yml`:
+    `- ultrafeeder_NET_RAW_OUTPUT_PORT=30002`
   * If you configured `tar1090`, there's nothing else to configure. Make sure the `tar1090` container is up and running and is receiving data!
 * You see log messages about the Feeder Key being incorrect. This is quite self-explanatory: check your feeder key.
 * You see messages about not being able to reach the RadarVirtuel Server. This may be a temporary outage. If the message consists for several hours, please contact support@adsbnetwork.com to see if there's something going on.

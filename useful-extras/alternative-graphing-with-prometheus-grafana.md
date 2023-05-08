@@ -5,7 +5,7 @@ description: >-
 
 # Alternative graphs with Grafana using Prometheus
 
-[`Grafana`](https://grafana.com/) is an analytics platform that can provide alternative graphs for `readsb`.
+[`Grafana`](https://grafana.com/) is an analytics platform that can provide alternative graphs for `ultrafeeder`.
 
 In this guide we will be using [`Prometheus`](https://prometheus.io/) as the data repository.
 
@@ -13,7 +13,7 @@ Using Grafana and Prometheus in this configuration does not require a plan, acco
 
 ## Create docker volumes
 
-Open the `docker-compose.yml` file that was created when deploying `readsb`.
+Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
 Add the following lines to the  `volumes:` section at the top of the file \(below the `version:` section, and before the `services:` section\):
 
@@ -26,9 +26,9 @@ This creates the volumes that will contain `prometheus` and `grafana`’s applic
 
 ## Deploying `prometheus` and `grafana` containers
 
-Open the `docker-compose.yml` file that was created when deploying `readsb`.
+Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
-Add the following lines to the `environment` section of the `readsb` container definition \(in the `readsb:` section, below `environment:` and before the `volumes:` section\):
+Add the following lines to the `environment` section of the `ultrafeeder` container definition \(in the `ultrafeeder:` section, below `environment:` and before the `volumes:` section\):
 
 ```yaml
       - ENABLE_PROMETHEUS=true
@@ -59,11 +59,11 @@ Append the following lines to the end of the file:
       - grafana_data:/var/lib/grafana
 ```
 
-Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `prometheus` and `grafana` containers. This will also restart the `readsb` container, which will now use `telegraf` to feed data to `prometheus`.
+Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `prometheus` and `grafana` containers. This will also restart the `ultrafeeder` container, which will now use `telegraf` to feed data to `prometheus`.
 
 At this point we will need to add a collector definition to `prometheus` and restart with the new configuration.
 
-1. Issue the command `docker exec -it prometheus sh -c "echo -e \"  - job_name: 'readsb'\n    static_configs:\n      - targets: ['readsb:9273']\" >> /etc/prometheus/prometheus.yml"`
+1. Issue the command `docker exec -it prometheus sh -c "echo -e \"  - job_name: 'ultrafeeder'\n    static_configs:\n      - targets: ['ultrafeeder:9273']\" >> /etc/prometheus/prometheus.yml"`
 2. Issue the command `docker stop prometheus`
 3. Issue the command `docker compose up -d`
 
@@ -84,14 +84,14 @@ After you have logged into the `grafana` console the following manual steps are 
 
 Option | Input
 ------------- | -------------
-Name | readsb
+Name | ultrafeeder
 URL | http://prometheus:9090/
 
 Clicking `Save & Test` should return a green message indicating success. The dashboard can now be imported with the following steps
 
 1. Hover over the `four squares` icon in the sidebar, click `+ Import`
 2. Enter `18148` into the `Import via grafana.com` section and click `Load`
-3. Select `readsb` from the bottom drop down list
+3. Select `ultrafeeder` from the bottom drop down list
 4. Click `Import` on the subsequent dialogue box
 
 At this point you should see a very nice dashboard, you can find it under `General` in the `Dashboards` section.

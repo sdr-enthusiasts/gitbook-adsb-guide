@@ -22,7 +22,7 @@ You should now have a unique 16 character Network ID e.g. `255724d630f06682`. Ma
 
 The next step is to deploy a ZeroTier container on your remote station, feel free to choose your own container, but in this example we will use this well maintained container with multi-architecture support by [`bltavares`](https://hub.docker.com/r/bltavares/zerotier).
 
-Open the `docker-compose.yml` file that was created when deploying `readsb`. Append the following lines to the end of the file:
+Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`. Append the following lines to the end of the file:
 
 ```yaml
   zerotier:

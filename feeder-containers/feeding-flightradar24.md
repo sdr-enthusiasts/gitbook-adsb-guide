@@ -92,7 +92,7 @@ FR24_SHARING_KEY=10ae138d0c1g
 
 ## Deploying `fr24feed` container
 
-Open the `docker-compose.yml` file that was created when deploying `readsb`.
+Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
 Append the following lines to the end of the file \(inside the `services:` section\):
 
@@ -103,11 +103,11 @@ Append the following lines to the end of the file \(inside the `services:` secti
     container_name: fr24
     restart: always
     depends_on:
-      - readsb
+      - ultrafeeder
     ports:
       - 8754:8754
     environment:
-      - BEASTHOST=readsb
+      - BEASTHOST=ultrafeeder
       - FR24KEY=${FR24_SHARING_KEY}
     tmpfs:
       - /var/log
@@ -117,7 +117,7 @@ To explain what's going on in this addition:
 
 * We're creating a container called `fr24`, from the image `ghcr.io/sdr-enthusiasts/docker-flightradar24:latest`.
 * We're passing several environment variables to the container:
-  * `BEASTHOST=readsb` to inform the feeder to get its ADSB data from the container `readsb` network.
+  * `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder` network.
   * `FR24KEY` will use the `FR24_SHARING_KEY` variable from your `.env` file.
 * We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
   * The size of the container, by not writing changes to the underlying container; and
@@ -126,7 +126,7 @@ To explain what's going on in this addition:
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `fr24` container. You should see the following output:
 
 ```text
-readsb is up-to-date
+ultrafeeder is up-to-date
 adsbx is up-to-date
 piaware is up-to-date
 Creating fr24

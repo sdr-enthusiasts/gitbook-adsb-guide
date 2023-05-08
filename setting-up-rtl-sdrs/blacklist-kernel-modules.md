@@ -99,7 +99,7 @@ This will take a minute or more depending on the speed of your system, and outpu
 
 ---
 
-Failure to do the steps above will result in the error below being spammed to the `readsb` container log.
+Failure to do the steps above will result in the error below being spammed to the `ultrafeeder` container log.
 
 ```text
 usb_claim_interface error -6

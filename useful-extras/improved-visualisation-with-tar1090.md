@@ -6,13 +6,13 @@ description: >-
 
 # Improved Visualisation with tar1090
 
-[`tar1090`](https://github.com/wiedehopf/tar1090) is a visualisation tool by [wiedehopf](https://github.com/wiedehopf) that provides some additional functionality over and above the `readsb` web interface.
+[`tar1090`](https://github.com/wiedehopf/tar1090) is a visualisation tool by [wiedehopf](https://github.com/wiedehopf) that provides some additional functionality over and above the `ultrafeeder` web interface.
 
 This is my personal preference for displaying real-time ADS-B information.
 
 ## Create docker volumes
 
-Open the `docker-compose.yml` file that was created when deploying `readsb`.
+Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
 Add the following lines to the  `volumes:` section at the top of the file \(below the `version:` section, and before the `services:` section\):
 
@@ -24,7 +24,7 @@ This creates the volumes that will contain `tar1090`’s application data.
 
 ## Deploying `tar1090` container
 
-Open the `docker-compose.yml` file that was created when deploying `readsb`.
+Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
 Append the following lines to the end of the file:
 
@@ -37,7 +37,7 @@ Append the following lines to the end of the file:
     environment:
       - UPDATE_TAR1090=false
       - TZ=${FEEDER_TZ}
-      - BEASTHOST=readsb
+      - BEASTHOST=ultrafeeder
       - LAT=${FEEDER_LAT}
       - LONG=${FEEDER_LONG}
       - TAR1090_DEFAULTCENTERLAT=${FEEDER_LAT}

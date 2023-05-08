@@ -6,7 +6,7 @@ description: 'If you wish to feed ADSBHub, follow the steps below.'
 
 The main goal of [ADSBHub](https://adsbhub.org/) is to become a ADS-B data sharing centre and valuable data source for all enthusiasts and professionals interested in development of ADS-B related software.
 
-The docker image [`ghcr.io/sdr-enthusiasts/docker-adsbhub`](https://github.com/sdr-enthusiasts/docker-adsbhub) contains the required feeder software and all required prerequisites and libraries. This needs to run in conjunction with `readsb` \(or another Beast provider\).
+The docker image [`ghcr.io/sdr-enthusiasts/docker-adsbhub`](https://github.com/sdr-enthusiasts/docker-adsbhub) contains the required feeder software and all required prerequisites and libraries. This needs to run in conjunction with `ultrafeeder` \(or another Beast provider\).
 
 ## Getting a Station Key
 
@@ -49,7 +49,7 @@ ADSBHUB_STATION_KEY='vrMr@AZn660X0H^0Usn~rcj$UJA7VlR.vEu4c;uh7mfU-J9ZUBXpJiUuWj3
 
 ## Deploying feeder container
 
-Open the `docker-compose.yml` file that was created when deploying `readsb`.
+Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
 Append the following lines to the end of the file \(inside the `services:` section\):
 
@@ -61,7 +61,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
     restart: always
     environment:
       - TZ=${FEEDER_TZ}
-      - SBSHOST=readsb
+      - SBSHOST=ultrafeeder
       - CLIENTKEY=${ADSBHUB_STATION_KEY}
 ```
 
@@ -69,14 +69,14 @@ To explain what's going on in this addition:
 
 * We're creating a container called `adsbhub`, from the image `ghcr.io/sdr-enthusiasts/docker-adsbhub/adsbhub:latest`.
 * We're passing several environment variables to the container:
-  * `SBSHOST=readsb` to inform the feeder to get its ADSB data from the container `readsb`
+  * `SBSHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder`
   * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
   * `CLIENTKEY` will use the `ADSBHUB_STATION_KEY` variable from your `.env` file.
 
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `adsbhub` container. You should see the following output:
 
 ```text
-readsb is up-to-date
+ultrafeeder is up-to-date
 adsbx is up-to-date
 piaware is up-to-date
 fr24 is up-to-date

@@ -48,7 +48,7 @@ All of the containers defined within this document will be configured with the d
 
 Images can implement [healthchecks](https://docs.docker.com/engine/reference/builder/). A healthcheck is a script that docker runs within the container periodically that tells docker whether the container is operating as expected.
 
-For example, in the `ghcr.io/sdr-enthusiasts/docker-readsb-protobuf` container, the [healthcheck script](https://github.com/sdr-enthusiasts/docker-readsb-protobuf/blob/main/rootfs/scripts/healthcheck.sh) does the following:
+For example, in the `ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder` container, the [healthcheck script](https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder/blob/main/rootfs/scripts/healthcheck.sh) does the following:
 
 * For each expected network connection, make sure the connection exists
 * Make sure that messages are being received from the SDR
@@ -56,17 +56,17 @@ For example, in the `ghcr.io/sdr-enthusiasts/docker-readsb-protobuf` container, 
 
 If all of the checks above pass, the container is considered healthy. If any fail, the container is considered unhealthy.
 
-Earlier, we ran the command `docker ps`, to see our newly created `readsb` container up and running:
+Earlier, we ran the command `docker ps`, to see our newly created `ultrafeeder` container up and running:
 
 ```text
 CONTAINER ID   IMAGE                                                   COMMAND   CREATED        STATUS                  PORTS                                       NAMES
-7b9c4be5a410   ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest   "/init"   17 hours ago   Up 17 hours (healthy)   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   readsb
+7b9c4be5a410   ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder:latest   "/init"   17 hours ago   Up 17 hours (healthy)   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   ultrafeeder
 ```
 
 Notice that next to the container status, there is some information about the container's health. This may be one of the following:
 
 * No health information: Not all images have healthchecks implemented. If an image doesn't report health, this is why.
-* `(health: starting)`: The container will wait up to a predefined start-period \(defined in the [Dockerfile](https://github.com/sdr-enthusiasts/docker-readsb-protobuf/blob/main/Dockerfile#L231)\) or until the healthcheck script returns a healthy result.
+* `(health: starting)`: The container will wait up to a predefined start-period \(defined in the [Dockerfile](https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder/blob/main/Dockerfile#L231)\) or until the healthcheck script returns a healthy result.
 * `(healthy)`: The container is operating as expected.
 * `(unhealthy)`: The container is not operating as expected.
 
@@ -78,10 +78,10 @@ Where practical, we try to include healthchecks in all our images, so as you go 
 
 You can inspect the container for some \(hopefully\) meaningful output from the healthcheck script.
 
-If you issue the command `docker inspect CONTAINER` \(replacing `CONTAINER` with the name of the container you're interested in\), you'll see lots of information about the container, including the output of the most recent run of the healthcheck script. This output is in JSON format, so with the help of the `jq` utility we can easily find our `readsb` container's most recent health information. First make sure `jq` is installed with `sudo apt install -y jq`, then we can check the `readsb` container's health with the following command:
+If you issue the command `docker inspect CONTAINER` \(replacing `CONTAINER` with the name of the container you're interested in\), you'll see lots of information about the container, including the output of the most recent run of the healthcheck script. This output is in JSON format, so with the help of the `jq` utility we can easily find our `ultrafeeder` container's most recent health information. First make sure `jq` is installed with `sudo apt install -y jq`, then we can check the `ultrafeeder` container's health with the following command:
 
 ```bash
-docker inspect readsb | jq .[0].State.Health.Log | jq .[-1].Output | awk '{gsub(/\\n/,"\n")}1'
+docker inspect ultrafeeder | jq .[0].State.Health.Log | jq .[-1].Output | awk '{gsub(/\\n/,"\n")}1'
 ```
 
 Which will return something like this:
@@ -91,7 +91,7 @@ Which will return something like this:
   "Start": "2020-11-18T20:50:56.939989864+08:00",
   "End": "2020-11-18T20:50:57.210787023+08:00",
   "ExitCode": 0,
-  "Output": "last_15min:local_accepted is 15891: HEALTHY\nabnormal death count for service autogain is 0: HEALTHY\nabnormal death count for service collectd is 0: HEALTHY\nabnormal death count for service graphs_1h-24h is 0: HEALTHY\nabnormal death count for service graphs_7d-1y is 0: HEALTHY\nabnormal death count for service lighttpd is 0: HEALTHY\nabnormal death count for service readsb is 0: HEALTHY\nabnormal death count for service readsbrrd is 0: HEALTHY\nabnormal death count for service telegraf_socat_vrs_json is 0: HEALTHY\nabnormal death count for service telegraf is 0: HEALTHY\n"
+  "Output": "last_15min:local_accepted is 15891: HEALTHY\nabnormal death count for service autogain is 0: HEALTHY\nabnormal death count for service collectd is 0: HEALTHY\nabnormal death count for service graphs_1h-24h is 0: HEALTHY\nabnormal death count for service graphs_7d-1y is 0: HEALTHY\nabnormal death count for service lighttpd is 0: HEALTHY\nabnormal death count for service ultrafeeder is 0: HEALTHY\nabnormal death count for service ultrafeederrrd is 0: HEALTHY\nabnormal death count for service telegraf_socat_vrs_json is 0: HEALTHY\nabnormal death count for service telegraf is 0: HEALTHY\n"
 }
 ```
 
@@ -108,8 +108,8 @@ abnormal death count for service collectd is 0: HEALTHY
 abnormal death count for service graphs_1h-24h is 0: HEALTHY
 abnormal death count for service graphs_7d-1y is 0: HEALTHY
 abnormal death count for service lighttpd is 0: HEALTHY
-abnormal death count for service readsb is 0: HEALTHY
-abnormal death count for service readsbrrd is 0: HEALTHY
+abnormal death count for service ultrafeeder is 0: HEALTHY
+abnormal death count for service ultrafeederrrd is 0: HEALTHY
 abnormal death count for service telegraf_socat_vrs_json is 0: HEALTHY
 abnormal death count for service telegraf is 0: HEALTHY
 ```

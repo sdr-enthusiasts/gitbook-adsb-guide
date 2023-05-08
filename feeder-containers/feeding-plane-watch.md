@@ -6,7 +6,7 @@ description: 'If you wish to feed Plane.watch, follow the steps below.'
 
 Plane.watch is the end product of a ***Wouldn't it be cool if?*** statement. It is an ADS-B aggregation project by members of SDR-Enthusiasts. It is currently completely non-commercial, run by members of the community as a passion project, and backed by an Australian-based Not-for-Profit association.
 
-The docker image [`ghcr.io/plane-watch/docker-plane-watch`](https://github.com/plane-watch/docker-plane-watch) contains the plane.watch feeder software and all of its required prerequisites and libraries. This needs to run in conjunction with `readsb-protobuf` \(or another Beast provider\).
+The docker image [`ghcr.io/plane-watch/docker-plane-watch`](https://github.com/plane-watch/docker-plane-watch) contains the plane.watch feeder software and all of its required prerequisites and libraries. This needs to run in conjunction with `ultrafeeder` \(or another Beast provider\).
 
 ## plane.watch Feeder Registration
 
@@ -47,7 +47,7 @@ PW_API_KEY=4e8413e6-52eb-11ea-8681-1c1b0d925d3g
 
 ## Deploying plane.watch feeder
 
-Open the `docker-compose.yml` file that was created when deploying `readsb`.
+Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
 Append the following lines to the end of the file \(inside the `services:` section\):
 
@@ -58,9 +58,9 @@ Append the following lines to the end of the file \(inside the `services:` secti
     container_name: planewatch
     restart: always
     depends_on:
-      - readsb
+      - ultrafeeder
     environment:
-      - BEASTHOST=readsb
+      - BEASTHOST=ultrafeeder
       - LAT=${FEEDER_LAT}
       - LONG=${FEEDER_LONG}
       - ALT=${FEEDER_ALT_M}m
@@ -75,7 +75,7 @@ To explain what's going on in this addition:
 
 * We're creating a container called `planewatch`, from the image `ghcr.io/plane-watch/docker-plane-watch:latest`.
 * We're passing several environment variables to the container:
-  * `BEASTHOST=readsb` to inform the feeder to get its ADSB data from the container `readsb` over our private `adsbnet` network.
+  * `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder` over our private `adsbnet` network.
   * `LAT` will use the `FEEDER_LAT` variable from your `.env` file.
   * `LONG` will use the `FEEDER_LONG` variable from your `.env` file.
   * `ALT` will use the `FEEDER_ALT_M` variable from your `.env` file.
@@ -88,11 +88,11 @@ To explain what's going on in this addition:
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `planewatch` container. You should see the following output:
 
 ```text
-readsb is up-to-date
+ultrafeeder is up-to-date
 Creating planewatch
 ```
 
-You can see from the output above that the `readsb` container was left alone \(as the configuration for this container did not change\), and a new container `planewatch` was created.
+You can see from the output above that the `ultrafeeder` container was left alone \(as the configuration for this container did not change\), and a new container `planewatch` was created.
 
 We can view the logs for the environment with the command `docker compose logs`, or continually "tail" them with `docker compose logs -f`. We should now see logs from our newly created `planewatch` container:
 
@@ -113,7 +113,7 @@ We can view the logs for the environment with the command `docker compose logs`,
 [beast_router] 2023/01/27 12:17:52 Fri Jan 27 12:17:52 2023 AWST  Mictronics v4.0.3 starting up.
 [beast_router] 2023/01/27 12:17:52 Net-only mode, no SDR device or file open.
 [services.d] done.
-[beast_router] 2023/01/27 12:17:52 Beast TCP input: Connection established: readsb (192.168.144.2) port 30005
+[beast_router] 2023/01/27 12:17:52 Beast TCP input: Connection established: ultrafeeder (192.168.144.2) port 30005
 [beast_router] 2023/01/27 12:17:52 Beast TCP output: Connection established: 127.0.0.1 port 12345
 [mlat-client] Fri Jan 27 12:17:57 2023 mlat-client 0.2.11 starting up
 [mlat-client] Fri Jan 27 12:17:57 2023 Listening for Beast-format results connection on port 30105
@@ -123,7 +123,7 @@ We can view the logs for the environment with the command `docker compose logs`,
 [mlat-client] Fri Jan 27 12:17:57 2023   Compression:       zlib2
 [mlat-client] Fri Jan 27 12:17:57 2023   UDP transport:     disabled
 [mlat-client] Fri Jan 27 12:17:57 2023   Split sync:        disabled
-[mlat-client] Fri Jan 27 12:17:57 2023 Input connected to readsb:30005
+[mlat-client] Fri Jan 27 12:17:57 2023 Input connected to ultrafeeder:30005
 [mlat-client] Fri Jan 27 12:17:57 2023 Input format changed to BEAST, 12MHz clock
 ```
 
