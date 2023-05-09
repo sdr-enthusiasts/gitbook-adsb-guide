@@ -60,7 +60,9 @@ services:
       #
       # --------------------------------------------------
       # Sources and Aggregator connections:
-      # (Note - remove the ones you are not using / feeding)
+      # Note - remove the ones you are not using / feeding
+      #  Make sure that each line ends with a semicolon ";",  with the
+      #  exception of the last line which shouldn't have a ";"
       - ULTRAFEEDER_CONFIG=
           adsb,dump978,30978,uat_in;
           adsb,feed.adsb.fi,30004,beast_reduce_plus_out;
@@ -133,7 +135,7 @@ In the file above, you will find several parameters that have values denoted as 
 The `docker-compose.yml` file above will:
 
 * Create a few mapped docker volumes to store historic message values and autogain values (`/var/globe_history`), statistics for the graphs (`/var/lib/collectd`), and make the disk statistics (`/proc/diskstats`) and USB devices (`/dev') available to the container.
-* Create a service named `ultra` that will run the `ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder` container.
+* Create a service named `ultrafeeder` that will run the `ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder` container.
   * We're mapping TCP port `8080` through to the container so we can access the web interface.
   * The variable `READSB_RTLSDR_DEVICE` tells `readsb` to look for an RTLSDR device with the serial of `1090` (that we re-serialized in an earlier step).
   * We're passing several environment variables through, including our timezone, latitude and longitude from the `.env` file \(denoted by `${VARIABLE}`\).
