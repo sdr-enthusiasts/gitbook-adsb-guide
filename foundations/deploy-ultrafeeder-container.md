@@ -155,7 +155,7 @@ You can use the output string of this command (in format of `00000000-0000-0000-
 
 ## Using the MLAT results
 
-See [https://github.com/sdr-enthusiasts/docker-ultrafeeder#receiving-mlat-results](https://github.com/sdr-enthusiasts/docker-ultrafeeder#receiving-mlat-results) for more details on how to configure this.
+See [https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder/blob/main/README.md#configuring-the-built-in-mlat-hub](https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder/blob/main/README.md#configuring-the-built-in-mlat-hub) for more details on how to configure this.
 
 ## Deploying `ultrafeeder`
 
