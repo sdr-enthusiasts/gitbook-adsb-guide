@@ -104,4 +104,3 @@ Please replug the device for changes to take effect.
 ```
 
 Unplug all SDRs and then plug them back in again to make the system aware of the new serials. A reboot will not do that.
-

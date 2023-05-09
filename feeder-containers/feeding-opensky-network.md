@@ -225,4 +225,3 @@ We can view the logs for the environment with the command `docker logs opensky`,
 ```
 
 Once running, you can visit [https://opensky-network.org/receiver-profile](https://opensky-network.org/receiver-profile) to view the data you are feeding to OpenSky-Network.
-

@@ -85,7 +85,7 @@ After you have logged into the `grafana` console the following manual steps are 
 Option | Input
 ------------- | -------------
 Name | ultrafeeder
-URL | http://prometheus:9090/
+URL | `http://prometheus:9090/`
 
 Clicking `Save & Test` should return a green message indicating success. The dashboard can now be imported with the following steps
 

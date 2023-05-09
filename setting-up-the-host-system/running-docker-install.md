@@ -27,7 +27,7 @@ After running this script, your system should be ready to use `docker` and `dock
 - Feel free to inspect the script [here](https://raw.githubusercontent.com/sdr-enthusiasts/docker-install/main/docker-install.sh). You should really not blindly run other people's scripts - make sure you feel comfortable with what it does before executing it.
 - To use it, you can enter the following command:
 
-```
+```bash
 bash <(curl -s https://raw.githubusercontent.com/sdr-enthusiasts/docker-install/main/docker-install.sh)
 ```
 
@@ -42,7 +42,7 @@ If you have improvements that you'd like to contribute, please submit a PR.
 
 - ISSUE: The script fails with the message below:
 
-```
+```text
 E: Repository 'http://raspbian.raspberrypi.org/raspbian buster InRelease' changed its 'Suite' value from 'stable' to 'oldstable'
 E: Repository 'http://archive.raspberrypi.org/debian buster InRelease' changed its 'Suite' value from 'testing' to 'oldstable'
 ```

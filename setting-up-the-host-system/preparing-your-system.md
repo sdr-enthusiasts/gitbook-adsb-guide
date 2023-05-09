@@ -24,7 +24,7 @@ Once you've connected your Linux device to your network, it's possible to access
 
 Some users have reported issues with Raspberry Pi devices loosing network connectivity when running multiple containers. In effort to prevent this, run the following command `echo "denyinterfaces veth*" >> /etc/dhcpcd.conf`. This will append the line `denyinterfaces veth*` to end of the file. The file will look something like this (note the last line):
 
-```
+```properties
 # A sample configuration for dhcpcd.
 # See dhcpcd.conf(5) for details.
 
@@ -89,6 +89,6 @@ denyinterfaces veth*
 
 After saving this file, restart DHCPCD
 
-```
+```bash
 sudo systemctl restart dhcpcd
 ```

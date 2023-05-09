@@ -12,7 +12,7 @@ The docker image [`ghcr.io/sdr-enthusiasts/docker-radarvirtuel`](https://github.
 
 ### Obtaining an RadarVirtuel Feeder Key
 
-First-time users should obtain a RadarVirtuel Feeder key. To request one, email support@adsbnetwork.com with the following information:
+First-time users should obtain a RadarVirtuel Feeder key. To request one, email [support@adsbnetwork.com](mailto:support@adsbnetwork.com) with the following information:
 
 * Your name
 * The Lat/Lon and nearest airport of your station
@@ -118,10 +118,10 @@ Most log messages are self-explanatory and have suggestions on how to trouble-sh
 * This message keeps on scrolling and it doesn't stop after a while. In that case, `tar1090` or `ultrafeeder` cannot be reached.
   * If you configured `tar1090`, there's nothing else to configure. Make sure the `tar1090` container is up and running and is receiving data!
 * You see log messages about the Feeder Key being incorrect. This is quite self-explanatory: check your feeder key.
-* You see messages about not being able to reach the RadarVirtuel Server. This may be a temporary outage. If the message consists for several hours, please contact support@adsbnetwork.com to see if there's something going on.
+* You see messages about not being able to reach the RadarVirtuel Server. This may be a temporary outage. If the message consists for several hours, please contact [support@adsbnetwork.com](mailto:support@adsbnetwork.com) to see if there's something going on.
 
 ## More information and support
 
 * There is extensive documentation available on the container's [GitHub](https://github.com/sdr-enthusiasts/docker-radarvirtuel) page.
-* RadarVirtuel and ADSBNetwork are owned and operated by Laurent Duval, who can be reached at support@adsbnetwork.com
+* RadarVirtuel and ADSBNetwork are owned and operated by Laurent Duval, who can be reached at [support@adsbnetwork.com](mailto:support@adsbnetwork.com)
 * You can always find help on the #adsb-containers channel on the [SDR Enthusiasts Discord server](https://discord.gg/m42azbZydy). This channel is meant for Noobs (beginners) and Experts alike.

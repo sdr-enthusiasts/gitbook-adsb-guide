@@ -31,7 +31,7 @@ Open the `.env` file that was created when deploying `ultrafeeder`.
 
 Append the following lines to the end of the file; avoid using surrounding "" for the variables, which can be set to any value you like and token should be thought of as a very strong password:
 
-```
+```properties
 INFLUXDB_USER=<your influxdb username>
 INFLUXDB_PASSWORD=<your influxdb password>
 INFLUXDB_ADMIN_TOKEN=<your influxdb token>
@@ -105,7 +105,7 @@ Option | Input
 ------------- | -------------
 Name | ultrafeeder
 Query Language | InfluxQL
-URL | http://influxdb:8086
+URL | `http://influxdb:8086`
 Custom HTTP Headers | Click `+ Add header`
 Header | Authorization
 Value | Token \<your influxdb token\>
@@ -129,4 +129,3 @@ At this point you should see a very nice dashboard that was created by [Mike](ht
 4. Click `Install`
 
 Full functionality of the dashboard is now available, you can find it under `General` in the `Dashboards` section.
-

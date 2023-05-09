@@ -107,6 +107,3 @@ connected
 ```
 
 Once running, you can visit [https://www.adsbhub.org/statistic.php](https://www.adsbhub.org/statistic.php) to view the data you are feeding to ADSBHub.
-
-
-

@@ -70,4 +70,3 @@ Add the following line to the environment section of the `tar1090` section of `d
 ```
 
 The above assumes you wish to display MLAT from the `adsbx` image. You could use `MLATHOST=piaware` if you wish to use the `piaware` image.
-

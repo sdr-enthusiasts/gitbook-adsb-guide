@@ -164,4 +164,3 @@ pfclient          | 2020-04-11 09:20:04.389081 [-] Successfully sent 53 aircraft
 ```
 
 Once running, you can visit `http://docker.host.ip.addr:30053` to access the `pfclient` web interface. You can also visit the PlaneFinder website, and go to "Account" &gt; "Manage Receivers" and click your receiver to see your live data and statistics.
-

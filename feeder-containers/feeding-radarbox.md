@@ -95,13 +95,13 @@ As you can see from the output above, the sharing key given to us from Radarbox 
 
 If the script doesn't output the sharing key, it can be found by using the following command:
 
-```shell
+```bash
 docker exec -it rbfeeder /bin/sh -c "cat /etc/rbfeeder.ini" | grep key
 ```
 
 Command output:
 
-```
+```text
 key=g45643ab345af3c5d5g923a99ffc0de9
 ```
 

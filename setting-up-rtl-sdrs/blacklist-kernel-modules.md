@@ -81,7 +81,7 @@ sudo modprobe -r rtl2838
 
 Next we rebuild the module dependency database with this command:
 
-```
+```bash
 depmod -a
 ```
 
@@ -105,4 +105,3 @@ Failure to do the steps above will result in the error below being spammed to th
 usb_claim_interface error -6
 rtlsdr: error opening the RTLSDR device: Device or resource busy
 ```
-
