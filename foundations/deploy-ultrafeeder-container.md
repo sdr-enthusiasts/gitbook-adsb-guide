@@ -266,7 +266,7 @@ You should also be able to point your web browser at `http://docker.host.ip.addr
 
 ## Preparing and setting up `ultrafeeder` with Prometheus and Grafana
 
-See [`readme-grafana.MD`](https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder/readme-grafana.MD) at the container's Github repository web page.
+See [`readme-grafana.MD`](https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder/blob/main/README-grafana.md) at the container's Github repository web page.
 
 ## Minimalist setup
 
