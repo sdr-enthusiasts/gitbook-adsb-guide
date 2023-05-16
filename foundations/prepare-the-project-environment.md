@@ -29,7 +29,7 @@ You can use the output string of this command (in format of `00000000-0000-0000-
 
 Every RTL-SDR dongle will have a small frequency error as it is cheaply mass produced and not tested for accuracy. This frequency error is linear across the spectrum, and can be adjusted in most SDR programs by entering a PPM (parts per million) offset value. This  allows you to adjust the PPM figure using the ADSB_SDR_PPM environment variable.
 
-Unplug all SDRs, leaving only the SDR to be used for 978MHz reception plugged in. Issue the following command:
+Unplug all SDRs, leaving only the SDR to be used for 1090MHz reception plugged in. Issue the following command:
 
 `docker run --rm -it --entrypoint /scripts/estimate_rtlsdr_ppm.sh --device /dev/bus/usb ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest`
 
