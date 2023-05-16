@@ -53,8 +53,8 @@ FEEDER_LONG=<your longitude>
 FEEDER_TZ=<your timezone>
 ADSB_SDR_SERIAL=1090
 ADSB_SDR_GAIN=<your desired gain>
-ADSB_SDR_PPM=<your desired PPM>
-ULTRAFEEDER=<your UUID from the step above>
+ADSB_SDR_PPM=<your PPM from the step above>
+UUID=<your UUID from the step above>
 ```
 
 ...where:

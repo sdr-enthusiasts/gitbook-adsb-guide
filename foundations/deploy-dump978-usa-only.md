@@ -36,7 +36,7 @@ This file holds all of the commonly used variables \(such as our latitude, longi
 ```text
 UAT_SDR_SERIAL=978
 UAT_SDR_GAIN=<your desired gain>
-UAT_SDR_PPM=<your desired PPM>
+UAT_SDR_PPM=<your PPM from the step above>
 ```
 
 * `UAR_SDR_SERIAL` is set to the serial number for your ADS-B dongle; the previous serialization steps set this to 978 by default but if you have used a different serial number enter it here
