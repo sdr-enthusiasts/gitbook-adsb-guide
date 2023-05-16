@@ -26,7 +26,6 @@ services:
   #   "new" aggregators, and, if desired, also to AdsbExchange
   # - it includes mlat-client to send MLAT data to these aggregators
   # - it includes an MLAT Hub to consolidate MLAT results and make them available to the built-in map and other services
-# Note - remove "adsb,dump978,37981,raw_in;" from the ULTRAFEEDER_CONFIG parameter if your station doesn't support UAT.
 
     image: ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder
     tty: true
@@ -64,7 +63,6 @@ services:
       #  Make sure that each line ends with a semicolon ";",  with the
       #  exception of the last line which shouldn't have a ";"
       - ULTRAFEEDER_CONFIG=
-          adsb,dump978,30978,uat_in;
           adsb,feed.adsb.fi,30004,beast_reduce_plus_out;
           adsb,in.adsb.lol,30004,beast_reduce_plus_out;
           adsb,feed.adsb.one,64004,beast_reduce_plus_out;
@@ -74,17 +72,9 @@ services:
           mlat,in.adsb.lol,31090,39001;
           mlat,feed.adsb.one,64006,39002;
           mlat,mlat.planespotters.net,31090,39003;
-          mlat,feed.theairtraffic.com,31090,39004;
-          mlathub,piaware,30105,beast_in;
-          mlathub,rbfeeder,30105,beast_in;
-          mlathub,radarvirtuel,30105,beast_in
-      # If you really want to feed ADSBExchange, you can do so by adding this above: 
-      #        adsb,feed1.adsbexchange.com,30004,beast_reduce_plus_out,uuid=${ADSBX_UUID};
-      #        mlat,feed.adsbexchange.com,31090,39005,uuid=${ADSBX_UUID}
-      #
+          mlat,feed.theairtraffic.com,31090,39004
       # --------------------------------------------------
-      - UUID=${MULTIFEEDER_UUID}
-      - MLAT_USER=${FEEDER_NAME}
+      - UUID=${ULTRAFEEDER_UUID}
       - READSB_FORWARD_MLAT_SBS=true
       #
       # --------------------------------------------------
@@ -114,11 +104,6 @@ services:
       # - URL_978=http://dump978/skyaware978
       # 
       # --------------------------------------------------
-      # Prometheus and InfluxDB connection parameters:
-      - INFLUXDBV2_URL=${INFLUX_URL}
-      - INFLUXDBV2_TOKEN=${INFLUX_TOKEN}
-      - INFLUXDBV2_BUCKET=${INFLUX_BUCKET}
-      - PROMETHEUS_ENABLE=true
     volumes:
       - /opt/adsb/ultrafeeder/globe_history:/var/globe_history
       - /opt/adsb/ultrafeeder/graphs1090:/var/lib/collectd
@@ -142,16 +127,6 @@ The `docker-compose.yml` file above will:
 * We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
   * The size of the container, by not writing changes to the underlying container; and
   * SD Card or SSD wear
-
-## How to generate a UUID
-
-If you already have a `UUID` that was generated for the ADSBExchange service, feel free to reuse that one. If you don't have one, you can generate one by logging onto you Linux machine (Raspberry Pi, etc.) and giving this command:
-
-```bash
-cat  /proc/sys/kernel/random/uuid
-```
-
-You can use the output string of this command (in format of `00000000-0000-0000-0000-000000000000`) as your UUID. Please use the same UUID consistently for each feeder of your station.
 
 ## Using the MLAT results
 
@@ -263,6 +238,18 @@ To see the data being received and decoded by our new container, run the command
 Press `CTRL-C` to escape this screen.
 
 You should also be able to point your web browser at `http://docker.host.ip.addr:8080/` to view the web interface \(change `docker.host.ip.addr` to the IP address of your docker host\). You should see a map showing your currently tracked aircraft, and a link to the "Performance Graphs".
+
+## UUID security
+
+The example files above use the same UUID for all feeders. Doing so makes it possible that your information from one site could be tracked on another. An alternative approach is to generate a unique UUID for each website, load those into a variable in .env, and append the UUID to the row in the `ULTRAFEEDER_CONFIG` section. For example:
+
+```yaml
+      - ULTRAFEEDER_CONFIG=
+          adsb,feed.adsb.fi,30004,beast_reduce_plus_out,uuid=${ADSBFI_UUID};
+          adsb,in.adsb.lol,30004,beast_reduce_plus_out,uuid=${ADSBLOL_UUID};
+          adsb,feed.adsb.one,64004,beast_reduce_plus_out,uuid=${ADSBONE_UUID};
+```
+
 
 ## Preparing and setting up `ultrafeeder` with Prometheus and Grafana
 
