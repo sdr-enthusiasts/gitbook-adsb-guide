@@ -105,6 +105,15 @@ Open the `docker-compose.yml` and make the following environment value is part o
       - ULTRAFEEDER_CONFIG=adsb,dump978,30978,uat_in;
 ```
 
+
+In addition, add these lines in the `GRAPHS1090` section of the `ultrafeeder` service:
+
+```yaml
+      # GRAPHS1090 (Decoder and System Status Web Page) parameters:
+      - ENABLE_978=yes
+      - URL_978=http://dump978/skyaware978
+```
+
 To explain this addition, the `ultrafeeder` container will connect to the `dump978` container on port `30978` and receive UAT data. This UAT data will then be included in any outbound data streams from `ultrafeeder`.
 
 ## Refresh running containers

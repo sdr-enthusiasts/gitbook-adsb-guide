@@ -98,10 +98,7 @@ services:
       #
       # --------------------------------------------------
       # GRAPHS1090 (Decoder and System Status Web Page) parameters:
-      # The two 978 related parameters should only be included if you are running dump978 for UAT reception (USA only)
       - GRAPHS1090_DARKMODE=true
-      # - ENABLE_978=yes
-      # - URL_978=http://dump978/skyaware978
       # 
       # --------------------------------------------------
     volumes:
