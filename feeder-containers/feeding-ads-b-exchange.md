@@ -25,7 +25,7 @@ Open the `docker-compose.yml` and make the following environment value is part o
 
 ## Refresh running containers
 
-Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes to the `ultrafeeder` container. 
+Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes to the `ultrafeeder` container.
 
 After a few minutes, point your browser at [https://adsbexchange.com/myip/](https://adsbexchange.com/myip/). You should see green smiley faces indicating that you are successfully sending data.
 Also check if your MLAT is synchronized: <https://map.adsbexchange.com/mlat-map/>
