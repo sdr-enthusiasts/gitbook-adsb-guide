@@ -125,7 +125,6 @@ Once the file has been updated, issue the command `docker compose up -d` in the 
 
 ```text
 ultrafeeder is up-to-date
-adsbx is up-to-date
 piaware is up-to-date
 Creating fr24
 ```

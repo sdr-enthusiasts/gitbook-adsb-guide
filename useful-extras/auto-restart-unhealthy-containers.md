@@ -68,7 +68,6 @@ Once the file has been updated, issue the command `docker compose up -d` in the 
 
 ```text
 ultrafeeder is up-to-date
-adsbx is up-to-date
 piaware is up-to-date
 fr24 is up-to-date
 pfclient is up-to-date
@@ -83,7 +82,7 @@ The container does not log any output, so check it is running by issuing the com
 The `autoheal` container logs when it restarts an unhealthy container, for example:
 
 ```text
-15-12-2020 20:17:06 Container /adsbx (51bc3e3511f5) found to be unhealthy - Restarting container now with 10s timeout
+15-12-2020 20:17:06 Container /fr24 (51bc3e3511f5) found to be unhealthy - Restarting container now with 10s timeout
 ```
 
 ## Only monitor and restart a specific set of containers
@@ -163,7 +162,6 @@ Once the file has been updated, issue the command `docker compose up -d` in the 
 
 ```text
 Recreating ultrafeeder
-adsbx is up-to-date
 piaware is up-to-date
 fr24 is up-to-date
 pfclient is up-to-date

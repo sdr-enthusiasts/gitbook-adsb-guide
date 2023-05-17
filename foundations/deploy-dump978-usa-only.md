@@ -13,6 +13,47 @@ The FAA has adopted 1090MHz for all flight levels, and UAT only for operations b
 
 **If you live outside of the USA \(or only have one SDR\), you can skip this section!**
 
+## Identify your UAT dongle's optimal PPM
+
+Every RTL-SDR dongle will have a small frequency error as it is cheaply mass produced and not tested for accuracy. This frequency error is linear across the spectrum, and can be adjusted in most SDR programs by entering a PPM (parts per million) offset value. This  allows you to adjust the PPM figure using the ADSB_SDR_PPM environment variable.
+
+Unplug all SDRs, leaving only the SDR to be used for 978MHz reception plugged in. Issue the following command:
+
+`docker run --rm -it --entrypoint /scripts/estimate_rtlsdr_ppm.sh --device /dev/bus/usb ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest`
+
+This takes about 30 minutes and will print a numerical value for Estimated optimum PPM setting.
+
+## Update the .env file for UAT
+
+Inside your application directory \(`/opt/adsb`\), edit the `.env` file using your favourite text editor. Beginners may find the editor `nano` easy to use:
+
+```bash
+nano /opt/adsb/.env
+```
+
+This file holds all of the commonly used variables \(such as our latitude, longitude and altitude\). We're going to add more variables associated with UAT dongles.
+
+```text
+UAT_SDR_SERIAL=978
+UAT_SDR_GAIN=<your desired gain>
+UAT_SDR_PPM=<your PPM from the step above>
+```
+
+* `UAR_SDR_SERIAL` is set to the serial number for your ADS-B dongle; the previous serialization steps set this to 978 by default but if you have used a different serial number enter it here
+* `UAT_SDR_GAIN` is set to your desired dongle gain in dB, or `autogain` if you would like the software to determine the optimal gain
+* `UAT_SDR_PPM` is set to your desired dongle PPM setting. Enter the number from the PPM estimation step earlier on this page.
+
+For example:
+
+```text
+UAT_SDR_SERIAL=978
+UAT_SDR_GAIN=autogain
+UAT_SDR_PPM=1
+```
+
+
+
+
 ## Deploying `dump978` container
 
 Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
@@ -56,12 +97,21 @@ To explain what's going on in this addition:
 
 ## Update `ultrafeeder` container configuration
 
-Before running `docker compose`, we also want to update the configuration of the `readsb` container, so that it pulls the demodulated UAT data from the `dump978` container.
+Before running `docker compose`, we also want to update the configuration of the `ultrafeeder` container, so that it pulls the demodulated UAT data from the `dump978` container.
 
 Open the `docker-compose.yml` and make the following environment value is part of the `ULTRAFEEDER_CONFIG` variable to the `ultrafeeder` service:
 
 ```yaml
       - ULTRAFEEDER_CONFIG=adsb,dump978,30978,uat_in;
+```
+
+
+In addition, add these lines in the `GRAPHS1090` section of the `ultrafeeder` service:
+
+```yaml
+      # GRAPHS1090 (Decoder and System Status Web Page) parameters:
+      - ENABLE_978=yes
+      - URL_978=http://dump978/skyaware978
 ```
 
 To explain this addition, the `ultrafeeder` container will connect to the `dump978` container on port `30978` and receive UAT data. This UAT data will then be included in any outbound data streams from `ultrafeeder`.
