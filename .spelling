@@ -1,4 +1,4 @@
-# Format - lines begining # are comments
+# Format - lines beginning # are comments
 # global dictionary is at the start, file overrides afterwards
 # markdown-spellcheck spelling configuration file
 # one word per line, to define a file override use ' - filename'
@@ -7,6 +7,7 @@
 20m
 978MHz
 acars
+ADSB_SDR_PPM
 adsb
 adsb.fi
 adsb.lol
@@ -15,6 +16,7 @@ ADSBExchange
 ADSBExchange.com
 ADSBHub
 ADSBNetwork
+adsbnetwork.com
 AirBand
 AirNav
 amd
@@ -34,6 +36,7 @@ CPython
 dBFS
 dev
 DietPi
+docker-adsb-ultrafeeder
 dockerfile
 DockerHub
 dump978
@@ -58,6 +61,7 @@ grafana
 healthcheck
 healthchecks
 heatmap
+heywhatsthat
 hostname
 htm
 InfluxData
@@ -73,6 +77,7 @@ Lat
 linuxserver
 linuxserver.io
 LiveTraffic
+ls
 Lon
 macOS
 maps.google.com
@@ -98,6 +103,7 @@ Planespotters.net
 plex
 plugin
 protobuf
+ps
 py
 radarbox
 RadarBox
