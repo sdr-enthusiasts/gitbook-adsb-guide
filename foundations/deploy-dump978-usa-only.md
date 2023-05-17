@@ -41,7 +41,7 @@ UAT_SDR_PPM=<your PPM from the step above>
 
 * `UAR_SDR_SERIAL` is set to the serial number for your ADS-B dongle; the previous serialization steps set this to 978 by default but if you have used a different serial number enter it here
 * `UAT_SDR_GAIN` is set to your desired dongle gain in dB, or `autogain` if you would like the software to determine the optimal gain
-* `UAT_SDR_PPM` is set to your desired dongle PPM setting. Enter the number from the PPM estimation step earlier on this page. 
+* `UAT_SDR_PPM` is set to your desired dongle PPM setting. Enter the number from the PPM estimation step earlier on this page.
 
 For example:
 
