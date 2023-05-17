@@ -75,7 +75,7 @@ FEEDER_HEYWHATSTHAT_ALTS=<desired theoretical range altitudes>
 * `FEEDER_NAME` is set to a location name. This is only used in the title of the map's web page.
 * `ADSB_SDR_SERIAL` is set to the serial number for your ADS-B dongle; the previous steps set this to 1090 by default but if you have used a different serial number enter it here
 * `ADSB_SDR_GAIN` is set to your desired dongle gain in dB, or `autogain` if you would like the software to determine the optimal gain
-* `ADSB_SDR_PPM` is set to your desired dongle PPM setting. Enter the number from the PPM estimation step earlier on this page. 
+* `ADSB_SDR_PPM` is set to your desired dongle PPM setting. Enter the number from the PPM estimation step earlier on this page.
 * `ULTRAFEEDER_UUID` is set to the UUID you generated above
 * `FEEDER_HEYWHATSTHAT_ID` is set to the code in the URL generated above
 * `FEEDER_HEYWHATSTHAT_ALTS` is a comma delimited list of altitudes in meters for which the map will display a theoretical maximum range; a common starting position is 3000 meters and 12000 meters
