@@ -99,7 +99,7 @@ services:
       # --------------------------------------------------
       # GRAPHS1090 (Decoder and System Status Web Page) parameters:
       - GRAPHS1090_DARKMODE=true
-      # 
+      #
       # --------------------------------------------------
     volumes:
       - /opt/adsb/ultrafeeder/globe_history:/var/globe_history
@@ -152,9 +152,9 @@ We can view the logs for the environment with the command `docker compose logs`,
 [fix-attrs.d] applying ownership & permissions fixes...
 [fix-attrs.d] done.
 [cont-init.d] executing container initialization scripts...
-[cont-init.d] 00-libsecomp2: executing... 
+[cont-init.d] 00-libsecomp2: executing...
 [cont-init.d] 00-libsecomp2: exited 0.
-[cont-init.d] 01-print-container-version: executing... 
+[cont-init.d] 01-print-container-version: executing...
 [2023-05-08 13:15:51.203][01-print-container-version] Container Version: 20230505-190743_9e4ed76_main, build date 2023-05-05 15:07:43 -0400
 [cont-init.d] 01-print-container-version: exited 0.
 ... (more logs here)
