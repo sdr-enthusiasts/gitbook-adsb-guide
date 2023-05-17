@@ -48,7 +48,7 @@ All of the containers defined within this document will be configured with the d
 
 Images can implement [healthchecks](https://docs.docker.com/engine/reference/builder/). A healthcheck is a script that docker runs within the container periodically that tells docker whether the container is operating as expected.
 
-For example, in the `ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder` container, the [healthcheck script](https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder/blob/main/rootfs/scripts/healthcheck.sh) does the following:
+For example, in the `ghcr.io/sdr-enthusiasts/docker-tar1090` container, the [healthcheck script](https://github.com/sdr-enthusiasts/docker-tar1090/blob/main/rootfs/healthcheck.sh) does the following:
 
 * For each expected network connection, make sure the connection exists
 * Make sure that messages are being received from the SDR
