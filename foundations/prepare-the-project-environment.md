@@ -37,7 +37,7 @@ This takes about 30 minutes and will print a numerical value for Estimated optim
 
 ## Create a heywhatsthat Panorama ID
 
-Heywhatsthat is a website that can generate an overlay on your map that will show the theoretical range of your location based on obstacles and the curvature of the earth. Follow step 1 at the instructions [here](https://github.com/wiedehopf/tar1090#heywhatsthatcom-range-outline) to generate a panorama for your feeder's location and altitude. In the upper left of the panorma page there will be a URL that will look like this: https://www.heywhatsthat.com/?view=NC3XJWK1. That code will be used later in the setup instructions.
+Heywhatsthat is a website that can generate an overlay on your map that will show the theoretical range of your location based on obstacles and the curvature of the earth. Follow step 1 at the instructions [here](https://github.com/wiedehopf/tar1090#heywhatsthatcom-range-outline) to generate a panorama for your feeder's location and altitude. In the upper left of the panorma page there will be a URL that will look like this: https://www.heywhatsthat.com/?view=NN3NNNN1. That code will be used later in the setup instructions.
 
 ## Create a `.env` file to hold our environment's variables
 
