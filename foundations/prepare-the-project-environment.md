@@ -37,7 +37,7 @@ This takes about 30 minutes and will print a numerical value for Estimated optim
 
 ## Create a heywhatsthat Panorama ID
 
-Heywhatsthat is a website that can generate an overlay on your map that will show the theoretical range of your location based on obstacles and the curvature of the earth. Follow step 1 at the instructions [here](https://github.com/wiedehopf/tar1090#heywhatsthatcom-range-outline) to generate a panorama for your feeder's location and altitude. In the upper left of the panorma page there will be a URL that will look like this: https://www.heywhatsthat.com/?view=NN3NNNN1. That code will be used later in the setup instructions.
+Heywhatsthat is a website that can generate an overlay on your map that will show the theoretical range of your location based on obstacles and the curvature of the earth. Follow step 1 at the instructions [here](https://github.com/wiedehopf/tar1090#heywhatsthatcom-range-outline) to generate a panorama for your feeder's location and altitude. In the upper left of the panorma page there will be a URL that will look like this: `https://www.heywhatsthat.com/?view=NN3NNNN1`. That code will be used later in the setup instructions.
 
 ## Create a `.env` file to hold our environment's variables
 
@@ -71,7 +71,7 @@ FEEDER_HEYWHATSTHAT_ALTS=<desired theoretical range altitudes>
 * `FEEDER_ALT_M` is set to your antenna's height in metres above [mean sea level](https://www.freemaptools.com/elevation-finder.htm)
 * `FEEDER_LAT` is set to your antenna's latitude (also available at link above)
 * `FEEDER_LONG` is set to your antenna's longitude (also available at link above)
-* `FEEDER_TZ` is set to your timezone, in ["TZ database name" format](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+* `FEEDER_TZ` is set to your timezone, in ["TZ database name" format](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). You can also see your Pi's timezone by giving this command: `cat /etc/timezone`
 * `FEEDER_NAME` is set to a location name. This is only used in the title of the map's web page.
 * `ADSB_SDR_SERIAL` is set to the serial number for your ADS-B dongle; the previous steps set this to 1090 by default but if you have used a different serial number enter it here
 * `ADSB_SDR_GAIN` is set to your desired dongle gain in dB, or `autogain` if you would like the software to determine the optimal gain
