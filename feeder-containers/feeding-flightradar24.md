@@ -107,6 +107,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
     environment:
       - BEASTHOST=ultrafeeder
       - FR24KEY=${FR24_SHARING_KEY}
+      - TZ=${FEEDER_TZ}
     tmpfs:
       - /var/log
 ```
