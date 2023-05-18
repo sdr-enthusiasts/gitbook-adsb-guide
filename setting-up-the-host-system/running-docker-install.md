@@ -3,7 +3,7 @@
 ## docker-install
 
 The [docker-install.sh](https://github.com/sdr-enthusiasts/docker-install) script helps users get ready to use the SDR-Enthusiasts' Docker containers.
-The script is written to be used on a Debian (Ubuntu or Raspberry Pi OS) system that is "barebones", i.e., where Docker has not yet been installed. Debian OS versions Stretch, Buster, and Bullseye are supported.
+The script is written to be used on a Debian (Ubuntu, Raspberry Pi OS, or DietPi OS) system that is "barebones", i.e., where Docker has not yet been installed. Debian OS versions Stretch, Buster, and Bullseye are supported.
 
 It will **check**, and if necessary **install** the following components and settings:
 
