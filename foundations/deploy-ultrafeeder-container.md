@@ -68,6 +68,7 @@ services:
           adsb,feed.adsb.one,64004,beast_reduce_plus_out;
           adsb,feed.planespotters.net,30004,beast_reduce_plus_out;
           adsb,feed.theairtraffic.com,30004,beast_reduce_plus_out;
+          adsb,data.avdelphi.com,24999,beast_reduce_plus_out;
           mlat,feed.adsb.fi,31090,39000;
           mlat,in.adsb.lol,31090,39001;
           mlat,feed.adsb.one,64006,39002;
@@ -124,6 +125,20 @@ The `docker-compose.yml` file above will:
 * We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
   * The size of the container, by not writing changes to the underlying container; and
   * SD Card or SSD wear
+
+## Feeding directly from Ultrafeeder
+
+There are several aggregators, both non-profit and commercial, that can directly be sent data from ultrafeeder without the need for an additional feeder container. We have added them in the example `docker-compose.yml` snippet above. Here is a partial list of these aggregators. All of them use the `beast_reduce_plus` format for feeding ADSB data, and `mlat-client` for feeding MLAT:
+
+| Name | (C)ommercial/<br/>(N)on-profit | Description | Feed details |
+|------|---------------------------|-------------|--------------|
+| ADSB.fi | N | Run by volunteers that used to be related to adsbexchange | adsb:`feed.adsb.fi` port `30004`<br/>mlat: `feed.adsb.fi` port `31090`|
+| ADSB.one | N | Run by volunteers that used to be related to adsbexchange | adsb:`feed.adsb.one` port `60004`<br/>mlat: `feed.adsb.one` port `64006`|
+| ADSB.lol | N | Run by a private individual located in the Netherlands | adsb:`in.adsb.lol` port `30004`<br/>mlat: `in.adsb.one` port `31090`|
+| Planespotters | N | planespotters.net | adsb:`feed.planespotters.net` port `30004`<br/>mlat: `mlat.planespotters.net` port `31090`|
+| The Air Traffic | N | Run by a private individual | adsb:`feed.theairtraffic.com` port `30004`<br/>mlat: `mlat.theairtraffic.com` port `31090`|
+| AV Delphi | C | Swiss aircraft data company | adsb:`data.avdelphi.com` port `24999`<br/>mlat: no MLAT|
+| ADSB Exchange | C | Large aggregator owned by JetNet | adsb:`feed1.adsbexchange.com` port `30004`<br/>mlat: `feed.adsbexchange.com` port `31090`|
 
 ## Using the MLAT results
 
