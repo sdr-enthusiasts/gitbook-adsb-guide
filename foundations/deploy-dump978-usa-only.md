@@ -73,7 +73,6 @@ Append the following lines to the end of the file \(inside the `services:` secti
       - LAT=${FEEDER_LAT}
       - LON=${FEEDER_LONG}
       - DUMP978_RTLSDR_DEVICE=${UAT_SDR_SERIAL}
-      - DUMP978_SDR_AGC=true
       - DUMP978_SDR_GAIN=${UAT_SDR_GAIN}
       - DUMP978_SDR_PPM=${UAT_SDR_PPM}
     volumes:
