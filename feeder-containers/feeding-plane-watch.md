@@ -104,25 +104,26 @@ We can view the logs for the environment with the command `docker compose logs`,
 [cont-init.d] 01-timezone: exited 0.
 [cont-init.d] 02-sanity_check: executing...
 [cont-init.d] 02-sanity_check: exited 0.
-[cont-init.d] 10-generate_stunnel_config: executing...
-[cont-init.d] 10-generate_stunnel_config: exited 0.
 [cont-init.d] done.
 [services.d] starting services
-[beast_router] 2023/01/27 12:17:52 Fri Jan 27 12:17:52 2023 AWST  Mictronics v4.0.3 starting up.
-[beast_router] 2023/01/27 12:17:52 Net-only mode, no SDR device or file open.
+2023-05-27T09:09:49+08:00 INF plane.watch feeder started version=20230526
+2023-05-27T09:09:49+08:00 INF listening for incoming connections dst=feed.push.plane.watch:12346 listen=127.0.0.1:12346 proto=MLAT
+2023-05-27T09:09:49+08:00 INF starting tunnel dst=feed.push.plane.watch:12345 proto=BEAST src=readsb:30005
 [services.d] done.
-[beast_router] 2023/01/27 12:17:52 Beast TCP input: Connection established: ultrafeeder (192.168.144.2) port 30005
-[beast_router] 2023/01/27 12:17:52 Beast TCP output: Connection established: 127.0.0.1 port 12345
-[mlat-client] Fri Jan 27 12:17:57 2023 mlat-client 0.2.11 starting up
-[mlat-client] Fri Jan 27 12:17:57 2023 Listening for Beast-format results connection on port 30105
-[mlat-client] Fri Jan 27 12:17:57 2023 Connected to multilateration server at 127.0.0.1:12346, handshaking
-[mlat-client] Fri Jan 27 12:17:57 2023 Server says:
-[mlat-client] Fri Jan 27 12:17:57 2023 Handshake complete.
-[mlat-client] Fri Jan 27 12:17:57 2023   Compression:       zlib2
-[mlat-client] Fri Jan 27 12:17:57 2023   UDP transport:     disabled
-[mlat-client] Fri Jan 27 12:17:57 2023   Split sync:        disabled
-[mlat-client] Fri Jan 27 12:17:57 2023 Input connected to ultrafeeder:30005
-[mlat-client] Fri Jan 27 12:17:57 2023 Input format changed to BEAST, 12MHz clock
+2023-05-27T09:09:49+08:00 INF connection established dst=feed.push.plane.watch:12345 proto=BEAST src=readsb:30005
+[mlat-client] Sat May 27 09:09:54 2023 mlat-client 0.2.11 starting up
+[mlat-client] Sat May 27 09:09:54 2023 Listening for Beast-format results connection on port 30105
+2023-05-27T09:09:54+08:00 INF connection established dst=feed.push.plane.watch:12346 listen=127.0.0.1:12346 proto=MLAT src=127.0.0.1:35492
+[mlat-client] Sat May 27 09:09:54 2023 Connected to multilateration server at 127.0.0.1:12346, handshaking
+[mlat-client] Sat May 27 09:09:59 2023 Server says:
+[mlat-client] Sat May 27 09:09:59 2023 Handshake complete.
+[mlat-client] Sat May 27 09:09:59 2023   Compression:       zlib2
+[mlat-client] Sat May 27 09:09:59 2023   UDP transport:     disabled
+[mlat-client] Sat May 27 09:09:59 2023   Split sync:        disabled
+[mlat-client] Sat May 27 09:09:59 2023 Input connected to readsb:30005
+[mlat-client] Sat May 27 09:09:59 2023 Input format changed to BEAST, 12MHz clock
+2023-05-27T09:14:49+08:00 INF statistics bytesRxLocal=247548 bytesRxRemote=0 bytesTxLocal=0 bytesTxRemote=247548 proto=BEAST
+2023-05-27T09:14:49+08:00 INF statistics bytesRxLocal=38354 bytesRxRemote=785 bytesTxLocal=785 bytesTxRemote=38354 proto=MLAT
 ```
 
 After a few minutes, browse to [https://atc.plane.watch/](https://atc.plane.watch/). Your feeder should be listed as "online". It can take up to 10 minutes for the status to update.
