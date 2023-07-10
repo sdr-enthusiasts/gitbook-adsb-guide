@@ -18,8 +18,15 @@ Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`
 Add the following lines to the  `volumes:` section at the top of the file \(below the `version:` section, and before the `services:` section\):
 
 ```yaml
+version: '3.8'
+
+volumes:
   prometheus_data:
   grafana_data:
+
+services:
+  ultrafeeder:
+    # other service configurations
 ```
 
 This creates the volumes that will contain `prometheus` and `grafana`’s application data.
