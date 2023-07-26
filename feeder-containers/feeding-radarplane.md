@@ -1,5 +1,5 @@
 ---
-description: 'If you wish to feed radarPlane.com, follow the steps below.'
+description: 'If you wish to feed RadarPlane.com, follow the steps below.'
 ---
 # RadarPlane/docker-radarplane
 
