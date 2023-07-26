@@ -205,7 +205,7 @@ NETWORK ID     NAME           DRIVER    SCOPE
 If configured and started using the example above, the container will make a website available at port 8080 of your host machine. Here are a few web pages that are generated (replace `my_host_ip` with the name or IP address of your host machine):
 
 * `http://my_host_ip:8080/` : `tar1090` map and table of all aircraft received
-* `http://my_host_ip:8080/graphs1090` : page with graphs and operations statistics of your station
+* `http://my_host_ip:8080/graphs1090/` : page with graphs and operations statistics of your station
 * `http://my_host_ip:8080?pTracks` : showing all aircraft tracks received in the last 24 hours
 * `http://my_host_ip:8080?heatmap&realheat` : showing a heatmap of all aircrafts of the last 24 hours
 * `http://my_host_ip:8080?replay` : showing a timelapse replay of the past few days
