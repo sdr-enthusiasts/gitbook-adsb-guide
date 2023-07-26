@@ -76,6 +76,7 @@ services:
           mlat,feed.theairtraffic.com,31090,39004
       # --------------------------------------------------
       - UUID=${ULTRAFEEDER_UUID}
+      - MLAT_USER=${FEEDER_NAME}
       - READSB_FORWARD_MLAT_SBS=true
       #
       # --------------------------------------------------
