@@ -111,7 +111,7 @@ There are a series of available environment variables:
 
 | Port    | Purpose                                                                                                                                     |
 |---------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| `30105` | MLAT data in Beast format for tools such as [`graphs1090`](https://github.com/mikenye/docker-graphs1090) and/or [`tar1090`][docker-tar1090] 
+| `30105` | MLAT data in Beast format for tools such as [`graphs1090`](https://github.com/mikenye/docker-graphs1090) and/or [`tar1090`][docker-tar1090]
 
 ## Logging
 
