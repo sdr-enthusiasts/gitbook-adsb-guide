@@ -69,11 +69,13 @@ services:
           adsb,feed.planespotters.net,30004,beast_reduce_plus_out;
           adsb,feed.theairtraffic.com,30004,beast_reduce_plus_out;
           adsb,data.avdelphi.com,24999,beast_reduce_plus_out;
+          adsb,feed.flyovr.io,30004,beast_reduce_plus_out;
           mlat,feed.adsb.fi,31090,39000;
           mlat,in.adsb.lol,31090,39001;
           mlat,feed.adsb.one,64006,39002;
           mlat,mlat.planespotters.net,31090,39003;
-          mlat,feed.theairtraffic.com,31090,39004
+          mlat,feed.theairtraffic.com,31090,39004;
+          mlat,feed.flyovr.io,31090,39005
       # --------------------------------------------------
       - UUID=${ULTRAFEEDER_UUID}
       - MLAT_USER=${FEEDER_NAME}
@@ -140,6 +142,7 @@ There are several aggregators, both non-profit and commercial, that can directly
 | The Air Traffic | N | Run by a private individual | adsb:`feed.theairtraffic.com` port `30004`<br/>mlat: `mlat.theairtraffic.com` port `31090`|
 | AV Delphi | C | Swiss aircraft data company | adsb:`data.avdelphi.com` port `24999`<br/>mlat: no MLAT|
 | ADSB Exchange | C | Large aggregator owned by JetNet | adsb:`feed1.adsbexchange.com` port `30004`<br/>mlat: `feed.adsbexchange.com` port `31090`|
+| FLYOVR.IO | C | (TBC) | adsb:`feed.flyovr.io` port `30004`<br/>mlat: `feed.flyovr.io` port `31090`|
 
 ## Using the MLAT results
 
