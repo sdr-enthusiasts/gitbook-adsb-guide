@@ -15,6 +15,8 @@ These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined
 * [Plane Watch](https://plane.watch/)
 * [The Air Traffic](https://theairtraffic.com/)
 * [RadarPlane.com](https://radarplane.com/)
+* [HPRadar](https://skylink.hpradar.com)
+* [Fly Italy ADSB](https://flyitalyadsb.com/)
 
 ## For-Profit Aggregators
 
