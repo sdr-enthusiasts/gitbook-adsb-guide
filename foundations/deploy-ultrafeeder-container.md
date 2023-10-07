@@ -63,9 +63,10 @@ services:
       #  Make sure that each line ends with a semicolon ";",  with the
       #  exception of the last line which shouldn't have a ";"
       - ULTRAFEEDER_CONFIG=
+          adsb,dump978,30978,uat_in;
           adsb,feed.adsb.fi,30004,beast_reduce_plus_out;
           adsb,in.adsb.lol,30004,beast_reduce_plus_out;
-          adsb,feed.adsb.one,64004,beast_reduce_plus_out;
+          adsb,feed.airplanes.live,30004,beast_reduce_plus_out;
           adsb,feed.planespotters.net,30004,beast_reduce_plus_out;
           adsb,feed.theairtraffic.com,30004,beast_reduce_plus_out;
           adsb,data.avdelphi.com,24999,beast_reduce_plus_out;
@@ -74,12 +75,15 @@ services:
           adsb,dati.flyitalyadsb.com,4905,beast_reduce_plus_out;
           mlat,feed.adsb.fi,31090,39000;
           mlat,in.adsb.lol,31090,39001;
-          mlat,feed.adsb.one,64006,39002;
+          mlat,feed.airplanes.live,31090,39002;
           mlat,mlat.planespotters.net,31090,39003;
           mlat,feed.theairtraffic.com,31090,39004;
-          mlat,skyfeed.hpradar.com,31090,39006;
-          mlat,feed.radarplane.com,31090,39007;
-          mlat,dati.flyitalyadsb.com,30100,39008
+          mlat,skyfeed.hpradar.com,31090,39005;
+          mlat,feed.radarplane.com,31090,39006;
+          mlat,dati.flyitalyadsb.com,30100,39007;
+          mlathub,piaware,30104,beast_in;
+          mlathub,rbfeeder,30105,beast_in;
+          mlathub,radarvirtuel,30105,beast_in
       # --------------------------------------------------
       - UUID=${ULTRAFEEDER_UUID}
       - MLAT_USER=${FEEDER_NAME}
