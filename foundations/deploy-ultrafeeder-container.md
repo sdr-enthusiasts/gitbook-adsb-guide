@@ -304,6 +304,6 @@ It is possible that you won't see any planes, either with the docker command abo
 
 ```bash
 cd /opt/adsb
-docker exec -it ultrafeeder autogain reset
+docker exec -it ultrafeeder /usr/local/bin/autogain1090 reset
 docker compose up -d
 ```
