@@ -11,7 +11,7 @@ jobs:
   spellcheck:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Pull pipelinecomponents/markdown-spellcheck Image
       run: docker pull pipelinecomponents/markdown-spellcheck
     - name: Spellcheck Markdown Files
