@@ -63,17 +63,27 @@ services:
       #  Make sure that each line ends with a semicolon ";",  with the
       #  exception of the last line which shouldn't have a ";"
       - ULTRAFEEDER_CONFIG=
+          adsb,dump978,30978,uat_in;
           adsb,feed.adsb.fi,30004,beast_reduce_plus_out;
           adsb,in.adsb.lol,30004,beast_reduce_plus_out;
-          adsb,feed.adsb.one,64004,beast_reduce_plus_out;
+          adsb,feed.airplanes.live,30004,beast_reduce_plus_out;
           adsb,feed.planespotters.net,30004,beast_reduce_plus_out;
           adsb,feed.theairtraffic.com,30004,beast_reduce_plus_out;
           adsb,data.avdelphi.com,24999,beast_reduce_plus_out;
+          adsb,skyfeed.hpradar.com,30004,beast_reduce_plus_out;
+          adsb,feed.radarplane.com,30001,beast_reduce_plus_out;
+          adsb,dati.flyitalyadsb.com,4905,beast_reduce_plus_out;
           mlat,feed.adsb.fi,31090,39000;
           mlat,in.adsb.lol,31090,39001;
-          mlat,feed.adsb.one,64006,39002;
+          mlat,feed.airplanes.live,31090,39002;
           mlat,mlat.planespotters.net,31090,39003;
-          mlat,feed.theairtraffic.com,31090,39004
+          mlat,feed.theairtraffic.com,31090,39004;
+          mlat,skyfeed.hpradar.com,31090,39005;
+          mlat,feed.radarplane.com,31090,39006;
+          mlat,dati.flyitalyadsb.com,30100,39007;
+          mlathub,piaware,30104,beast_in;
+          mlathub,rbfeeder,30105,beast_in;
+          mlathub,radarvirtuel,30105,beast_in
       # --------------------------------------------------
       - UUID=${ULTRAFEEDER_UUID}
       - MLAT_USER=${FEEDER_NAME}
@@ -134,10 +144,13 @@ There are several aggregators, both non-profit and commercial, that can directly
 | Name | (C)ommercial/<br/>(N)on-profit | Description | Feed details |
 |------|---------------------------|-------------|--------------|
 | ADSB.fi | N | Run by volunteers that used to be related to adsbexchange | adsb:`feed.adsb.fi` port `30004`<br/>mlat: `feed.adsb.fi` port `31090`|
-| ADSB.one | N | Run by volunteers that used to be related to adsbexchange | adsb:`feed.adsb.one` port `60004`<br/>mlat: `feed.adsb.one` port `64006`|
+| airplanes.live | N | Run by volunteers that used to be related to adsbexchange | adsb:`feed.airplanes.live` port `30004`<br/>mlat: `feed.airplanes.live` port `31090`|
 | ADSB.lol | N | Run by a private individual located in the Netherlands | adsb:`in.adsb.lol` port `30004`<br/>mlat: `in.adsb.one` port `31090`|
 | Planespotters | N | planespotters.net | adsb:`feed.planespotters.net` port `30004`<br/>mlat: `mlat.planespotters.net` port `31090`|
 | The Air Traffic | N | Run by a private individual | adsb:`feed.theairtraffic.com` port `30004`<br/>mlat: `mlat.theairtraffic.com` port `31090`|
+| HPRadar | N | Run by a private individual in Vietnam | adsb: `skyfeed.hpradar.com` port `30004`<br/>mlat: `skyfeed.hpradar.com` port `31090` |
+| RadarPlane | N | Run by a few volunteers in Canada and Portugal | adsb: `feed.radarplane.com` port `30001`<br/>mlat: `feed.radarplane.com` port `31090` |
+| Fly Italy ADSB | N | Run by a few ADSB enthusiasts from Italy | adsb: `dati.flyitalyadsb.com` port `4905`<br/>mlat: `dati.flyitalyadsb.com` port `30100` |
 | AV Delphi | C | Swiss aircraft data company | adsb:`data.avdelphi.com` port `24999`<br/>mlat: no MLAT|
 | ADSB Exchange | C | Large aggregator owned by JetNet | adsb:`feed1.adsbexchange.com` port `30004`<br/>mlat: `feed.adsbexchange.com` port `31090`|
 

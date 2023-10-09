@@ -9,12 +9,14 @@ These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined
 * [ADSBHub](https://www.adsbhub.org)
 * [adsb.fi](https://adsb.fi/)
 * [ADSB.lol](https://adsb.lol/)
-* [ADSB One](https://adsb.one/)
+* [Airplanes.live](https://airplanes.live/)
 * [OpenSky Network](https://opensky-network.org/)
 * [Planespotters.net](https://www.planespotters.net/)
 * [Plane Watch](https://plane.watch/)
 * [The Air Traffic](https://theairtraffic.com/)
 * [RadarPlane.com](https://radarplane.com/)
+* [HPRadar](https://skylink.hpradar.com)
+* [Fly Italy ADSB](https://flyitalyadsb.com/)
 
 ## For-Profit Aggregators
 
