@@ -123,21 +123,7 @@ At this point, you can issue the command `docker compose up -d` to refresh both 
 
 Firstly, it should be noted that there is generally vastly less UAT traffic than ADS-B 1090MHz traffic, so don't immediately assume the `dump978` container isn't working if you can't immediately see UAT flights. Provided the container is running and healthy
 
-To see the data being received and decoded by our new container, run the command `docker exec -it ultrafeeder viewadsb`. This should display a real-time departure-lounge-style screen showing all the aircraft being tracked. Look for entries in the `Mode` column listed as `ADS-R`/`UAT`.
-
-For example:
-
-```text
- Hex    Mode  Sqwk  Flight   Alt    Spd  Hdg    Lat      Long   RSSI  Msgs  Ti -
-────────────────────────────────────────────────────────────────────────────────
- ... other aircraft removed from output for brevity ...
-
- ... other aircraft removed from output for brevity ...
-```
-
-Press `CTRL-C` to escape this screen.
-
-You should also be able to point your web browser at `http://docker.host.ip.addr:30980/skyaware978` to view the web interface \(change `docker.host.ip.addr` to the IP address of your docker host\). You should see a map showing your currently tracked aircraft, and the UAT aircraft will be denoted by a different colour in the list.
+You should  be able to point your web browser at `http://docker.host.ip.addr:30980/skyaware978` to view the web interface \(change `docker.host.ip.addr` to the IP address of your docker host\). You should see a map showing your currently tracked aircraft by the docker-dump978 container; these may include both aircraft received via UAT as well as TIS-B/ADS-R repeated transmissions that you receive at 978 MHz.
 
 ## Feeder Configuration
 
