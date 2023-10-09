@@ -82,14 +82,14 @@ sudo modprobe -r rtl2838
 Next we rebuild the module dependency database with this command:
 
 ```bash
-depmod -a
+sudo depmod -a
 ```
 
 This may appear to initially not be doing anything, but after a short wait will begin outputting many lines of status updates as it runs until it finishes.
 
 ### 4. Update the Boot Image
 
-Now we need to update our boot image to ensure any references to the modules we've blacklisted are removed
+Now we need to update our boot image to ensure any references to the modules we've blacklisted are removed. (This is only needed on certain systems; feel free to ignore if this command fails.)
 
 ```bash
 sudo update-initramfs -u
