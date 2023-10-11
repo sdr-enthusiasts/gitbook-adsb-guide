@@ -82,7 +82,8 @@ services:
           mlat,dati.flyitalyadsb.com,30100,39007;
           mlathub,piaware,30104,beast_in;
           mlathub,rbfeeder,30105,beast_in;
-          mlathub,radarvirtuel,30105,beast_in
+          mlathub,radarvirtuel,30105,beast_in;
+          mlathub,planewatch,30105,beast_in
       # --------------------------------------------------
       - UUID=${ULTRAFEEDER_UUID}
       - MLAT_USER=${FEEDER_NAME}
