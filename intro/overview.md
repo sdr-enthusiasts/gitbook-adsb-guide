@@ -42,3 +42,9 @@ All of the containers in this guide will run on:
 This mix of architectures allows you to run this set-up this on almost any Linux machine.
 
 If there's another feeder you'd like added as a container, please reach out to me via the methods outlined below.
+
+# Shortcuts
+
+Following this guide is not very hard, but it does require some familiarity with the command line, editing files, and some patience as you work through the details.
+If you are looking for an easier option, the [How To Get Help](intro/how-to-get-help) section introduces the [adsb.im Feeder Image](https://adsb.im/home) which is designed to make things even easier.
+
