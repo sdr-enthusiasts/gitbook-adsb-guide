@@ -76,13 +76,14 @@ Append the following lines to the end of the file \(inside the `services:` secti
       - DUMP978_SDR_GAIN=${UAT_SDR_GAIN}
       - DUMP978_SDR_PPM=${UAT_SDR_PPM}
     volumes:
-      - /opt/adsb/dump978/autogain:/run/autogain
+      - /opt/adsb/dump978:/var/globe_history
       - /dev:/dev:ro
     ports:
       - 30980:80
     tmpfs:
-      - /run/readsb
-      - /tmp
+      - /run:exec,size=64M
+      - /tmp:size=64M
+      - /var/log:size=32M
 ```
 
 To explain what's going on in this addition:
