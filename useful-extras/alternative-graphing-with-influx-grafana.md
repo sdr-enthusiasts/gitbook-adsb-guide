@@ -42,11 +42,10 @@ Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`
 Add the following lines to the `environment` section of the `ultrafeeder` container definition \(in the `ultrafeeder:` section, below `environment:` and before the `volumes:` section\):
 
 ```yaml
-      - INFLUXDBURL=http://influxdb:8086
-      - INFLUXDB_V2=true
-      - INFLUXDB_V2_BUCKET=ultrafeeder
-      - INFLUXDB_V2_ORG=ultrafeeder
-      - INFLUXDB_V2_TOKEN=${INFLUXDB_ADMIN_TOKEN}
+      - INFLUXDBV2_URL=http://influxdb:8086
+      - INFLUXDBV2_BUCKET=ultrafeeder
+      - INFLUXDBV2_ORG=ultrafeeder
+      - INFLUXDBV2_TOKEN=${INFLUXDB_ADMIN_TOKEN}
 ```
 
 Append the following lines to the end of the file:
