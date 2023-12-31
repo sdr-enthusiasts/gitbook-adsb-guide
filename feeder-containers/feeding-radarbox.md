@@ -183,7 +183,7 @@ To explain what's going on in this addition:
 
 ## Update `ultrafeeder` container configuration
 
-Before running `docker compose`, we also want to update the configuration of the `ultrafeeder` container, so that it generates MLAT data for piaware.
+Before running `docker compose`, we also want to update the configuration of the `ultrafeeder` container, so that it generates MLAT data for radarbox.
 
 Open the `docker-compose.yml` and make the following environment value is part of the `ULTRAFEEDER_CONFIG` variable to the `ultrafeeder` service:
 

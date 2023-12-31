@@ -12,7 +12,7 @@ description: 'If you wish to feed ADS-B Exchange, follow the steps below.'
 
 ## Update `ultrafeeder` container configuration
 
-Before running `docker compose`, we also want to update the configuration of the `ultrafeeder` container, so that it generates MLAT data for piaware.
+Before running `docker compose`, we also want to update the configuration of the `ultrafeeder` container, so that it generates MLAT data for adsbexchange.
 
 Open the `docker-compose.yml` and make the following environment value is part of the `ULTRAFEEDER_CONFIG` variable to the `ultrafeeder` service:
 
