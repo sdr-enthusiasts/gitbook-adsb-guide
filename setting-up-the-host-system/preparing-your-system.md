@@ -68,7 +68,7 @@ require dhcp_server_identifier
 slaac private
 
 # Example static IP configuration:
-#interface eth0echo "denyinterfaces veth*" >> /etc/dhcpd.conf
+#interface eth0
 #static ip_address=192.168.0.10/24
 #static ip6_address=fd51:42f8:caae:d92e::ff/64
 #static routers=192.168.0.1
