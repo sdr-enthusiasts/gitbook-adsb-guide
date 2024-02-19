@@ -141,4 +141,4 @@ These variables control exposing flight data and `readsb` metrics to [Prometheus
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `PROMETHEUS_ENABLE` | Set to any string to enable Prometheus support | Unset |
-| `PROMETHEUSPORT` | The port that the Prometheus client will listen on | `9273` |
+| `PROMETHEUSPORT` | The port that the Prometheus client will listen on | `9274` |
