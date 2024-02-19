@@ -136,10 +136,9 @@ Field keys should be as-per the `StatisticEntry` message schema from [`readsb.pr
 
 ## Prometheus Options
 
-These variables control exposing flight data and `readsb` metrics to [Prometheus](https://prometheus.io) (via a built-in instance of [Telegraf](https://docs.influxdata.com/telegraf/)).
+These variables control exposing flight data and `readsb` metrics to [Prometheus](https://prometheus.io) (via a built-in instance of [Telegraf](https://docs.influxdata.com/telegraf/)). The metrics will be available under any path on the chosen port.
 
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `PROMETHEUS_ENABLE` | Set to any string to enable Prometheus support | Unset |
 | `PROMETHEUSPORT` | The port that the Prometheus client will listen on | `9273` |
-| `PROMETHEUSPATH` | The path that the Prometheus client will publish metrics on | `/metrics` |
