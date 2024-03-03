@@ -22,53 +22,39 @@ To get your _fr24key_, log onto your feeder and issue the command:
 cat /etc/fr24feed.ini | grep fr24key
 ```
 
+You can also find it in the datasharing section on the fr24 website if you have an account with the email address that was used when creating the key.
+
 ### New to `fr24feed`?
 
 If you're already feeding FlightRadar24 and you've followed the steps in the previous command, you can skip this section.
 
 First-time users should obtain a FlightRadar24 sharing key \(a _fr24key_\). To get one, you can run through the sign-up process. This will ask a series of questions allowing you to sign up with FlightRadar24 and get a _fr24key_.
+Use the same email address as for your fr24 account if you already have one or plan on creating one.
 
-There's an automated script that you can run, however if this breaks please let us know by raising an issue on [GitHub](https://github.com/sdr-enthusiasts/docker-flightradar24/issues). You can also use the manual sign-up method.
-
-#### Automatic Sign-Up Script Method
-
-Run these commands from within your application directory \(`/opt/adsb`\):
-
-```text
-source ./.env
-docker run \
-  --rm \
-  -it \
-  -e FEEDER_LAT="$FEEDER_LAT" \
-  -e FEEDER_LONG="$FEEDER_LONG" \
-  -e FEEDER_ALT_FT="$FEEDER_ALT_FT" \
-  -e FR24_EMAIL="YOUR@EMAIL.ADDRESS" \
-  --entrypoint /scripts/signup.sh \
-  ghcr.io/sdr-enthusiasts/docker-flightradar24
-```
-
-Be sure to replace `YOUR@EMAIL.ADDRESS` with your actual email address!
-
-After about 30 seconds or so, if the script method was successful, you should see output similar to this:
-
-```text
-FR24_SHARING_KEY=5fa9ca2g9049b615
-FR24_RADAR_ID=T-XXXX123
-```
-
-Simply copy these lines and paste them into your `.env` file.
-
-If something went wrong, please take a moment to let me know, then try the manual method below.
 
 #### Manual Sign-Up Method
 
 Run the command:
 
 ```text
-docker run --rm -it --entrypoint fr24feed ghcr.io/sdr-enthusiasts/docker-flightradar24 --signup
+docker run -it --rm ghcr.io/sdr-enthusiasts/docker-baseimage:qemu bash -c "$(curl -sSL https://raw.githubusercontent.com/sdr-enthusiasts/docker-flightradar24/main/get_adsb_key.sh)"
 ```
 
-This will take you through the sign-up process. At the end of the sign-up process, you'll be presented with:
+This will start up a container. After installing a bunch of software (which may take a while depending on the speed of your machine and internet connection), it will take you through the signup process. Most of the answers don't matter as during normal operation the configuration will be set with environment variables. I would suggest answering as follows:
+
+- `Step 1.1 - Enter your email address (username@domain.tld)`: Enter your FlightRadar24 account email address
+- `Step 1.2 - If you used to feed FR24 with ADS-B data before, enter your sharing key.`: Leave blank and press enter
+- `Step 1.3 - Would you like to participate in MLAT calculations?`: Answer `no`
+- `Would you like to continue using these settings?`: Answer `yes`
+- `Step 4.1 - Receiver selection (in order to run MLAT please use DVB-T stick with dump1090 utility bundled with fr24feed)... Enter your receiver type (1-7)`: Answer `4`.
+- `Enter your connection type`: Answer `1`.
+- `host`: Answer: 127.0.0.1
+- `port`: Answer: 30005
+- `Step 5`: Answer: 2x `no`
+
+Note that there is a limit of 3 feeders per FR24 account. ADSB and UAT (see below) both count as 1 feeder. If you have more than 3 feeders, you will need to contact <support@fr24.com> to request an additional Feeder Key. Make sure to send them your account email-address, latitude, longitude, altitude, and if the key is for an ADSB or UAT feeder.
+
+At the end of the sign-up process, you'll be presented with:
 
 ```text
 Congratulations! You are now registered and ready to share ADS-B data with Flightradar24.
