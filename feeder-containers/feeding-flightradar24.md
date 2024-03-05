@@ -32,7 +32,7 @@ First-time users should obtain a FlightRadar24 sharing key \(a _fr24key_\). To g
 Use the same email address as for your fr24 account if you already have one or plan on creating one.
 
 
-#### Manual Sign-Up Method
+#### Obtaining a Sharing Key for ADSB
 
 Run the command:
 
@@ -76,6 +76,18 @@ For example:
 FR24_SHARING_KEY=10ae138d0c1g
 ```
 
+#### UAT key and configuration (USA only, requires 2nd SDR and dump978 container already configured)
+
+Get a separate sharing key for UAT as described here: (https://github.com/sdr-enthusiasts/docker-flightradar24?tab=readme-ov-file#uat-configuration-usa-only)
+
+Copy the sharing key you are given, and add the following line to your `.env` file:
+
+```text
+FR24_SHARING_KEY_UAT=YOURSHARINGKEYUAT
+```
+
+* Replace `YOURSHARINGKEYUAT` with the sharing key from the output of the sign-up process.
+
 ## Deploying `fr24feed` container
 
 Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
@@ -93,6 +105,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
     environment:
       - BEASTHOST=ultrafeeder
       - FR24KEY=${FR24_SHARING_KEY}
+      - FR24KEY_UAT=${FR24_SHARING_KEY_UAT}
     tmpfs:
       - /var/log
 ```
