@@ -14,8 +14,6 @@ nano docker-compose.yml
 ```
 
 ```yaml
-version: '3.8'
-
 services:
   ultrafeeder:
   # ultrafeeder combines a number of functions:
