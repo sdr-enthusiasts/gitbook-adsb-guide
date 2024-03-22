@@ -70,6 +70,7 @@ services:
           adsb,skyfeed.hpradar.com,30004,beast_reduce_plus_out;
           adsb,feed.radarplane.com,30001,beast_reduce_plus_out;
           adsb,dati.flyitalyadsb.com,4905,beast_reduce_plus_out;
+          adsb,feed1.adsbexchange.com,30004,beast_reduce_plus_out;
           mlat,feed.adsb.fi,31090,39000;
           mlat,in.adsb.lol,31090,39001;
           mlat,feed.airplanes.live,31090,39002;
@@ -78,6 +79,7 @@ services:
           mlat,skyfeed.hpradar.com,31090,39005;
           mlat,feed.radarplane.com,31090,39006;
           mlat,dati.flyitalyadsb.com,30100,39007;
+          mlat,feed.adsbexchange.com,31090,39008
           mlathub,piaware,30105,beast_in;
           mlathub,rbfeeder,30105,beast_in;
           mlathub,radarvirtuel,30105,beast_in;
