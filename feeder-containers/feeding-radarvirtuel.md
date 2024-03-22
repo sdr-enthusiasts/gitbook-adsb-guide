@@ -99,11 +99,11 @@ To explain this addition, the `ultrafeeder` container will connect to the `radar
 Once the file has been updated, issue the command `docker compose pull radarvirtuel && docker compose up -d` in the application directory to apply the changes and bring up the `radarvirtuel` container. You should see the following output:
 
 ```text
-ultrafeeder is up-to-date
-piaware is up-to-date
-fr24 is up-to-date
-pfclient is up-to-date
-Creating radarvirtuel...
+ ✔ Container ultrafeeder  Running
+ ✔ Container piaware      Running
+ ✔ Container fr24         Running 
+ ✔ Container adsbhub      Running
+ ✔ Container radarvirtuel Started
 ```
 
 We can view the logs for the environment with the command `docker logs radarvirtuel`, or continually "tail" them with `docker logs -f radarvirtuel`. The logs will be fairly unexciting and look like this:
