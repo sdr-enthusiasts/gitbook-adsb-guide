@@ -169,8 +169,8 @@ docker compose up -d
 You should see the following output:
 
 ```text
-Creating network "adsb_default" with the default driver
-Creating ultrafeeder         ... done
+ ⠴ Network adsb_default   Created
+ ✔ Container ultrafeeder  Started
 ```
 
 We can view the logs for the environment with the command `docker compose logs`, or continually "tail" them with `docker compose logs -f`. At this stage, the logs will be fairly extensive and unexciting and look like this:
