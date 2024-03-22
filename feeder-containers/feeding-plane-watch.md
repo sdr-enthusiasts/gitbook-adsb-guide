@@ -83,8 +83,8 @@ To explain what's going on in this addition:
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `planewatch` container. You should see the following output:
 
 ```text
-ultrafeeder is up-to-date
-Creating planewatch
+ ✔ Container ultrafeeder  Running
+ ✔ Container planewatch   Started
 ```
 
 You can see from the output above that the `ultrafeeder` container was left alone \(as the configuration for this container did not change\), and a new container `planewatch` was created.
