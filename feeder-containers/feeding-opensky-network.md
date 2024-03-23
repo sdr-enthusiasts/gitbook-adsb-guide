@@ -169,12 +169,11 @@ To explain what's going on in this addition:
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `adsbhub` container. You should see the following output:
 
 ```text
-ultrafeeder is up-to-date
-piaware is up-to-date
-fr24 is up-to-date
-pfclient is up-to-date
-adsbhub is up-to-date
-Creating opensky
+ ✔ Container ultrafeeder  Running
+ ✔ Container piaware      Running
+ ✔ Container fr24         Running 
+ ✔ Container adsbhub      Running
+ ✔ Container opensky      Started
 ```
 
 We can view the logs for the environment with the command `docker logs opensky`, or continually "tail" them with `docker logs -f opensky`. The logs will be fairly unexciting and look like this:

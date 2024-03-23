@@ -12,7 +12,7 @@ The docker image [`ghcr.io/sdr-enthusiasts/docker-adsbhub`](https://github.com/s
 
 ### Obtaining an ADSBHub Station Key
 
-First-time users should obtain a ADSBHub Station dynamic IP key. Follow the directions for steps 1 and 2 at [ADSBHub how to feed](https://www.adsbhub.org/howtofeed.php), ensuring your station is set up as a client and the data protocol set as "SBS".
+First-time users should obtain a ADSBHub Station dynamic IP key. Follow the directions for steps 1 and 2 at [ADSBHub how to feed](https://www.adsbhub.org/howtofeed.php), ensuring your station is set up as a client and the data protocol set as "SBS" (see below.)
 
 Existing users should sign in to their ADSBHub account, go to their "Settings" page, click on their station \(in the bar at the top of the settings table\) and retrieve their station key.
 
@@ -76,11 +76,10 @@ To explain what's going on in this addition:
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `adsbhub` container. You should see the following output:
 
 ```text
-ultrafeeder is up-to-date
-piaware is up-to-date
-fr24 is up-to-date
-pfclient is up-to-date
-Creating adsbhub
+ ✔ Container ultrafeeder  Running
+ ✔ Container piaware      Running
+ ✔ Container fr24         Running 
+ ✔ Container adsbhub      Started
 ```
 
 We can view the logs for the environment with the command `docker logs adsbhub`, or continually "tail" them with `docker logs -f adsbhub`. The logs will be fairly unexciting and look like this:

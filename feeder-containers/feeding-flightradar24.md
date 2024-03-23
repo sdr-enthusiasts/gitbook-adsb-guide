@@ -123,9 +123,9 @@ To explain what's going on in this addition:
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `fr24` container. You should see the following output:
 
 ```text
-ultrafeeder is up-to-date
-piaware is up-to-date
-Creating fr24
+ ✔ Container ultrafeeder  Running
+ ✔ Container piaware      Running
+ ✔ Container fr24         Started
 ```
 
 We can view the logs for the environment with the command `docker compose logs`, or continually "tail" them with `docker compose logs -f`. At this stage, the logs will be fairly unexciting and look like this:

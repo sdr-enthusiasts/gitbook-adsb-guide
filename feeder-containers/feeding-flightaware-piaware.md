@@ -133,6 +133,8 @@ To explain what's going on in this addition:
 
 Before running `docker compose`, we also want to update the configuration of the `ultrafeeder` container, so that it generates MLAT data for piaware.
 
+**NOTE: If you are using the sample `docker-compose.yml` provided, this step has already been done for you.**
+
 Open the `docker-compose.yml` and make the following environment value is part of the `ULTRAFEEDER_CONFIG` variable to the `ultrafeeder` service:
 
 ```yaml
@@ -146,8 +148,8 @@ To explain this addition, the `ultrafeeder` container will connect to the `piawa
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `piaware` container. You should see the following output:
 
 ```text
-ultrafeeder is up-to-date
-Creating piaware
+ ✔ Container ultrafeeder  Running
+ ✔ Container piaware   Started
 ```
 
 We can view the logs for the environment with the command `docker compose logs`, or continually "tail" them with `docker compose logs -f`. At this stage, the logs will be fairly unexciting and look like this:
