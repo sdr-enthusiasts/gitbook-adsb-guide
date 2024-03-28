@@ -12,57 +12,20 @@ description: >-
 
 You should create a ZeroTier Account, and install the ZeroTier client on the machine you intend to use to connect to your remote station as per these [`instructions`](https://www.zerotier.com/download/) .
 
+Note - it is possible to deploy ZeroTier as a container, but we recommend against it. If your station is remote-managed only, you'd want your VPN network to be managed and established as close as possible to the hardware. Putting it in a Docker Container is risky, as your station may become unreachable via ZT if the docker service crashes or exhibits issues.
+
 ## Create a ZeroTier network
 
 Now you need to create a ZeroTier 'network' for your devices to connect to - this is as simple as clicking on the `Create a Network` button once you have logged in to ZeroTier. If you need help, have a look at the [`Getting Started`](https://docs.zerotier.com/getting-started/getting-started/) guide (but stop before the step where you assign IP address ranges).
 
-You should now have a unique 16 character Network ID e.g. `255724d630f06682`. Make a note of this as you will need it in the next steps.
-
-## Deploying `ZeroTier` container
-
-The next step is to deploy a ZeroTier container on your remote station, feel free to choose your own container, but in this example we will use this well maintained container with multi-architecture support by [`bltavares`](https://hub.docker.com/r/bltavares/zerotier).
-
-Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`. Append the following lines to the end of the file:
-
-```yaml
-  zerotier:
-    image: bltavares/zerotier:latest
-    container_name: zerotier
-    restart: always
-    devices:
-      - /dev/net/tun
-    network_mode: host
-    cap_add:
-      - NET_ADMIN
-      - SYS_ADMIN
-    environment:
-     - net=host
-    volumes:
-      - '/var/lib/zerotier-one:/var/lib/zerotier-one'
-```
-
-Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `zerotier` container.
+You should now have a unique 16 character Network ID e.g. `253ef24d630f06682`. Make a note of this as you will need it in the next steps.
 
 ## Joining your Network
 
-Open a shell inside the `zerotier` container with the following command.
+Join your network from your machine's command line:
 
-```yaml
- sudo docker exec -it zerotier bash
-```
-
-and then join your network
-
-```yaml
- zerotier-cli join xxxxxxxxxxxxxxxx
-```
-
-where xxxxxxxxxxxxxxxx is the 16 digit ID of your network.
-
-finally exit the shell with the command
-
-```yaml
- exit
+```bash
+sudo zerotier-cli join xxxxxxxxxxxxxxxx
 ```
 
 ## Authorising your station
