@@ -84,6 +84,8 @@ services:
           mlathub,rbfeeder,30105,beast_in;
           mlathub,radarvirtuel,30105,beast_in;
           mlathub,planewatch,30105,beast_in
+      # If you are in the Netherlands, feel free to add a feed to HetLuichtruim.nl:
+      #    adsb,feed.hetluchtruim.nl,9000,beast_reduce_plus_out;
       # --------------------------------------------------
       - UUID=${ULTRAFEEDER_UUID}
       - MLAT_USER=${FEEDER_NAME}
