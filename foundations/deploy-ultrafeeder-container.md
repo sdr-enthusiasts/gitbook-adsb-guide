@@ -84,6 +84,8 @@ services:
           mlathub,rbfeeder,30105,beast_in;
           mlathub,radarvirtuel,30105,beast_in;
           mlathub,planewatch,30105,beast_in
+      # If you are in the Netherlands, feel free to add a feed to HetLuichtruim.nl:
+      #    adsb,feed.hetluchtruim.nl,9000,beast_reduce_plus_out;
       # --------------------------------------------------
       - UUID=${ULTRAFEEDER_UUID}
       - MLAT_USER=${FEEDER_NAME}
@@ -153,6 +155,7 @@ There are several aggregators, both non-profit and commercial, that can directly
 | Fly Italy ADSB | N | Run by a few ADSB enthusiasts from Italy | adsb: `dati.flyitalyadsb.com` port `4905`<br/>mlat: `dati.flyitalyadsb.com` port `30100` |
 | AV Delphi | C | Swiss aircraft data company | adsb:`data.avdelphi.com` port `24999`<br/>mlat: no MLAT|
 | ADSB Exchange | C | Large aggregator owned by JetNet | adsb:`feed1.adsbexchange.com` port `30004`<br/>mlat: `feed.adsbexchange.com` port `31090`|
+| Het Luchtruim	| N |	Run by a private individual in the Netherlands.<br/>Please only feed if you are in the Netherlands or close to its borders | adsb: `feed.hetluchtruim.nl` port `9000`<br/>mlat: in the near future |
 
 ## Using the MLAT results
 
