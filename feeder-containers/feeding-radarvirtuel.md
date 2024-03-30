@@ -53,7 +53,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
     tty: true
     container_name: radarvirtuel
     hostname: radarvirtuel
-    restart: always
+    restart: unless-stopped
     environment:
       - FEEDER_KEY=${RV_FEEDER_KEY}
       - SOURCE_HOST=ultrafeeder:30002

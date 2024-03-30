@@ -146,7 +146,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
     image: ghcr.io/sdr-enthusiasts/docker-radarbox:latest
     tty: true
     container_name: rbfeeder
-    restart: always
+    restart: unless-stopped
     environment:
       - BEASTHOST=ultrafeeder
       - LAT=${FEEDER_LAT}

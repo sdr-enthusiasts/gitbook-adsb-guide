@@ -40,7 +40,7 @@ If you need to update a container's configuration in `docker-compose.yml` or in 
 
 ### Start containers on system boot
 
-All of the containers defined within this document will be configured with the directive `restart: always`. This will ensure the containers are automatically started if the host is rebooted.
+All of the containers defined within this document will be configured with the directive `restart: unless-stopped`. This will ensure the containers are automatically started if the host is rebooted unless you have manually stopped the container(s) previously.
 
 ## Information on Healthchecks
 

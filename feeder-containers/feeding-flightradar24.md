@@ -99,7 +99,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
     image: ghcr.io/sdr-enthusiasts/docker-flightradar24:latest
     tty: true
     container_name: fr24
-    restart: always
+    restart: unless-stopped
     ports:
       - 8754:8754
     environment:

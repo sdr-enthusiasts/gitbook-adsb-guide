@@ -88,7 +88,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
     image: ghcr.io/sdr-enthusiasts/docker-planefinder:latest
     tty: true
     container_name: pfclient
-    restart: always
+    restart: unless-stopped
     ports:
       - 30053:30053
     environment:

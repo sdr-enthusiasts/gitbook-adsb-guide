@@ -53,7 +53,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
     image: ghcr.io/plane-watch/docker-plane-watch:latest
     tty: true
     container_name: planewatch
-    restart: always
+    restart: unless-stopped
     environment:
       - BEASTHOST=ultrafeeder
       - LAT=${FEEDER_LAT}

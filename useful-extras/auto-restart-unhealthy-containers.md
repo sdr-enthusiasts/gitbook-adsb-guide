@@ -50,7 +50,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
     image: willfarrell/autoheal:latest
     tty: true
     container_name: autoheal
-    restart: always
+    restart: unless-stopped
     environment:
       - AUTOHEAL_CONTAINER_LABEL=all
     volumes:
@@ -113,7 +113,7 @@ services:
     tty: true
     container_name: readsb
     hostname: readsb
-    restart: always
+    restart: unless-stopped
     labels:
       - "autoheal=true"
     devices:
@@ -148,7 +148,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
     image: willfarrell/autoheal:latest
     tty: true
     container_name: autoheal
-    restart: always
+    restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 ```

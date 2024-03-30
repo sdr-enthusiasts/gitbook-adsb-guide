@@ -47,7 +47,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
     image: containrrr/watchtower:latest
     tty: true
     container_name: watchtower
-    restart: always
+    restart: unless-stopped
     environment:
       - TZ=${FEEDER_TZ}
       - WATCHTOWER_CLEANUP=true

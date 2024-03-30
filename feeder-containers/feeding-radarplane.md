@@ -71,7 +71,7 @@ An example docker compose service definition is below:
     image: ghcr.io/radarplane/docker-radarplane:main
     tty: true
     container_name: radarplane
-    restart: always
+    restart: unless-stopped
     environment:
       - BEASTHOST=readsb
       - TZ=UTC
