@@ -2,7 +2,7 @@
 description: >-
   In this step we blacklist the RTL-SDR kernel modules, to ensure the devices
   are available to be used by our containers. You can skip this step if you're
-  not using an RTLSDR radio (eg: bladeRF).
+  not using an RTL-SDR radio (eg: bladeRF).
 ---
 
 # Kernel Module Configuration

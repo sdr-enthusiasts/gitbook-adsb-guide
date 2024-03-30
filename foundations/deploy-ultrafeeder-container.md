@@ -2,12 +2,12 @@
 description: >-
   The "ultrafeeder" container is the heart of our "adsb" application. It receives
   1090MHz ADS-B ES signals from your SDR, and demodulates ADS-B messages,
-  making them available for all other containers. It also provides a website with a map based on tar1090, station statistics (graphs1090), mlat-client, and an mlat-hub to aggregate mlat results.
+  making them available for all other containers.
 ---
 
-# Deploy "ultrafeeder"
+It also provides a website with a map based on tar1090, station statistics (graphs1090), mlat-client, and an mlat-hub to aggregate MLAT results.
 
-In your favorite text editor, create a file named `docker-compose.yml` in your application directory (`/opt/adsb`) if following along verbatim.
+In your favorite text editor, create a file named `docker-compose.yml` in your application directory (`/opt/adsb`) if you've been following along verbatim.
 
 ```bash
 nano docker-compose.yml
@@ -57,8 +57,8 @@ services:
       # --------------------------------------------------
       # Sources and Aggregator connections:
       # Note - remove the ones you are not using / feeding
-      #  Make sure that each line ends with a semicolon ";",  with the
-      #  exception of the last line which shouldn't have a ";"
+      # Make sure that each line ends with a semicolon ";".
+
       - ULTRAFEEDER_CONFIG=
           adsb,dump978,30978,uat_in;
           adsb,feed.adsb.fi,30004,beast_reduce_plus_out;
@@ -79,11 +79,11 @@ services:
           mlat,skyfeed.hpradar.com,31090,39005;
           mlat,feed.radarplane.com,31090,39006;
           mlat,dati.flyitalyadsb.com,30100,39007;
-          mlat,feed.adsbexchange.com,31090,39008
+          mlat,feed.adsbexchange.com,31090,39008;
           mlathub,piaware,30105,beast_in;
           mlathub,rbfeeder,30105,beast_in;
           mlathub,radarvirtuel,30105,beast_in;
-          mlathub,planewatch,30105,beast_in
+          mlathub,planewatch,30105,beast_in;
       # If you are in the Netherlands, feel free to add a feed to HetLuichtruim.nl:
       #    adsb,feed.hetluchtruim.nl,9000,beast_reduce_plus_out;
       # --------------------------------------------------
@@ -126,22 +126,25 @@ services:
       - /var/log:size=32M
 ```
 
-In the file above, you will find several parameters that have values denoted as `${xxxx}`. These values are read from a file in the same directory named `.env`. You can find an example of such file that you can download and edit [here](https://github.com/sdr-enthusiasts/docker-install/blob/main/sample-docker-compose.yml). Alternatively, you can simply replace `${xxxx}` with the value you want to use, for example `READSB_RTLSDR_DEVICE=${ADSB_SDR_SERIAL}` --> `READSB_RTLSDR_DEVICE=0000001090`.
+In the file above, you will find several parameters that have values denoted as `${xxxx}`. These values are read from a file in the same directory named `.env` that we created earlier. Alternatively, you can simply replace `${xxxx}` with the value you want to use, for example `READSB_RTLSDR_DEVICE=${ADSB_SDR_SERIAL}` --> `READSB_RTLSDR_DEVICE=0000001090`.
+
 
 The `docker-compose.yml` file above will:
 
 * Create a few mapped docker volumes to store historic message values and autogain values (`/var/globe_history`), statistics for the graphs (`/var/lib/collectd`), and make the disk statistics (`/proc/diskstats`) and USB devices (`/dev') available to the container.
 * Create a service named `ultrafeeder` that will run the `ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder` container.
   * We're mapping TCP port `8080` through to the container so we can access the web interface.
-  * The variable `READSB_RTLSDR_DEVICE` tells `readsb` to look for an RTLSDR device with the serial of `1090` (that we re-serialized in an earlier step).
+  * The variable `READSB_RTLSDR_DEVICE` tells `readsb` to look for an RTL-SDR device with the serial of `1090` (that we re-serialized in an earlier step).
   * We're passing several environment variables through, including our timezone, latitude and longitude from the `.env` file \(denoted by `${VARIABLE}`\).
 * We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
   * The size of the container, by not writing changes to the underlying container; and
   * SD Card or SSD wear
 
+You can find an expanded example of the `docker-compose.yml` file that you can download and edit [here](https://github.com/sdr-enthusiasts/docker-install/blob/main/sample-docker-compose.yml) if you want to see other options, but the sample above is a good start. 
+
 ## Feeding directly from Ultrafeeder
 
-There are several aggregators, both non-profit and commercial, that can directly be sent data from ultrafeeder without the need for an additional feeder container. We have added them in the example `docker-compose.yml` snippet above. Here is a partial list of these aggregators. All of them use the `beast_reduce_plus` format for feeding ADSB data, and `mlat-client` for feeding MLAT:
+There are several aggregators, both non-profit and commercial, that can directly be sent data from ultrafeeder without the need for an additional feeder container. We have added them in the example `docker-compose.yml` file above. Here is a partial list of these aggregators. All of them use the `beast_reduce_plus` format for feeding ADS-B data, and `mlat-client` for feeding MLAT:
 
 | Name | (C)ommercial/<br/>(N)on-profit | Description | Feed details |
 |------|---------------------------|-------------|--------------|
@@ -159,7 +162,7 @@ There are several aggregators, both non-profit and commercial, that can directly
 
 ## Using the MLAT results
 
-See [https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder/blob/main/README.md#configuring-the-built-in-mlat-hub](https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder/blob/main/README.md#configuring-the-built-in-mlat-hub) for more details on how to configure this.
+A working MLAT configuration is already provided in the example above.  See [https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder/blob/main/README.md#configuring-the-built-in-mlat-hub](https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder/blob/main/README.md#configuring-the-built-in-mlat-hub) for more details on how to configure more advanced features.
 
 ## Deploying `ultrafeeder`
 
@@ -266,7 +269,7 @@ To see the data being received and decoded by our new container, run the command
 
 Press `CTRL-C` to escape this screen.
 
-You should also be able to point your web browser at `http://docker.host.ip.addr:8080/` to view the web interface \(change `docker.host.ip.addr` to the IP address of your docker host\). You should see a map showing your currently tracked aircraft, and a link to the "Performance Graphs".
+You should also be able to point your web browser to `http://docker.host.ip.addr:8080/` to view the web interface \(change `docker.host.ip.addr` to the IP address or hostname of your docker host\). You should see a map showing your currently tracked aircraft, and a link to the "Performance Graphs".
 
 ## UUID security
 
@@ -289,7 +292,7 @@ See [`readme-grafana.MD`](https://github.com/sdr-enthusiasts/docker-adsb-ultrafe
 If you want to use `ultrafeeder` *only* as a SDR decoder but without any mapping or stats/graph websites, without MLAT connections or MLAT-hub, etc., for example to minimize CPU and RAM needs on a low CPU/memory single board computer, then do the following:
 
 * in the `ULTRAFEEDER_CONFIG` parameter, remove any entry that starts with `mlat` or `mlathub`. This will prevent any `mlat-client`s or `mlathub` instances to be launched. If you want to connect the `mlat-client`(s) to external MLAT servers but you don't want to run the overhead of a MLATHUB, you can leave any entries starting with `mlat` in the `ULTRAFEEDER_CONFIG` parameter, and set `MLATHUB_DISABLE=true`
-* Set the parameter `TAR1090_DISABLE=true`. This will prevent the `nginx` webserver and any websites to be launched
+* Set the parameter `TAR1090_DISABLE=true`. This will prevent the `nginx` webserver and any websites from being launched
 * Make sure not to use the `dhcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder:telegraf` label as Telegraf adds a LOT of resource use to the container
 
 ## Troubleshooting
@@ -310,3 +313,7 @@ cd /opt/adsb
 docker compose up -d
 docker exec -it ultrafeeder /usr/local/bin/autogain1090 reset
 ```
+
+## Advanced
+
+If you want to look at more options and examples for the `ultrafeeder` container, you can find the respository [here](https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder).

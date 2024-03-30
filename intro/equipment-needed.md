@@ -10,7 +10,7 @@ If you're just getting started and don't want to spend a lot of cash, a [cheap D
 
 ## An antenna optimised for 1090MHz
 
-I use a cheap eBay "vertical collinear" antenna. You could also [make your own](https://discussions.flightaware.com/t/three-easy-diy-antennas-for-beginners/16348). An indoor antenna works to get started. But in most cases an outdoor antenna will give you far better results.
+I use a cheap eBay "vertical collinear" antenna. You could also [make your own](https://discussions.flightaware.com/t/three-easy-diy-antennas-for-beginners/16348). An indoor antenna works to get started, but in most cases an outdoor antenna will give you far better results.
 
 ## A computer running Linux
 

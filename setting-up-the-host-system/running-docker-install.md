@@ -20,7 +20,7 @@ It will **check**, and if necessary **install** the following components and set
 - Blacklist SDR drivers so the `SDR-Enthusiasts`' ADSB and ACARS containers can access the RTL-SDR dongles. Unload any preloaded drivers.
 - on `dhcpd` based systems, exclude Docker Container-based virtual ethernet interfaces from using DHCP
 
-After running this script, your system should be ready to use `docker` and `docker compose`. A sample `docker-compose.yml` has been included in the `docker-install` repository.
+After running this script, your system should be ready to use `docker` and `docker compose`. A sample `docker-compose.yml` has been included in the `docker-install` repository if you want to explore extra options after following this guide.
 
 ### How to run it?
 

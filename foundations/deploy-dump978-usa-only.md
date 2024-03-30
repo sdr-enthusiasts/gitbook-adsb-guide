@@ -1,8 +1,7 @@
 ---
 description: >-
-  The "dump978" container receives 978MHz UAT signals from your SDR, and
-  demodulates ADS-B UAT messages, making them available for all other
-  containers.
+  The "dump978" container receives 978MHz UAT signals from your SDR (a different SDR from the one receiving 1090MHz signals), and
+  demodulates ADS-B UAT messages, making them available for all other containers.
 ---
 
 # Deploy "dump978" \(USA Only\)
@@ -21,7 +20,7 @@ Unplug all SDRs, leaving only the SDR to be used for 978MHz reception plugged in
 
 `docker run --rm -it --entrypoint /scripts/estimate_rtlsdr_ppm.sh --device /dev/bus/usb ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest`
 
-This takes about 30 minutes and will print a numerical value for Estimated optimum PPM setting.
+This takes about 30 minutes and will print a numerical value for estimated optimum PPM setting.
 
 ## Update the .env file for UAT
 
@@ -31,7 +30,7 @@ Inside your application directory \(`/opt/adsb`\), edit the `.env` file using yo
 nano /opt/adsb/.env
 ```
 
-This file holds all of the commonly used variables \(such as our latitude, longitude and altitude\). We're going to add more variables associated with UAT dongles.
+This file holds all of the commonly used variables \(such as our latitude, longitude and altitude\). We're going to add more variables associated our UAT dongle.
 
 ```text
 UAT_SDR_SERIAL=978
@@ -58,7 +57,7 @@ UAT_SDR_PPM=1
 
 Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
-Append the following lines to the end of the file \(inside the `services:` section\):
+Append the following lines to the end of the file \(under the `services:` section\):
 
 ```yaml
   dump978:
@@ -92,14 +91,14 @@ To explain what's going on in this addition:
   * We're presenting the USB bus through to this container \(so `dump978` can talk to the USB-attached SDR\).
   * We're passing several environment variables to the container:
     * `TZ` will use the `FEEDER_TZ` variable from your `.env` file
-    * `DUMP978_RTLSDR_DEVICE=978` tells `dump978` to use the RTL-SDR device with the serial from your `.env` file
-    * The container will use the SDR gain, PPM, and Device Serial values from your `.env` file
+    * `DUMP978_RTLSDR_DEVICE=${UAT_SDR_SERIAL}` tells `dump978` to use the RTL-SDR device with the serial from your `.env` file
+    * The container will use the SDR gain and PPM values from your `.env` file (`${UAT_SDR_GAIN}` and `${UAT_SDR_PPM}`)
 
 ## Update `ultrafeeder` container configuration
 
-Before running `docker compose`, we also want to update the configuration of the `ultrafeeder` container, so that it pulls the demodulated UAT data from the `dump978` container.
+Before running `docker compose`, we also want to update the configuration of the `ultrafeeder` container, so that it pulls the demodulated UAT data from the `dump978` container.  If you used the sample `docker-compose.yml` provided this has already been done.
 
-Open the `docker-compose.yml` and make the following environment value is part of the `ULTRAFEEDER_CONFIG` variable to the `ultrafeeder` service:
+Open the `docker-compose.yml` and add the following environment value to the `ULTRAFEEDER_CONFIG` variable under the `ultrafeeder` service:
 
 ```yaml
       - ULTRAFEEDER_CONFIG=adsb,dump978,30978,uat_in;
@@ -114,7 +113,7 @@ In addition, add these lines in the `GRAPHS1090` section of the `ultrafeeder` se
       - URL_978=http://dump978/skyaware978
 ```
 
-To explain this addition, the `ultrafeeder` container will connect to the `dump978` container on port `30978` and receive UAT data. This UAT data will then be included in any outbound data streams from `ultrafeeder`.
+To explain this addition, the `ultrafeeder` container will connect to the `dump978` container on port `30978` and receive UAT data. This UAT data will then be included in any outbound data streams sent from `ultrafeeder`.
 
 ## Refresh running containers
 
@@ -147,3 +146,7 @@ The current exceptions are:
 * `radarbox` - Radarbox needs some additional parameters to support both 1090MHz and 978MHz.
 
 The additional configuration directives are discussed on each container's page.
+
+## Advanced
+
+If you want to look at more options and examples for the `dump978` container, you can find the respository [here](https://github.com/sdr-enthusiasts/docker-dump978).
