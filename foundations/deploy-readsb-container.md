@@ -26,7 +26,7 @@ services:
     tty: true
     container_name: readsb
     hostname: readsb
-    restart: always
+    restart: unless-stopped
     devices:
       - /dev/bus/usb:/dev/bus/usb
     ports:

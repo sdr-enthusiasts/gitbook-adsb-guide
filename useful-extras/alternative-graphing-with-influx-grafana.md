@@ -56,7 +56,7 @@ Append the following lines to the end of the file:
     tty: true
     container_name: influxdb
     hostname: influxdb
-    restart: always
+    restart: unless-stopped
     environment:
       - DOCKER_INFLUXDB_INIT_MODE=setup
       - DOCKER_INFLUXDB_INIT_BUCKET=ultrafeeder
@@ -76,7 +76,7 @@ Append the following lines to the end of the file:
     tty: true
     container_name: grafana
     hostname: grafana
-    restart: always
+    restart: unless-stopped
     ports:
       - 3000:3000
     volumes:

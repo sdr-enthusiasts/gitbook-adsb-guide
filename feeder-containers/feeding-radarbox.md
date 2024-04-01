@@ -146,7 +146,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
     image: ghcr.io/sdr-enthusiasts/docker-radarbox:latest
     tty: true
     container_name: rbfeeder
-    restart: always
+    restart: unless-stopped
     environment:
       - BEASTHOST=ultrafeeder
       - LAT=${FEEDER_LAT}
@@ -254,3 +254,7 @@ We can view the logs for the environment with the command `docker compose logs`,
 We can see our container running with the command `docker ps`.
 
 Once running, you can visit the RadarBox website, and go to "Account" &gt; "Stations" and click your station to see your live data.
+
+## Advanced
+
+If you want to look at more options and examples for the `rbfeeder` container, you can find the respository [here](https://github.com/sdr-enthusiasts/docker-radarbox)

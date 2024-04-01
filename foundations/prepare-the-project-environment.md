@@ -17,7 +17,7 @@ cd /opt/adsb
 
 ## Generate a UUID
 
-A UUID is a unique identifier that will identify you to various feeding servers. If you already have a `UUID` that was generated for the ADSBExchange service, feel free to reuse that one. If you don't have one, you can generate one by logging onto you Linux machine (Raspberry Pi, etc.) and giving this command:
+A UUID is a unique identifier that will identify you to various feeding servers. If you already have a `UUID` that was generated for the ADSBExchange service, feel free to reuse that one. If you don't have one, you can generate one by logging into your Linux machine (Raspberry Pi, etc.) and giving this command:
 
 ```bash
 cat  /proc/sys/kernel/random/uuid
@@ -35,11 +35,11 @@ Unplug all SDRs, leaving only the SDR to be used for 1090MHz reception plugged i
 
 `docker run --rm -it --entrypoint /scripts/estimate_rtlsdr_ppm.sh --device /dev/bus/usb ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest`
 
-This takes about 30 minutes and will print a numerical value for Estimated optimum PPM setting.
+This takes about 30 minutes and will print a numerical value for Estimated optimum PPM setting once it completes.
 
 ## Create a heywhatsthat Panorama ID
 
-Heywhatsthat is a website that can generate an overlay on your map that will show the theoretical range of your location based on obstacles and the curvature of the earth. Follow step 1 at the instructions [here](https://github.com/wiedehopf/tar1090#heywhatsthatcom-range-outline) to generate a panorama for your feeder's location and altitude. In the upper left of the panorama page there will be a URL that will look like this: `https://www.heywhatsthat.com/?view=NN3NNNN1`. That code will be used later in the setup instructions.
+[Heywhatsthat](https://www.heywhatsthat.com) is a website that can generate an overlay on your map that will show the theoretical range of your location based on obstacles and the curvature of the earth. Follow step 1 at the instructions [here](https://github.com/wiedehopf/tar1090#heywhatsthatcom-range-outline) to generate a panorama for your feeder's location and altitude. In the upper left of the panorama page there will be a URL that will look like this: `https://www.heywhatsthat.com/?view=NN3NNNN1`. That code will be used later in the setup instructions.
 
 ## Create a `.env` file to hold our environment's variables
 
@@ -49,7 +49,7 @@ Inside this directory, create a file named `.env` using your favourite text edit
 nano /opt/adsb/.env
 ```
 
-This file will hold all of the commonly used variables \(such as our latitude, longitude and altitude\). Initially, add the contents of the file as follows \(replacing the values enclosed in `<>` with values for your environment:
+This file will hold all of the commonly used variables \(such as our latitude, longitude, and altitude\). Initially, add the contents of the file as follows (replacing the values enclosed in `<>` with values for your environment):
 
 ```text
 FEEDER_ALT_FT=<your antenna's altitude in feet>

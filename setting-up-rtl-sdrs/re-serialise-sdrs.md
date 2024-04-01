@@ -1,12 +1,12 @@
 ---
 description: >-
   In this step we set the serial numbers of our RTL-SDR device(s). You can skip
-  this step if you're not using an RTLSDR radio (for example: bladeRF).
+  this step if you're not using an RTL-SDR radio (for example: bladeRF).
 ---
 
 # Re-Serialise SDRs
 
-As most RTL-SDRs ship with the same serial number, confusion may be caused if more than one SDR is ever present. It is a good rule of thumb to change your SDR serial numbers to match the frequencies they receive for.
+As most RTL-SDRs ship with the same serial number, confusion may be caused if more than one SDR is present. It is a good rule of thumb to change your SDR serial numbers to match the frequencies they receive for.
 
 The remainder of this guide assumes that:
 
@@ -103,4 +103,4 @@ Configuration successfully written.
 Please replug the device for changes to take effect.
 ```
 
-Unplug all SDRs and then plug them back in again to make the system aware of the new serials. A reboot will not do that.
+Unplug all SDRs and then plug them back in again to make the system aware of the new serials. A reboot will not accomplish this.  If you have more SDRs, repeat the above process with each of them, replacing the last number in the command with your desired serial number.

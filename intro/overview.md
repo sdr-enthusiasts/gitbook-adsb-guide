@@ -2,7 +2,7 @@
 
 This document aims to guide you through:
 
-* **Receiving** ADSB data with [`adsb-ultrafeeder`](https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder)
+* **Receiving** ADS-B data with [`adsb-ultrafeeder`](https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder)
 * **Feeding** data to online services using [`adsbexchange`](https://github.com/sdr-enthusiasts/docker-adsbexchange), [`piaware`](https://github.com/sdr-enthusiasts/docker-piaware), [`fr24feed`](https://github.com/sdr-enthusiasts/docker-flightradar24) and others...
 * **Storing** data in a time series database such as [InfluxDB](https://docs.influxdata.com/influxdb/) or [Prometheus](https://prometheus.io/)
 * **Visualising** data with various tools such as [`tar1090`](https://github.com/sdr-enthusiasts/docker-tar1090) and [Grafana](https://grafana.com)
@@ -22,7 +22,7 @@ These are deployed \(in conjunction with RTL-SDR hardware\) as follows:
 To explain the flowchart above:
 
 * ADS-B transmissions are received via the 1090MHz antenna and RTL-SDR dongle
-* The RTL-SDR dongle device is mapped through to a `ultrafeeder` container, this container's function is to decode the ADS-B transmissions and makes them available via several protocols \(BaseStation, Beast, BeastReduce, raw, VRS\)
+* The RTL-SDR dongle device is mapped through to an `ultrafeeder` container, this container's function is to decode the ADS-B transmissions and makes them available via several protocols \(BaseStation, Beast, BeastReduce, raw, VRS\)
 * There are then three feeder containers:
   * `piaware` - this container reads Beast protocol data from `ultrafeeder` and submits flight data to the [FlightAware](https://flightaware.com) service, and get their "Enterprise" feature set in return.
   * `adsbx` - this container reads Beast protocol data from `ultrafeeder` and submits flight data to the [ADSBExchange](https://www.adsbexchange.com) service.

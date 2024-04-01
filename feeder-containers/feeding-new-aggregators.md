@@ -35,7 +35,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
     tty: true
     container_name: multifeeder
     hostname: multifeeder
-    restart: always
+    restart: unless-stopped
     environment:
       - TZ=${FEEDER_TZ}
       - READSB_NET_CONNECTOR=readsb,30005,beast_in;dump978,37981,raw_in;feed.adsb.fi,30004,beast_reduce_plus_out;feed.adsb.one,64004,beast_reduce_plus_out;in.adsb.lol,30004,beast_reduce_plus_out;feed.theairtraffic.com,30004,beast_out;feed.planespotters.net,30004,beast_reduce_plus_out

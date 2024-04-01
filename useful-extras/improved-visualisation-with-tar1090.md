@@ -33,7 +33,7 @@ Append the following lines to the end of the file:
     image: ghcr.io/sdr-enthusiasts/docker-tar1090:latest
     tty: true
     container_name: tar1090
-    restart: always
+    restart: unless-stopped
     environment:
       - UPDATE_TAR1090=false
       - TZ=${FEEDER_TZ}
