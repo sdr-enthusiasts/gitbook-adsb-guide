@@ -105,3 +105,7 @@ connected
 ```
 
 Once running, you can visit [https://www.adsbhub.org/statistic.php](https://www.adsbhub.org/statistic.php) to view the data you are feeding to ADSBHub.
+
+## Advanced
+
+If you want to look at more options and examples for the `adsbhub` container, you can find the respository [here](https://github.com/sdr-enthusiasts/docker-adsbhub)

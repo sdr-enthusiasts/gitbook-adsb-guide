@@ -124,3 +124,9 @@ We can view the logs for the environment with the command `docker compose logs`,
 ```
 
 After a few minutes, browse to [https://atc.plane.watch/](https://atc.plane.watch/). Your feeder should be listed as "online". It can take up to 10 minutes for the status to update.
+
+## Advanced
+
+If you want to look at more options and examples for the `plane.watch` container, you can find the respository [here](https://github.com/plane-watch/docker-plane-watch).
+
+

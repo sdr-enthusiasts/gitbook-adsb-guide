@@ -21,9 +21,9 @@ To start the environment, or apply any changes made to your `docker-compose.yml`
 
 To "tail" the consolidated logs of all containers that make up the `adsb` application, you can issue the command `docker compose logs -f` from the application directory.
 
-Individual container logs can be "tailed" with `docker logs -f CONTAINER`.
+Individual container logs can be "tailed" with `docker logs -f <container name>`.
 
-If you want to limit the output to, for example, the last 100 lines, you can add `--tail=100` to either of the logs commands above.
+If you want to limit the output to, for example, the last 100 lines, you can add `--tail=100` to either of the logs commands above.  If you want to search for a specific word or phrase in the output, you can add a `| grep <keyword>` to the end of the commands.
 
 ### Updating containers to latest version
 
@@ -76,7 +76,7 @@ Where practical, we try to include healthchecks in all our images, so as you go 
 
 You can inspect the container for some \(hopefully\) meaningful output from the healthcheck script.
 
-If you issue the command `docker inspect CONTAINER` \(replacing `CONTAINER` with the name of the container you're interested in\), you'll see lots of information about the container, including the output of the most recent run of the healthcheck script. This output is in JSON format, so with the help of the `jq` utility we can easily find our `ultrafeeder` container's most recent health information. First make sure `jq` is installed with `sudo apt install -y jq`, then we can check the `ultrafeeder` container's health with the following command:
+If you issue the command `docker inspect <container name>` \(replacing `<container name>` with the name of the container you're interested in\), you'll see lots of information about the container, including the output of the most recent run of the healthcheck script. This output is in JSON format, so with the help of the `jq` utility we can easily find our `ultrafeeder` container's most recent health information. First make sure `jq` is installed with `sudo apt install -y jq`, then we can check the `ultrafeeder` container's health with the following command:
 
 ```bash
 docker inspect ultrafeeder | jq .[0].State.Health.Log | jq .[-1].Output | awk '{gsub(/\\n/,"\n")}1'

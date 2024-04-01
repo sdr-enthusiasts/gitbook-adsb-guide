@@ -6,13 +6,13 @@ description: 'If you wish to feed FlightAware, follow the steps below.'
 
 [FlightRadar24](https://www.flightradar24.com/) is a global flight tracking service that provides real-time information about thousands of aircraft around the world. Their service is currently available online and their mobile app is quite good. In order to access the features of the mobile app, you'll need to feed your ADS-B data to them for a free business plan.
 
-`fr24feed` is a FlightRadar24 client program to securely transmit ADS-B and Mode S data to the commercial entity FlightRadar24.
+`fr24` is a FlightRadar24 client program to securely transmit ADS-B and Mode S data to the commercial entity FlightRadar24.
 
-We've created a docker image [`ghcr.io/sdr-enthusiasts/docker-flightradar24`](https://github.com/sdr-enthusiasts/docker-flightradar24) that contains `fr24feed` and all of its required prerequisites and libraries.
+We've created a docker image [`ghcr.io/sdr-enthusiasts/docker-flightradar24`](https://github.com/sdr-enthusiasts/docker-flightradar24) that contains `fr24` and all of its required prerequisites and libraries.
 
 ## Getting a Sharing Key
 
-### Already running `fr24feed`?
+### Already running `fr24`?
 
 You'll need your _fr24key_ from your existing feeder.
 
@@ -24,7 +24,7 @@ cat /etc/fr24feed.ini | grep fr24key
 
 You can also find it in the datasharing section on the fr24 website if you have an account with the email address that was used when creating the key.
 
-### New to `fr24feed`?
+### New to `fr24`?
 
 If you're already feeding FlightRadar24 and you've followed the steps in the previous command, you can skip this section.
 
@@ -52,7 +52,7 @@ This will start up a container. After installing a bunch of software (which may 
 - `port`: Answer: 30005
 - `Step 5`: Answer: 2x `no`
 
-Note that there is a limit of 3 feeders per FR24 account. ADSB and UAT (see below) both count as 1 feeder. If you have more than 3 feeders, you will need to contact <support@fr24.com> to request an additional Feeder Key. Make sure to send them your account email-address, latitude, longitude, altitude, and if the key is for an ADSB or UAT feeder.
+Note that there is a limit of 3 feeders per FR24 account. ADSB and UAT (see below) each count as 1 feeder. If you have more than 3 feeders, you will need to contact <support@fr24.com> to request an additional Feeder Key. Make sure to send them your account email-address, latitude, longitude, altitude, and if the key is for an ADSB or UAT feeder.
 
 At the end of the sign-up process, you'll be presented with:
 
@@ -78,9 +78,9 @@ FR24_SHARING_KEY=10ae138d0c1g
 
 #### UAT key and configuration (USA only, requires 2nd SDR and dump978 container already configured)
 
-Get a separate sharing key for UAT as described here: (https://github.com/sdr-enthusiasts/docker-flightradar24?tab=readme-ov-file#uat-configuration-usa-only)
+Get a separate sharing key for UAT as described [here](https://github.com/sdr-enthusiasts/docker-flightradar24?tab=readme-ov-file#uat-configuration-usa-only):
 
-Copy the sharing key you are given, and add the following line to your `.env` file:
+Copy the UAT sharing key you are given, and add the following line to your `.env` file:
 
 ```text
 FR24_SHARING_KEY_UAT=YOURSHARINGKEYUAT
@@ -88,7 +88,7 @@ FR24_SHARING_KEY_UAT=YOURSHARINGKEYUAT
 
 * Replace `YOURSHARINGKEYUAT` with the sharing key from the output of the sign-up process.
 
-## Deploying `fr24feed` container
+## Deploying `fr24` container
 
 Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
@@ -162,4 +162,8 @@ We can view the logs for the environment with the command `docker compose logs`,
 2020-11-20 16:35:56 | info | Network thread connecting to 185.218.24.22:8099 for feed XXXX1234
 ```
 
-Once running, you can visit `http://docker.host.ip.addr:8754` to access the `fr24feed` web interface. You can also log onto FlightRadar24's website and click on the your profile button, and then "My data sharing" link to see your statistics.
+Once running, you can visit `http://docker.host.ip.addr:8754` to access the `fr24` web interface. You can also log onto FlightRadar24's website and click on the your profile button, and then "My data sharing" link to see your statistics.
+
+## Advanced
+
+If you want to look at more options and examples for the `fr24` container, you can find the respository [here](https://github.com/sdr-enthusiasts/docker-flightradar24)

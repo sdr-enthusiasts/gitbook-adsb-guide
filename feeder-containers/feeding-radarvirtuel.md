@@ -86,6 +86,8 @@ To explain what's going on in this addition:
 
 Before running `docker compose`, we also want to update the configuration of the `ultrafeeder` container, so that it generates MLAT data for radarvirtuel.
 
+**NOTE: If you are using the sample `docker-compose.yml` provided, this step has already been done for you.**
+
 Open the `docker-compose.yml` and make the following environment value is part of the `ULTRAFEEDER_CONFIG` variable to the `ultrafeeder` service:
 
 ```yaml
@@ -133,8 +135,11 @@ Most log messages are self-explanatory and have suggestions on how to trouble-sh
 * You see log messages about the Feeder Key being incorrect. This is quite self-explanatory: check your feeder key.
 * You see messages about not being able to reach the RadarVirtuel Server. This may be a temporary outage. If the message consists for several hours, please contact [support@adsbnetwork.com](mailto:support@adsbnetwork.com) to see if there's something going on.
 
+## Advanced
+
+If you want to look at more options and examples for the `radarvirtuel` container, you can find the respository [here](https://github.com/sdr-enthusiasts/docker-radarvirtuel)
+
 ## More information and support
 
-* There is extensive documentation available on the container's [GitHub](https://github.com/sdr-enthusiasts/docker-radarvirtuel) page.
 * RadarVirtuel and ADSBNetwork are owned and operated by Laurent Duval, who can be reached at [support@adsbnetwork.com](mailto:support@adsbnetwork.com)
 * You can always find help on the #adsb-containers channel on the [SDR Enthusiasts Discord server](https://discord.gg/m42azbZydy). This channel is meant for Noobs (beginners) and Experts alike.

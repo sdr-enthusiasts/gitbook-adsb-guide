@@ -86,6 +86,8 @@ Append the following lines to the end of the file \(inside the `services:` secti
 ```yaml
   pfclient:
     image: ghcr.io/sdr-enthusiasts/docker-planefinder:latest
+    # If you are running on a Raspberry Pi 5, uncomment the below line and comment out the above
+    #ghcr.io/sdr-enthusiasts/docker-planefinder:5.0.161_arm64
     tty: true
     container_name: pfclient
     restart: unless-stopped
@@ -163,3 +165,21 @@ pfclient          | 2020-04-11 09:20:04.389081 [-] Successfully sent 53 aircraft
 ```
 
 Once running, you can visit `http://docker.host.ip.addr:30053` to access the `pfclient` web interface. You can also visit the PlaneFinder website, and go to "Account" &gt; "Manage Receivers" and click your receiver to see your live data and statistics.
+
+## Troubleshooting
+
+If you are running a Raspberry Pi 5, then you may see the following messages in your Docker Compose log output:
+
+```
+pfclient      | [pfclient_daemon] /usr/local/bin/pfclient: error while loading shared libraries: 
+pfclient      | [pfclient_daemon] /usr/local/bin/pfclient: error while loading shared libraries: 
+pfclient      | [pfclient_daemon] /usr/local/bin/pfclient: error while loading shared libraries: 
+```
+
+This is due to an architecture change with the Raspberry Pi 5 and can be worked around by using this Docker image in your `docker-compose.yml` file: `ghcr.io/sdr-enthusiasts/docker-planefinder:5.0.161_arm64`
+
+This is noted in the sample provided above.  See [here](https://github.com/sdr-enthusiasts/docker-planefinder/issues/34) for more information.
+
+## Advanced
+
+If you want to look at more options and examples for the `pfclient` container, you can find the respository [here](https://github.com/sdr-enthusiasts/docker-planefinder)
