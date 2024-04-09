@@ -7,6 +7,7 @@ These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined
 ## Fun and Non-Profit Aggregators
 
 * [ADSBHub](https://www.adsbhub.org)
+* [adsb.exposed](https://adsb.exposed/)
 * [adsb.fi](https://adsb.fi/)
 * [ADSB.lol](https://adsb.lol/)
 * [Airplanes.live](https://airplanes.live/)
