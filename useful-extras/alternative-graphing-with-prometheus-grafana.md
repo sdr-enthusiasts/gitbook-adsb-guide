@@ -70,7 +70,7 @@ Once the file has been updated, issue the command `docker compose up -d` in the 
 
 At this point we will need to add a collector definition to `prometheus` and restart with the new configuration.
 
-1. Issue the command `docker exec -it prometheus sh -c "echo -e \"  - job_name: 'ultrafeeder'\n    static_configs:\n      - targets: ['ultrafeeder:9273']\" >> /etc/prometheus/prometheus.yml"`
+1. Issue the command `docker exec -it prometheus sh -c "echo -e \"  - job_name: 'ultrafeeder'\n    static_configs:\n      - targets: ['ultrafeeder:9273', 'ultrafeeder:9274']\" >> /etc/prometheus/prometheus.yml"`
 2. Issue the command `docker stop prometheus`
 3. Issue the command `docker compose up -d`
 
