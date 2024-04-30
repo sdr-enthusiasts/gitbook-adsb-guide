@@ -103,7 +103,7 @@ After you have logged into the `grafana` console the following manual steps are 
 Clicking `Save & Test` should return a green message indicating success. The dashboard can now be imported with the following steps
 
 1. Hover over the `four squares` icon in the sidebar, click `+ Import`
-2. Enter `18148` into the `Import via grafana.com` section and click `Load`
+2. Enter `18398` into the `Import via grafana.com` section and click `Load`
 3. Select `ultrafeeder` from the bottom drop down list
 4. Click `Import` on the subsequent dialogue box
 
