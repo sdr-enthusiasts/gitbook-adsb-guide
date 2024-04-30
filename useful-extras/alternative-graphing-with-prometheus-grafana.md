@@ -15,10 +15,10 @@ Using Grafana and Prometheus in this configuration does not require a plan, acco
 
 Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
-Add the following lines to the  `volumes:` section at the top of the file \(below the `version:` section, and before the `services:` section\):
+Add the following lines to the `volumes:` section at the top of the file \(below the `version:` section, and before the `services:` section\):
 
 ```yaml
-version: '3.8'
+version: "3.8"
 
 volumes:
   prometheus_data:
@@ -33,37 +33,37 @@ This creates the volumes that will contain `prometheus` and `grafana`’s applic
 
 ## Deploying `prometheus` and `grafana` containers
 
-Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
+Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`. Please make sure you are using the `telegraf` tag, since it is required to produce metrics.
 
 Add the following lines to the `environment` section of the `ultrafeeder` container definition \(in the `ultrafeeder:` section, below `environment:` and before the `volumes:` section\):
 
 ```yaml
-      - ENABLE_PROMETHEUS=true
+- PROMETHEUS_ENABLE=true
 ```
 
 Append the following lines to the end of the file:
 
 ```yaml
-  prometheus:
-    image: prom/prometheus:latest
-    tty: true
-    container_name: prometheus
-    hostname: prometheus
-    ports:
-      - 9090:9090
-    volumes:
-      - "prometheus_data:/prometheus"
+prometheus:
+  image: prom/prometheus:latest
+  tty: true
+  container_name: prometheus
+  hostname: prometheus
+  ports:
+    - 9090:9090
+  volumes:
+    - "prometheus_data:/prometheus"
 
-  grafana:
-    image: grafana/grafana-oss:latest
-    tty: true
-    container_name: grafana
-    hostname: grafana
-    restart: unless-stopped
-    ports:
-      - 3000:3000
-    volumes:
-      - grafana_data:/var/lib/grafana
+grafana:
+  image: grafana/grafana-oss:latest
+  tty: true
+  container_name: grafana
+  hostname: grafana
+  restart: unless-stopped
+  ports:
+    - 3000:3000
+  volumes:
+    - grafana_data:/var/lib/grafana
 ```
 
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `prometheus` and `grafana` containers. This will also restart the `ultrafeeder` container, which will now use `telegraf` to feed data to `prometheus`.
@@ -76,8 +76,8 @@ At this point we will need to add a collector definition to `prometheus` and res
 
 You should also be able to point your web browser at:
 
-* `http://docker.host.ip.addr:9090/` to access the `prometheus` console.
-* `http://docker.host.ip.addr:3000/` to access the `grafana` console, use admin/admin as initial credentials, you should be prompted to change the password on first login.
+- `http://docker.host.ip.addr:9090/` to access the `prometheus` console.
+- `http://docker.host.ip.addr:3000/` to access the `grafana` console, use admin/admin as initial credentials, you should be prompted to change the password on first login.
 
 Remember to change `docker.host.ip.addr` to the IP address of your docker host.
 
@@ -89,10 +89,10 @@ After you have logged into the `grafana` console the following manual steps are 
 2. Click `Prometheus` from the list of options provided
 3. Input or select the following options, if the option is not listed, do not input anything for that option:
 
-Option | Input
-------------- | -------------
-Name | ultrafeeder
-URL | `http://prometheus:9090/`
+| Option | Input                     |
+| ------ | ------------------------- |
+| Name   | ultrafeeder               |
+| URL    | `http://prometheus:9090/` |
 
 Clicking `Save & Test` should return a green message indicating success. The dashboard can now be imported with the following steps
 
