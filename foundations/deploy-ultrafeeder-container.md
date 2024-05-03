@@ -57,8 +57,8 @@ services:
       # --------------------------------------------------
       # Sources and Aggregator connections:
       # Note - remove the ones you are not using / feeding
-      # Make sure that each line ends with a semicolon ";".
-
+      # Make sure that each line ends with a semicolon ";"
+      3 if you are not using dump978, feel free to remove the first line
       - ULTRAFEEDER_CONFIG=
           adsb,dump978,30978,uat_in;
           adsb,feed.adsb.fi,30004,beast_reduce_plus_out;
@@ -84,8 +84,6 @@ services:
           mlathub,rbfeeder,30105,beast_in;
           mlathub,radarvirtuel,30105,beast_in;
           mlathub,planewatch,30105,beast_in;
-      # If you are in the Netherlands, feel free to add a feed to HetLuichtruim.nl:
-      #    adsb,feed.hetluchtruim.nl,9000,beast_reduce_plus_out;
       # --------------------------------------------------
       - UUID=${ULTRAFEEDER_UUID}
       - MLAT_USER=${FEEDER_NAME}
