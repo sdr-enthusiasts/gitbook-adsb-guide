@@ -58,7 +58,7 @@ services:
       # Sources and Aggregator connections:
       # Note - remove the ones you are not using / feeding
       # Make sure that each line ends with a semicolon ";"
-      3 if you are not using dump978, feel free to remove the first line
+      # if you are not using dump978, feel free to remove the first line
       - ULTRAFEEDER_CONFIG=
           adsb,dump978,30978,uat_in;
           adsb,feed.adsb.fi,30004,beast_reduce_plus_out;
