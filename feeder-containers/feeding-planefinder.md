@@ -122,7 +122,7 @@ Once the file has been updated, issue the command `docker compose up -d` in the 
 ```text
  ✔ Container ultrafeeder  Running
  ✔ Container piaware      Running
- ✔ Container fr24         Running 
+ ✔ Container fr24         Running
  ✔ Container pfclient     Started
 ```
 
@@ -171,9 +171,9 @@ Once running, you can visit `http://docker.host.ip.addr:30053` to access the `pf
 If you are running a Raspberry Pi 5, then you may see the following messages in your Docker Compose log output:
 
 ```
-pfclient      | [pfclient_daemon] /usr/local/bin/pfclient: error while loading shared libraries: 
-pfclient      | [pfclient_daemon] /usr/local/bin/pfclient: error while loading shared libraries: 
-pfclient      | [pfclient_daemon] /usr/local/bin/pfclient: error while loading shared libraries: 
+pfclient      | [pfclient_daemon] /usr/local/bin/pfclient: error while loading shared libraries:
+pfclient      | [pfclient_daemon] /usr/local/bin/pfclient: error while loading shared libraries:
+pfclient      | [pfclient_daemon] /usr/local/bin/pfclient: error while loading shared libraries:
 ```
 
 This is due to an architecture change with the Raspberry Pi 5 and can be worked around by using this Docker image in your `docker-compose.yml` file: `ghcr.io/sdr-enthusiasts/docker-planefinder:5.0.161_arm64`
