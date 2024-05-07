@@ -46,5 +46,5 @@ If there's another feeder you'd like added as a container, please reach out to m
 # Shortcuts
 
 Following this guide is not very hard, but it does require some familiarity with the command line, editing files, and some patience as you work through the details.
-If you are looking for an easier option, the [How To Get Help](intro/how-to-get-help) section introduces the [adsb.im Feeder Image](https://adsb.im/home) which is designed to make things even easier.
+If you are looking for an easier option, the [How To Get Help](how-to-get-help) section introduces the [adsb.im Feeder Image](https://adsb.im/home) which is designed to make things even easier.
 
