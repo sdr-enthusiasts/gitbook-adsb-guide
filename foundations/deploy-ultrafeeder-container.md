@@ -314,4 +314,4 @@ docker exec -it ultrafeeder /usr/local/bin/autogain1090 reset
 
 ## Advanced
 
-If you want to look at more options and examples for the `ultrafeeder` container, you can find the respository [here](https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder).
+If you want to look at more options and examples for the `ultrafeeder` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder).

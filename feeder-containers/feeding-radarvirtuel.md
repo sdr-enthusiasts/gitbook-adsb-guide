@@ -137,7 +137,7 @@ Most log messages are self-explanatory and have suggestions on how to trouble-sh
 
 ## Advanced
 
-If you want to look at more options and examples for the `radarvirtuel` container, you can find the respository [here](https://github.com/sdr-enthusiasts/docker-radarvirtuel)
+If you want to look at more options and examples for the `radarvirtuel` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-radarvirtuel)
 
 ## More information and support
 

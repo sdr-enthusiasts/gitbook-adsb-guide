@@ -220,4 +220,4 @@ Remember, if you change your location and altitude on FlightAware's website, you
 
 ## Advanced
 
-If you want to look at more options and examples for the `piaware` container, you can find the respository [here](https://github.com/sdr-enthusiasts/docker-piaware).
+If you want to look at more options and examples for the `piaware` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-piaware).

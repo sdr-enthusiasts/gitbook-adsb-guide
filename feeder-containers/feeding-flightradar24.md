@@ -166,4 +166,4 @@ Once running, you can visit `http://docker.host.ip.addr:8754` to access the `fr2
 
 ## Advanced
 
-If you want to look at more options and examples for the `fr24` container, you can find the respository [here](https://github.com/sdr-enthusiasts/docker-flightradar24)
+If you want to look at more options and examples for the `fr24` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-flightradar24)

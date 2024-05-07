@@ -182,4 +182,4 @@ This is noted in the sample provided above.  See [here](https://github.com/sdr-e
 
 ## Advanced
 
-If you want to look at more options and examples for the `pfclient` container, you can find the respository [here](https://github.com/sdr-enthusiasts/docker-planefinder)
+If you want to look at more options and examples for the `pfclient` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-planefinder)

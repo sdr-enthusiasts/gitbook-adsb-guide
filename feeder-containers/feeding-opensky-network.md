@@ -228,4 +228,4 @@ Once running, you can visit [https://opensky-network.org/receiver-profile](https
 
 ## Advanced
 
-If you want to look at more options and examples for the `opensky` container, you can find the respository [here](https://github.com/sdr-enthusiasts/docker-opensky-network)
+If you want to look at more options and examples for the `opensky` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-opensky-network)
