@@ -129,7 +129,7 @@ In the file above, you will find several parameters that have values denoted as 
 
 The `docker-compose.yml` file above will:
 
-* Create a few mapped docker volumes to store historic message values and autogain values (`/var/globe_history`), statistics for the graphs (`/var/lib/collectd`), and make the disk statistics (`/proc/diskstats`) and USB devices (`/dev') available to the container.
+* Create a few mapped docker volumes to store historic message values and autogain values (`/var/globe_history`), statistics for the graphs (`/var/lib/collectd`), and make the disk statistics (`/proc/diskstats`) and USB devices (`/dev`) available to the container.
 * Create a service named `ultrafeeder` that will run the `ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder` container.
   * We're mapping TCP port `8080` through to the container so we can access the web interface.
   * The variable `READSB_RTLSDR_DEVICE` tells `readsb` to look for an RTL-SDR device with the serial of `1090` (that we re-serialized in an earlier step).

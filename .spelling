@@ -54,6 +54,7 @@ feed.theairtraffic.com
 FlightAirMap
 FlightAware
 FlightRadar24
+fr24
 fr24key
 GitBook
 Github
@@ -164,3 +165,15 @@ xxxx
 xxxxxxxxxxxxxxxx
 yaml
 ZeroTier
+RadarPlane
+docker-radarplane
+x86_64
+arm32v7
+arm64v8
+dump1090
+beastreduce
+stdout
+graphs1090
+viewadsb
+ls
+ps
