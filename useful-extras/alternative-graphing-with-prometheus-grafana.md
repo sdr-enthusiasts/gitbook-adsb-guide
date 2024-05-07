@@ -111,4 +111,4 @@ At this point you should see a very nice dashboard, you can find it under `Gener
 
 ### Note
 
-For more information and troubleshooting tips, visit https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder/blob/main/README-grafana.md, which includes much detailed information. 
+For more information and troubleshooting tips, visit https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder/blob/main/README-grafana.md, which includes much detailed information.

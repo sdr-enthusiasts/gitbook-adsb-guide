@@ -68,7 +68,7 @@ Copy the sharing key you are given, and add the following line to your `.env` fi
 FR24_SHARING_KEY=YOURSHARINGKEY
 ```
 
-* Replace `YOURSHARINGKEY` with the sharing key from the output of the manual sign-up process.
+- Replace `YOURSHARINGKEY` with the sharing key from the output of the manual sign-up process.
 
 For example:
 
@@ -86,7 +86,7 @@ Copy the UAT sharing key you are given, and add the following line to your `.env
 FR24_SHARING_KEY_UAT=YOURSHARINGKEYUAT
 ```
 
-* Replace `YOURSHARINGKEYUAT` with the sharing key from the output of the sign-up process.
+- Replace `YOURSHARINGKEYUAT` with the sharing key from the output of the sign-up process.
 
 ## Deploying `fr24` container
 
@@ -112,13 +112,13 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 To explain what's going on in this addition:
 
-* We're creating a container called `fr24`, from the image `ghcr.io/sdr-enthusiasts/docker-flightradar24:latest`.
-* We're passing several environment variables to the container:
-  * `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder` network.
-  * `FR24KEY` will use the `FR24_SHARING_KEY` variable from your `.env` file.
-* We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
-  * The size of the container, by not writing changes to the underlying container; and
-  * SD Card or SSD wear
+- We're creating a container called `fr24`, from the image `ghcr.io/sdr-enthusiasts/docker-flightradar24:latest`.
+- We're passing several environment variables to the container:
+  - `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder` network.
+  - `FR24KEY` will use the `FR24_SHARING_KEY` variable from your `.env` file.
+- We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
+  - The size of the container, by not writing changes to the underlying container; and
+  - SD Card or SSD wear
 
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `fr24` container. You should see the following output:
 

@@ -5,6 +5,8 @@ description: >-
   making them available for all other containers.
 ---
 
+# Deploy "ultrafeeder"
+
 It also provides a website with a map based on tar1090, station statistics (graphs1090), mlat-client, and an mlat-hub to aggregate MLAT results.
 
 In your favorite text editor, create a file named `docker-compose.yml` in your application directory (`/opt/adsb`) if you've been following along verbatim.
@@ -138,7 +140,7 @@ The `docker-compose.yml` file above will:
   * The size of the container, by not writing changes to the underlying container; and
   * SD Card or SSD wear
 
-You can find an expanded example of the `docker-compose.yml` file that you can download and edit [here](https://github.com/sdr-enthusiasts/docker-install/blob/main/sample-docker-compose.yml) if you want to see other options, but the sample above is a good start. 
+You can find an expanded example of the `docker-compose.yml` file that you can download and edit [here](https://github.com/sdr-enthusiasts/docker-install/blob/main/sample-docker-compose.yml) if you want to see other options, but the sample above is a good start.
 
 ## Feeding directly from Ultrafeeder
 
@@ -156,7 +158,7 @@ There are several aggregators, both non-profit and commercial, that can directly
 | Fly Italy ADSB | N | Run by a few ADSB enthusiasts from Italy | adsb: `dati.flyitalyadsb.com` port `4905`<br/>mlat: `dati.flyitalyadsb.com` port `30100` |
 | AV Delphi | C | Swiss aircraft data company | adsb:`data.avdelphi.com` port `24999`<br/>mlat: no MLAT|
 | ADSB Exchange | C | Large aggregator owned by JetNet | adsb:`feed1.adsbexchange.com` port `30004`<br/>mlat: `feed.adsbexchange.com` port `31090`|
-| Het Luchtruim	| N |	Run by a private individual in the Netherlands.<br/>Please only feed if you are in the Netherlands or close to its borders | adsb: `feed.hetluchtruim.nl` port `9000`<br/>mlat: in the near future |
+| Het Luchtruim | N | Run by a private individual in the Netherlands.<br/>Please only feed if you are in the Netherlands or close to its borders | adsb: `feed.hetluchtruim.nl` port `9000`<br/>mlat: in the near future |
 
 ## Using the MLAT results
 

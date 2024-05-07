@@ -78,7 +78,7 @@ Once the file has been updated, issue the command `docker compose up -d` in the 
 ```text
  ✔ Container ultrafeeder  Running
  ✔ Container piaware      Running
- ✔ Container fr24         Running 
+ ✔ Container fr24         Running
  ✔ Container adsbhub      Started
 ```
 

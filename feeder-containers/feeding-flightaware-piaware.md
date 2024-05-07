@@ -92,7 +92,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
     image: ghcr.io/sdr-enthusiasts/docker-piaware:latest
     tty: true
     container_name: piaware
-    restart: unless-stopped 
+    restart: unless-stopped
     ports:
       - 8081:8080
     environment:
