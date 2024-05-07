@@ -21,13 +21,13 @@ First-time users should obtain a RadarVirtuel Feeder key. To request one, email 
 
 ### Update `.env` file with RadarVirtuel Feeder Key
 
-Inside your application directory \(`/opt/adsb`\), edit the `.env` file using your favorite text editor. Beginners may find the editor `nano` easy to use:
+Inside your application directory (`/opt/adsb`), edit the `.env` file using your favorite text editor. Beginners may find the editor `nano` easy to use:
 
 ```text
 nano /opt/adsb/.env
 ```
 
-This file holds all of the commonly used variables \(such as our latitude, longitude and altitude\). We're going to add our RadarVirtuel Feeder Key to this file. Add the following line to the file:
+This file holds all of the commonly used variables (such as our latitude, longitude and altitude). We're going to add our RadarVirtuel Feeder Key to this file. Add the following line to the file:
 
 ```text
 RV_FEEDER_KEY=YOURFEEDERKEY
@@ -45,7 +45,7 @@ RV_FEEDER_KEY=xxxx:432143214473214732017432014747382140723
 
 Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
-Append the following lines to the end of the file \(inside the `services:` section\).
+Append the following lines to the end of the file (inside the `services:` section).
 
 ```yaml
   radarvirtuel:
@@ -123,7 +123,7 @@ We can view the logs for the environment with the command `docker logs radarvirt
 [radarvirtuel/imalive][Tue May  4 17:06:32 EDT 2021] Started as an s6 service
 ```
 
-Once running, you can visit [https://alpha.radarvirtuel.com/stations/xxxx](https://alpha.radarvirtuel.com/stations/xxxx) (replace "xxxx" with the name of your station, which is the first part of the Feeder Key you received) to view the data you are feeding to RadarVirtuel. For example: [https://alpha.radarvirtuel.com/stations/KBOS](https://alpha.radarvirtuel.com/stations/KBOS).
+Once running, you can visit <https://alpha.radarvirtuel.com/stations/xxxx> (replace "xxxx" with the name of your station, which is the first part of the Feeder Key you received) to view the data you are feeding to RadarVirtuel. For example: <https://alpha.radarvirtuel.com/stations/KBOS>.
 
 ## Troubleshooting
 

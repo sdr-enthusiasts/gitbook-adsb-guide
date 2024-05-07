@@ -23,7 +23,7 @@ services:
   # - it implements a `tar1090` based map on port 80 (mapped to port 8080 on the host)
   # - it includes graph1090 (system statistics website) on http://xxxxx/graphs1090
   # - it sends ADSB data directly (without the need of additional containers) to the
-  #   "new" aggregators, and, if desired, also to AdsbExchange
+  #   "new" aggregators, and, if desired, also to ADSBExchange
   # - it includes mlat-client to send MLAT data to these aggregators
   # - it includes an MLAT Hub to consolidate MLAT results and make them available to the built-in map and other services
 
@@ -146,10 +146,10 @@ You can find an expanded example of the `docker-compose.yml` file that you can d
 
 There are several aggregators, both non-profit and commercial, that can directly be sent data from ultrafeeder without the need for an additional feeder container. We have added them in the example `docker-compose.yml` file above. Here is a partial list of these aggregators. All of them use the `beast_reduce_plus` format for feeding ADS-B data, and `mlat-client` for feeding MLAT:
 
-| Name | (C)ommercial/<br/>(N)on-profit | Description | Feed details |
+| Name | **C**ommercial/<br/>**N**on-profit | Description | Feed details |
 |------|---------------------------|-------------|--------------|
-| ADSB.fi | N | Run by volunteers that used to be related to adsbexchange | adsb:`feed.adsb.fi` port `30004`<br/>mlat: `feed.adsb.fi` port `31090`|
-| airplanes.live | N | Run by volunteers that used to be related to adsbexchange | adsb:`feed.airplanes.live` port `30004`<br/>mlat: `feed.airplanes.live` port `31090`|
+| ADSB.fi | N | Run by volunteers that used to be related to ADSBExchange | adsb:`feed.adsb.fi` port `30004`<br/>mlat: `feed.adsb.fi` port `31090`|
+| airplanes.live | N | Run by volunteers that used to be related to ADSBExchange | adsb:`feed.airplanes.live` port `30004`<br/>mlat: `feed.airplanes.live` port `31090`|
 | ADSB.lol | N | Run by a private individual located in the Netherlands | adsb:`in.adsb.lol` port `30004`<br/>mlat: `in.adsb.one` port `31090`|
 | Planespotters | N | planespotters.net | adsb:`feed.planespotters.net` port `30004`<br/>mlat: `mlat.planespotters.net` port `31090`|
 | The Air Traffic | N | Run by a private individual | adsb:`feed.theairtraffic.com` port `30004`<br/>mlat: `mlat.theairtraffic.com` port `31090`|
@@ -227,8 +227,8 @@ If configured and started using the example above, the container will make a web
 * `http://my_host_ip:8080/` : `tar1090` map and table of all aircraft received
 * `http://my_host_ip:8080/graphs1090/` : page with graphs and operations statistics of your station
 * `http://my_host_ip:8080?pTracks` : showing all aircraft tracks received in the last 24 hours
-* `http://my_host_ip:8080?heatmap&realheat` : showing a heatmap of all aircrafts of the last 24 hours
-* `http://my_host_ip:8080?replay` : showing a timelapse replay of the past few days
+* `http://my_host_ip:8080?heatmap&realheat` : showing a heatmap of all aircraft in the last 24 hours
+* `http://my_host_ip:8080?replay` : showing a time-lapse replay of the past few days
 
 ## Viewing Live Data in Text Format
 
@@ -292,7 +292,7 @@ See [`readme-grafana.MD`](https://github.com/sdr-enthusiasts/docker-adsb-ultrafe
 If you want to use `ultrafeeder` *only* as a SDR decoder but without any mapping or stats/graph websites, without MLAT connections or MLAT-hub, etc., for example to minimize CPU and RAM needs on a low CPU/memory single board computer, then do the following:
 
 * in the `ULTRAFEEDER_CONFIG` parameter, remove any entry that starts with `mlat` or `mlathub`. This will prevent any `mlat-client`s or `mlathub` instances to be launched. If you want to connect the `mlat-client`(s) to external MLAT servers but you don't want to run the overhead of a MLATHUB, you can leave any entries starting with `mlat` in the `ULTRAFEEDER_CONFIG` parameter, and set `MLATHUB_DISABLE=true`
-* Set the parameter `TAR1090_DISABLE=true`. This will prevent the `nginx` webserver and any websites from being launched
+* Set the parameter `TAR1090_DISABLE=true`. This will prevent the `nginx` web server and any websites from being launched
 * Make sure not to use the `dhcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder:telegraf` label as Telegraf adds a LOT of resource use to the container
 
 ## Troubleshooting
