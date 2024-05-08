@@ -23,8 +23,7 @@ Before we can plug in our RTL-SDR dongle, we need to blacklist the kernel module
 To do this, we will create a blacklist file at `/etc/modprobe.d/blacklist-rtlsdr.conf` with the following command. While logged in as root, please copy and paste all lines at once, and press enter after to ensure the final line is given allowing it to run.
 
 ```bash
-
-sudo tee /etc/modprobe.d/blacklist-rtlsdr.conf <<TEXT1
+sudo tee /etc/modprobe.d/blacklist-rtlsdr.conf <<EOF
 # Blacklist host from loading modules for RTL-SDRs to ensure they
 # are left available for the Docker guest.
 
@@ -37,6 +36,7 @@ blacklist rtl2830
 blacklist rtl2832
 blacklist rtl2832_sdr
 blacklist rtl2838
+EOF
 
 # This alone will not prevent a module being loaded if it is a
 # required or an optional dependency of another module. Some kernel
@@ -56,9 +56,6 @@ install rtl2830 /bin/false
 install rtl2832 /bin/false
 install rtl2832_sdr /bin/false
 install rtl2838 /bin/false
-
-TEXT1
-
 ```
 
 ### 2. Unload Modules

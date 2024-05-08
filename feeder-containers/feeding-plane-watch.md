@@ -127,6 +127,6 @@ After a few minutes, browse to [https://atc.plane.watch/](https://atc.plane.watc
 
 ## Advanced
 
-If you want to look at more options and examples for the `plane.watch` container, you can find the respository [here](https://github.com/plane-watch/docker-plane-watch).
+If you want to look at more options and examples for the `plane.watch` container, you can find the repository [here](https://github.com/plane-watch/docker-plane-watch).
 
 

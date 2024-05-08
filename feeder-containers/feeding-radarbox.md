@@ -257,4 +257,4 @@ Once running, you can visit the RadarBox website, and go to "Account" &gt; "Stat
 
 ## Advanced
 
-If you want to look at more options and examples for the `rbfeeder` container, you can find the respository [here](https://github.com/sdr-enthusiasts/docker-radarbox)
+If you want to look at more options and examples for the `rbfeeder` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-radarbox)

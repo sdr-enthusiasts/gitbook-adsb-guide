@@ -1,114 +1,29 @@
 ---
 description: >-
-  If you wish to deploy Grafana for alternative graphs, follow the steps below.
+  If you wish to deploy Grafana and Prometheus for alternative graphs, follow the steps below.
 ---
 
 # Alternative graphs with Grafana using Prometheus
 
-[`Grafana`](https://grafana.com/) is an analytics platform that can provide alternative graphs for `ultrafeeder`.
-
-In this guide we will be using [`Prometheus`](https://prometheus.io/) as the data repository.
+[`Grafana`](https://grafana.com/) is an analytics platform that can provide alternative graphs for `ultrafeeder`. It reads data from database; here we will be using [`Prometheus`](https://prometheus.io/) as the database.
 
 Using Grafana and Prometheus in this configuration does not require a plan, account, or credentials for their respective cloud offerings.
 
-## Create docker volumes
+At the bottom of this page, you can see an example of what a Grafana dashboard can look like.
 
-Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
+## Setting up and using Prometheus and Grafana
 
-Add the following lines to the `volumes:` section at the top of the file \(below the `version:` section, and before the `services:` section\):
+As a prerequisite, we will assume that you already have a working deployment of the [docker-tar1090](https://github.com/sdr-enthusiasts/docker-tar1090) or [docker-adsb-ultrafeeder](https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder) container to receive ADSB data. Optionally, if you are using [docker-dump978](https://github.com/sdr-enthusiasts/docker-dump978) to receive UAT data, you can also include this in your Grafana setup.
 
-```yaml
-version: "3.8"
+For Grafana to work, you will need to install and configure a few extra things:
 
-volumes:
-  prometheus_data:
-  grafana_data:
+- ensuring that your `docker-tar1090`, `docker-adsb-ultrafeeder`, and/or `docker-dump978` containers are set up so they make data available to Prometheus
+- a (containerized) Prometheus database instance that reads data from `docker-tar1090`, `docker-adsb-ultrafeeder`, and/or `docker-dump978`
+- a (containerized) Grafana instance that is the platform for creating and hosting the graphs
+- a Grafana Dashboard that contains the actual graphs
 
-services:
-  ultrafeeder:
-    # other service configurations
-```
+For step-by-step instructions on how to implement this, please see the [Grafana-specific README](https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder/blob/main/README-grafana.md) in the [docker-adsb-ultrafeeder](https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder) repository.
 
-This creates the volumes that will contain `prometheus` and `grafana`’s application data.
-
-## Deploying `prometheus` and `grafana` containers
-
-Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`. Please make sure you are using the `telegraf` tag, since it is required to produce metrics.
-
-Add the following lines to the `environment` section of the `ultrafeeder` container definition \(in the `ultrafeeder:` section, below `environment:` and before the `volumes:` section\):
-
-```yaml
-services:
-  ultrafeeder:
-    image: ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder:telegraf
-  ...
-  environment:
-    - PROMETHEUS_ENABLE=true
-  ...
-```
-
-Append the following lines to the end of the file:
-
-```yaml
-prometheus:
-  image: prom/prometheus:latest
-  tty: true
-  container_name: prometheus
-  hostname: prometheus
-  ports:
-    - 9090:9090
-  volumes:
-    - "prometheus_data:/prometheus"
-
-grafana:
-  image: grafana/grafana-oss:latest
-  tty: true
-  container_name: grafana
-  hostname: grafana
-  restart: unless-stopped
-  ports:
-    - 3000:3000
-  volumes:
-    - grafana_data:/var/lib/grafana
-```
-
-Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `prometheus` and `grafana` containers. This will also restart the `ultrafeeder` container, which will now use `telegraf` to feed data to `prometheus`.
-
-At this point we will need to add a collector definition to `prometheus` and restart with the new configuration.
-
-1. Issue the command `docker exec -it prometheus sh -c "echo -e \"  - job_name: 'ultrafeeder'\n    static_configs:\n      - targets: ['ultrafeeder:9273', 'ultrafeeder:9274']\" >> /etc/prometheus/prometheus.yml"`
-2. Issue the command `docker stop prometheus`
-3. Issue the command `docker compose up -d`
-
-You should also be able to point your web browser at:
-
-- `http://docker.host.ip.addr:9090/` to access the `prometheus` console.
-- `http://docker.host.ip.addr:3000/` to access the `grafana` console, use admin/admin as initial credentials, you should be prompted to change the password on first login.
-
-Remember to change `docker.host.ip.addr` to the IP address of your docker host.
-
-## Configuring data source and dashboard in Grafana
-
-After you have logged into the `grafana` console the following manual steps are required to connect to `prometheus` as the data source
-
-1. Click `Add your first data source` in the main panel
-2. Click `Prometheus` from the list of options provided
-3. Input or select the following options, if the option is not listed, do not input anything for that option:
-
-| Option | Input                     |
-| ------ | ------------------------- |
-| Name   | ultrafeeder               |
-| URL    | `http://prometheus:9090/` |
-
-Clicking `Save & Test` should return a green message indicating success. The dashboard can now be imported with the following steps
-
-1. Hover over the `four squares` icon in the sidebar, click `+ Import`
-2. Enter `18398` into the `Import via grafana.com` section and click `Load`
-3. Select `ultrafeeder` from the bottom drop down list
-4. Click `Import` on the subsequent dialogue box
-
-At this point you should see a very nice dashboard, you can find it under `General` in the `Dashboards` section.
-
-### Note
-
-For more information and troubleshooting tips, visit https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder/blob/main/README-grafana.md, which includes much detailed information. 
+![image](https://user-images.githubusercontent.com/15090643/234161588-69cd1888-6d9c-42f2-90d9-8eb108b0dce5.png)
+![image](https://user-images.githubusercontent.com/15090643/234161718-845d3836-005e-4d38-ba45-9c59873c8db9.png)
+![image](https://user-images.githubusercontent.com/15090643/234161841-fde61d66-2f64-43f6-8e71-4152eef76f72.png)

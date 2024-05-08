@@ -92,7 +92,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
     image: ghcr.io/sdr-enthusiasts/docker-piaware:latest
     tty: true
     container_name: piaware
-    restart: unless-stopped 
+    restart: unless-stopped
     ports:
       - 8081:8080
     environment:
@@ -220,4 +220,4 @@ Remember, if you change your location and altitude on FlightAware's website, you
 
 ## Advanced
 
-If you want to look at more options and examples for the `piaware` container, you can find the respository [here](https://github.com/sdr-enthusiasts/docker-piaware).
+If you want to look at more options and examples for the `piaware` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-piaware).

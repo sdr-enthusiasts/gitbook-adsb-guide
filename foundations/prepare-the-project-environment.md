@@ -29,7 +29,7 @@ You can use the output string of this command (in format of `00000000-0000-0000-
 
 Every RTL-SDR dongle that does not have TXCO\(temperature compensated crystal oscillators\) will have a small frequency error as it is cheaply mass produced and not tested for accuracy. This frequency error is linear across the spectrum, and can be adjusted in most SDR programs by entering a PPM (parts per million) offset value. This allows you to adjust the PPM figure using the ADSB_SDR_PPM environment variable.
 
-This step is considered optional and mostly legacy/unnessary at this point, as modern SDRs have TXCO and are likely to be accurate enough for ADS-B reception. However, if you wish to determine the PPM value for your SDR, you can do so by following the instructions below.
+This step is considered optional and mostly legacy/unnecessary at this point, as modern SDRs have TXCO and are likely to be accurate enough for ADS-B reception. However, if you wish to determine the PPM value for your SDR, you can do so by following the instructions below.
 
 Unplug all SDRs, leaving only the SDR to be used for 1090MHz reception plugged in. Issue the following command:
 

@@ -10,7 +10,7 @@ x86_64, arm32v7 & arm64v8.
 
 The container pulls ADS-B information from a BEAST provider and sends data to [RadarPlane](https://radarplane.com).
 
-For more information on [radarPlane](https://radarplane.com), see
+For more information on [RadarPlane](https://radarplane.com), see
 here: [RadarPlane Feeding Instructions](https://radarplane.com/feed). This container uses a modified version of the "
 script method" outlined on that page.
 

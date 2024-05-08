@@ -22,7 +22,7 @@ To get your _fr24key_, log onto your feeder and issue the command:
 cat /etc/fr24feed.ini | grep fr24key
 ```
 
-You can also find it in the datasharing section on the fr24 website if you have an account with the email address that was used when creating the key.
+You can also find it in the data sharing section on the fr24 website if you have an account with the email address that was used when creating the key.
 
 ### New to `fr24`?
 
@@ -40,7 +40,7 @@ Run the command:
 docker run -it --rm ghcr.io/sdr-enthusiasts/docker-baseimage:qemu bash -c "$(curl -sSL https://raw.githubusercontent.com/sdr-enthusiasts/docker-flightradar24/main/get_adsb_key.sh)"
 ```
 
-This will start up a container. After installing a bunch of software (which may take a while depending on the speed of your machine and internet connection), it will take you through the signup process. Most of the answers don't matter as during normal operation the configuration will be set with environment variables. I would suggest answering as follows:
+This will start up a container. After installing a bunch of software (which may take a while depending on the speed of your machine and internet connection), it will take you through the sign-up process. Most of the answers don't matter as during normal operation the configuration will be set with environment variables. I would suggest answering as follows:
 
 - `Step 1.1 - Enter your email address (username@domain.tld)`: Enter your FlightRadar24 account email address
 - `Step 1.2 - If you used to feed FR24 with ADS-B data before, enter your sharing key.`: Leave blank and press enter
@@ -50,7 +50,7 @@ This will start up a container. After installing a bunch of software (which may 
 - `Enter your connection type`: Answer `1`.
 - `host`: Answer: 127.0.0.1
 - `port`: Answer: 30005
-- `Step 5`: Answer: 2x `no`
+- `Step 5`: Answer: `no` twice.
 
 Note that there is a limit of 3 feeders per FR24 account. ADSB and UAT (see below) each count as 1 feeder. If you have more than 3 feeders, you will need to contact <support@fr24.com> to request an additional Feeder Key. Make sure to send them your account email-address, latitude, longitude, altitude, and if the key is for an ADSB or UAT feeder.
 
@@ -68,7 +68,7 @@ Copy the sharing key you are given, and add the following line to your `.env` fi
 FR24_SHARING_KEY=YOURSHARINGKEY
 ```
 
-* Replace `YOURSHARINGKEY` with the sharing key from the output of the manual sign-up process.
+- Replace `YOURSHARINGKEY` with the sharing key from the output of the manual sign-up process.
 
 For example:
 
@@ -86,7 +86,7 @@ Copy the UAT sharing key you are given, and add the following line to your `.env
 FR24_SHARING_KEY_UAT=YOURSHARINGKEYUAT
 ```
 
-* Replace `YOURSHARINGKEYUAT` with the sharing key from the output of the sign-up process.
+- Replace `YOURSHARINGKEYUAT` with the sharing key from the output of the sign-up process.
 
 ## Deploying `fr24` container
 
@@ -112,13 +112,13 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 To explain what's going on in this addition:
 
-* We're creating a container called `fr24`, from the image `ghcr.io/sdr-enthusiasts/docker-flightradar24:latest`.
-* We're passing several environment variables to the container:
-  * `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder` network.
-  * `FR24KEY` will use the `FR24_SHARING_KEY` variable from your `.env` file.
-* We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
-  * The size of the container, by not writing changes to the underlying container; and
-  * SD Card or SSD wear
+- We're creating a container called `fr24`, from the image `ghcr.io/sdr-enthusiasts/docker-flightradar24:latest`.
+- We're passing several environment variables to the container:
+  - `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder` network.
+  - `FR24KEY` will use the `FR24_SHARING_KEY` variable from your `.env` file.
+- We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
+  - The size of the container, by not writing changes to the underlying container; and
+  - SD Card or SSD wear
 
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `fr24` container. You should see the following output:
 
@@ -166,4 +166,4 @@ Once running, you can visit `http://docker.host.ip.addr:8754` to access the `fr2
 
 ## Advanced
 
-If you want to look at more options and examples for the `fr24` container, you can find the respository [here](https://github.com/sdr-enthusiasts/docker-flightradar24)
+If you want to look at more options and examples for the `fr24` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-flightradar24)

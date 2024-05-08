@@ -149,4 +149,4 @@ The additional configuration directives are discussed on each container's page.
 
 ## Advanced
 
-If you want to look at more options and examples for the `dump978` container, you can find the respository [here](https://github.com/sdr-enthusiasts/docker-dump978).
+If you want to look at more options and examples for the `dump978` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-dump978).

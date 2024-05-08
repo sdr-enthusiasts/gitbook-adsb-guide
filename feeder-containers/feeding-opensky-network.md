@@ -12,7 +12,7 @@ The docker image [`ghcr.io/sdr-enthusiasts/docker-opensky-network`](https://gith
 
 First-time users should obtain a feeder serial number.
 
-**NOTE: As of April 1, 2024, OpenSky is currently going through an extendeed database migration that has disabled new account sign-ups and emails. If you do not currently have an OpenSky account that can be accessed, you will not be able to run this container. This note will be removed when the site is working again.**
+**NOTE: As of April 1, 2024, OpenSky is currently going through an extended database migration that has disabled new account sign-ups and emails. If you do not currently have an OpenSky account that can be accessed, you will not be able to run this container. This note will be removed when the site is working again.**
 
 Firstly, make sure you have registered for an account on the [OpenSky Network website](https://opensky-network.org/), and have your username on-hand.
 
@@ -173,7 +173,7 @@ Once the file has been updated, issue the command `docker compose up -d` in the 
 ```text
  ✔ Container ultrafeeder  Running
  ✔ Container piaware      Running
- ✔ Container fr24         Running 
+ ✔ Container fr24         Running
  ✔ Container adsbhub      Running
  ✔ Container opensky      Started
 ```
@@ -228,4 +228,4 @@ Once running, you can visit [https://opensky-network.org/receiver-profile](https
 
 ## Advanced
 
-If you want to look at more options and examples for the `opensky` container, you can find the respository [here](https://github.com/sdr-enthusiasts/docker-opensky-network)
+If you want to look at more options and examples for the `opensky` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-opensky-network)
