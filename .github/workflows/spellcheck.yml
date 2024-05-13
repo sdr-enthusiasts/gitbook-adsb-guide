@@ -1,26 +1,24 @@
 name: Check Spelling
-on: 
+on:
   pull_request:
     branches:
       - master
       - main
   workflow_dispatch:
 
-jobs:  
-
+jobs:
   spellcheck:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Pull pipelinecomponents/markdown-spellcheck Image
-      run: docker pull pipelinecomponents/markdown-spellcheck
-    - name: Spellcheck Markdown Files
-      run: docker run --rm -i -v "$PWD:/github/workspace" --workdir /github/workspace -e FORCE_COLOR=1 pipelinecomponents/markdown-spellcheck --report "**/*.md" -n -a
-
+      - uses: actions/checkout@v4.1.5
+      - name: Pull pipelinecomponents/markdown-spellcheck Image
+        run: docker pull pipelinecomponents/markdown-spellcheck
+      - name: Spellcheck Markdown Files
+        run: docker run --rm -i -v "$PWD:/github/workspace" --workdir /github/workspace -e FORCE_COLOR=1 pipelinecomponents/markdown-spellcheck --report "**/*.md" -n -a
 # spelling:
 #     runs-on: ubuntu-latest
 #     steps:
-#     - uses: actions/checkout@v1
+#     - uses: actions/checkout@v4.1.5
 #     - name: Set up Python
 #       uses: actions/setup-python@v1
 #       with:
