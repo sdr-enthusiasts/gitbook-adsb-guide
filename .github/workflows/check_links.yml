@@ -2,20 +2,19 @@ name: Check Links
 
 on:
   pull_request:
-    branches: 
+    branches:
       - master
       - main
   workflow_dispatch:
 
 jobs:
-
   generate-matrix:
     name: Find markdown files to check
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.1.5
       - id: set-matrix
         run: |
           set -x
@@ -29,11 +28,10 @@ jobs:
       matrix:
         file_to_check: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
     steps:
+      - name: Install markdown-link-check
+        run: sudo npm install -g markdown-link-check
 
-    - name: Install markdown-link-check
-      run: sudo npm install -g markdown-link-check
+      - uses: actions/checkout@v4.1.5
 
-    - uses: actions/checkout@v4
-
-    - name: Run markdown-link-check against *.md files
-      run: markdown-link-check --config "$(pwd)/.markdown-link-check.json" --verbose --quiet "${{ matrix.file_to_check }}"
+      - name: Run markdown-link-check against *.md files
+        run: markdown-link-check --config "$(pwd)/.markdown-link-check.json" --verbose --quiet "${{ matrix.file_to_check }}"
