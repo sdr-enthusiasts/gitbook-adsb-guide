@@ -59,7 +59,7 @@ You'll now want to "claim" this feeder.
 
 To do this, go to: [https://flightaware.com/adsb/piaware/claim](https://flightaware.com/adsb/piaware/claim) and follow the instructions there.
 
-Note - for PiAware/FlightAware feeding to work correctly, you MUST accruately set your latitude, longitude, and altitude on the `My ADS-B` dashboard page of the FlightAware website. Without doing this, feeding will NOT work!
+Note - for PiAware/FlightAware feeding to work correctly, you MUST accurately set your latitude, longitude, and altitude on the `My ADS-B` dashboard page of the FlightAware website. Without doing this, feeding will NOT work!
 
 ## Update `.env` file with feeder-id
 
