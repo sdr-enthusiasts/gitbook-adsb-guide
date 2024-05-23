@@ -37,6 +37,8 @@ Unplug all SDRs, leaving only the SDR to be used for 1090MHz reception plugged i
 
 This takes about 30 minutes and will print a numerical value for Estimated optimum PPM setting once it completes.
 
+If you decide not to include a PPM value, then you can either set `ADSB_SDR_PPM=` to an empty value in `.env` as shown here, or remove the `READSB_RTLSDR_PPM` parameter from environment section of the `ultrafeeder` or `tar1090` service definition in your `docker-compose.yml` file. (You can also simply remove the `ADSB_SDR_PPM` from your `.env` file, but `docker compose` will show a warning about it that is safe to ignore.)
+
 ## Create a heywhatsthat Panorama ID
 
 [Heywhatsthat](https://www.heywhatsthat.com) is a website that can generate an overlay on your map that will show the theoretical range of your location based on obstacles and the curvature of the earth. Follow step 1 at the instructions [here](https://github.com/wiedehopf/tar1090#heywhatsthatcom-range-outline) to generate a panorama for your feeder's location and altitude. In the upper left of the panorama page there will be a URL that will look like this: `https://www.heywhatsthat.com/?view=NN3NNNN1`. That code will be used later in the setup instructions.
