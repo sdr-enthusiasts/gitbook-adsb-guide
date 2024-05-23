@@ -59,6 +59,8 @@ You'll now want to "claim" this feeder.
 
 To do this, go to: [https://flightaware.com/adsb/piaware/claim](https://flightaware.com/adsb/piaware/claim) and follow the instructions there.
 
+Note - for PiAware/FlightAware feeding to work correctly, you MUST accruately set your latitude, longitude, and altitude on the `My ADS-B` dashboard page of the FlightAware website. Without doing this, feeding will NOT work!
+
 ## Update `.env` file with feeder-id
 
 Inside your application directory \(`/opt/adsb`\), edit the `.env` file using your favourite text editor. Beginners may find the editor `nano` easy to use:
@@ -97,8 +99,6 @@ Append the following lines to the end of the file \(inside the `services:` secti
       - 8081:8080
     environment:
       - BEASTHOST=ultrafeeder
-      - LAT=${FEEDER_LAT}
-      - LONG=${FEEDER_LONG}
       - TZ=${FEEDER_TZ}
       - FEEDER_ID=${PIAWARE_FEEDER_ID}
     tmpfs:
@@ -118,8 +118,6 @@ To explain what's going on in this addition:
 * We're creating a container called `piaware`, from the image `ghcr.io/sdr-enthusiasts/docker-piaware:latest`.
 * We're passing several environment variables to the container:
   * `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder` over our private `adsbnet` network.
-  * `LAT` will use the `FEEDER_LAT` variable from your `.env` file.
-  * `LONG` will use the `FEEDER_LONG` variable from your `.env` file.
   * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
   * `FEEDER_ID` will use the `PIAWARE_FEEDER_ID` variable from your `.env` file.
 * For people running `dump978`:
