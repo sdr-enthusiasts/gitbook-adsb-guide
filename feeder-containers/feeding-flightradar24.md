@@ -1,5 +1,5 @@
 ---
-description: 'If you wish to feed FlightAware, follow the steps below.'
+description: 'If you wish to feed FlightRadar24, follow the steps below.'
 ---
 
 # Feeding FlightRadar24
