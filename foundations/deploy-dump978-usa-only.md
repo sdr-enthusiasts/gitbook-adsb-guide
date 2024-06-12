@@ -50,9 +50,6 @@ UAT_SDR_GAIN=autogain
 UAT_SDR_PPM=1
 ```
 
-
-
-
 ## Deploying `dump978` container
 
 Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
@@ -103,7 +100,6 @@ Open the `docker-compose.yml` and add the following environment value to the `UL
 ```yaml
       - ULTRAFEEDER_CONFIG=adsb,dump978,30978,uat_in;
 ```
-
 
 In addition, add these lines in the `GRAPHS1090` section of the `ultrafeeder` service:
 

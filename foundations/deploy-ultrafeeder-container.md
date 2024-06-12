@@ -128,7 +128,6 @@ services:
 
 In the file above, you will find several parameters that have values denoted as `${xxxx}`. These values are read from a file in the same directory named `.env` that we created earlier. Alternatively, you can simply replace `${xxxx}` with the value you want to use, for example `READSB_RTLSDR_DEVICE=${ADSB_SDR_SERIAL}` --> `READSB_RTLSDR_DEVICE=0000001090`.
 
-
 The `docker-compose.yml` file above will:
 
 * Create a few mapped docker volumes to store historic message values and autogain values (`/var/globe_history`), statistics for the graphs (`/var/lib/collectd`), and make the disk statistics (`/proc/diskstats`) and USB devices (`/dev`) available to the container.
@@ -146,18 +145,19 @@ You can find an expanded example of the `docker-compose.yml` file that you can d
 
 There are several aggregators, both non-profit and commercial, that can directly be sent data from ultrafeeder without the need for an additional feeder container. We have added them in the example `docker-compose.yml` file above. Here is a partial list of these aggregators. All of them use the `beast_reduce_plus` format for feeding ADS-B data, and `mlat-client` for feeding MLAT:
 
-| Name | **C**ommercial/<br/>**N**on-profit | Description | Feed details |
-|------|---------------------------|-------------|--------------|
-| ADSB.fi | N | Run by volunteers that used to be related to ADSBExchange | adsb:`feed.adsb.fi` port `30004`<br/>mlat: `feed.adsb.fi` port `31090`|
-| airplanes.live | N | Run by volunteers that used to be related to ADSBExchange | adsb:`feed.airplanes.live` port `30004`<br/>mlat: `feed.airplanes.live` port `31090`|
-| ADSB.lol | N | Run by a private individual located in the Netherlands | adsb:`in.adsb.lol` port `30004`<br/>mlat: `in.adsb.one` port `31090`|
-| Planespotters | N | planespotters.net | adsb:`feed.planespotters.net` port `30004`<br/>mlat: `mlat.planespotters.net` port `31090`|
-| The Air Traffic | N | Run by a private individual | adsb:`feed.theairtraffic.com` port `30004`<br/>mlat: `mlat.theairtraffic.com` port `31090`|
-| HPRadar | N | Run by a private individual in Vietnam | adsb: `skyfeed.hpradar.com` port `30004`<br/>mlat: `skyfeed.hpradar.com` port `31090` |
-| RadarPlane | N | Run by a few volunteers in Canada and Portugal | adsb: `feed.radarplane.com` port `30001`<br/>mlat: `feed.radarplane.com` port `31090` |
-| Fly Italy ADSB | N | Run by a few ADSB enthusiasts from Italy | adsb: `dati.flyitalyadsb.com` port `4905`<br/>mlat: `dati.flyitalyadsb.com` port `30100` |
-| AV Delphi | C | Swiss aircraft data company | adsb:`data.avdelphi.com` port `24999`<br/>mlat: no MLAT|
-| ADSB Exchange | C | Large aggregator owned by JetNet | adsb:`feed1.adsbexchange.com` port `30004`<br/>mlat: `feed.adsbexchange.com` port `31090`|
+| Name            | (C)ommercial/<br/>(N)on-profit | Description                                               | Feed details                                                                               |
+| --------------- | ------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Airplanes.live  | N                              | Run by volunteers that used to be related to adsbexchange | adsb:`feed.airplanes.live` port `30004`<br/>mlat: `feed.airplanes.live` port `31090`       |
+| ADSB.fi         | N                              | Run by a Finnish IT and aviation enthusiast | adsb:`feed.adsb.fi` port `30004`<br/>mlat: `feed.adsb.fi` port `31090`                     |
+| ADSB.lol        | N                              | Run by an aviation enthusiast located in the Netherlands    | adsb:`in.adsb.lol` port `30004`<br/>mlat: `in.adsb.lol` port `31090`                       |
+| Planespotters   | N                              | planespotters.net                                         | adsb:`feed.planespotters.net` port `30004`<br/>mlat: `mlat.planespotters.net` port `31090` |
+| The Air Traffic | N                              | Run by an aviation enthusiast                               | adsb:`feed.theairtraffic.com` port `30004`<br/>mlat: `mlat.theairtraffic.com` port `31090` |
+| AVDelphi        | N                              | Aviation data-science company (non-profit)                | adsb:`data.avdelphi.com` port `24999`<br/>mlat: no MLAT                                    |
+| ADSB Exchange   | C                              | Large aggregator owned by JetNet                          | adsb:`feed1.adsbexchange.com` port `30004`<br/>mlat: `feed.adsbexchange.com` port `31090`  |
+| RadarPlane      | N                              | Run by a few aviation enthusiasts in Canada and Portugal            | adsb: `feed.radarplane.com` port `30001`<br/>mlat: `feed.radarplane.com` port `31090`      |
+| Fly Italy ADSB  | N                              | Run by a few aviation enthusiasts in Italy                    | adsb: `dati.flyitalyadsb.com` port `4905`<br/>mlat: `dati.flyitalyadsb.com` port `30100`   |
+
+When feeding AdsbExchange, Ultrafeeder will send statistics to adsbexchange.com by default. See the description of the `ADSBX_STATS` parameter on how to disable this.
 
 ## Using the MLAT results
 
@@ -280,7 +280,6 @@ The example files above use the same UUID for all feeders. Doing so makes it pos
           adsb,in.adsb.lol,30004,beast_reduce_plus_out,uuid=${ADSBLOL_UUID};
           adsb,feed.adsb.one,64004,beast_reduce_plus_out,uuid=${ADSBONE_UUID};
 ```
-
 
 ## Preparing and setting up `ultrafeeder` with Prometheus and Grafana
 
