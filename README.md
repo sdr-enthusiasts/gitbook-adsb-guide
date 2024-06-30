@@ -27,7 +27,7 @@ These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined
 
 ## For-Profit Aggregators
 
-</span translate="no">
+<span translate="no">
 
 * [FlightAware](https://flightaware.com/adsb/piaware/)
 * [FlightRadar24](https://www.flightradar24.com/share-your-data)
