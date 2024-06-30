@@ -1,6 +1,6 @@
 # ADS-B Reception, Decoding & Sharing with Docker
 
-([Français]([url](https://sdr--enthusiasts-gitbook-io.translate.goog/ads-b?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=en&_x_tr_pto=wapp&_x_tr_hist=true)) - [Español]([url](https://sdr--enthusiasts-gitbook-io.translate.goog/ads-b?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=en&_x_tr_pto=wapp&_x_tr_hist=true)) - [Deutsch]([url](https://sdr--enthusiasts-gitbook-io.translate.goog/ads-b?_x_tr_sl=en&_x_tr_tl=de&_x_tr_hl=en&_x_tr_pto=wapp&_x_tr_hist=true)) by Google Translate)
+([Français](https://sdr--enthusiasts-gitbook-io.translate.goog/ads-b?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=en&_x_tr_pto=wapp&_x_tr_hist=true) - [Español](https://sdr--enthusiasts-gitbook-io.translate.goog/ads-b?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=en&_x_tr_pto=wapp&_x_tr_hist=true) - [Deutsch](https://sdr--enthusiasts-gitbook-io.translate.goog/ads-b?_x_tr_sl=en&_x_tr_tl=de&_x_tr_hl=en&_x_tr_pto=wapp&_x_tr_hist=true) by Google Translate)
 
 Automatic Dependent Surveillance-Broadcast \(ADS-B\) is a safety and surveillance technology in which an aircraft determines its position via satellite navigation and periodically broadcasts it, enabling it to be tracked.
 
