@@ -1,5 +1,7 @@
 # ADS-B Reception, Decoding & Sharing with Docker
 
+([Français]([url](https://sdr--enthusiasts-gitbook-io.translate.goog/ads-b?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=en&_x_tr_pto=wapp&_x_tr_hist=true)) - [Español]([url](https://sdr--enthusiasts-gitbook-io.translate.goog/ads-b?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=en&_x_tr_pto=wapp&_x_tr_hist=true)) - [Deutsch]([url](https://sdr--enthusiasts-gitbook-io.translate.goog/ads-b?_x_tr_sl=en&_x_tr_tl=de&_x_tr_hl=en&_x_tr_pto=wapp&_x_tr_hist=true)) by Google Translate)
+
 Automatic Dependent Surveillance-Broadcast \(ADS-B\) is a safety and surveillance technology in which an aircraft determines its position via satellite navigation and periodically broadcasts it, enabling it to be tracked.
 
 These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined Radio \(SDR\), and shared with aggregators, which collect, combine, and redistribute flight information for fun and profit.
@@ -34,6 +36,7 @@ These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined
 This guide will walk you through the process to deploy and configure Docker containers to allow reception and decoding of ADS-B data, as well as submission to various flight tracking services, both open and commercial, and the visualisation of this data.
 
 This document is best viewed on GitBook. If you're reading it elsewhere, we humbly suggest going here: [https://sdr-enthusiasts.gitbook.io/ads-b/](https://sdr-enthusiasts.gitbook.io/ads-b/)
+
 
 This document is intended to be "living". Please feel free to fork the [GitHub repository](https://github.com/sdr-enthusiasts/gitbook-adsb-guide), contribute and submit pull requests! We value your input!
 
