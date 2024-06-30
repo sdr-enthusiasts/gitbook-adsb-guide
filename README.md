@@ -8,6 +8,8 @@ These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined
 
 ## Fun and Non-Profit Aggregators
 
+<span translate="no">
+  
 * [ADSBHub](https://www.adsbhub.org)
 * [adsb.exposed](https://adsb.exposed/)
 * [adsb.fi](https://adsb.fi/)
@@ -21,7 +23,11 @@ These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined
 * [HPRadar](https://skylink.hpradar.com)
 * [Fly Italy ADSB](https://flyitalyadsb.com/)
 
+</span>
+
 ## For-Profit Aggregators
+
+</span translate="no">
 
 * [FlightAware](https://flightaware.com/adsb/piaware/)
 * [FlightRadar24](https://www.flightradar24.com/share-your-data)
@@ -30,6 +36,8 @@ These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined
 * [radarvirtuel.com](https://www.radarvirtuel.com)
 * [AV Delphi](https://avdelphi.com)
 * [ADS-B Exchange](https://adsbexchange.com)
+
+</span>
 
 ## Objective
 
