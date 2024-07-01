@@ -1,6 +1,12 @@
 # ADS-B Reception, Decoding & Sharing with Docker
 
-([Français](https://sdr--enthusiasts-gitbook-io.translate.goog/ads-b?_x_tr_sl=en&_x_tr_tl=fr&_x_tr_hl=en&_x_tr_pto=wapp&_x_tr_hist=true) - [Español](https://sdr--enthusiasts-gitbook-io.translate.goog/ads-b?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=en&_x_tr_pto=wapp&_x_tr_hist=true) - [Deutsch](https://sdr--enthusiasts-gitbook-io.translate.goog/ads-b?_x_tr_sl=en&_x_tr_tl=de&_x_tr_hl=en&_x_tr_pto=wapp&_x_tr_hist=true) by Google Translate)
+<div id="google_translate_element"></div>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 Automatic Dependent Surveillance-Broadcast \(ADS-B\) is a safety and surveillance technology in which an aircraft determines its position via satellite navigation and periodically broadcasts it, enabling it to be tracked.
 
@@ -9,7 +15,7 @@ These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined
 ## Fun and Non-Profit Aggregators
 
 <span translate="no">
-  
+
 * [ADSBHub](https://www.adsbhub.org)
 * [adsb.exposed](https://adsb.exposed/)
 * [adsb.fi](https://adsb.fi/)
