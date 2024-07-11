@@ -12,8 +12,6 @@ The docker image [`ghcr.io/sdr-enthusiasts/docker-opensky-network`](https://gith
 
 First-time users should obtain a feeder serial number.
 
-**NOTE: As of April 1, 2024, OpenSky is currently going through an extended database migration that has disabled new account sign-ups and emails. If you do not currently have an OpenSky account that can be accessed, you will not be able to run this container. This note will be removed when the site is working again.**
-
 Firstly, make sure you have registered for an account on the [OpenSky Network website](https://opensky-network.org/), and have your username on-hand.
 
 In order to obtain a feeder serial number, we will start a temporary container running `opensky-feeder`, which will connect to OpenSky Network and be issued a serial number. The temporary container will automatically be stopped and deleted after 60 seconds.
