@@ -28,7 +28,6 @@ services:
   # - it includes an MLAT Hub to consolidate MLAT results and make them available to the built-in map and other services
 
     image: ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder
-    tty: true
     container_name: ultrafeeder
     hostname: ultrafeeder
     restart: unless-stopped
@@ -119,7 +118,7 @@ services:
       - /opt/adsb/ultrafeeder/globe_history:/var/globe_history
       - /opt/adsb/ultrafeeder/graphs1090:/var/lib/collectd
       - /proc/diskstats:/proc/diskstats:ro
-      - /dev:/dev:ro
+      - /dev/bus/usb:/dev/bus/usb:rw
     tmpfs:
       - /run:exec,size=256M
       - /tmp:size=128M
