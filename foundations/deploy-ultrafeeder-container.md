@@ -51,7 +51,6 @@ services:
       - READSB_LAT=${FEEDER_LAT}
       - READSB_LON=${FEEDER_LONG}
       - READSB_ALT=${FEEDER_ALT_M}m
-      - READSB_GAIN=${ADSB_SDR_GAIN}
       - READSB_RX_LOCATION_ACCURACY=2
       - READSB_STATS_RANGE=true
       #
@@ -129,7 +128,7 @@ In the file above, you will find several parameters that have values denoted as 
 
 The `docker-compose.yml` file above will:
 
-* Create a few mapped docker volumes to store historic message values and autogain values (`/var/globe_history`), statistics for the graphs (`/var/lib/collectd`), and make the disk statistics (`/proc/diskstats`) and USB devices (`/dev`) available to the container.
+* Create a few mapped docker volumes to store historic message values (`/var/globe_history`), statistics for the graphs (`/var/lib/collectd`), and make the disk statistics (`/proc/diskstats`) and USB devices (`/dev`) available to the container.
 * Create a service named `ultrafeeder` that will run the `ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder` container.
   * We're mapping TCP port `8080` through to the container so we can access the web interface.
   * The variable `READSB_RTLSDR_DEVICE` tells `readsb` to look for an RTL-SDR device with the serial of `1090` (that we re-serialized in an earlier step).
@@ -291,25 +290,6 @@ If you want to use `ultrafeeder` *only* as a SDR decoder but without any mapping
 * in the `ULTRAFEEDER_CONFIG` parameter, remove any entry that starts with `mlat` or `mlathub`. This will prevent any `mlat-client`s or `mlathub` instances to be launched. If you want to connect the `mlat-client`(s) to external MLAT servers but you don't want to run the overhead of a MLATHUB, you can leave any entries starting with `mlat` in the `ULTRAFEEDER_CONFIG` parameter, and set `MLATHUB_DISABLE=true`
 * Set the parameter `TAR1090_DISABLE=true`. This will prevent the `nginx` web server and any websites from being launched
 * Make sure not to use the `dhcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder:telegraf` label as Telegraf adds a LOT of resource use to the container
-
-## Troubleshooting
-
-It is possible that you won't see any planes, either with the docker command above or when pointing your web browser at the readsb container. This can have a number of root causes - a common one being that active radio transmissions in other frequency bands that are reasonably "close" to the ADS-B band are completely overwhelming your SDR at the default starting gain of 49.6. It may be necessary to lower the starting point for the autogain script to at least allow the detection of some planes in order for the script to work. So if even after a few minutes you don't see any planes at all (and no ADS-B messages in the "Performance Graphs"), you may want to try to force a lower starting gain value into the autogain algorithm. To do this, please do the following. You may have to try different values instead of the value of `34` suggested here:
-
-* Set the `READSB_AUTOGAIN_INITIAL_GAIN` variable in the `ultrafeeder` section of your docker-compose file:
-
-```yaml
-    environment:
-      - READSB_AUTOGAIN_INITIAL_GAIN=34
-```
-
-* Then reset the autogain process with this command and recreate the container to apply the new `READSB_AUTOGAIN_INITIAL_GAIN` value :
-
-```bash
-cd /opt/adsb
-docker compose up -d
-docker exec -it ultrafeeder /usr/local/bin/autogain1090 reset
-```
 
 ## Advanced
 
