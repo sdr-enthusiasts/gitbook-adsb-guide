@@ -61,7 +61,6 @@ FEEDER_LONG=<your longitude>
 FEEDER_TZ=<your timezone>
 FEEDER_NAME=<your location name>
 ADSB_SDR_SERIAL=1090
-ADSB_SDR_GAIN=<your desired gain>
 ADSB_SDR_PPM=<your PPM from the step above>
 ULTRAFEEDER_UUID=<your UUID from the step above>
 FEEDER_HEYWHATSTHAT_ID=<your heywhatsthat ID from the step above>
@@ -78,7 +77,6 @@ FEEDER_HEYWHATSTHAT_ALTS=<desired theoretical range altitudes>
 * `FEEDER_TZ` is set to your timezone, in ["TZ database name" format](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). You can also see your Pi's timezone by giving this command: `cat /etc/timezone`
 * `FEEDER_NAME` is set to a location name. This is only used in the title of the map's web page.
 * `ADSB_SDR_SERIAL` is set to the serial number for your ADS-B dongle; the previous steps set this to 1090 by default but if you have used a different serial number enter it here
-* `ADSB_SDR_GAIN` is set to your desired dongle gain in dB, or `autogain` if you would like the software to determine the optimal gain
 * `ADSB_SDR_PPM` is set to your desired dongle PPM setting. Enter the number from the PPM estimation step earlier on this page.
 * `ULTRAFEEDER_UUID` is set to the UUID you generated above
 * `FEEDER_HEYWHATSTHAT_ID` is set to the code in the URL generated above
@@ -93,7 +91,6 @@ FEEDER_LAT=-31.9505
 FEEDER_LONG=115.8605
 FEEDER_TZ=Australia/Perth
 ADSB_SDR_SERIAL=1090
-ADSB_SDR_GAIN=autogain
 ADSB_SDR_PPM=1
 ULTRAFEEDER_UUID=00000000-0000-0000-0000-000000000000
 FEEDER_HEYWHATSTHAT_ID=NN3NNNN1
