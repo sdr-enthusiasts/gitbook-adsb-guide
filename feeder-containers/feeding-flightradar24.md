@@ -97,7 +97,6 @@ Append the following lines to the end of the file \(inside the `services:` secti
 ```yaml
   fr24:
     image: ghcr.io/sdr-enthusiasts/docker-flightradar24:latest
-    tty: true
     container_name: fr24
     restart: unless-stopped
     ports:

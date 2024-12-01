@@ -135,7 +135,6 @@ Append the following lines to the end of the file \(inside the `services:` secti
 ```yaml
   opensky:
     image: ghcr.io/sdr-enthusiasts/docker-opensky-network:latest
-    tty: true
     container_name: opensky
     restart: unless-stopped
     environment:

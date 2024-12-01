@@ -51,7 +51,6 @@ Append the following lines to the end of the file \(inside the `services:` secti
 ```yaml
   planewatch:
     image: ghcr.io/plane-watch/docker-plane-watch:latest
-    tty: true
     container_name: planewatch
     restart: unless-stopped
     environment:

@@ -69,7 +69,6 @@ An example docker compose service definition is below:
 ```yaml
   radarplane:
     image: ghcr.io/radarplane/docker-radarplane:main
-    tty: true
     container_name: radarplane
     restart: unless-stopped
     environment:

@@ -50,7 +50,6 @@ Append the following lines to the end of the file (inside the `services:` sectio
 ```yaml
   radarvirtuel:
     image: ghcr.io/sdr-enthusiasts/docker-radarvirtuel:latest
-    tty: true
     container_name: radarvirtuel
     hostname: radarvirtuel
     restart: unless-stopped

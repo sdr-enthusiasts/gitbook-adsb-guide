@@ -32,7 +32,6 @@ Append the following lines to the end of the file \(inside the `services:` secti
 ```yaml
   multifeeder:
     image: ghcr.io/sdr-enthusiasts/docker-multifeeder
-    tty: true
     container_name: multifeeder
     hostname: multifeeder
     restart: unless-stopped

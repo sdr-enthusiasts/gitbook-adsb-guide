@@ -144,7 +144,6 @@ Append the following lines to the end of the file \(inside the `services:` secti
 ```yaml
   rbfeeder:
     image: ghcr.io/sdr-enthusiasts/docker-radarbox:latest
-    tty: true
     container_name: rbfeeder
     restart: unless-stopped
     environment:

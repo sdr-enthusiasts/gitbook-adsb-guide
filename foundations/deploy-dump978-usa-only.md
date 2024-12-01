@@ -59,7 +59,6 @@ Append the following lines to the end of the file \(under the `services:` sectio
 ```yaml
   dump978:
     image: ghcr.io/sdr-enthusiasts/docker-dump978:latest
-    tty: true
     container_name: dump978
     restart: unless-stopped
     device_cgroup_rules:
