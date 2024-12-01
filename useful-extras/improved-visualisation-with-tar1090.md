@@ -31,7 +31,6 @@ Append the following lines to the end of the file:
 ```yaml
   tar1090:
     image: ghcr.io/sdr-enthusiasts/docker-tar1090:latest
-    tty: true
     container_name: tar1090
     restart: unless-stopped
     environment:

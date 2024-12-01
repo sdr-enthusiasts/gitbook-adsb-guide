@@ -53,7 +53,6 @@ Append the following lines to the end of the file:
 ```yaml
   influxdb:
     image: influxdb:latest
-    tty: true
     container_name: influxdb
     hostname: influxdb
     restart: unless-stopped
@@ -73,7 +72,6 @@ Append the following lines to the end of the file:
 
   grafana:
     image: grafana/grafana-oss:latest
-    tty: true
     container_name: grafana
     hostname: grafana
     restart: unless-stopped

@@ -45,7 +45,6 @@ Append the following lines to the end of the file \(inside the `services:` secti
 ```yaml
   watchtower:
     image: containrrr/watchtower:latest
-    tty: true
     container_name: watchtower
     restart: unless-stopped
     environment:

@@ -56,7 +56,6 @@ Append the following lines to the end of the file \(inside the `services:` secti
 ```yaml
   adsbhub:
     image: ghcr.io/sdr-enthusiasts/docker-adsbhub:latest
-    tty: true
     container_name: adsbhub
     restart: unless-stopped
     environment:

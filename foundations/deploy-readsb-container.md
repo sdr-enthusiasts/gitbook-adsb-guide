@@ -23,7 +23,6 @@ volumes:
 services:
   readsb:
     image: ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest
-    tty: true
     container_name: readsb
     hostname: readsb
     restart: unless-stopped

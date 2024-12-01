@@ -88,7 +88,6 @@ Append the following lines to the end of the file \(inside the `services:` secti
     image: ghcr.io/sdr-enthusiasts/docker-planefinder:latest
     # If you are running on a Raspberry Pi 5, uncomment the below line and comment out the above
     #ghcr.io/sdr-enthusiasts/docker-planefinder:5.0.161_arm64
-    tty: true
     container_name: pfclient
     restart: unless-stopped
     ports:
