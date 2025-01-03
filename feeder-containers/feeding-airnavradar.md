@@ -1,16 +1,16 @@
 ---
-description: 'If you wish to feed AirNav RadarBox, follow the steps below.'
+description: 'If you wish to feed AirNav Radar, follow the steps below.'
 ---
 
-# Feeding RadarBox
+# Feeding Airnav Radar
 
-[RadarBox](https://www.radarbox.com/) is a flight tracking company that displays aircraft & flight information in real-time on a map. RadarBox offers flight data such as latitude and longitude positions, origins and destinations, flight numbers, aircraft types, altitudes, headings and speeds. Based in Tampa, Florida, with a R&D center in Europe, RadarBox’s business operations include providing related data to aviation service providers worldwide.
+[Airnav Radar](https://www.airnavradar.com/) is a flight tracking company that displays aircraft & flight information in real-time on a map. Airnav Radar offers flight data such as latitude and longitude positions, origins and destinations, flight numbers, aircraft types, altitudes, headings and speeds. Based in Tampa, Florida, with a R&D center in Europe, Airnav Radar’s business operations include providing related data to aviation service providers worldwide.
 
-`rbfeeder` is a RadarBox's client program to transmit ADS-B and Mode S data to RadarBox.
+`rbfeeder` is a Airnav Radar's client program to transmit ADS-B and Mode S data to Airnav Radar.
 
-In exchange for your data, RadarBox will give you a Business Plan. If this is something of interest, you may wish to feed your data to them.
+In exchange for your data, Airnav Radar will give you a Business Plan. If this is something of interest, you may wish to feed your data to them.
 
-The docker image [`ghcr.io/sdr-enthusiasts/docker-radarbox`](https://github.com/sdr-enthusiasts/docker-radarbox) contains `rbfeeder` and all of its required prerequisites and libraries. This needs to run in conjunction with `ultrafeeder` \(or another Beast provider\).
+The docker image [`ghcr.io/sdr-enthusiasts/docker-airnavradar`](https://github.com/sdr-enthusiasts/docker-airnavradar) contains `rbfeeder` and all of its required prerequisites and libraries. This needs to run in conjunction with `ultrafeeder` \(or another Beast provider\).
 
 ## Getting a Sharing Key
 
@@ -23,12 +23,12 @@ If you're not a first time user and are migrating from another installation, you
 
 ### New to `rbfeeder`?
 
-You'll need a _sharing key_. To get one, you can temporarily run the container, to allow it to communicate with the RadarBox servers generate a new sharing key.
+You'll need a _sharing key_. To get one, you can temporarily run the container, to allow it to communicate with the Airnav Radar servers generate a new sharing key.
 
 Inside your application directory \(`/opt/adsb`\), run the following commands:
 
 ```bash
-docker pull ghcr.io/sdr-enthusiasts/docker-radarbox:latest
+docker pull ghcr.io/sdr-enthusiasts/docker-airnavradar:latest
 source ./.env
 timeout 60 docker run \
     --rm \
@@ -38,10 +38,10 @@ timeout 60 docker run \
     -e LAT=${FEEDER_LAT} \
     -e LONG=${FEEDER_LONG} \
     -e ALT=${FEEDER_ALT_M} \
-    ghcr.io/sdr-enthusiasts/docker-radarbox
+    ghcr.io/sdr-enthusiasts/docker-airnavradar
 ```
 
-The command will run the container for one minute, which should be ample time for the container to connect to RadarBox receive a sharing key.
+The command will run the container for one minute, which should be ample time for the container to connect to Airnav Radar receive a sharing key.
 
 For example:
 
@@ -91,7 +91,7 @@ In the output above, see the line:
 [rbfeeder] [2020-11-20 08:55:05]  Your new key is g45643ab345af3c5d5g923a99ffc0de9.
 ```
 
-As you can see from the output above, the sharing key given to us from Radarbox is `g45643ab345af3c5d5g923a99ffc0de9`.
+As you can see from the output above, the sharing key given to us from Airnav Radar is `g45643ab345af3c5d5g923a99ffc0de9`.
 
 If the script doesn't output the sharing key, it can be found by using the following command:
 
@@ -107,9 +107,9 @@ key=g45643ab345af3c5d5g923a99ffc0de9
 
 ## Claiming Your Receiver
 
-1. Go to [https://www.radarbox.com/](https://www.radarbox.com/)
+1. Go to [https://www.airnavradar.com/](https://www.airnavradar.com/)
 2. Create an account or sign in
-3. Claim your receiver by visiting [https://www.radarbox.com/raspberry-pi/claim](https://www.radarbox.com/raspberry-pi/claim) and following the instructions
+3. Claim your receiver by visiting [https://www.airnavradar.com/raspberry-pi/claim](https://www.airnavradar.com/raspberry-pi/claim) and following the instructions
 
 ## Update `.env` file with sharing key
 
@@ -122,7 +122,7 @@ nano /opt/adsb/.env
 This file holds all of the commonly used variables \(such as our latitude, longitude and altitude\). We're going to add our `rbfeeder` sharing key to this file. Add the following line to the file:
 
 ```bash
-RADARBOX_SHARING_KEY=YOURSHARINGKEY
+AIRNAVRADAR_SHARING_KEY=YOURSHARINGKEY
 ```
 
 * Replace `YOURSHARINGKEY` with the sharing key that was generated in the previous step.
@@ -130,7 +130,7 @@ RADARBOX_SHARING_KEY=YOURSHARINGKEY
 For example:
 
 ```bash
-RADARBOX_SHARING_KEY=g45643ab345af3c5d5g923a99ffc0de9
+AIRNAVRADAR_SHARING_KEY=g45643ab345af3c5d5g923a99ffc0de9
 ```
 
 ## Deploying `rbfeeder`
@@ -143,16 +143,16 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 ```yaml
   rbfeeder:
-    image: ghcr.io/sdr-enthusiasts/docker-radarbox:latest
+    image: ghcr.io/sdr-enthusiasts/docker-airnavradar:latest
     container_name: rbfeeder
-    restart: unless-stopped
+    restart: always
     environment:
       - BEASTHOST=ultrafeeder
       - LAT=${FEEDER_LAT}
       - LONG=${FEEDER_LONG}
       - ALT=${FEEDER_ALT_M}
       - TZ=${FEEDER_TZ}
-      - SHARING_KEY=${RADARBOX_SHARING_KEY}
+      - SHARING_KEY=${AIRNAVRADAR_SHARING_KEY}
     tmpfs:
       - /run:exec,size=64M
       - /var/log
@@ -166,14 +166,14 @@ If you are in the USA and are also running the `dump978` container with a second
 
 To explain what's going on in this addition:
 
-* We're creating a container called `rbfeeder`, from the image `ghcr.io/sdr-enthusiasts/docker-radarbox:latest`.
+* We're creating a container called `rbfeeder`, from the image `ghcr.io/sdr-enthusiasts/docker-airnavradar:latest`.
 * We're passing several environment variables to the container:
   * `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder` over our private `adsbnet` network.
   * `LAT` will use the `FEEDER_LAT` variable from your `.env` file.
   * `LONG` will use the `FEEDER_LONG` variable from your `.env` file.
   * `ALT` will use the `FEEDER_ALT_M` variable from your `.env` file.
   * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
-  * `SHARING_KEY` will use the `RADARBOX_SHARING_KEY` variable from your `.env` file.
+  * `SHARING_KEY` will use the `AIRNAVRADAR_SHARING_KEY` variable from your `.env` file.
 * For people running `dump978`:
   * `UAT_RECEIVER_HOST=dump978` specifies the host to pull UAT data from; in this instance our `dump978` container.
 * We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
@@ -182,7 +182,7 @@ To explain what's going on in this addition:
 
 ## Update `ultrafeeder` container configuration
 
-Before running `docker compose`, we also want to update the configuration of the `ultrafeeder` container, so that it generates MLAT data for radarbox.
+Before running `docker compose`, we also want to update the configuration of the `ultrafeeder` container, so that it generates MLAT data for Airnav Radar.
 
 **NOTE: If you are using the sample `docker-compose.yml` provided, this step has already been done for you.**
 
@@ -252,8 +252,8 @@ We can view the logs for the environment with the command `docker compose logs`,
 
 We can see our container running with the command `docker ps`.
 
-Once running, you can visit the RadarBox website, and go to "Account" &gt; "Stations" and click your station to see your live data.
+Once running, you can visit the Airnav Radar website, and go to "Account" &gt; "Stations" and click your station to see your live data.
 
 ## Advanced
 
-If you want to look at more options and examples for the `rbfeeder` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-radarbox)
+If you want to look at more options and examples for the `rbfeeder` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-airnavradar)

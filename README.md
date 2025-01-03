@@ -24,7 +24,7 @@ These ADS-B data can be received by ~~nerds~~ enthusiasts using Software Defined
 * [FlightAware](https://flightaware.com/adsb/piaware/)
 * [FlightRadar24](https://www.flightradar24.com/share-your-data)
 * [Plane Finder](https://planefinder.net)
-* [RadarBox](https://www.radarbox.com)
+* [Airnav Radar](https://www.airnavradar.com)
 * [radarvirtuel.com](https://www.radarvirtuel.com)
 * [AV Delphi](https://avdelphi.com)
 * [ADS-B Exchange](https://adsbexchange.com)

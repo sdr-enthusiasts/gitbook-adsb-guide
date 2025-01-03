@@ -29,7 +29,7 @@ To explain the flowchart above:
   * `fr24` - this container reads Beast protocol data from `ultrafeeder` and submits flight data to the [FlightRadar24](https://www.flightradar24.com) service, and get their "Business Plan" in return.
 * Flight data is visualised using `tar1090`, presenting a web interface allowing you to view the flight data received by you set-up in real time.
 
-There are other feeder packages available \(eg: Plane.watch, OpenSky Network, Radarbox, etc\) that you may wish to consider too. They are all explained in this document.
+There are other feeder packages available \(eg: Plane.watch, OpenSky Network, Airnav Radar, etc.\) that you may wish to consider too. They are all explained in this document.
 
 There are also other visualisation packages available \(eg: FlightAirMap/VirtualRadarServer/Grafana\) that you may wish to consider, however keep in mind that these may require more horsepower than a humble Raspberry Pi can provide. `tar1090` is very lightweight which is why it is recommended here.
 
