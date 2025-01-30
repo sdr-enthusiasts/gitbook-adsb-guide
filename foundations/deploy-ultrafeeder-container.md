@@ -71,15 +71,15 @@ services:
           adsb,feed.radarplane.com,30001,beast_reduce_plus_out;
           adsb,dati.flyitalyadsb.com,4905,beast_reduce_plus_out;
           adsb,feed1.adsbexchange.com,30004,beast_reduce_plus_out;
-          mlat,feed.adsb.fi,31090,39000;
-          mlat,in.adsb.lol,31090,39001;
-          mlat,feed.airplanes.live,31090,39002;
-          mlat,mlat.planespotters.net,31090,39003;
-          mlat,feed.theairtraffic.com,31090,39004;
-          mlat,skyfeed.hpradar.com,31090,39005;
-          mlat,feed.radarplane.com,31090,39006;
-          mlat,dati.flyitalyadsb.com,30100,39007;
-          mlat,feed.adsbexchange.com,31090,39008;
+          mlat,feed.adsb.fi,31090;
+          mlat,in.adsb.lol,31090;
+          mlat,feed.airplanes.live,31090;
+          mlat,mlat.planespotters.net,31090;
+          mlat,feed.theairtraffic.com,31090;
+          mlat,skyfeed.hpradar.com,31090;
+          mlat,feed.radarplane.com,31090;
+          mlat,dati.flyitalyadsb.com,30100;
+          mlat,feed.adsbexchange.com,31090;
           mlathub,piaware,30105,beast_in;
           mlathub,rbfeeder,30105,beast_in;
           mlathub,radarvirtuel,30105,beast_in;
@@ -276,7 +276,8 @@ The example files above use the same UUID for all feeders. Doing so makes it pos
       - ULTRAFEEDER_CONFIG=
           adsb,feed.adsb.fi,30004,beast_reduce_plus_out,uuid=${ADSBFI_UUID};
           adsb,in.adsb.lol,30004,beast_reduce_plus_out,uuid=${ADSBLOL_UUID};
-          adsb,feed.adsb.one,64004,beast_reduce_plus_out,uuid=${ADSBONE_UUID};
+          mlat,feed.adsb.fi,31090,uuid=${ADSBFI_UUID};
+          mlat,in.adsb.lol,31090,uuid=${ADSBLOL_UUID};
 ```
 
 ## Preparing and setting up `ultrafeeder` with Prometheus and Grafana
@@ -289,7 +290,7 @@ If you want to use `ultrafeeder` *only* as a SDR decoder but without any mapping
 
 * in the `ULTRAFEEDER_CONFIG` parameter, remove any entry that starts with `mlat` or `mlathub`. This will prevent any `mlat-client`s or `mlathub` instances to be launched. If you want to connect the `mlat-client`(s) to external MLAT servers but you don't want to run the overhead of a MLATHUB, you can leave any entries starting with `mlat` in the `ULTRAFEEDER_CONFIG` parameter, and set `MLATHUB_DISABLE=true`
 * Set the parameter `TAR1090_DISABLE=true`. This will prevent the `nginx` web server and any websites from being launched
-* Make sure not to use the `dhcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder:telegraf` label as Telegraf adds a LOT of resource use to the container
+* Make sure *not* to use the `ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder:telegraf` label as Telegraf adds a LOT of CPU, disk, and memory use to the container
 
 ## Advanced
 
