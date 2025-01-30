@@ -37,4 +37,8 @@ This document is best viewed on GitBook. If you're reading it elsewhere, we humb
 
 This document is intended to be "living". Please feel free to fork the [GitHub repository](https://github.com/sdr-enthusiasts/gitbook-adsb-guide), contribute and submit pull requests! We value your input!
 
-This guide is made available under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
+## License and Contributors
+
+This guide is made available under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) and maintained by members of the SDR-Enthusiasts community.
+
+[![Contributors](https://contrib.rocks/image?repo=sdr-enthusiasts/gitbook-adsb-guide)](https://github.com/sdr-enthusiasts/gitbook-adsb-guide/graphs/contributors)
