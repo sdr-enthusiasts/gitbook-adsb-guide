@@ -28,13 +28,13 @@ In your station preferences, you should set the following:
 
 Inside your application directory \(`/opt/adsb`\), edit the `.env` file using your favourite text editor. Beginners may find the editor `nano` easy to use:
 
-```text
+```shell
 nano /opt/adsb/.env
 ```
 
 This file holds all of the commonly used variables \(such as our latitude, longitude and altitude\). We're going to add our ADSBHub Station Key to this file. Add the following line to the file:
 
-```text
+```shell
 ADSBHUB_STATION_KEY='YOURSTATIONKEY'
 ```
 
@@ -43,7 +43,7 @@ ADSBHUB_STATION_KEY='YOURSTATIONKEY'
 
 For example:
 
-```text
+```shell
 ADSBHUB_STATION_KEY='vrMr@AZn660X0H^0Usn~rcj$UJA7VlR.vEu4c;uh7mfU-J9ZUBXpJiUuWj37DTa5BtL'
 ```
 

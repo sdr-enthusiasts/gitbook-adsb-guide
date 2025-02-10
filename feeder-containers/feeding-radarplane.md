@@ -39,22 +39,41 @@ First-time users should generate a static UUID using this command:
 cat /proc/sys/kernel/random/uuid
 ```
 
-Take note of the UUID returned. You should pass it as the `UUID` environment variable when running the container.
+Inside your application directory \(`/opt/adsb`\), edit the `.env` file using your favourite text editor. Beginners may find the editor `nano` easy to use:
+
+```shell
+nano /opt/adsb/.env
+```
+
+This file holds all of the commonly used variables \(such as our latitude, longitude and altitude\). We're going to add our OpenSky username to this file. Add the following line to the file:
+
+```shell
+RADARPLANE_UUID='YOURUUID'
+```
+
+* Replace `RADARPLANE_UUID` with the station UUID you generated earlier.
+
+For example:
+
+```shell
+RADARPLANE_UUID=00000000-0000-0000-0000-000000000000
+```
 
 ## Up-and-Running with `docker run`
 
 ```shell
+source ./.env
 docker run \
  -d \
  --rm \
  --name radarplane \
- -e TZ=YOUR_TIMEZONE \
+ -e TZ=${FEEDER_TZ} \
  -e BEASTHOST=readsb \
- -e LAT=-33.33333 \
- -e LONG=111.11111 \
+ -e LAT=${FEEDER_LAT} \
+ -e LONG=${FEEDER_LONG} \
  -e ALT=50m \
- -e SITENAME=My_Cool_ADSB_Receiver \
- -e UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+ -e SITENAME=${FEEDER_NAME} \
+ -e UUID=${RADARPLANE_UUID} \
  --tmpfs=/run:rw,nosuid,nodev,exec,relatime,size=64M,uid=1000,gid=1000 \
  ghcr.io/RadarPlane/docker-radarplane:main
 ```
@@ -73,12 +92,12 @@ An example docker compose service definition is below:
     restart: unless-stopped
     environment:
       - BEASTHOST=readsb
-      - TZ=UTC
-      - LAT=-37.7468
-      - LONG=-25.5716
+      - TZ=${FEEDER_TZ}
+      - LAT=${FEEDER_LAT}
+      - LONG=${FEEDER_LONG}
       - ALT=50m
-      - SITENAME=My_Cool_RadarPlane_Receiver
-      - UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+      - SITENAME=${FEEDER_NAME}
+      - UUID=${RADARPLANE_UUID}
     tmpfs:
       - /run:rw,nosuid,nodev,exec,relatime,size=64M,uid=1000,gid=1000
 ```

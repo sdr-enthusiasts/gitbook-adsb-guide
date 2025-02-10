@@ -17,7 +17,7 @@ To set these serial numbers:
 
 Unplug all SDRs, leaving only the SDR to be used for 1090MHz reception plugged in. Issue the following command:
 
-```text
+```shell
 docker run --rm -it --device /dev/bus/usb --entrypoint rtl_eeprom ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder -s 1090
 ```
 
@@ -61,7 +61,7 @@ Please replug the device for changes to take effect.
 
 Next, if you intend on receiving ADS-B UAT \(978MHz\) data with a second SDR, Unplug all SDRs, leaving only the SDR to be used for 978MHz reception plugged in. Issue the following command:
 
-```text
+```shell
 docker run --rm -it --device /dev/bus/usb --entrypoint rtl_eeprom ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder -s 978
 ```
 

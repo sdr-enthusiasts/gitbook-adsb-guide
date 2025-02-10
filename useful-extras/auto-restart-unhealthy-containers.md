@@ -92,7 +92,7 @@ In order for us to inform`autoheal` which containers to monitor, we need to appl
 
 To tell `autoheal` to monitor your `ultrafeeder` container, you would add the following configuration directive under its service definition in your `docker-compose.yml` file:
 
-```text
+```yaml
 labels:
   - "autoheal=true"
 ```

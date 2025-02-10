@@ -18,7 +18,7 @@ You'll need your _fr24key_ from your existing feeder.
 
 To get your _fr24key_, log onto your feeder and issue the command:
 
-```bash
+```shell
 cat /etc/fr24feed.ini | grep fr24key
 ```
 
@@ -36,7 +36,7 @@ Use the same email address as for your fr24 account if you already have one or p
 
 Run the command:
 
-```text
+```shell
 docker run -it --rm ghcr.io/sdr-enthusiasts/docker-baseimage:qemu bash -c "$(curl -sSL https://raw.githubusercontent.com/sdr-enthusiasts/docker-flightradar24/main/get_adsb_key.sh)"
 ```
 
@@ -64,7 +64,7 @@ Congratulations! You are now registered and ready to share ADS-B data with Fligh
 
 Copy the sharing key you are given, and add the following line to your `.env` file:
 
-```text
+```shell
 FR24_SHARING_KEY=YOURSHARINGKEY
 ```
 
@@ -72,7 +72,7 @@ FR24_SHARING_KEY=YOURSHARINGKEY
 
 For example:
 
-```text
+```shell
 FR24_SHARING_KEY=10ae138d0c1g
 ```
 
@@ -82,7 +82,7 @@ Get a separate sharing key for UAT as described [here](https://github.com/sdr-en
 
 Copy the UAT sharing key you are given, and add the following line to your `.env` file:
 
-```text
+```shell
 FR24_SHARING_KEY_UAT=YOURSHARINGKEYUAT
 ```
 

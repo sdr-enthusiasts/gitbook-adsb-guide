@@ -9,7 +9,7 @@ description: >-
 
 In your favourite text editor, create a file named `docker-compose.yml` in your application directory \(`/opt/adsb`\) if following along verbatim.
 
-```bash
+```shell
 nano docker-compose.yml
 ```
 
@@ -62,13 +62,13 @@ The above will:
 
 Once this file is created, issue the command `docker compose up -d` to bring up the environment.
 
-```bash
+```shell
 docker compose up -d
 ```
 
 You should see the following output:
 
-```text
+```shell
 Creating network "adsb_default" with the default driver
 Creating readsb         ... done
 ```
@@ -106,6 +106,7 @@ We can view the logs for the environment with the command `docker compose logs`,
 We can see our container running with the command `docker ps`:
 
 ```text
+$ docker ps
 CONTAINER ID   IMAGE                                                   COMMAND   CREATED        STATUS                  PORTS                                       NAMES
 7b9c4be5a410   ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest   "/init"   17 hours ago   Up 17 hours (healthy)   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   readsb
 ```
@@ -168,7 +169,7 @@ You should also be able to point your web browser at `http://docker.host.ip.addr
 
 It is possible that you won't see any planes, either with the docker command above or when pointing your web browser at the readsb container. This can have a number of root causes - a common one being that active radio transmissions in other frequency bands that are reasonably "close" to the ADS-B band are completely overwhelming your SDR at the default starting gain of 49.6. It may be necessary to lower the starting point for the autogain script to at least allow the detection of some planes in order for the script to work. So if even after a few minutes you don't see any planes at all (and no ADS-B messages in the "Performance Graphs"), you may want to try to force a lower starting gain value into the autogain algorithm. To do this, please execute the following command. You may have to try different values instead of the value of `34` suggested here:
 
-```bash
+```shell
 docker exec -it readsb sh -c "/bin/echo 34 > /run/autogain/autogain_current_value"
 docker restart readsb
 ```

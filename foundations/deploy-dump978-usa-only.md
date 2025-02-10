@@ -18,7 +18,9 @@ Every RTL-SDR dongle will have a small frequency error as it is cheaply mass pro
 
 Unplug all SDRs, leaving only the SDR to be used for 978MHz reception plugged in. Issue the following command:
 
-`docker run --rm -it --entrypoint /scripts/estimate_rtlsdr_ppm.sh --device /dev/bus/usb ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest`
+```shell
+docker run --rm -it --entrypoint /scripts/estimate_rtlsdr_ppm.sh --device /dev/bus/usb ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest
+```
 
 This takes about 30 minutes and will print a numerical value for estimated optimum PPM setting.
 
@@ -26,13 +28,13 @@ This takes about 30 minutes and will print a numerical value for estimated optim
 
 Inside your application directory \(`/opt/adsb`\), edit the `.env` file using your favourite text editor. Beginners may find the editor `nano` easy to use:
 
-```bash
+```shell
 nano /opt/adsb/.env
 ```
 
 This file holds all of the commonly used variables \(such as our latitude, longitude and altitude\). We're going to add more variables associated our UAT dongle.
 
-```text
+```shell
 UAT_SDR_SERIAL=978
 UAT_SDR_GAIN=<your desired gain>
 UAT_SDR_PPM=<your PPM from the step above>
@@ -44,7 +46,7 @@ UAT_SDR_PPM=<your PPM from the step above>
 
 For example:
 
-```text
+```shell
 UAT_SDR_SERIAL=978
 UAT_SDR_GAIN=autogain
 UAT_SDR_PPM=1

@@ -26,7 +26,7 @@ You'll need a _share code_. In order to obtain a PlaneFinder Share Code, we will
 
 Run the command:
 
-```text
+```shell
 docker run \
     --rm \
     -it \
@@ -59,13 +59,13 @@ You should now claim your receiver:
 
 Inside your application directory \(`/opt/adsb`\), edit the `.env` file using your favourite text editor. Beginners may find the editor `nano` easy to use:
 
-```text
+```shell
 nano /opt/adsb/.env
 ```
 
 This file holds all of the commonly used variables \(such as our latitude, longitude and altitude\). We're going to add our `pfclient` share code to this file. Add the following line to the file:
 
-```text
+```shell
 PLANEFINDER_SHARECODE=YOURSHARECODE
 ```
 
@@ -73,7 +73,7 @@ PLANEFINDER_SHARECODE=YOURSHARECODE
 
 For example:
 
-```text
+```shell
 PLANEFINDER_SHARECODE=zg84632abhf231
 ```
 
@@ -169,7 +169,7 @@ Once running, you can visit `http://docker.host.ip.addr:30053` to access the `pf
 
 If you are running a Raspberry Pi 5, then you may see the following messages in your Docker Compose log output:
 
-```
+```text
 pfclient      | [pfclient_daemon] /usr/local/bin/pfclient: error while loading shared libraries:
 pfclient      | [pfclient_daemon] /usr/local/bin/pfclient: error while loading shared libraries:
 pfclient      | [pfclient_daemon] /usr/local/bin/pfclient: error while loading shared libraries:

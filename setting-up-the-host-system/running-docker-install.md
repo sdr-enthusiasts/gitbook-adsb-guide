@@ -27,7 +27,7 @@ After running this script, your system should be ready to use `docker` and `dock
 - Feel free to inspect the script [here](https://raw.githubusercontent.com/sdr-enthusiasts/docker-install/main/docker-install.sh). You should really not blindly run other people's scripts - make sure you feel comfortable with what it does before executing it.
 - To use it, you can enter the following command:
 
-```bash
+```shell
 bash <(curl -s https://raw.githubusercontent.com/sdr-enthusiasts/docker-install/main/docker-install.sh)
 ```
 

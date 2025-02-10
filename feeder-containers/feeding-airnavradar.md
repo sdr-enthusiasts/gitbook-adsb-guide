@@ -27,8 +27,7 @@ You'll need a _sharing key_. To get one, you can temporarily run the container, 
 
 Inside your application directory \(`/opt/adsb`\), run the following commands:
 
-```bash
-docker pull ghcr.io/sdr-enthusiasts/docker-airnavradar:latest
+```shell
 source ./.env
 timeout 60 docker run \
     --rm \
@@ -38,7 +37,7 @@ timeout 60 docker run \
     -e LAT=${FEEDER_LAT} \
     -e LONG=${FEEDER_LONG} \
     -e ALT=${FEEDER_ALT_M} \
-    ghcr.io/sdr-enthusiasts/docker-airnavradar
+    ghcr.io/sdr-enthusiasts/docker-airnavradar:latest
 ```
 
 The command will run the container for one minute, which should be ample time for the container to connect to Airnav Radar receive a sharing key.
@@ -95,13 +94,13 @@ As you can see from the output above, the sharing key given to us from Airnav Ra
 
 If the script doesn't output the sharing key, it can be found by using the following command:
 
-```bash
+```shell
 docker exec -it rbfeeder /bin/sh -c "cat /etc/rbfeeder.ini" | grep key
 ```
 
 Command output:
 
-```text
+```shell
 key=g45643ab345af3c5d5g923a99ffc0de9
 ```
 
@@ -115,13 +114,13 @@ key=g45643ab345af3c5d5g923a99ffc0de9
 
 Inside your application directory \(`/opt/adsb`\), edit the `.env` file using your favourite text editor. Beginners may find the editor `nano` easy to use:
 
-```bash
+```shell
 nano /opt/adsb/.env
 ```
 
 This file holds all of the commonly used variables \(such as our latitude, longitude and altitude\). We're going to add our `rbfeeder` sharing key to this file. Add the following line to the file:
 
-```bash
+```shell
 AIRNAVRADAR_SHARING_KEY=YOURSHARINGKEY
 ```
 
@@ -129,7 +128,7 @@ AIRNAVRADAR_SHARING_KEY=YOURSHARINGKEY
 
 For example:
 
-```bash
+```shell
 AIRNAVRADAR_SHARING_KEY=g45643ab345af3c5d5g923a99ffc0de9
 ```
 
