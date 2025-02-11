@@ -22,7 +22,7 @@ Before we can plug in our RTL-SDR dongle, we need to blacklist the kernel module
 
 To do this, we will create a blacklist file at `/etc/modprobe.d/blacklist-rtlsdr.conf` with the following command. While logged in as root, please copy and paste all lines at once, and press enter after to ensure the final line is given allowing it to run.
 
-```bash
+```shell
 sudo tee /etc/modprobe.d/blacklist-rtlsdr.conf <<EOF
 # Blacklist host from loading modules for RTL-SDRs to ensure they
 # are left available for the Docker guest.
@@ -36,7 +36,6 @@ blacklist rtl2830
 blacklist rtl2832
 blacklist rtl2832_sdr
 blacklist rtl2838
-EOF
 
 # This alone will not prevent a module being loaded if it is a
 # required or an optional dependency of another module. Some kernel
@@ -56,13 +55,15 @@ install rtl2830 /bin/false
 install rtl2832 /bin/false
 install rtl2832_sdr /bin/false
 install rtl2838 /bin/false
+
+EOF
 ```
 
 ### 2. Unload Modules
 
 Next, ensure the modules are unloaded by running the following commands:
 
-```bash
+```shell
 sudo modprobe -r dvb_core
 sudo modprobe -r dvb_usb_rtl2832u
 sudo modprobe -r dvb_usb_rtl28xxu
@@ -78,7 +79,7 @@ sudo modprobe -r rtl2838
 
 Next we rebuild the module dependency database with this command:
 
-```bash
+```shell
 sudo depmod -a
 ```
 
@@ -88,7 +89,7 @@ This may appear to initially not be doing anything, but after a short wait will 
 
 Now we need to update our boot image to ensure any references to the modules we've blacklisted are removed. (This is only needed on certain systems; feel free to ignore if this command fails.)
 
-```bash
+```shell
 sudo update-initramfs -u
 ```
 
@@ -98,7 +99,7 @@ This will take a minute or more depending on the speed of your system, and outpu
 
 Failure to do the steps above will result in the error below being spammed to the `ultrafeeder` container log.
 
-```text
+```shell
 usb_claim_interface error -6
 rtlsdr: error opening the RTLSDR device: Device or resource busy
 ```

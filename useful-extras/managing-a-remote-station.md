@@ -24,7 +24,7 @@ You should now have a unique 16 character Network ID e.g. `253ef24d630f06682`. M
 
 Join your network from your machine's command line:
 
-```bash
+```shell
 sudo zerotier-cli join xxxxxxxxxxxxxxxx
 ```
 

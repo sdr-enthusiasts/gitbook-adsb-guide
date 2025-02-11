@@ -11,7 +11,7 @@ It also provides a website with a map based on tar1090, station statistics (grap
 
 In your favorite text editor, create a file named `docker-compose.yml` in your application directory (`/opt/adsb`) if you've been following along verbatim.
 
-```bash
+```shell
 nano docker-compose.yml
 ```
 
@@ -165,7 +165,7 @@ A working MLAT configuration is already provided in the example above.  See [htt
 
 Once the `docker-compose.yml` file is created, issue the command `docker compose up -d` to bring up the environment.
 
-```bash
+```shell
 docker compose up -d
 ```
 

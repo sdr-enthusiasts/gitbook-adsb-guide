@@ -24,13 +24,13 @@ When you save your feeder, an **API Key** will be generated. Take note of this, 
 
 Inside your application directory \(`/opt/adsb`\), edit the `.env` file using your favourite text editor. Beginners may find the editor `nano` easy to use:
 
-```bash
+```shell
 nano /opt/adsb/.env
 ```
 
 This file holds all of the commonly used variables \(such as our latitude, longitude and altitude\). We're going to add our plane.watch variables to this file. Add the following lines to the file:
 
-```text
+```shell
 PW_API_KEY=YOURAPIKEY
 ```
 
@@ -38,7 +38,7 @@ PW_API_KEY=YOURAPIKEY
 
 For example:
 
-```text
+```shell
 PW_API_KEY=4e8413e6-52eb-11ea-8681-1c1b0d925d3g
 ```
 
@@ -127,5 +127,3 @@ After a few minutes, browse to [https://atc.plane.watch/](https://atc.plane.watc
 ## Advanced
 
 If you want to look at more options and examples for the `plane.watch` container, you can find the repository [here](https://github.com/plane-watch/docker-plane-watch).
-
-

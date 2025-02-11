@@ -52,7 +52,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 If you already have a `UUID` that was generated for the ADSBExchange service, feel free to reuse that one. If you don't have one, you can generate one by logging onto you Linux machine (Raspberry Pi, etc.) and giving this command:
 
-```bash
+```shell
 cat  /proc/sys/kernel/random/uuid
 ```
 

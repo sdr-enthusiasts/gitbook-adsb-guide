@@ -23,13 +23,13 @@ First-time users should obtain a RadarVirtuel Feeder key. To request one, email 
 
 Inside your application directory (`/opt/adsb`), edit the `.env` file using your favorite text editor. Beginners may find the editor `nano` easy to use:
 
-```text
+```shell
 nano /opt/adsb/.env
 ```
 
 This file holds all of the commonly used variables (such as our latitude, longitude and altitude). We're going to add our RadarVirtuel Feeder Key to this file. Add the following line to the file:
 
-```text
+```shell
 RV_FEEDER_KEY=YOURFEEDERKEY
 ```
 
@@ -37,7 +37,7 @@ RV_FEEDER_KEY=YOURFEEDERKEY
 
 For example:
 
-```text
+```shell
 RV_FEEDER_KEY=xxxx:432143214473214732017432014747382140723
 ```
 

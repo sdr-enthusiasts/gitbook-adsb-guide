@@ -20,7 +20,7 @@ You'll need your _feeder-id_ from your existing feeder.
 
 To get your _feeder-id_, log onto your feeder via SSH and issue the command:
 
-```bash
+```shell
 piaware-config -show feeder-id
 ```
 
@@ -32,7 +32,7 @@ You'll need a _feeder-id_. To get one, you can temporarily run the container, to
 
 Inside your application directory \(`/opt/adsb`\), run the following commands:
 
-```text
+```shell
 docker pull ghcr.io/sdr-enthusiasts/docker-piaware:latest
 source ./.env
 timeout 60 docker run --rm -e LAT="$FEEDER_LAT" -e LONG="$FEEDER_LONG" ghcr.io/sdr-enthusiasts/docker-piaware:latest | grep "my feeder ID"
@@ -42,7 +42,7 @@ The command will run the container for 60 seconds, which should be ample time fo
 
 For example:
 
-```text
+```ShellSession
 $ timeout 60 docker run --rm LAT="$FEEDER_LAT" -e LONG="$FEEDER_LONG" ghcr.io/sdr-enthusiasts/docker-piaware:latest | grep "my feeder ID"
 Set allow-mlat to yes in /etc/piaware.conf:1
 Set allow-modeac to yes in /etc/piaware.conf:2
@@ -65,13 +65,13 @@ Note - for PiAware/FlightAware feeding to work correctly, you MUST accurately se
 
 Inside your application directory \(`/opt/adsb`\), edit the `.env` file using your favourite text editor. Beginners may find the editor `nano` easy to use:
 
-```bash
+```shell
 nano /opt/adsb/.env
 ```
 
 This file holds all of the commonly used variables \(such as our latitude, longitude and altitude\). We're going to add our `piaware` feeder-id to this file. Add the following line to the file:
 
-```text
+```shell
 PIAWARE_FEEDER_ID=YOURFEEDERID
 ```
 
@@ -79,7 +79,7 @@ PIAWARE_FEEDER_ID=YOURFEEDERID
 
 For example:
 
-```text
+```shell
 PIAWARE_FEEDER_ID=acbf1f88-09a4-3a47-a4a0-10ae138d0c1g
 ```
 
