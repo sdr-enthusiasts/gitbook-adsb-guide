@@ -89,6 +89,6 @@ denyinterfaces veth*
 
 After saving this file, restart DHCPCD
 
-```bash
+```shell
 sudo systemctl restart dhcpcd
 ```

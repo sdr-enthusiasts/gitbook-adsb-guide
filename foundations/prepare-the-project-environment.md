@@ -10,7 +10,7 @@ description: >-
 
 We need a directory to host our application. The name of this directory will be the name of our application. Accordingly, we prefer to use `/opt/adsb`, so our application is called "adsb":
 
-```bash
+```shell
 sudo mkdir -p -m 777 /opt/adsb
 cd /opt/adsb
 ```
@@ -19,7 +19,7 @@ cd /opt/adsb
 
 A UUID is a unique identifier that will identify you to various feeding servers. If you already have a `UUID` that was generated for the ADSBExchange service, feel free to reuse that one. If you don't have one, you can generate one by logging into your Linux machine (Raspberry Pi, etc.) and giving this command:
 
-```bash
+```shell
 cat  /proc/sys/kernel/random/uuid
 ```
 
@@ -33,7 +33,9 @@ This step is considered optional and mostly legacy/unnecessary at this point, as
 
 Unplug all SDRs, leaving only the SDR to be used for 1090MHz reception plugged in. Issue the following command:
 
-`docker run --rm -it --entrypoint /scripts/estimate_rtlsdr_ppm.sh --device /dev/bus/usb ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest`
+```shell
+docker run --rm -it --entrypoint /scripts/estimate_rtlsdr_ppm.sh --device /dev/bus/usb ghcr.io/sdr-enthusiasts/docker-readsb-protobuf:latest
+```
 
 This takes about 30 minutes and will print a numerical value for Estimated optimum PPM setting once it completes.
 
@@ -47,13 +49,13 @@ If you decide not to include a PPM value, then you can either set `ADSB_SDR_PPM=
 
 Inside this directory, create a file named `.env` using your favourite text editor. Beginners may find the editor `nano` easy to use:
 
-```bash
+```shell
 nano /opt/adsb/.env
 ```
 
 This file will hold all of the commonly used variables \(such as our latitude, longitude, and altitude\). Initially, add the contents of the file as follows (replacing the values enclosed in `<>` with values for your environment):
 
-```text
+```shell
 FEEDER_ALT_FT=<your antenna's altitude in feet>
 FEEDER_ALT_M=<your antenna's altitude in metres>
 FEEDER_LAT=<your latitude>
@@ -84,7 +86,7 @@ FEEDER_HEYWHATSTHAT_ALTS=<desired theoretical range altitudes>
 
 For example:
 
-```text
+```shell
 FEEDER_ALT_FT=103.3465
 FEEDER_ALT_M=31.5
 FEEDER_LAT=-31.9505

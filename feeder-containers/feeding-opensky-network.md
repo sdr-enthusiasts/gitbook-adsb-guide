@@ -16,26 +16,40 @@ Firstly, make sure you have registered for an account on the [OpenSky Network we
 
 In order to obtain a feeder serial number, we will start a temporary container running `opensky-feeder`, which will connect to OpenSky Network and be issued a serial number. The temporary container will automatically be stopped and deleted after 60 seconds.
 
+Inside your application directory \(`/opt/adsb`\), edit the `.env` file using your favourite text editor. Beginners may find the editor `nano` easy to use:
+
+```shell
+nano /opt/adsb/.env
+```
+
+This file holds all of the commonly used variables \(such as our latitude, longitude and altitude\). We're going to add our OpenSky username to this file. Add the following line to the file:
+
+```shell
+OPENSKY_USERNAME='YOUROPENSKYUSERNAME'
+```
+
+* Replace `YOUROPENSKYUSERNAME` with the station key you retrieved earlier.
+
+For example:
+
+```shell
+OPENSKY_USERNAME=johnnytightlips
+```
+
 To do this, run the command:
 
-```text
+```shell
+source ./.env
 timeout 60s docker run \
     --rm \
     -it \
-    -e LAT=YOURLATITUDE \
-    -e LONG=YOURLONGITUDE \
-    -e ALT=YOURALTITUDE \
+    -e LAT=${FEEDER_LAT} \
+    -e LONG=${FEEDER_LONG} \
+    -e ALT=${FEEDER_ALT_M} \
     -e BEASTHOST=ultrafeeder\
-    -e OPENSKY_USERNAME=YOUROPENSKYUSERNAME \
-    ghcr.io/sdr-enthusiasts/docker-opensky-network
+    -e OPENSKY_USERNAME=${OPENSKY_USERNAME} \
+    ghcr.io/sdr-enthusiasts/docker-opensky-network:latest
 ```
-
-Be sure to change the following:
-
-* Replace `YOURLATITUDE` with the latitude of your antenna \(xx.xxxxx\)
-* Replace `YOURLONGITUDE` with the longitude of your antenna \(xx.xxxxx\)
-* Replace `YOURALTITUDE` with the altitude above sea level of your antenna _**in metres**_
-* Replace `YOUROPENSKYUSERNAME` with your OpenSky Network username
 
 Once the container has started, you should see output similar to the following:
 
@@ -103,23 +117,23 @@ As you can see from the output above, we've been allocated a serial number of `-
 
 Inside your application directory \(`/opt/adsb`\), edit the `.env` file using your favourite text editor. Beginners may find the editor `nano` easy to use:
 
-```text
+```shell
 nano /opt/adsb/.env
 ```
 
 This file holds all of the commonly used variables \(such as our latitude, longitude and altitude\). We're going to add our OpenSky-Network username and serial to this file. Add the following lines to the file:
 
-```text
+```shell
 OPENSKY_USERNAME=YOUROPENSKYUSERNAME
 OPENSKY_SERIAL=YOUROPENSKYSERIAL
 ```
 
-* Replace `YOUROPENSKYUSERNAME` with your OpenSky Network username
+* Replace `YOUROPENSKYUSERNAME` with your OpenSky Network username. Yo should have already done this in the previous step.
 * Replace `YOUROPENSKYSERIAL` with your OpenSky Network serial
 
 For example:
 
-```text
+```shell
 OPENSKY_USERNAME=johnnytightlips
 OPENSKY_SERIAL=-1408234269
 ```
