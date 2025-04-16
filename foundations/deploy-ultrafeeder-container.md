@@ -9,7 +9,7 @@ description: >-
 
 It also provides a website with a map based on tar1090, station statistics (graphs1090), mlat-client, and an mlat-hub to aggregate MLAT results.
 
-In your favorite text editor, create a file named `docker-compose.yml` in your application directory (`/opt/adsb`) if you've been following along verbatim.
+In your favorite text editor, create a file named `docker-compose.yml` in your application directory (`/opt/adsb` if you've been following along verbatim).
 
 ```shell
 nano docker-compose.yml
