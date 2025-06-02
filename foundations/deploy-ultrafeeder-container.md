@@ -62,21 +62,21 @@ services:
       - ULTRAFEEDER_CONFIG=
           adsb,dump978,30978,uat_in;
           adsb,feed.adsb.fi,30004,beast_reduce_plus_out;
+          mlat,feed.adsb.fi,31090;
           adsb,in.adsb.lol,30004,beast_reduce_plus_out;
+          mlat,in.adsb.lol,31090;
           adsb,feed.airplanes.live,30004,beast_reduce_plus_out;
+          mlat,feed.airplanes.live,31090;
           adsb,feed.planespotters.net,30004,beast_reduce_plus_out;
+          mlat,mlat.planespotters.net,31090;
           adsb,feed.theairtraffic.com,30004,beast_reduce_plus_out;
+          mlat,feed.theairtraffic.com,31090;
           adsb,data.avdelphi.com,24999,beast_reduce_plus_out;
           adsb,skyfeed.hpradar.com,30004,beast_reduce_plus_out;
-          adsb,dati.flyitalyadsb.com,4905,beast_reduce_plus_out;
-          adsb,feed1.adsbexchange.com,30004,beast_reduce_plus_out;
-          mlat,feed.adsb.fi,31090;
-          mlat,in.adsb.lol,31090;
-          mlat,feed.airplanes.live,31090;
-          mlat,mlat.planespotters.net,31090;
-          mlat,feed.theairtraffic.com,31090;
           mlat,skyfeed.hpradar.com,31090;
+          adsb,dati.flyitalyadsb.com,4905,beast_reduce_plus_out;
           mlat,dati.flyitalyadsb.com,30100;
+          adsb,feed1.adsbexchange.com,30004,beast_reduce_plus_out;
           mlat,feed.adsbexchange.com,31090;
           mlathub,piaware,30105,beast_in;
           mlathub,rbfeeder,30105,beast_in;
