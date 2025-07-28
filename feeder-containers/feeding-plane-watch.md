@@ -31,7 +31,7 @@ nano /opt/adsb/.env
 This file holds all of the commonly used variables \(such as our latitude, longitude and altitude\). We're going to add our plane.watch variables to this file. Add the following lines to the file:
 
 ```shell
-PW_API_KEY=YOURAPIKEY
+PLANEWATCH_KEY=YOURAPIKEY
 ```
 
 * Replace `YOURAPIKEY` with the API KEY that was provided the previous step.
@@ -39,7 +39,7 @@ PW_API_KEY=YOURAPIKEY
 For example:
 
 ```shell
-PW_API_KEY=4e8413e6-52eb-11ea-8681-1c1b0d925d3g
+PLANEWATCH_KEY=4e8413e6-52eb-11ea-8681-1c1b0d925d3g
 ```
 
 ## Deploying plane.watch feeder
@@ -59,7 +59,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
       - LONG=${FEEDER_LONG}
       - ALT=${FEEDER_ALT_M}m
       - TZ=${FEEDER_TZ}
-      - API_KEY=${PW_API_KEY}
+      - API_KEY=${PLANEWATCH_KEY}
     tmpfs:
       - /run:exec,size=64M
       - /var/log
@@ -74,7 +74,7 @@ To explain what's going on in this addition:
   * `LONG` will use the `FEEDER_LONG` variable from your `.env` file.
   * `ALT` will use the `FEEDER_ALT_M` variable from your `.env` file.
   * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
-  * `API_KEY` will use the `PW_API_KEY` variable from your `.env` file.
+  * `API_KEY` will use the `PLANEWATCH_KEY` variable from your `.env` file.
 * We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
   * The size of the container, by not writing changes to the underlying container; and
   * SD Card or SSD wear
