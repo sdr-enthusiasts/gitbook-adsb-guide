@@ -39,8 +39,6 @@ Append the following lines to the end of the file:
       - BEASTHOST=ultrafeeder
       - LAT=${FEEDER_LAT}
       - LONG=${FEEDER_LONG}
-      - TAR1090_DEFAULTCENTERLAT=${FEEDER_LAT}
-      - TAR1090_DEFAULTCENTERLON=${FEEDER_LONG}
     ports:
       - 8082:80
     volumes:
