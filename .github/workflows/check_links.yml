@@ -14,7 +14,7 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v5.0.0
+      - uses: actions/checkout@v5.0.1
       - id: set-matrix
         run: |
           set -x
@@ -31,7 +31,7 @@ jobs:
       - name: Install markdown-link-check
         run: sudo npm install -g markdown-link-check
 
-      - uses: actions/checkout@v5.0.0
+      - uses: actions/checkout@v5.0.1
 
       - name: Run markdown-link-check against *.md files
         run: markdown-link-check --config "$(pwd)/.markdown-link-check.json" --verbose --quiet "${{ matrix.file_to_check }}"
