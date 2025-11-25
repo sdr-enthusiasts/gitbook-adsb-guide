@@ -1,7 +1,7 @@
 ---
 description: >-
   The following steps will guide you through deploying the
-  "containrrr/watchtower" container, which will upgrade any containers whenever
+  "nickfedor/watchtower" container, which will upgrade any containers whenever
   a new version of the image is released.
 ---
 
@@ -17,9 +17,9 @@ We can configure a container to regularly \(daily\) check DockerHub for new vers
 
 This can be a double-edged sword, as container functionality may change between versions \(for example, if a feeder drastically changes how their application behaves\). Rest assured that if behaviour does change, we will make every effort to ensure backwards compatibility. Accordingly, if you implement auto-upgrade, we'd suggest a regular check of your environment to ensure it is operating as expected.
 
-The container `containrrr/watchtower` has been created to automatically update containers when a new image is released.
+The container `nickfedor/watchtower` has been created to automatically update containers when a new image is released.
 
-There are two ways to implement `containrrr/watchtower`:
+There are two ways to implement `nickfedor/watchtower`:
 
 1. Monitor all containers and upgrade any that have a new image released
 2. Only monitor and upgrade a specific set of containers
@@ -28,13 +28,13 @@ This page will discuss both methods.
 
 ## A Word About Security
 
-The `containrrr/watchtower` image requires that the container has access to the host's docker socket: `/var/run/docker.sock`.
+The `nickfedor/watchtower` image requires that the container has access to the host's docker socket: `/var/run/docker.sock`.
 
 Mounting `/var/run/docker.sock` inside a container effectively gives the container and anything running within it root privileges on the underlying host, since now you can do anything that a root user and a member of the `docker` group can.
 
 For example, you could create a container, mount the host's `/etc`, modify configurations to open an attack vector to take over the host.
 
-The image has been around since 2015, has several thousand stars, [the source code is available for public scrutiny](https://github.com/containrrr/watchtower) and many people run it \(myself included\), so the risk of nefarious behaviour by the authors is \(in my opinion\) fairly low. Nevertheless, if you decide to give this container access to the host's `/var/run/docker.sock`, you do so at your own risk.
+The image has been around since 2015, has several thousand stars, [the source code is available for public scrutiny](https://github.com/nickfedor/watchtower) and many people run it \(myself included\), so the risk of nefarious behaviour by the authors is \(in my opinion\) fairly low. Nevertheless, if you decide to give this container access to the host's `/var/run/docker.sock`, you do so at your own risk.
 
 ## Monitor and Upgrade All Containers
 
@@ -44,7 +44,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 ```yaml
   watchtower:
-    image: containrrr/watchtower:latest
+    image: nickfedor/watchtower:latest
     container_name: watchtower
     restart: unless-stopped
     environment:
@@ -58,7 +58,7 @@ Append the following lines to the end of the file \(inside the `services:` secti
 
 To explain what's going on in this addition:
 
-* We're creating a container called `watchtower`, from the image `containrrr/watchtower:latest`.
+* We're creating a container called `watchtower`, from the image `nickfedor/watchtower:latest`.
 * We're passing several environment variables to the container:
   * `WATCHTOWER_CLEANUP=true` Removes old images after updating. When this flag is specified, watchtower will remove the old image after restarting a container with a new image. This prevents the accumulation of orphaned images on your system as containers are updated.
   * `WATCHTOWER_POLL_INTERVAL=86400` Poll interval \(in seconds\). This value controls how frequently watchtower will poll for new images. This is set to 24 hours to prevent hitting DockerHub's [new pull limits](https://www.docker.com/increase-rate-limits?utm_source=docker&utm_medium=web%20referral&utm_campaign=pull%20limits%20hub%20home%20page&utm_budget=).
