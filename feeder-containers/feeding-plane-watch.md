@@ -79,6 +79,17 @@ To explain what's going on in this addition:
   * The size of the container, by not writing changes to the underlying container; and
   * SD Card or SSD wear
 
+Before running `docker compose`, we also want to update the configuration of the `ultrafeeder` container, so that it pulls MLAT results from plane-watch
+
+Open the `docker-compose.yml` and make / uncomment the following as part of the `ULTRAFEEDER_CONFIG` variable to the `ultrafeeder` service:
+
+```yaml
+      mlathub,planewatch,30105,beast_in;
+```
+
+To explain this addition, the `ultrafeeder` container will connect to the `planewatch` container on port `30105` and receive MLAT data. This data will then be included in any outbound data streams from `ultrafeeder`.
+
+
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `planewatch` container. You should see the following output:
 
 ```text
