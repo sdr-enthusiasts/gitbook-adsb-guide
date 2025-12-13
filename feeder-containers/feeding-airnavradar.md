@@ -147,6 +147,8 @@ Append the following lines to the end of the file \(inside the `services:` secti
     restart: always
     environment:
       - BEASTHOST=ultrafeeder
+      - MLAT_RESULTS_BEASTHOST=ultrafeeder
+      - MLAT_RESULTS_BEASTPORT=31004
       - LAT=${FEEDER_LAT}
       - LONG=${FEEDER_LONG}
       - ALT=${FEEDER_ALT_M}
@@ -168,6 +170,7 @@ To explain what's going on in this addition:
 * We're creating a container called `rbfeeder`, from the image `ghcr.io/sdr-enthusiasts/docker-airnavradar:latest`.
 * We're passing several environment variables to the container:
   * `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder` over our private `adsbnet` network.
+  * `MLATRESULTS` variables to push MLAT results back to ultrafeeder.
   * `LAT` will use the `FEEDER_LAT` variable from your `.env` file.
   * `LONG` will use the `FEEDER_LONG` variable from your `.env` file.
   * `ALT` will use the `FEEDER_ALT_M` variable from your `.env` file.
@@ -178,20 +181,6 @@ To explain what's going on in this addition:
 * We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
   * The size of the container, by not writing changes to the underlying container; and
   * SD Card or SSD wear
-
-## Update `ultrafeeder` container configuration
-
-Before running `docker compose`, we also want to update the configuration of the `ultrafeeder` container, so that it generates MLAT data for Airnav Radar.
-
-**NOTE: If you are using the sample `docker-compose.yml` provided, this step has already been done for you.**
-
-Open the `docker-compose.yml` and make the following environment value is part of the `ULTRAFEEDER_CONFIG` variable to the `ultrafeeder` service:
-
-```yaml
-      - ULTRAFEEDER_CONFIG=mlathub,rbfeeder,30105,beast_in;
-```
-
-To explain this addition, the `ultrafeeder` container will connect to the `rbfeeder` container on port `30105` and receive MLAT data. This data will then be included in any outbound data streams from `ultrafeeder`.
 
 ## Refresh running containers
 

@@ -60,6 +60,7 @@ Append the following lines to the end of the file (inside the `services:` sectio
       - VERBOSE=OFF
       - MLAT_SERVER=mlat.adsbnetwork.com:50000
       - MLAT_HOST=ultrafeeder:30005
+      - MLAT_RESULTS=beast,connect,ultrafeeder,31004
       - LAT=${FEEDER_LAT}
       - LON=${FEEDER_LONG}
       - ALT=${FEEDER_ALT_M}
@@ -80,20 +81,6 @@ To explain what's going on in this addition:
   * `VERBOSE` can be `ON` (meaning: show lots of information in the docker logs) or `OFF` (show only errors in the docker logs)
   * Enabling receiving MLAT RAW data and sending latitude, longitude and altitude from the .env file
 * The mounted volumes make sure that the container will use the same timezone as your host system
-
-## Update `ultrafeeder` container configuration
-
-Before running `docker compose`, we also want to update the configuration of the `ultrafeeder` container, so that it generates MLAT data for radarvirtuel.
-
-**NOTE: If you are using the sample `docker-compose.yml` provided, this step has already been done for you.**
-
-Open the `docker-compose.yml` and make the following environment value is part of the `ULTRAFEEDER_CONFIG` variable to the `ultrafeeder` service:
-
-```yaml
-      - ULTRAFEEDER_CONFIG=mlathub,radarvirtuel,30105,beast_in;
-```
-
-To explain this addition, the `ultrafeeder` container will connect to the `radarvirtuel` container on port `30105` and receive MLAT data. This data will then be included in any outbound data streams from `ultrafeeder`.
 
 ## Refresh running containers
 
