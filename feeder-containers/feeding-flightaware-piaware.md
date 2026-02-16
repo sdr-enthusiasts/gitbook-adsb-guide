@@ -57,7 +57,10 @@ As you can see from the output above, the feeder-id given to us from FlightAware
 
 You'll now want to "claim" this feeder.
 
-To do this, go to: [https://flightaware.com/adsb/piaware/claim](https://flightaware.com/adsb/piaware/claim) and follow the instructions there.
+To do this, go to either: 
+* [https://flightaware.com/adsb/piaware/claim](https://flightaware.com/adsb/piaware/claim) and follow the instructions there,
+* Or go to this URL, substituting your feeder ID https://flightaware.com/adsb/piaware/claim/YOUR-FEEDER-ID
+  * This works even if the above claim page fails to load.
 
 Note - for PiAware/FlightAware feeding to work correctly, you MUST accurately set your latitude, longitude, and altitude on the `My ADS-B` dashboard page of the FlightAware website. Without doing this, feeding will NOT work!
 
@@ -207,3 +210,4 @@ Remember, if you change your location and altitude on FlightAware's website, you
 ## Advanced
 
 If you want to look at more options and examples for the `piaware` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-piaware).
+
