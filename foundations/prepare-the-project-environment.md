@@ -82,7 +82,7 @@ FEEDER_HEYWHATSTHAT_ALTS=<desired theoretical range altitudes>
 * `ADSB_SDR_PPM` is set to your desired dongle PPM setting. Enter the number from the PPM estimation step earlier on this page.
 * `ULTRAFEEDER_UUID` is set to the UUID you generated above
 * `FEEDER_HEYWHATSTHAT_ID` is set to the code in the URL generated above
-* `FEEDER_HEYWHATSTHAT_ALTS` is a comma delimited list of altitudes in meters for which the map will display a theoretical maximum range; a common starting position is 3000 meters and 12000 meters
+* `FEEDER_HEYWHATSTHAT_ALTS` is a comma delimited list of altitudes in feet for which the map will display a theoretical maximum range; a common starting point is 10000,40000
 
 For example:
 
@@ -96,7 +96,7 @@ ADSB_SDR_SERIAL=1090
 ADSB_SDR_PPM=1
 ULTRAFEEDER_UUID=00000000-0000-0000-0000-000000000000
 FEEDER_HEYWHATSTHAT_ID=NN3NNNN1
-FEEDER_HEYWHATSTHAT_ALTS=3000,12000
+FEEDER_HEYWHATSTHAT_ALTS=10000,40000
 ```
 
 **Note for beginners:** If you run an `ls` command in that directory, you won't see your `.env` file. Files beginning with a period are treated as hidden files. To see the file, you can run `ls -a` \(`-a` for all files\).
