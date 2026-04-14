@@ -113,8 +113,6 @@ services:
       - /dev/bus/usb:/dev/bus/usb:rw
     tmpfs:
       - /run:exec,size=256M
-      - /tmp:size=128M
-      - /var/log:size=32M
 ```
 
 In the file above, you will find several parameters that have values denoted as `${xxxx}`. These values are read from a file in the same directory named `.env` that we created earlier. Alternatively, you can simply replace `${xxxx}` with the value you want to use, for example `READSB_RTLSDR_DEVICE=${ADSB_SDR_SERIAL}` --> `READSB_RTLSDR_DEVICE=0000001090`.
