@@ -1,7 +1,10 @@
 {
   "ignorePatterns": [
     { "pattern": "^http://influxdb:8086" },
-    { "pattern": "^http://prometheus:9090" }
+    { "pattern": "^http://prometheus:9090" },
+    { "pattern": ".*YOURKEYHERE.*" },
+    { "pattern": ".*YOUR-FEEDER-ID.*" },
+    { "pattern": "^https://www.radarvirtuel.com" }
   ],
   "httpHeaders": [
     {
