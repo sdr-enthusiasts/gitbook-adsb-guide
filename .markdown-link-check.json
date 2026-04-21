@@ -4,7 +4,9 @@
     { "pattern": "^http://prometheus:9090" },
     { "pattern": ".*YOURKEYHERE.*" },
     { "pattern": ".*YOUR-FEEDER-ID.*" },
-    { "pattern": "^https://www.radarvirtuel.com" }
+    { "pattern": "^https://www.radarvirtuel.com" },
+    { "pattern": "^https://alpha.radarvirtuel.com" },
+    { "pattern": "^https://www.1090mhz.uk/mystatus.php" }
   ],
   "httpHeaders": [
     {
