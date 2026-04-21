@@ -1,5 +1,5 @@
 ---
-description: 'If you wish to feed AirNav Radar, follow the steps below.'
+description: "If you wish to feed AirNav Radar, follow the steps below."
 ---
 
 # Feeding Airnav Radar
@@ -18,8 +18,8 @@ The docker image [`ghcr.io/sdr-enthusiasts/docker-airnavradar`](https://github.c
 
 If you're not a first time user and are migrating from another installation, you can retrieve your sharing key using either of the following methods:
 
-* SSH onto your existing receiver and run the command `rbfeeder --showkey --no-start`
-* SSH onto your existing receiver and run the command `grep key= /etc/rbfeeder.ini`
+- SSH onto your existing receiver and run the command `rbfeeder --showkey --no-start`
+- SSH onto your existing receiver and run the command `grep key= /etc/rbfeeder.ini`
 
 ### New to `rbfeeder`?
 
@@ -124,7 +124,7 @@ This file holds all of the commonly used variables \(such as our latitude, longi
 AIRNAVRADAR_SHARING_KEY=YOURSHARINGKEY
 ```
 
-* Replace `YOURSHARINGKEY` with the sharing key that was generated in the previous step.
+- Replace `YOURSHARINGKEY` with the sharing key that was generated in the previous step.
 
 For example:
 
@@ -141,46 +141,46 @@ Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`
 Append the following lines to the end of the file \(inside the `services:` section\):
 
 ```yaml
-  rbfeeder:
-    image: ghcr.io/sdr-enthusiasts/docker-airnavradar:latest
-    container_name: rbfeeder
-    restart: always
-    environment:
-      - BEASTHOST=ultrafeeder
-      - MLAT_RESULTS_BEASTHOST=ultrafeeder
-      - MLAT_RESULTS_BEASTPORT=31004
-      - LAT=${FEEDER_LAT}
-      - LONG=${FEEDER_LONG}
-      - ALT=${FEEDER_ALT_M}
-      - TZ=${FEEDER_TZ}
-      - SHARING_KEY=${AIRNAVRADAR_SHARING_KEY}
-    tmpfs:
-      - /run:exec,size=64M
-      - /var/log
+rbfeeder:
+  image: ghcr.io/sdr-enthusiasts/docker-airnavradar:latest
+  container_name: rbfeeder
+  restart: always
+  environment:
+    - BEASTHOST=ultrafeeder
+    - MLAT_RESULTS_BEASTHOST=ultrafeeder
+    - MLAT_RESULTS_BEASTPORT=31004
+    - LAT=${FEEDER_LAT}
+    - LONG=${FEEDER_LONG}
+    - ALT=${FEEDER_ALT_M}
+    - TZ=${FEEDER_TZ}
+    - SHARING_KEY=${AIRNAVRADAR_SHARING_KEY}
+  tmpfs:
+    - /run:exec,size=64M
+    - /var/log
 ```
 
 If you are in the USA and are also running the `dump978` container with a second SDR, add the following additional lines to the `environment:` section:
 
 ```yaml
-      - UAT_RECEIVER_HOST=dump978
+- UAT_RECEIVER_HOST=dump978
 ```
 
 To explain what's going on in this addition:
 
-* We're creating a container called `rbfeeder`, from the image `ghcr.io/sdr-enthusiasts/docker-airnavradar:latest`.
-* We're passing several environment variables to the container:
-  * `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder` over our private `adsbnet` network.
-  * `MLATRESULTS` variables to push MLAT results back to ultrafeeder.
-  * `LAT` will use the `FEEDER_LAT` variable from your `.env` file.
-  * `LONG` will use the `FEEDER_LONG` variable from your `.env` file.
-  * `ALT` will use the `FEEDER_ALT_M` variable from your `.env` file.
-  * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
-  * `SHARING_KEY` will use the `AIRNAVRADAR_SHARING_KEY` variable from your `.env` file.
-* For people running `dump978`:
-  * `UAT_RECEIVER_HOST=dump978` specifies the host to pull UAT data from; in this instance our `dump978` container.
-* We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
-  * The size of the container, by not writing changes to the underlying container; and
-  * SD Card or SSD wear
+- We're creating a container called `rbfeeder`, from the image `ghcr.io/sdr-enthusiasts/docker-airnavradar:latest`.
+- We're passing several environment variables to the container:
+  - `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder` over our private `adsbnet` network.
+  - `MLATRESULTS` variables to push MLAT results back to ultrafeeder.
+  - `LAT` will use the `FEEDER_LAT` variable from your `.env` file.
+  - `LONG` will use the `FEEDER_LONG` variable from your `.env` file.
+  - `ALT` will use the `FEEDER_ALT_M` variable from your `.env` file.
+  - `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
+  - `SHARING_KEY` will use the `AIRNAVRADAR_SHARING_KEY` variable from your `.env` file.
+- For people running `dump978`:
+  - `UAT_RECEIVER_HOST=dump978` specifies the host to pull UAT data from; in this instance our `dump978` container.
+- We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
+  - The size of the container, by not writing changes to the underlying container; and
+  - SD Card or SSD wear
 
 ## Refresh running containers
 
@@ -244,4 +244,4 @@ Once running, you can visit the Airnav Radar website, and go to "Account" &gt; "
 
 ## Advanced
 
-If you want to look at more options and examples for the `rbfeeder` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-airnavradar)
+If you want to look at more options and examples for the `rbfeeder` container, you can find the [docker-airnavradar repository](https://github.com/sdr-enthusiasts/docker-airnavradar)

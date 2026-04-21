@@ -43,7 +43,7 @@ If you decide not to include a PPM value, then you can either set `ADSB_SDR_PPM=
 
 ## Create a heywhatsthat Panorama ID
 
-[Heywhatsthat](https://www.heywhatsthat.com) is a website that can generate an overlay on your map that will show the theoretical range of your location based on obstacles and the curvature of the earth. Follow step 1 at the instructions [here](https://github.com/wiedehopf/tar1090#heywhatsthatcom-range-outline) to generate a panorama for your feeder's location and altitude. In the upper left of the panorama page there will be a URL that will look like this: `https://www.heywhatsthat.com/?view=NN3NNNN1`. That code will be used later in the setup instructions.
+[Heywhatsthat](https://www.heywhatsthat.com) is a website that can generate an overlay on your map that will show the theoretical range of your location based on obstacles and the curvature of the earth. Follow step 1 at the [tar1090 heywhatsthat instructions](https://github.com/wiedehopf/tar1090#heywhatsthatcom-range-outline) to generate a panorama for your feeder's location and altitude. In the upper left of the panorama page there will be a URL that will look like this: `https://www.heywhatsthat.com/?view=NN3NNNN1`. That code will be used later in the setup instructions.
 
 ## Create a `.env` file to hold our environment's variables
 
@@ -72,17 +72,17 @@ FEEDER_HEYWHATSTHAT_ALTS=<desired theoretical range altitudes>
 
 ...where:
 
-* `FEEDER_ALT_FT` is set your your antenna's height in feet above [mean sea level](https://www.freemaptools.com/elevation-finder.htm)
-* `FEEDER_ALT_M` is set to your antenna's height in metres above [mean sea level](https://www.freemaptools.com/elevation-finder.htm)
-* `FEEDER_LAT` is set to your antenna's latitude (also available at link above)
-* `FEEDER_LONG` is set to your antenna's longitude (also available at link above)
-* `FEEDER_TZ` is set to your timezone, in ["TZ database name" format](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). You can also see your Pi's timezone by giving this command: `cat /etc/timezone`
-* `FEEDER_NAME` is set to a location name. This is only used in the title of the map's web page.
-* `ADSB_SDR_SERIAL` is set to the serial number for your ADS-B dongle; the previous steps set this to 1090 by default but if you have used a different serial number enter it here
-* `ADSB_SDR_PPM` is set to your desired dongle PPM setting. Enter the number from the PPM estimation step earlier on this page.
-* `ULTRAFEEDER_UUID` is set to the UUID you generated above
-* `FEEDER_HEYWHATSTHAT_ID` is set to the code in the URL generated above
-* `FEEDER_HEYWHATSTHAT_ALTS` is a comma delimited list of altitudes in feet for which the map will display a theoretical maximum range; a common starting point is 10000,40000
+- `FEEDER_ALT_FT` is set your your antenna's height in feet above [mean sea level](https://www.freemaptools.com/elevation-finder.htm)
+- `FEEDER_ALT_M` is set to your antenna's height in metres above [mean sea level](https://www.freemaptools.com/elevation-finder.htm)
+- `FEEDER_LAT` is set to your antenna's latitude (also available at link above)
+- `FEEDER_LONG` is set to your antenna's longitude (also available at link above)
+- `FEEDER_TZ` is set to your timezone, in ["TZ database name" format](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). You can also see your Pi's timezone by giving this command: `cat /etc/timezone`
+- `FEEDER_NAME` is set to a location name. This is only used in the title of the map's web page.
+- `ADSB_SDR_SERIAL` is set to the serial number for your ADS-B dongle; the previous steps set this to 1090 by default but if you have used a different serial number enter it here
+- `ADSB_SDR_PPM` is set to your desired dongle PPM setting. Enter the number from the PPM estimation step earlier on this page.
+- `ULTRAFEEDER_UUID` is set to the UUID you generated above
+- `FEEDER_HEYWHATSTHAT_ID` is set to the code in the URL generated above
+- `FEEDER_HEYWHATSTHAT_ALTS` is a comma delimited list of altitudes in feet for which the map will display a theoretical maximum range; a common starting point is 10000,40000
 
 For example:
 

@@ -1,5 +1,5 @@
 ---
-description: 'If you wish to feed FlightAware, follow the steps below.'
+description: "If you wish to feed FlightAware, follow the steps below."
 ---
 
 # Feeding FlightAware \(piaware\)
@@ -57,10 +57,11 @@ As you can see from the output above, the feeder-id given to us from FlightAware
 
 You'll now want to "claim" this feeder.
 
-To do this, go to either: 
-* [https://flightaware.com/adsb/piaware/claim](https://flightaware.com/adsb/piaware/claim) and follow the instructions there,
-* Or go to this URL, substituting your feeder ID https://flightaware.com/adsb/piaware/claim/YOUR-FEEDER-ID
-  * This works even if the above claim page fails to load.
+To do this, go to either:
+
+- [https://flightaware.com/adsb/piaware/claim](https://flightaware.com/adsb/piaware/claim) and follow the instructions there,
+- Or go to this URL, substituting your feeder ID <https://flightaware.com/adsb/piaware/claim/YOUR-FEEDER-ID>
+  - This works even if the above claim page fails to load.
 
 Note - for PiAware/FlightAware feeding to work correctly, you MUST accurately set your latitude, longitude, and altitude on the `My ADS-B` dashboard page of the FlightAware website. Without doing this, feeding will NOT work!
 
@@ -78,7 +79,7 @@ This file holds all of the commonly used variables \(such as our latitude, longi
 PIAWARE_FEEDER_ID=YOURFEEDERID
 ```
 
-* Replace `YOURFEEDERID` with the feeder-id that was generated in the previous step.
+- Replace `YOURFEEDERID` with the feeder-id that was generated in the previous step.
 
 For example:
 
@@ -93,44 +94,44 @@ Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`
 Append the following lines to the end of the file \(inside the `services:` section\):
 
 ```yaml
-  piaware:
-    image: ghcr.io/sdr-enthusiasts/docker-piaware:latest
-    container_name: piaware
-    restart: unless-stopped
-    ports:
-      - 8081:8080
-    environment:
-      - BEASTHOST=ultrafeeder
-      - MLAT_RESULTS_BEASTHOST=ultrafeeder
-      - MLAT_RESULTS_BEASTPORT=31004
-      - TZ=${FEEDER_TZ}
-      - FEEDER_ID=${PIAWARE_FEEDER_ID}
-    tmpfs:
-      - /run:exec,size=64M
-      - /var/log
+piaware:
+  image: ghcr.io/sdr-enthusiasts/docker-piaware:latest
+  container_name: piaware
+  restart: unless-stopped
+  ports:
+    - 8081:8080
+  environment:
+    - BEASTHOST=ultrafeeder
+    - MLAT_RESULTS_BEASTHOST=ultrafeeder
+    - MLAT_RESULTS_BEASTPORT=31004
+    - TZ=${FEEDER_TZ}
+    - FEEDER_ID=${PIAWARE_FEEDER_ID}
+  tmpfs:
+    - /run:exec,size=64M
+    - /var/log
 ```
 
 If you are in the USA and are also running the `dump978` container with a second SDR, add the following additional lines to the `environment:` section:
 
 ```yaml
-      - UAT_RECEIVER_TYPE=relay
-      - UAT_RECEIVER_HOST=dump978
+- UAT_RECEIVER_TYPE=relay
+- UAT_RECEIVER_HOST=dump978
 ```
 
 To explain what's going on in this addition:
 
-* We're creating a container called `piaware`, from the image `ghcr.io/sdr-enthusiasts/docker-piaware:latest`.
-* We're passing several environment variables to the container:
-  * `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder` over our private `adsbnet` network.
-  * `MLATRESULTS` variables to push MLAT results back to ultrafeeder.
-  * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
-  * `FEEDER_ID` will use the `PIAWARE_FEEDER_ID` variable from your `.env` file.
-* For people running `dump978`:
-  * `UAT_RECEIVER_TYPE=relay` tells the container to pull UAT data from another host over the network.
-  * `UAT_RECEIVER_HOST=dump978` specifies the host to pull UAT data from; in this instance our `dump978` container.
-* We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
-  * The size of the container, by not writing changes to the underlying container; and
-  * SD Card or SSD wear
+- We're creating a container called `piaware`, from the image `ghcr.io/sdr-enthusiasts/docker-piaware:latest`.
+- We're passing several environment variables to the container:
+  - `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder` over our private `adsbnet` network.
+  - `MLATRESULTS` variables to push MLAT results back to ultrafeeder.
+  - `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
+  - `FEEDER_ID` will use the `PIAWARE_FEEDER_ID` variable from your `.env` file.
+- For people running `dump978`:
+  - `UAT_RECEIVER_TYPE=relay` tells the container to pull UAT data from another host over the network.
+  - `UAT_RECEIVER_HOST=dump978` specifies the host to pull UAT data from; in this instance our `dump978` container.
+- We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
+  - The size of the container, by not writing changes to the underlying container; and
+  - SD Card or SSD wear
 
 ## Refresh running containers
 
@@ -203,11 +204,10 @@ piaware           | [piaware] 2020/11/20 14:51:19 piaware has successfully sent 
 
 We can see our container running with the command `docker ps`.
 
-Once running, you can visit `http://docker.host.ip.addr:8081/` to access PiAware's "SkyAware". From there you need to configure your location and altitude on the FlightAware's website. To do this, click on the blue button marked `Go to my ADS-B Statistics Page` on your "SkyAware". When the FA website loads, click on the gear icon near your feeder name and configure your location and height _using the same values you set in your .env file_. If you do not configure these values via the FA website MLAT will not work for your PiAware feeder.  You can also log onto FlightAware's website and click on the `My ADSB` link at the top of the page, and see your statistics, configure your location and altitude and other settings.
+Once running, you can visit `http://docker.host.ip.addr:8081/` to access PiAware's "SkyAware". From there you need to configure your location and altitude on the FlightAware's website. To do this, click on the blue button marked `Go to my ADS-B Statistics Page` on your "SkyAware". When the FA website loads, click on the gear icon near your feeder name and configure your location and height _using the same values you set in your .env file_. If you do not configure these values via the FA website MLAT will not work for your PiAware feeder. You can also log onto FlightAware's website and click on the `My ADSB` link at the top of the page, and see your statistics, configure your location and altitude and other settings.
 
 Remember, if you change your location and altitude on FlightAware's website, you'll need to update your `.env` file locally \(and re-run `docker compose up -d` from your application directory\)!
 
 ## Advanced
 
-If you want to look at more options and examples for the `piaware` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-piaware).
-
+If you want to look at more options and examples for the `piaware` container, you can find the [docker-piaware repository](https://github.com/sdr-enthusiasts/docker-piaware).

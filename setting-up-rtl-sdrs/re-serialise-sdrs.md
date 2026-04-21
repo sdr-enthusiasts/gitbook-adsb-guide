@@ -10,8 +10,8 @@ As most RTL-SDRs ship with the same serial number, confusion may be caused if mo
 
 The remainder of this guide assumes that:
 
-* The SDR used for ADS-B Mode-S \(1090MHz\) reception will have a serial number of `1090`
-* The SDR used for ADS-B UAT \(978MHz\) reception \(if used\) will have a serial number of `978`.
+- The SDR used for ADS-B Mode-S \(1090MHz\) reception will have a serial number of `1090`
+- The SDR used for ADS-B UAT \(978MHz\) reception \(if used\) will have a serial number of `978`.
 
 To set these serial numbers:
 
@@ -103,4 +103,4 @@ Configuration successfully written.
 Please replug the device for changes to take effect.
 ```
 
-Unplug all SDRs and then plug them back in again to make the system aware of the new serials. A reboot will not accomplish this.  If you have more SDRs, repeat the above process with each of them, replacing the last number in the command with your desired serial number.
+Unplug all SDRs and then plug them back in again to make the system aware of the new serials. A reboot will not accomplish this. If you have more SDRs, repeat the above process with each of them, replacing the last number in the command with your desired serial number.

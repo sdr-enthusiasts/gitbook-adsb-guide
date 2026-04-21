@@ -18,11 +18,11 @@ Throughout this guide, you'll be presented with commands to copy/paste into your
 
 ### Remote Access: SSH
 
-Once you've connected your Linux device to your network, it's possible to access and manage it with SSH. On macOS, you can do this via the Terminal app, on Windows, you can use [PuTTY](https://www.putty.org/). You can connect to your new device via SSH entering this command `ssh username@new.device.ip.addresss` in Terminal/PuTTY.
+Once you've connected your Linux device to your network, it's possible to access and manage it with SSH. On macOS, you can do this via the Terminal app, on Windows, you can use [PuTTY](https://www.putty.org/). You can connect to your new device via SSH entering this command `ssh username@new.device.ip.address` in Terminal/PuTTY.
 
 ### Raspberry Pi DHCPCD Issue
 
-Some users have reported issues with Raspberry Pi devices loosing network connectivity when running multiple containers. In effort to prevent this, run the following command `echo "denyinterfaces veth*" >> /etc/dhcpcd.conf`. This will append the line `denyinterfaces veth*` to end of the file. The file will look something like this (note the last line):
+Some users have reported issues with Raspberry Pi devices losing network connectivity when running multiple containers. In effort to prevent this, run the following command `echo "denyinterfaces veth*" >> /etc/dhcpcd.conf`. This will append the line `denyinterfaces veth*` to end of the file. The file will look something like this (note the last line):
 
 ```properties
 # A sample configuration for dhcpcd.

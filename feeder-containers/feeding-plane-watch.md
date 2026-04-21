@@ -1,10 +1,10 @@
 ---
-description: 'If you wish to feed Plane.watch, follow the steps below.'
+description: "If you wish to feed Plane.watch, follow the steps below."
 ---
 
 # Feeding plane.watch
 
-Plane.watch is the end product of a ***Wouldn't it be cool if?*** statement. It is an ADS-B aggregation project by members of SDR-Enthusiasts. It is currently completely non-commercial, run by members of the community as a passion project, and backed by an Australian-based Not-for-Profit association.
+Plane.watch is the end product of a **_Wouldn't it be cool if?_** statement. It is an ADS-B aggregation project by members of SDR-Enthusiasts. It is currently completely non-commercial, run by members of the community as a passion project, and backed by an Australian-based Not-for-Profit association.
 
 The docker image [`ghcr.io/plane-watch/docker-plane-watch`](https://github.com/plane-watch/docker-plane-watch) contains the plane.watch feeder software and all of its required prerequisites and libraries. This needs to run in conjunction with `ultrafeeder` \(or another Beast provider\).
 
@@ -34,7 +34,7 @@ This file holds all of the commonly used variables \(such as our latitude, longi
 PLANEWATCH_KEY=YOURAPIKEY
 ```
 
-* Replace `YOURAPIKEY` with the API KEY that was provided the previous step.
+- Replace `YOURAPIKEY` with the API KEY that was provided the previous step.
 
 For example:
 
@@ -49,46 +49,45 @@ Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`
 Append the following lines to the end of the file \(inside the `services:` section\):
 
 ```yaml
-  planewatch:
-    image: ghcr.io/plane-watch/docker-plane-watch:latest
-    container_name: planewatch
-    restart: unless-stopped
-    environment:
-      - BEASTHOST=ultrafeeder
-      - LAT=${FEEDER_LAT}
-      - LONG=${FEEDER_LONG}
-      - ALT=${FEEDER_ALT_M}m
-      - TZ=${FEEDER_TZ}
-      - API_KEY=${PLANEWATCH_KEY}
-    tmpfs:
-      - /run:exec,size=64M
-      - /var/log
+planewatch:
+  image: ghcr.io/plane-watch/docker-plane-watch:latest
+  container_name: planewatch
+  restart: unless-stopped
+  environment:
+    - BEASTHOST=ultrafeeder
+    - LAT=${FEEDER_LAT}
+    - LONG=${FEEDER_LONG}
+    - ALT=${FEEDER_ALT_M}m
+    - TZ=${FEEDER_TZ}
+    - API_KEY=${PLANEWATCH_KEY}
+  tmpfs:
+    - /run:exec,size=64M
+    - /var/log
 ```
 
 To explain what's going on in this addition:
 
-* We're creating a container called `planewatch`, from the image `ghcr.io/plane-watch/docker-plane-watch:latest`.
-* We're passing several environment variables to the container:
-  * `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder` over our private `adsbnet` network.
-  * `LAT` will use the `FEEDER_LAT` variable from your `.env` file.
-  * `LONG` will use the `FEEDER_LONG` variable from your `.env` file.
-  * `ALT` will use the `FEEDER_ALT_M` variable from your `.env` file.
-  * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
-  * `API_KEY` will use the `PLANEWATCH_KEY` variable from your `.env` file.
-* We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
-  * The size of the container, by not writing changes to the underlying container; and
-  * SD Card or SSD wear
+- We're creating a container called `planewatch`, from the image `ghcr.io/plane-watch/docker-plane-watch:latest`.
+- We're passing several environment variables to the container:
+  - `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder` over our private `adsbnet` network.
+  - `LAT` will use the `FEEDER_LAT` variable from your `.env` file.
+  - `LONG` will use the `FEEDER_LONG` variable from your `.env` file.
+  - `ALT` will use the `FEEDER_ALT_M` variable from your `.env` file.
+  - `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
+  - `API_KEY` will use the `PLANEWATCH_KEY` variable from your `.env` file.
+- We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
+  - The size of the container, by not writing changes to the underlying container; and
+  - SD Card or SSD wear
 
 Before running `docker compose`, we also want to update the configuration of the `ultrafeeder` container, so that it pulls MLAT results from plane-watch
 
 Open the `docker-compose.yml` and make / uncomment the following as part of the `ULTRAFEEDER_CONFIG` variable to the `ultrafeeder` service:
 
 ```yaml
-      mlathub,planewatch,30105,beast_in;
+mlathub,planewatch,30105,beast_in;
 ```
 
 To explain this addition, the `ultrafeeder` container will connect to the `planewatch` container on port `30105` and receive MLAT data. This data will then be included in any outbound data streams from `ultrafeeder`.
-
 
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `planewatch` container. You should see the following output:
 
@@ -137,4 +136,4 @@ After a few minutes, browse to [https://atc.plane.watch/](https://atc.plane.watc
 
 ## Advanced
 
-If you want to look at more options and examples for the `plane.watch` container, you can find the repository [here](https://github.com/plane-watch/docker-plane-watch).
+If you want to look at more options and examples for the `plane.watch` container, you can find the [docker-plane-watch repository](https://github.com/plane-watch/docker-plane-watch).

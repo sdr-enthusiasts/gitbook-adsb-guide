@@ -1,5 +1,5 @@
 ---
-description: 'If you wish to feed OpenSky Network, follow the steps below.'
+description: "If you wish to feed OpenSky Network, follow the steps below."
 ---
 
 # Feeding OpenSky Network
@@ -28,7 +28,7 @@ This file holds all of the commonly used variables \(such as our latitude, longi
 OPENSKY_USERNAME='YOUROPENSKYUSERNAME'
 ```
 
-* Replace `YOUROPENSKYUSERNAME` with the station key you retrieved earlier.
+- Replace `YOUROPENSKYUSERNAME` with the station key you retrieved earlier.
 
 For example:
 
@@ -128,8 +128,8 @@ OPENSKY_USERNAME=YOUROPENSKYUSERNAME
 OPENSKY_SERIAL=YOUROPENSKYSERIAL
 ```
 
-* Replace `YOUROPENSKYUSERNAME` with your OpenSky Network username. Yo should have already done this in the previous step.
-* Replace `YOUROPENSKYSERIAL` with your OpenSky Network serial
+- Replace `YOUROPENSKYUSERNAME` with your OpenSky Network username. Yo should have already done this in the previous step.
+- Replace `YOUROPENSKYSERIAL` with your OpenSky Network serial
 
 For example:
 
@@ -147,37 +147,37 @@ Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`
 Append the following lines to the end of the file \(inside the `services:` section\):
 
 ```yaml
-  opensky:
-    image: ghcr.io/sdr-enthusiasts/docker-opensky-network:latest
-    container_name: opensky
-    restart: unless-stopped
-    environment:
-      - TZ=${FEEDER_TZ}
-      - BEASTHOST=ultrafeeder
-      - LAT=${FEEDER_LAT}
-      - LONG=${FEEDER_LONG}
-      - ALT=${FEEDER_ALT_M}
-      - OPENSKY_USERNAME=${OPENSKY_USERNAME}
-      - OPENSKY_SERIAL=${OPENSKY_SERIAL}
-    tmpfs:
-      - /run:exec,size=64M
-      - /var/log
+opensky:
+  image: ghcr.io/sdr-enthusiasts/docker-opensky-network:latest
+  container_name: opensky
+  restart: unless-stopped
+  environment:
+    - TZ=${FEEDER_TZ}
+    - BEASTHOST=ultrafeeder
+    - LAT=${FEEDER_LAT}
+    - LONG=${FEEDER_LONG}
+    - ALT=${FEEDER_ALT_M}
+    - OPENSKY_USERNAME=${OPENSKY_USERNAME}
+    - OPENSKY_SERIAL=${OPENSKY_SERIAL}
+  tmpfs:
+    - /run:exec,size=64M
+    - /var/log
 ```
 
 To explain what's going on in this addition:
 
-* We're creating a container called `opensky`, from the image `ghcr.io/sdr-enthusiasts/docker-opensky-network:latest`.
-* We're passing several environment variables to the container:
-  * `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder`
-  * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
-  * `LAT` will use the `FEEDER_LAT` variable from your `.env` file.
-  * `LONG` will use the `FEEDER_LONG` variable from your `.env` file.
-  * `ALT` will use the `FEEDER_ALT_M` variable from your `.env` file \(as metres are required for this feeder\).
-  * `OPENSKY_USERNAME` will use the `OPENSKY_USERNAME` variable from your `.env` file.
-  * `OPENSKY_SERIAL` will use the `OPENSKY_SERIAL` variable from your `.env` file.
-* We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
-  * The size of the container, by not writing changes to the underlying container; and
-  * SD Card or SSD wear
+- We're creating a container called `opensky`, from the image `ghcr.io/sdr-enthusiasts/docker-opensky-network:latest`.
+- We're passing several environment variables to the container:
+  - `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder`
+  - `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
+  - `LAT` will use the `FEEDER_LAT` variable from your `.env` file.
+  - `LONG` will use the `FEEDER_LONG` variable from your `.env` file.
+  - `ALT` will use the `FEEDER_ALT_M` variable from your `.env` file \(as metres are required for this feeder\).
+  - `OPENSKY_USERNAME` will use the `OPENSKY_USERNAME` variable from your `.env` file.
+  - `OPENSKY_SERIAL` will use the `OPENSKY_SERIAL` variable from your `.env` file.
+- We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
+  - The size of the container, by not writing changes to the underlying container; and
+  - SD Card or SSD wear
 
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `adsbhub` container. You should see the following output:
 
@@ -239,4 +239,4 @@ Once running, you can visit [https://opensky-network.org/receiver-profile](https
 
 ## Advanced
 
-If you want to look at more options and examples for the `opensky` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-opensky-network)
+If you want to look at more options and examples for the `opensky` container, you can find the [docker-opensky-network repository](https://github.com/sdr-enthusiasts/docker-opensky-network)

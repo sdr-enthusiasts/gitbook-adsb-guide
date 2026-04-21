@@ -1,5 +1,5 @@
 ---
-description: 'If you wish to feed ADSBHub, follow the steps below.'
+description: "If you wish to feed ADSBHub, follow the steps below."
 ---
 
 # Feeding ADSBHub
@@ -20,9 +20,9 @@ Existing users should sign in to their ADSBHub account, go to their "Settings" p
 
 In your station preferences, you should set the following:
 
-* Feeder type: `Linux`
-* Data Protocol: `SBS`
-* Station mode: `Client`
+- Feeder type: `Linux`
+- Data Protocol: `SBS`
+- Station mode: `Client`
 
 ## Update `.env` file with ADSBHub Station Key
 
@@ -38,8 +38,8 @@ This file holds all of the commonly used variables \(such as our latitude, longi
 ADSBHUB_STATION_KEY='YOURSTATIONKEY'
 ```
 
-* Replace `YOURSTATIONKEY` with the station key you retrieved earlier.
-* The single quotes \(`'`\) are important, as the station key from ADSBHub contains special characters that would confuse `docker compose` if the single quotes were missing.
+- Replace `YOURSTATIONKEY` with the station key you retrieved earlier.
+- The single quotes \(`'`\) are important, as the station key from ADSBHub contains special characters that would confuse `docker compose` if the single quotes were missing.
 
 For example:
 
@@ -54,23 +54,23 @@ Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`
 Append the following lines to the end of the file \(inside the `services:` section\):
 
 ```yaml
-  adsbhub:
-    image: ghcr.io/sdr-enthusiasts/docker-adsbhub:latest
-    container_name: adsbhub
-    restart: unless-stopped
-    environment:
-      - TZ=${FEEDER_TZ}
-      - SBSHOST=ultrafeeder
-      - CLIENTKEY=${ADSBHUB_STATION_KEY}
+adsbhub:
+  image: ghcr.io/sdr-enthusiasts/docker-adsbhub:latest
+  container_name: adsbhub
+  restart: unless-stopped
+  environment:
+    - TZ=${FEEDER_TZ}
+    - SBSHOST=ultrafeeder
+    - CLIENTKEY=${ADSBHUB_STATION_KEY}
 ```
 
 To explain what's going on in this addition:
 
-* We're creating a container called `adsbhub`, from the image `ghcr.io/sdr-enthusiasts/docker-adsbhub/adsbhub:latest`.
-* We're passing several environment variables to the container:
-  * `SBSHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder`
-  * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
-  * `CLIENTKEY` will use the `ADSBHUB_STATION_KEY` variable from your `.env` file.
+- We're creating a container called `adsbhub`, from the image `ghcr.io/sdr-enthusiasts/docker-adsbhub/adsbhub:latest`.
+- We're passing several environment variables to the container:
+  - `SBSHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder`
+  - `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
+  - `CLIENTKEY` will use the `ADSBHUB_STATION_KEY` variable from your `.env` file.
 
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `adsbhub` container. You should see the following output:
 
@@ -107,4 +107,4 @@ Once running, you can visit [https://www.adsbhub.org/statistic.php](https://www.
 
 ## Advanced
 
-If you want to look at more options and examples for the `adsbhub` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-adsbhub)
+If you want to look at more options and examples for the `adsbhub` container, you can find the [docker-adsbhub repository](https://github.com/sdr-enthusiasts/docker-adsbhub)

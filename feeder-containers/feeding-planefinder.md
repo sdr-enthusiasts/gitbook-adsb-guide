@@ -1,5 +1,5 @@
 ---
-description: 'If you wish to feed PlaneFinder, follow the steps below.'
+description: "If you wish to feed PlaneFinder, follow the steps below."
 ---
 
 # Feeding PlaneFinder
@@ -69,7 +69,7 @@ This file holds all of the commonly used variables \(such as our latitude, longi
 PLANEFINDER_SHARECODE=YOURSHARECODE
 ```
 
-* Replace `YOURSHARECODE` with the share code that was generated in the previous step.
+- Replace `YOURSHARECODE` with the share code that was generated in the previous step.
 
 For example:
 
@@ -84,37 +84,37 @@ Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`
 Append the following lines to the end of the file \(inside the `services:` section\):
 
 ```yaml
-  pfclient:
-    image: ghcr.io/sdr-enthusiasts/docker-planefinder:latest
-    # If you are running on a Raspberry Pi 5, uncomment the below line and comment out the above
-    #ghcr.io/sdr-enthusiasts/docker-planefinder:5.0.161_arm64
-    container_name: pfclient
-    restart: unless-stopped
-    ports:
-      - 30053:30053
-    environment:
-      - TZ=${FEEDER_TZ}
-      - BEASTHOST=ultrafeeder
-      - LAT=${FEEDER_LAT}
-      - LONG=${FEEDER_LONG}
-      - SHARECODE=${PLANEFINDER_SHARECODE}
-    tmpfs:
-      - /run:exec,size=64M
-      - /var/log/pfclient
+pfclient:
+  image: ghcr.io/sdr-enthusiasts/docker-planefinder:latest
+  # If you are running on a Raspberry Pi 5, uncomment the below line and comment out the above
+  #ghcr.io/sdr-enthusiasts/docker-planefinder:5.0.161_arm64
+  container_name: pfclient
+  restart: unless-stopped
+  ports:
+    - 30053:30053
+  environment:
+    - TZ=${FEEDER_TZ}
+    - BEASTHOST=ultrafeeder
+    - LAT=${FEEDER_LAT}
+    - LONG=${FEEDER_LONG}
+    - SHARECODE=${PLANEFINDER_SHARECODE}
+  tmpfs:
+    - /run:exec,size=64M
+    - /var/log/pfclient
 ```
 
 To explain what's going on in this addition:
 
-* We're creating a container called `pfclient`, from the image `ghcr.io/sdr-enthusiasts/docker-planefinder:latest`.
-* We're passing several environment variables to the container:
-  * `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder`
-  * `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
-  * `LAT` will use the `FEEDER_LAT` variable from your `.env` file.
-  * `LONG` will use the `FEEDER_LONG` variable from your `.env` file.
-  * `SHARECODE` will use the `PLANEFINDER_SHARECODE` variable from your `.env` file.
-* We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
-  * The size of the container, by not writing changes to the underlying container; and
-  * SD Card or SSD wear
+- We're creating a container called `pfclient`, from the image `ghcr.io/sdr-enthusiasts/docker-planefinder:latest`.
+- We're passing several environment variables to the container:
+  - `BEASTHOST=ultrafeeder` to inform the feeder to get its ADSB data from the container `ultrafeeder`
+  - `TZ` will use the `FEEDER_TZ` variable from your `.env` file.
+  - `LAT` will use the `FEEDER_LAT` variable from your `.env` file.
+  - `LONG` will use the `FEEDER_LONG` variable from your `.env` file.
+  - `SHARECODE` will use the `PLANEFINDER_SHARECODE` variable from your `.env` file.
+- We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
+  - The size of the container, by not writing changes to the underlying container; and
+  - SD Card or SSD wear
 
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `pfclient` container. You should see the following output:
 
@@ -177,8 +177,8 @@ pfclient      | [pfclient_daemon] /usr/local/bin/pfclient: error while loading s
 
 This is due to an architecture change with the Raspberry Pi 5 and can be worked around by using this Docker image in your `docker-compose.yml` file: `ghcr.io/sdr-enthusiasts/docker-planefinder:5.0.161_arm64`
 
-This is noted in the sample provided above.  See [here](https://github.com/sdr-enthusiasts/docker-planefinder/issues/34) for more information.
+This is noted in the sample provided above. See the [related GitHub issue](https://github.com/sdr-enthusiasts/docker-planefinder/issues/34) for more information.
 
 ## Advanced
 
-If you want to look at more options and examples for the `pfclient` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-planefinder)
+If you want to look at more options and examples for the `pfclient` container, you can find the [docker-planefinder repository](https://github.com/sdr-enthusiasts/docker-planefinder)

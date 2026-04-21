@@ -46,22 +46,22 @@ Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`
 Append the following lines to the end of the file \(inside the `services:` section\):
 
 ```yaml
-  autoheal:
-    image: willfarrell/autoheal:latest
-    container_name: autoheal
-    restart: unless-stopped
-    environment:
-      - AUTOHEAL_CONTAINER_LABEL=all
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+autoheal:
+  image: willfarrell/autoheal:latest
+  container_name: autoheal
+  restart: unless-stopped
+  environment:
+    - AUTOHEAL_CONTAINER_LABEL=all
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
 ```
 
 To explain what's going on in this addition:
 
-* We're creating a container called `autoheal`, from the image `willfarrell/autoheal:latest`.
-* We're passing several environment variables to the container:
-  * `AUTOHEAL_CONTAINER_ALL=all` to inform autoheal to monitor all containers
-* We're passing through the docker socket `/var/run/docker.sock` so that autoheal can control docker \(to restart containers\).
+- We're creating a container called `autoheal`, from the image `willfarrell/autoheal:latest`.
+- We're passing several environment variables to the container:
+  - `AUTOHEAL_CONTAINER_ALL=all` to inform autoheal to monitor all containers
+- We're passing through the docker socket `/var/run/docker.sock` so that autoheal can control docker \(to restart containers\).
 
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `autoheal` container. You should see the following output:
 
@@ -100,7 +100,7 @@ labels:
 Thus, your updated `ultrafeeder` service may then look like this \(note the added `labels:` section\):
 
 ```yaml
-version: '3.8'
+version: "3.8"
 
 volumes:
   readsbpb_rrd:
@@ -142,18 +142,18 @@ Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`
 Append the following lines to the end of the file \(inside the `services:` section\):
 
 ```yaml
-  autoheal:
-    image: willfarrell/autoheal:latest
-    container_name: autoheal
-    restart: unless-stopped
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+autoheal:
+  image: willfarrell/autoheal:latest
+  container_name: autoheal
+  restart: unless-stopped
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
 ```
 
 To explain what's going on in this addition:
 
-* We're creating a container called `autoheal`, from the image `willfarrell/autoheal:latest`.
-* We're passing through the docker socket `/var/run/docker.sock` so that autoheal can control docker \(to restart containers\).
+- We're creating a container called `autoheal`, from the image `willfarrell/autoheal:latest`.
+- We're passing through the docker socket `/var/run/docker.sock` so that autoheal can control docker \(to restart containers\).
 
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `autoheal` container. You should see the following output:
 

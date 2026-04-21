@@ -1,5 +1,5 @@
 ---
-description: 'If you wish to feed FlightRadar24, follow the steps below.'
+description: "If you wish to feed FlightRadar24, follow the steps below."
 ---
 
 # Feeding FlightRadar24
@@ -30,7 +30,6 @@ If you're already feeding FlightRadar24 and you've followed the steps in the pre
 
 First-time users should obtain a FlightRadar24 sharing key \(a _fr24key_\). To get one, you can run through the sign-up process. This will ask a series of questions allowing you to sign up with FlightRadar24 and get a _fr24key_.
 Use the same email address as for your fr24 account if you already have one or plan on creating one.
-
 
 #### Obtaining a Sharing Key for ADSB
 
@@ -78,7 +77,7 @@ FR24_SHARING_KEY=10ae138d0c1g
 
 #### UAT key and configuration (USA only, requires 2nd SDR and dump978 container already configured)
 
-Get a separate sharing key for UAT as described [here](https://github.com/sdr-enthusiasts/docker-flightradar24?tab=readme-ov-file#uat-configuration-usa-only):
+Get a separate sharing key for UAT as described in the [UAT configuration instructions](https://github.com/sdr-enthusiasts/docker-flightradar24?tab=readme-ov-file#uat-configuration-usa-only):
 
 Copy the UAT sharing key you are given, and add the following line to your `.env` file:
 
@@ -95,18 +94,18 @@ Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`
 Append the following lines to the end of the file \(inside the `services:` section\):
 
 ```yaml
-  fr24:
-    image: ghcr.io/sdr-enthusiasts/docker-flightradar24:latest
-    container_name: fr24
-    restart: unless-stopped
-    ports:
-      - 8754:8754
-    environment:
-      - BEASTHOST=ultrafeeder
-      - FR24KEY=${FR24_SHARING_KEY}
-      - FR24KEY_UAT=${FR24_SHARING_KEY_UAT}
-    tmpfs:
-      - /var/log
+fr24:
+  image: ghcr.io/sdr-enthusiasts/docker-flightradar24:latest
+  container_name: fr24
+  restart: unless-stopped
+  ports:
+    - 8754:8754
+  environment:
+    - BEASTHOST=ultrafeeder
+    - FR24KEY=${FR24_SHARING_KEY}
+    - FR24KEY_UAT=${FR24_SHARING_KEY_UAT}
+  tmpfs:
+    - /var/log
 ```
 
 To explain what's going on in this addition:
@@ -165,4 +164,4 @@ Once running, you can visit `http://docker.host.ip.addr:8754` to access the `fr2
 
 ## Advanced
 
-If you want to look at more options and examples for the `fr24` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-flightradar24)
+If you want to look at more options and examples for the `fr24` container, you can find the [docker-flightradar24 repository](https://github.com/sdr-enthusiasts/docker-flightradar24)

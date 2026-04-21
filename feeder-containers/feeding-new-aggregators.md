@@ -1,5 +1,5 @@
 ---
-description: 'If you wish to feed the new ADS-B aggregators, follow the steps below.'
+description: "If you wish to feed the new ADS-B aggregators, follow the steps below."
 ---
 
 # New Aggregators
@@ -8,9 +8,9 @@ After ADSBExchange was acquired by a data aggregator, several of the collaborato
 
 `multifeeder` supports:
 
-* feeding ADS-B data to these aggregators
-* feeding MLAT data to the aggregators
-* receiving MLAT results from each of the aggregators
+- feeding ADS-B data to these aggregators
+- feeding MLAT data to the aggregators
+- receiving MLAT results from each of the aggregators
 
 The docker image [`ghcr.io/sdr-enthusiasts/docker-multifeeder`](https://github.com/sdr-enthusiasts/docker-multifeeder) contains the required feeder software and all required prerequisites and libraries. This needs to run in conjunction with `ultrafeeder`, `tar1090`, or another Beast format data provider.
 
@@ -22,30 +22,30 @@ Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`
 
 Append the following lines to the end of the file \(inside the `services:` section\). Please edit the following parameters:
 
-* `READSB_NET_CONNECTOR`
-  * remove `dump978,37981,raw_in;` if you don't have a UAT (978MHz) dongle
-  * add any additional "new aggregators" to the end of the line separated by `;`. The format is `feeder_hostname,feeder_beast_port,beast_out`
-* `UUID` - enter your UUID here -- see below on how to generate this
-* `MLAT_CONFIG` - add any additional "new aggregators" to the end of the line separated by `;`. The format is `feeder_mlat_hostname,feeder_mlat_port,local_mlat_results_port`
-* The `FEEDER_LAT`, `FEEDER_LONG`, and `FEEDER_ALT_M` variables should already exist in your `.env` file, but if they don't feel free to replace these values with your station's Latitude, Longitude (in decimal degrees), and Altitude above the ground (in (whole) meters)
+- `READSB_NET_CONNECTOR`
+  - remove `dump978,37981,raw_in;` if you don't have a UAT (978MHz) dongle
+  - add any additional "new aggregators" to the end of the line separated by `;`. The format is `feeder_hostname,feeder_beast_port,beast_out`
+- `UUID` - enter your UUID here -- see below on how to generate this
+- `MLAT_CONFIG` - add any additional "new aggregators" to the end of the line separated by `;`. The format is `feeder_mlat_hostname,feeder_mlat_port,local_mlat_results_port`
+- The `FEEDER_LAT`, `FEEDER_LONG`, and `FEEDER_ALT_M` variables should already exist in your `.env` file, but if they don't feel free to replace these values with your station's Latitude, Longitude (in decimal degrees), and Altitude above the ground (in (whole) meters)
 
 ```yaml
-  multifeeder:
-    image: ghcr.io/sdr-enthusiasts/docker-multifeeder
-    container_name: multifeeder
-    hostname: multifeeder
-    restart: unless-stopped
-    environment:
-      - TZ=${FEEDER_TZ}
-      - READSB_NET_CONNECTOR=readsb,30005,beast_in;dump978,37981,raw_in;feed.adsb.fi,30004,beast_reduce_plus_out;feed.adsb.one,64004,beast_reduce_plus_out;in.adsb.lol,30004,beast_reduce_plus_out;feed.theairtraffic.com,30004,beast_out;feed.planespotters.net,30004,beast_reduce_plus_out
-      - UUID=00000000-0000-0000-0000-000000000000
-      - MLAT_CONFIG=feed.adsb.fi,31090,39000;feed.adsb.one,64006,39001;in.adsb.lol,31090,39002;feed.theairtraffic.com,31090,39003;mlat.planespotters.net,31090,39004
-      - READSB_LAT=${FEEDER_LAT}
-      - READSB_LON=${FEEDER_LONG}
-      - READSB_ALT=${FEEDER_ALT_M}m
-    tmpfs:
-      - /run/readsb
-      - /var/log
+multifeeder:
+  image: ghcr.io/sdr-enthusiasts/docker-multifeeder
+  container_name: multifeeder
+  hostname: multifeeder
+  restart: unless-stopped
+  environment:
+    - TZ=${FEEDER_TZ}
+    - READSB_NET_CONNECTOR=readsb,30005,beast_in;dump978,37981,raw_in;feed.adsb.fi,30004,beast_reduce_plus_out;feed.adsb.one,64004,beast_reduce_plus_out;in.adsb.lol,30004,beast_reduce_plus_out;feed.theairtraffic.com,30004,beast_out;feed.planespotters.net,30004,beast_reduce_plus_out
+    - UUID=00000000-0000-0000-0000-000000000000
+    - MLAT_CONFIG=feed.adsb.fi,31090,39000;feed.adsb.one,64006,39001;in.adsb.lol,31090,39002;feed.theairtraffic.com,31090,39003;mlat.planespotters.net,31090,39004
+    - READSB_LAT=${FEEDER_LAT}
+    - READSB_LON=${FEEDER_LONG}
+    - READSB_ALT=${FEEDER_ALT_M}m
+  tmpfs:
+    - /run/readsb
+    - /var/log
 ```
 
 ### How to generate a UUID
@@ -66,8 +66,8 @@ See [https://github.com/sdr-enthusiasts/docker-multifeeder#receiving-mlat-result
 
 To explain what's going on in this addition:
 
-* We're creating a container called `multifeeder`, from the image `ghcr.io/sdr-enthusiasts/docker-multifeeder`.
-* We're passing several environment variables to the container (see above)one as your host system
+- We're creating a container called `multifeeder`, from the image `ghcr.io/sdr-enthusiasts/docker-multifeeder`.
+- We're passing several environment variables to the container (see above)one as your host system
 
 Once the file has been updated, issue the command `docker compose pull && docker compose up -d` in the application directory to apply the changes and bring up the `multifeeder` container. You should see the following output:
 
@@ -109,15 +109,15 @@ We can view the logs for the environment with the command `docker logs multifeed
 
 ## List of Aggregators
 
-| **Site**          | **readsb_url**         | **readsb_port** | **mlat_url**           | **mlat_port** |
-|-------------------|------------------------|-----------------|------------------------|---------------|
-| [adsb.fi](https://adsb.fi/)           | feed.adsb.fi           |           30004 | feed.adsb.fi           |         31090 |
-| [ADSB.lol](https://adsb.lol/)          | feed.adsb.lol          |            1337 | feed.adsb.lol          |          1338 |
-| [ADSB One](https://adsb.one/)          | feed.adsb.one          |           64004 | feed.adsb.one          |         64006 |
-| [Planespotters.net](https://www.planespotters.net/)          | feed.planespotters.net          |           30004 | mlat.planespotters.net         |         31090 |
-| [The Air Traffic](https://theairtraffic.com/) | feed.theairtraffic.com |           30004 | feed.theairtraffic.com |         31090 |
+| **Site**                                            | **readsb_url**         | **readsb_port** | **mlat_url**           | **mlat_port** |
+| --------------------------------------------------- | ---------------------- | --------------- | ---------------------- | ------------- |
+| [adsb.fi](https://adsb.fi/)                         | feed.adsb.fi           | 30004           | feed.adsb.fi           | 31090         |
+| [ADSB.lol](https://adsb.lol/)                       | feed.adsb.lol          | 1337            | feed.adsb.lol          | 1338          |
+| [ADSB One](https://adsb.one/)                       | feed.adsb.one          | 64004           | feed.adsb.one          | 64006         |
+| [Planespotters.net](https://www.planespotters.net/) | feed.planespotters.net | 30004           | mlat.planespotters.net | 31090         |
+| [The Air Traffic](https://theairtraffic.com/)       | feed.theairtraffic.com | 30004           | feed.theairtraffic.com | 31090         |
 
 ## More information and support
 
-* There is extensive documentation available on the container's [GitHub](https://github.com/sdr-enthusiasts/docker-multifeeder) page.
-* You can always find help on the #adsb-containers channel on the [SDR Enthusiasts Discord server](https://discord.gg/m42azbZydy). This channel is meant for Noobs (beginners) and Experts alike.
+- There is extensive documentation available on the container's [GitHub](https://github.com/sdr-enthusiasts/docker-multifeeder) page.
+- You can always find help on the #adsb-containers channel on the [SDR Enthusiasts Discord server](https://discord.gg/m42azbZydy). This channel is meant for Noobs (beginners) and Experts alike.

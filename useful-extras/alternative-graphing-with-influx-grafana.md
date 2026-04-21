@@ -15,12 +15,12 @@ Using Grafana and InfluxDB in this configuration does not require a plan, accoun
 
 Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`.
 
-Add the following lines to the  `volumes:` section at the top of the file \(below the `version:` section, and before the `services:` section\):
+Add the following lines to the `volumes:` section at the top of the file \(below the `version:` section, and before the `services:` section\):
 
 ```yaml
-  influxdb_data:
-  influxdb_config:
-  grafana_data:
+influxdb_data:
+influxdb_config:
+grafana_data:
 ```
 
 This creates the volumes that will contain `influxdb` and `grafana`’s application data.
@@ -42,51 +42,51 @@ Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`
 Add the following lines to the `environment` section of the `ultrafeeder` container definition \(in the `ultrafeeder:` section, below `environment:` and before the `volumes:` section\):
 
 ```yaml
-      - INFLUXDBV2_URL=http://influxdb:8086
-      - INFLUXDBV2_BUCKET=ultrafeeder
-      - INFLUXDBV2_ORG=ultrafeeder
-      - INFLUXDBV2_TOKEN=${INFLUXDB_ADMIN_TOKEN}
+- INFLUXDBV2_URL=http://influxdb:8086
+- INFLUXDBV2_BUCKET=ultrafeeder
+- INFLUXDBV2_ORG=ultrafeeder
+- INFLUXDBV2_TOKEN=${INFLUXDB_ADMIN_TOKEN}
 ```
 
 Append the following lines to the end of the file:
 
 ```yaml
-  influxdb:
-    image: influxdb:latest
-    container_name: influxdb
-    hostname: influxdb
-    restart: unless-stopped
-    environment:
-      - DOCKER_INFLUXDB_INIT_MODE=setup
-      - DOCKER_INFLUXDB_INIT_BUCKET=ultrafeeder
-      - DOCKER_INFLUXDB_INIT_ORG=ultrafeeder
-      - DOCKER_INFLUXDB_INIT_RETENTION=52w
-      - DOCKER_INFLUXDB_INIT_USERNAME=${INFLUXDB_USER}
-      - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUXDB_PASSWORD}
-      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${INFLUXDB_ADMIN_TOKEN}
-    ports:
-      - 8086:8086
-    volumes:
-      - influxdb_data:/var/lib/influxdb2
-      - influxdb_config:/etc/influxdb2
+influxdb:
+  image: influxdb:latest
+  container_name: influxdb
+  hostname: influxdb
+  restart: unless-stopped
+  environment:
+    - DOCKER_INFLUXDB_INIT_MODE=setup
+    - DOCKER_INFLUXDB_INIT_BUCKET=ultrafeeder
+    - DOCKER_INFLUXDB_INIT_ORG=ultrafeeder
+    - DOCKER_INFLUXDB_INIT_RETENTION=52w
+    - DOCKER_INFLUXDB_INIT_USERNAME=${INFLUXDB_USER}
+    - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUXDB_PASSWORD}
+    - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${INFLUXDB_ADMIN_TOKEN}
+  ports:
+    - 8086:8086
+  volumes:
+    - influxdb_data:/var/lib/influxdb2
+    - influxdb_config:/etc/influxdb2
 
-  grafana:
-    image: grafana/grafana-oss:latest
-    container_name: grafana
-    hostname: grafana
-    restart: unless-stopped
-    ports:
-      - 3000:3000
-    volumes:
-      - grafana_data:/var/lib/grafana
+grafana:
+  image: grafana/grafana-oss:latest
+  container_name: grafana
+  hostname: grafana
+  restart: unless-stopped
+  ports:
+    - 3000:3000
+  volumes:
+    - grafana_data:/var/lib/grafana
 ```
 
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `influxdb` and `grafana` containers. This will also restart the `ultrafeeder` container, which will now use `telegraf` to feed data to `influxdb`.
 
 You should also be able to point your web browser at:
 
-* `http://docker.host.ip.addr:8086/` to access the `influxdb` console, use the credentials from your `.env` file.
-* `http://docker.host.ip.addr:3000/` to access the `grafana` console, use admin/admin as initial credentials, you should be prompted to change the password on first login.
+- `http://docker.host.ip.addr:8086/` to access the `influxdb` console, use the credentials from your `.env` file.
+- `http://docker.host.ip.addr:3000/` to access the `grafana` console, use admin/admin as initial credentials, you should be prompted to change the password on first login.
 
 Remember to change `docker.host.ip.addr` to the IP address of your docker host.
 
@@ -98,18 +98,18 @@ After you have logged into the `grafana` console the following manual steps are 
 2. Click `InfluxDB` from the list of options provided
 3. Input or select the following options, if the option is not listed, do not input anything for that option (for `Value` the word `Token` must be included in the input:
 
-Option | Input
-------------- | -------------
-Name | ultrafeeder
-Query Language | InfluxQL
-URL | `http://influxdb:8086`
-Custom HTTP Headers | Click `+ Add header`
-Header | Authorization
-Value | Token \<your influxdb token\>
-Database | ultrafeeder
-User | \<your influxdb username\>
-Password | \<your influxdb password\>
-HTTP Method | GET
+| Option              | Input                         |
+| ------------------- | ----------------------------- |
+| Name                | ultrafeeder                   |
+| Query Language      | InfluxQL                      |
+| URL                 | `http://influxdb:8086`        |
+| Custom HTTP Headers | Click `+ Add header`          |
+| Header              | Authorization                 |
+| Value               | Token \<your influxdb token\> |
+| Database            | ultrafeeder                   |
+| User                | \<your influxdb username\>    |
+| Password            | \<your influxdb password\>    |
+| HTTP Method         | GET                           |
 
 Clicking `Save & Test` should return a green message indicating success. The dashboard can now be imported with the following steps
 

@@ -18,23 +18,23 @@ nano docker-compose.yml
 ```yaml
 services:
   ultrafeeder:
-  # ultrafeeder combines a number of functions:
-  # - it retrieves and decodes 1090MHz Mode A/C/S data from the SDR(s) using Wiedehopf's branch of readsb
-  # - it implements a `tar1090` based map on port 80 (mapped to port 8080 on the host)
-  # - it includes graph1090 (system statistics website) on http://xxxxx/graphs1090
-  # - it sends ADSB data directly (without the need of additional containers) to the
-  #   "new" aggregators, and, if desired, also to ADSBExchange
-  # - it includes mlat-client to send MLAT data to these aggregators
-  # - it includes an MLAT Hub to consolidate MLAT results and make them available to the built-in map and other services
+    # ultrafeeder combines a number of functions:
+    # - it retrieves and decodes 1090MHz Mode A/C/S data from the SDR(s) using Wiedehopf's branch of readsb
+    # - it implements a `tar1090` based map on port 80 (mapped to port 8080 on the host)
+    # - it includes graph1090 (system statistics website) on http://xxxxx/graphs1090
+    # - it sends ADSB data directly (without the need of additional containers) to the
+    #   "new" aggregators, and, if desired, also to ADSBExchange
+    # - it includes mlat-client to send MLAT data to these aggregators
+    # - it includes an MLAT Hub to consolidate MLAT results and make them available to the built-in map and other services
 
     image: ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder
     container_name: ultrafeeder
     hostname: ultrafeeder
     restart: unless-stopped
     device_cgroup_rules:
-      - 'c 189:* rwm'
+      - "c 189:* rwm"
     ports:
-      - 8080:80               # to expose the web interface
+      - 8080:80 # to expose the web interface
     environment:
       # --------------------------------------------------
       # general parameters:
@@ -60,25 +60,25 @@ services:
       # Make sure that each line ends with a semicolon ";"
       # if you are not using dump978, feel free to remove the first line
       - ULTRAFEEDER_CONFIG=
-          adsb,dump978,30978,uat_in;
-          adsb,feed.adsb.fi,30004,beast_reduce_plus_out;
-          mlat,feed.adsb.fi,31090;
-          adsb,in.adsb.lol,30004,beast_reduce_plus_out;
-          mlat,in.adsb.lol,31090;
-          adsb,feed.airplanes.live,30004,beast_reduce_plus_out;
-          mlat,feed.airplanes.live,31090;
-          adsb,feed.planespotters.net,30004,beast_reduce_plus_out;
-          mlat,mlat.planespotters.net,31090;
-          adsb,feed.theairtraffic.com,30004,beast_reduce_plus_out;
-          mlat,feed.theairtraffic.com,31090;
-          adsb,data.avdelphi.com,24999,beast_reduce_plus_out;
-          adsb,skyfeed.hpradar.com,30004,beast_reduce_plus_out;
-          mlat,skyfeed.hpradar.com,31090;
-          adsb,dati.flyitalyadsb.com,4905,beast_reduce_plus_out;
-          mlat,dati.flyitalyadsb.com,30100;
-          adsb,feed1.adsbexchange.com,30004,beast_reduce_plus_out;
-          mlat,feed.adsbexchange.com,31090;
-          # mlathub,planewatch,30105,beast_in;
+        adsb,dump978,30978,uat_in;
+        adsb,feed.adsb.fi,30004,beast_reduce_plus_out;
+        mlat,feed.adsb.fi,31090;
+        adsb,in.adsb.lol,30004,beast_reduce_plus_out;
+        mlat,in.adsb.lol,31090;
+        adsb,feed.airplanes.live,30004,beast_reduce_plus_out;
+        mlat,feed.airplanes.live,31090;
+        adsb,feed.planespotters.net,30004,beast_reduce_plus_out;
+        mlat,mlat.planespotters.net,31090;
+        adsb,feed.theairtraffic.com,30004,beast_reduce_plus_out;
+        mlat,feed.theairtraffic.com,31090;
+        adsb,data.avdelphi.com,24999,beast_reduce_plus_out;
+        adsb,skyfeed.hpradar.com,30004,beast_reduce_plus_out;
+        mlat,skyfeed.hpradar.com,31090;
+        adsb,dati.flyitalyadsb.com,4905,beast_reduce_plus_out;
+        mlat,dati.flyitalyadsb.com,30100;
+        adsb,feed1.adsbexchange.com,30004,beast_reduce_plus_out;
+        mlat,feed.adsbexchange.com,31090;
+        # mlathub,planewatch,30105,beast_in;
       # --------------------------------------------------
       - UUID=${ULTRAFEEDER_UUID}
       - MLAT_USER=${FEEDER_NAME}
@@ -119,16 +119,16 @@ In the file above, you will find several parameters that have values denoted as 
 
 The `docker-compose.yml` file above will:
 
-* Create a few mapped docker volumes to store historic message values (`/var/globe_history`), statistics for the graphs (`/var/lib/collectd`), and make the disk statistics (`/proc/diskstats`) and USB devices (`/dev`) available to the container.
-* Create a service named `ultrafeeder` that will run the `ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder` container.
-  * We're mapping TCP port `8080` through to the container so we can access the web interface.
-  * The variable `READSB_RTLSDR_DEVICE` tells `readsb` to look for an RTL-SDR device with the serial of `1090` (that we re-serialized in an earlier step).
-  * We're passing several environment variables through, including our timezone, latitude and longitude from the `.env` file \(denoted by `${VARIABLE}`\).
-* We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
-  * The size of the container, by not writing changes to the underlying container; and
-  * SD Card or SSD wear
+- Create a few mapped docker volumes to store historic message values (`/var/globe_history`), statistics for the graphs (`/var/lib/collectd`), and make the disk statistics (`/proc/diskstats`) and USB devices (`/dev`) available to the container.
+- Create a service named `ultrafeeder` that will run the `ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder` container.
+  - We're mapping TCP port `8080` through to the container so we can access the web interface.
+  - The variable `READSB_RTLSDR_DEVICE` tells `readsb` to look for an RTL-SDR device with the serial of `1090` (that we re-serialized in an earlier step).
+  - We're passing several environment variables through, including our timezone, latitude and longitude from the `.env` file \(denoted by `${VARIABLE}`\).
+- We're using `tmpfs` for volumes that have regular I/O. Any files stored in a `tmpfs` mount are temporarily stored outside the container's writable layer. This helps to reduce:
+  - The size of the container, by not writing changes to the underlying container; and
+  - SD Card or SSD wear
 
-You can find an expanded example of the `docker-compose.yml` file that you can download and edit [here](https://github.com/sdr-enthusiasts/docker-install/blob/main/sample-docker-compose.yml) if you want to see other options, but the sample above is a good start.
+You can find an expanded example of the `docker-compose.yml` file that you can download and edit the [expanded docker-compose.yml example](https://github.com/sdr-enthusiasts/docker-install/blob/main/sample-docker-compose.yml) if you want to see other options, but the sample above is a good start.
 
 ## Feeding directly from Ultrafeeder
 
@@ -137,19 +137,19 @@ There are several aggregators, both non-profit and commercial, that can directly
 | Name            | (C)ommercial/<br/>(N)on-profit | Description                                               | Feed details                                                                               |
 | --------------- | ------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
 | Airplanes.live  | N                              | Run by volunteers that used to be related to adsbexchange | adsb:`feed.airplanes.live` port `30004`<br/>mlat: `feed.airplanes.live` port `31090`       |
-| ADSB.fi         | N                              | Run by a Finnish IT and aviation enthusiast | adsb:`feed.adsb.fi` port `30004`<br/>mlat: `feed.adsb.fi` port `31090`                     |
-| ADSB.lol        | N                              | Run by an aviation enthusiast located in the Netherlands    | adsb:`in.adsb.lol` port `30004`<br/>mlat: `in.adsb.lol` port `31090`                       |
+| ADSB.fi         | N                              | Run by a Finnish IT and aviation enthusiast               | adsb:`feed.adsb.fi` port `30004`<br/>mlat: `feed.adsb.fi` port `31090`                     |
+| ADSB.lol        | N                              | Run by an aviation enthusiast located in the Netherlands  | adsb:`in.adsb.lol` port `30004`<br/>mlat: `in.adsb.lol` port `31090`                       |
 | Planespotters   | N                              | planespotters.net                                         | adsb:`feed.planespotters.net` port `30004`<br/>mlat: `mlat.planespotters.net` port `31090` |
-| The Air Traffic | N                              | Run by an aviation enthusiast                               | adsb:`feed.theairtraffic.com` port `30004`<br/>mlat: `mlat.theairtraffic.com` port `31090` |
+| The Air Traffic | N                              | Run by an aviation enthusiast                             | adsb:`feed.theairtraffic.com` port `30004`<br/>mlat: `mlat.theairtraffic.com` port `31090` |
 | AVDelphi        | N                              | Aviation data-science company (non-profit)                | adsb:`data.avdelphi.com` port `24999`<br/>mlat: no MLAT                                    |
 | ADSB Exchange   | C                              | Large aggregator owned by JetNet                          | adsb:`feed1.adsbexchange.com` port `30004`<br/>mlat: `feed.adsbexchange.com` port `31090`  |
-| Fly Italy ADSB  | N                              | Run by a few aviation enthusiasts in Italy                    | adsb: `dati.flyitalyadsb.com` port `4905`<br/>mlat: `dati.flyitalyadsb.com` port `30100`   |
+| Fly Italy ADSB  | N                              | Run by a few aviation enthusiasts in Italy                | adsb: `dati.flyitalyadsb.com` port `4905`<br/>mlat: `dati.flyitalyadsb.com` port `30100`   |
 
 When feeding AdsbExchange, Ultrafeeder will send statistics to adsbexchange.com by default. See the description of the `ADSBX_STATS` parameter on how to disable this.
 
 ## Using the MLAT results
 
-A working MLAT configuration is already provided in the example above.  See [https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder/blob/main/README.md#configuring-the-built-in-mlat-hub](https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder/blob/main/README.md#configuring-the-built-in-mlat-hub) for more details on how to configure more advanced features.
+A working MLAT configuration is already provided in the example above. See [https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder/blob/main/README.md#configuring-the-built-in-mlat-hub](https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder/blob/main/README.md#configuring-the-built-in-mlat-hub) for more details on how to configure more advanced features.
 
 ## Deploying `ultrafeeder`
 
@@ -211,11 +211,11 @@ NETWORK ID     NAME           DRIVER    SCOPE
 
 If configured and started using the example above, the container will make a website available at port 8080 of your host machine. Here are a few web pages that are generated (replace `my_host_ip` with the name or IP address of your host machine):
 
-* `http://my_host_ip:8080/` : `tar1090` map and table of all aircraft received
-* `http://my_host_ip:8080/graphs1090/` : page with graphs and operations statistics of your station
-* `http://my_host_ip:8080?pTracks` : showing all aircraft tracks received in the last 24 hours
-* `http://my_host_ip:8080?heatmap&realheat` : showing a heatmap of all aircraft in the last 24 hours
-* `http://my_host_ip:8080?replay` : showing a time-lapse replay of the past few days
+- `http://my_host_ip:8080/` : `tar1090` map and table of all aircraft received
+- `http://my_host_ip:8080/graphs1090/` : page with graphs and operations statistics of your station
+- `http://my_host_ip:8080?pTracks` : showing all aircraft tracks received in the last 24 hours
+- `http://my_host_ip:8080?heatmap&realheat` : showing a heatmap of all aircraft in the last 24 hours
+- `http://my_host_ip:8080?replay` : showing a time-lapse replay of the past few days
 
 ## Viewing Live Data in Text Format
 
@@ -263,11 +263,11 @@ You should also be able to point your web browser to `http://docker.host.ip.addr
 The example files above use the same UUID for all feeders. Doing so makes it possible that your information from one site could be tracked on another. An alternative approach is to generate a unique UUID for each website, load those into a variable in .env, and append the UUID to the row in the `ULTRAFEEDER_CONFIG` section. For example:
 
 ```yaml
-      - ULTRAFEEDER_CONFIG=
-          adsb,feed.adsb.fi,30004,beast_reduce_plus_out,uuid=${ADSBFI_UUID};
-          adsb,in.adsb.lol,30004,beast_reduce_plus_out,uuid=${ADSBLOL_UUID};
-          mlat,feed.adsb.fi,31090,uuid=${ADSBFI_UUID};
-          mlat,in.adsb.lol,31090,uuid=${ADSBLOL_UUID};
+- ULTRAFEEDER_CONFIG=
+  adsb,feed.adsb.fi,30004,beast_reduce_plus_out,uuid=${ADSBFI_UUID};
+  adsb,in.adsb.lol,30004,beast_reduce_plus_out,uuid=${ADSBLOL_UUID};
+  mlat,feed.adsb.fi,31090,uuid=${ADSBFI_UUID};
+  mlat,in.adsb.lol,31090,uuid=${ADSBLOL_UUID};
 ```
 
 ## Preparing and setting up `ultrafeeder` with Prometheus and Grafana
@@ -276,12 +276,12 @@ See [`readme-grafana.MD`](https://github.com/sdr-enthusiasts/docker-adsb-ultrafe
 
 ## Minimalist setup
 
-If you want to use `ultrafeeder` *only* as a SDR decoder but without any mapping or stats/graph websites, without MLAT connections or MLAT-hub, etc., for example to minimize CPU and RAM needs on a low CPU/memory single board computer, then do the following:
+If you want to use `ultrafeeder` _only_ as a SDR decoder but without any mapping or stats/graph websites, without MLAT connections or MLAT-hub, etc., for example to minimize CPU and RAM needs on a low CPU/memory single board computer, then do the following:
 
-* in the `ULTRAFEEDER_CONFIG` parameter, remove any entry that starts with `mlat` or `mlathub`. This will prevent any `mlat-client`s or `mlathub` instances to be launched. If you want to connect the `mlat-client`(s) to external MLAT servers but you don't want to run the overhead of a MLATHUB, you can leave any entries starting with `mlat` in the `ULTRAFEEDER_CONFIG` parameter, and set `MLATHUB_DISABLE=true`
-* Set the parameter `TAR1090_DISABLE=true`. This will prevent the `nginx` web server and any websites from being launched
-* Make sure *not* to use the `ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder:telegraf` label as Telegraf adds a LOT of CPU, disk, and memory use to the container
+- in the `ULTRAFEEDER_CONFIG` parameter, remove any entry that starts with `mlat` or `mlathub`. This will prevent any `mlat-client`s or `mlathub` instances to be launched. If you want to connect the `mlat-client`(s) to external MLAT servers but you don't want to run the overhead of a MLATHUB, you can leave any entries starting with `mlat` in the `ULTRAFEEDER_CONFIG` parameter, and set `MLATHUB_DISABLE=true`
+- Set the parameter `TAR1090_DISABLE=true`. This will prevent the `nginx` web server and any websites from being launched
+- Make sure _not_ to use the `ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder:telegraf` label as Telegraf adds a LOT of CPU, disk, and memory use to the container
 
 ## Advanced
 
-If you want to look at more options and examples for the `ultrafeeder` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder).
+If you want to look at more options and examples for the `ultrafeeder` container, you can find the [docker-adsb-ultrafeeder repository](https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder).
