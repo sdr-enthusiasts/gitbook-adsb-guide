@@ -9,9 +9,9 @@ description: >-
 
 The containers used in this guide are regularly updated - most of them daily. This ensures that:
 
-* Any security updates of the underlying containers \(for example: `debian/stable-slim`\) are captured in these containers.
-* Receiver \(`ultrafeeder`\), feeders, visualisation services \(`tar1090`\) etc are also regularly updated. This ensures that updates are captured in these containers.
-* As issues are raised and fixed, it ensures that fixes are present in these containers.
+- Any security updates of the underlying containers \(for example: `debian/stable-slim`\) are captured in these containers.
+- Receiver \(`ultrafeeder`\), feeders, visualisation services \(`tar1090`\) etc are also regularly updated. This ensures that updates are captured in these containers.
+- As issues are raised and fixed, it ensures that fixes are present in these containers.
 
 We can configure a container to regularly \(daily\) check DockerHub for new versions of underlying images, automatically pull the new versions and recreate your containers.
 
@@ -43,28 +43,28 @@ Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`
 Append the following lines to the end of the file \(inside the `services:` section\):
 
 ```yaml
-  watchtower:
-    image: nickfedor/watchtower:latest
-    container_name: watchtower
-    restart: unless-stopped
-    environment:
-      - TZ=${FEEDER_TZ}
-      - WATCHTOWER_CLEANUP=true
-      - WATCHTOWER_POLL_INTERVAL=86400
-      - WATCHTOWER_ROLLING_RESTART=true
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+watchtower:
+  image: nickfedor/watchtower:latest
+  container_name: watchtower
+  restart: unless-stopped
+  environment:
+    - TZ=${FEEDER_TZ}
+    - WATCHTOWER_CLEANUP=true
+    - WATCHTOWER_POLL_INTERVAL=86400
+    - WATCHTOWER_ROLLING_RESTART=true
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
 ```
 
 To explain what's going on in this addition:
 
-* We're creating a container called `watchtower`, from the image `nickfedor/watchtower:latest`.
-* We're passing several environment variables to the container:
-  * `WATCHTOWER_CLEANUP=true` Removes old images after updating. When this flag is specified, watchtower will remove the old image after restarting a container with a new image. This prevents the accumulation of orphaned images on your system as containers are updated.
-  * `WATCHTOWER_POLL_INTERVAL=86400` Poll interval \(in seconds\). This value controls how frequently watchtower will poll for new images. This is set to 24 hours to prevent hitting DockerHub's [new pull limits](https://www.docker.com/increase-rate-limits?utm_source=docker&utm_medium=web%20referral&utm_campaign=pull%20limits%20hub%20home%20page&utm_budget=).
-  * `WATCHTOWER_ROLLING_RESTART=true` Restart one image at time instead of stopping and starting all at once. Prevents clobbering the CPU if you run a low power system.
-  * `TZ=${FEEDER_TZ}` So that the container's logs are in our local timezone.
-* We're passing through the docker socket `/var/run/docker.sock` so that autoheal can control docker \(to restart containers\).
+- We're creating a container called `watchtower`, from the image `nickfedor/watchtower:latest`.
+- We're passing several environment variables to the container:
+  - `WATCHTOWER_CLEANUP=true` Removes old images after updating. When this flag is specified, watchtower will remove the old image after restarting a container with a new image. This prevents the accumulation of orphaned images on your system as containers are updated.
+  - `WATCHTOWER_POLL_INTERVAL=86400` Poll interval \(in seconds\). This value controls how frequently watchtower will poll for new images. This is set to 24 hours to prevent hitting DockerHub's [new pull limits](https://www.docker.com/increase-rate-limits?utm_source=docker&utm_medium=web%20referral&utm_campaign=pull%20limits%20hub%20home%20page&utm_budget=).
+  - `WATCHTOWER_ROLLING_RESTART=true` Restart one image at time instead of stopping and starting all at once. Prevents clobbering the CPU if you run a low power system.
+  - `TZ=${FEEDER_TZ}` So that the container's logs are in our local timezone.
+- We're passing through the docker socket `/var/run/docker.sock` so that autoheal can control docker \(to restart containers\).
 
 Once the file has been updated, issue the command `docker compose up -d` in the application directory to apply the changes and bring up the `watchtower` container. You should see the following output:
 

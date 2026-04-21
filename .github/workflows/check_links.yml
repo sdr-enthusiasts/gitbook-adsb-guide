@@ -35,3 +35,17 @@ jobs:
 
       - name: Run markdown-link-check against *.md files
         run: markdown-link-check --config "$(pwd)/.markdown-link-check.json" --verbose --quiet "${{ matrix.file_to_check }}"
+
+  summary:
+    name: All link checks passed
+    runs-on: ubuntu-latest
+    needs: [check]
+    if: always()
+    steps:
+      - name: Check result
+        run: |
+          if [ "${{ needs.check.result }}" != "success" ]; then
+            echo "One or more link checks failed"
+            exit 1
+          fi
+          echo "All link checks passed"

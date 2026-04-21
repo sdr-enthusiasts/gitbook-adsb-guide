@@ -25,7 +25,7 @@ To "tail" the consolidated logs of all containers that make up the `adsb` applic
 
 Individual container logs can be "tailed" with `docker logs -f <container name>`.
 
-If you want to limit the output to, for example, the last 100 lines, you can add `--tail=100` to either of the logs commands above.  If you want to search for a specific word or phrase in the output, you can add a `| grep <keyword>` to the end of the commands.
+If you want to limit the output to, for example, the last 100 lines, you can add `--tail=100` to either of the logs commands above. If you want to search for a specific word or phrase in the output, you can add a `| grep <keyword>` to the end of the commands.
 
 ### Updating containers to latest version
 
@@ -50,9 +50,9 @@ Images can implement [healthchecks](https://docs.docker.com/engine/reference/bui
 
 For example, in the `ghcr.io/sdr-enthusiasts/docker-tar1090` container, the [healthcheck script](https://github.com/sdr-enthusiasts/docker-tar1090/blob/main/rootfs/healthcheck.sh) does the following:
 
-* For each expected network connection, make sure the connection exists
-* Make sure that messages are being received from the SDR
-* Make sure that the services running within the container aren't dying over and over for some reason
+- For each expected network connection, make sure the connection exists
+- Make sure that messages are being received from the SDR
+- Make sure that the services running within the container aren't dying over and over for some reason
 
 If all of the checks above pass, the container is considered healthy. If any fail, the container is considered unhealthy.
 
@@ -65,10 +65,10 @@ CONTAINER ID   IMAGE                                                   COMMAND  
 
 Notice that next to the container status, there is some information about the container's health. This may be one of the following:
 
-* No health information: Not all images have healthchecks implemented. If an image doesn't report health, this is why.
-* `(health: starting)`: The container will wait up to a predefined start-period \(defined in the [Dockerfile](https://github.com/sdr-enthusiasts/docker-tar1090/blob/main/Dockerfile#L179)\) or until the healthcheck script returns a healthy result.
-* `(healthy)`: The container is operating as expected.
-* `(unhealthy)`: The container is not operating as expected.
+- No health information: Not all images have healthchecks implemented. If an image doesn't report health, this is why.
+- `(health: starting)`: The container will wait up to a predefined start-period \(defined in the [Dockerfile](https://github.com/sdr-enthusiasts/docker-tar1090/blob/28c5dadfd451d61c251c313b1ac6dc08263e5a2d/Dockerfile#L179)\) or until the healthcheck script returns a healthy result.
+- `(healthy)`: The container is operating as expected.
+- `(unhealthy)`: The container is not operating as expected.
 
 Later in this guide we will implement a method to automatically restart any unhealthy containers. This way, if your SDR "wedges", the container will eventually go unhealthy and be restarted.
 

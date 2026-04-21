@@ -14,7 +14,7 @@ The FAA has adopted 1090MHz for all flight levels, and UAT only for operations b
 
 ## Identify your UAT dongle's optimal PPM
 
-Every RTL-SDR dongle will have a small frequency error as it is cheaply mass produced and not tested for accuracy. This frequency error is linear across the spectrum, and can be adjusted in most SDR programs by entering a PPM (parts per million) offset value. This  allows you to adjust the PPM figure using the ADSB_SDR_PPM environment variable.
+Every RTL-SDR dongle will have a small frequency error as it is cheaply mass produced and not tested for accuracy. This frequency error is linear across the spectrum, and can be adjusted in most SDR programs by entering a PPM (parts per million) offset value. This allows you to adjust the PPM figure using the ADSB_SDR_PPM environment variable.
 
 Unplug all SDRs, leaving only the SDR to be used for 978MHz reception plugged in. Issue the following command:
 
@@ -40,9 +40,9 @@ UAT_SDR_GAIN=<your desired gain>
 UAT_SDR_PPM=<your PPM from the step above>
 ```
 
-* `UAR_SDR_SERIAL` is set to the serial number for your ADS-B dongle; the previous serialization steps set this to 978 by default but if you have used a different serial number enter it here
-* `UAT_SDR_GAIN` is set to your desired dongle gain in dB, or `autogain` if you would like the software to determine the optimal gain
-* `UAT_SDR_PPM` is set to your desired dongle PPM setting. Enter the number from the PPM estimation step earlier on this page.
+- `UAR_SDR_SERIAL` is set to the serial number for your ADS-B dongle; the previous serialization steps set this to 978 by default but if you have used a different serial number enter it here
+- `UAT_SDR_GAIN` is set to your desired dongle gain in dB, or `autogain` if you would like the software to determine the optimal gain
+- `UAT_SDR_PPM` is set to your desired dongle PPM setting. Enter the number from the PPM estimation step earlier on this page.
 
 For example:
 
@@ -59,55 +59,55 @@ Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`
 Append the following lines to the end of the file \(under the `services:` section\):
 
 ```yaml
-  dump978:
-    image: ghcr.io/sdr-enthusiasts/docker-dump978:latest
-    container_name: dump978
-    restart: unless-stopped
-    device_cgroup_rules:
-      - 'c 189:* rwm'
-    environment:
-      - TZ=${FEEDER_TZ}
-      - LAT=${FEEDER_LAT}
-      - LON=${FEEDER_LONG}
-      - DUMP978_RTLSDR_DEVICE=${UAT_SDR_SERIAL}
-      - DUMP978_SDR_GAIN=${UAT_SDR_GAIN}
-      - DUMP978_SDR_PPM=${UAT_SDR_PPM}
-    volumes:
-      - /opt/adsb/dump978:/var/globe_history
-      - /dev:/dev:ro
-    ports:
-      - 30980:80
-    tmpfs:
-      - /run:exec,size=64M
-      - /tmp:size=64M
-      - /var/log:size=32M
+dump978:
+  image: ghcr.io/sdr-enthusiasts/docker-dump978:latest
+  container_name: dump978
+  restart: unless-stopped
+  device_cgroup_rules:
+    - "c 189:* rwm"
+  environment:
+    - TZ=${FEEDER_TZ}
+    - LAT=${FEEDER_LAT}
+    - LON=${FEEDER_LONG}
+    - DUMP978_RTLSDR_DEVICE=${UAT_SDR_SERIAL}
+    - DUMP978_SDR_GAIN=${UAT_SDR_GAIN}
+    - DUMP978_SDR_PPM=${UAT_SDR_PPM}
+  volumes:
+    - /opt/adsb/dump978:/var/globe_history
+    - /dev:/dev:ro
+  ports:
+    - 30980:80
+  tmpfs:
+    - /run:exec,size=64M
+    - /tmp:size=64M
+    - /var/log:size=32M
 ```
 
 To explain what's going on in this addition:
 
-* Create a service named `dump978` that will run the `ghcr.io/sdr-enthusiasts/docker-dump978` container.
-  * We're presenting the USB bus through to this container \(so `dump978` can talk to the USB-attached SDR\).
-  * We're passing several environment variables to the container:
-    * `TZ` will use the `FEEDER_TZ` variable from your `.env` file
-    * `DUMP978_RTLSDR_DEVICE=${UAT_SDR_SERIAL}` tells `dump978` to use the RTL-SDR device with the serial from your `.env` file
-    * The container will use the SDR gain and PPM values from your `.env` file (`${UAT_SDR_GAIN}` and `${UAT_SDR_PPM}`)
+- Create a service named `dump978` that will run the `ghcr.io/sdr-enthusiasts/docker-dump978` container.
+  - We're presenting the USB bus through to this container \(so `dump978` can talk to the USB-attached SDR\).
+  - We're passing several environment variables to the container:
+    - `TZ` will use the `FEEDER_TZ` variable from your `.env` file
+    - `DUMP978_RTLSDR_DEVICE=${UAT_SDR_SERIAL}` tells `dump978` to use the RTL-SDR device with the serial from your `.env` file
+    - The container will use the SDR gain and PPM values from your `.env` file (`${UAT_SDR_GAIN}` and `${UAT_SDR_PPM}`)
 
 ## Update `ultrafeeder` container configuration
 
-Before running `docker compose`, we also want to update the configuration of the `ultrafeeder` container, so that it pulls the demodulated UAT data from the `dump978` container.  If you used the sample `docker-compose.yml` provided this has already been done.
+Before running `docker compose`, we also want to update the configuration of the `ultrafeeder` container, so that it pulls the demodulated UAT data from the `dump978` container. If you used the sample `docker-compose.yml` provided this has already been done.
 
 Open the `docker-compose.yml` and add the following environment value to the `ULTRAFEEDER_CONFIG` variable under the `ultrafeeder` service:
 
 ```yaml
-      - ULTRAFEEDER_CONFIG=adsb,dump978,30978,uat_in;
+- ULTRAFEEDER_CONFIG=adsb,dump978,30978,uat_in;
 ```
 
 In addition, add these lines in the `GRAPHS1090` section of the `ultrafeeder` service:
 
 ```yaml
-      # GRAPHS1090 (Decoder and System Status Web Page) parameters:
-      - ENABLE_978=yes
-      - URL_978=http://dump978/skyaware978
+# GRAPHS1090 (Decoder and System Status Web Page) parameters:
+- ENABLE_978=yes
+- URL_978=http://dump978/skyaware978
 ```
 
 To explain this addition, the `ultrafeeder` container will connect to the `dump978` container on port `30978` and receive UAT data. This UAT data will then be included in any outbound data streams sent from `ultrafeeder`.
@@ -139,11 +139,11 @@ The majority of feeders will happily accept a combined 1090MHz & 978MHz feed com
 
 The current exceptions are:
 
-* `piaware` - FlightAware has separate feeder binaries for 1090MHz and 978MHz.
-* `Airnav Radar` - Airnav Radar needs some additional parameters to support both 1090MHz and 978MHz.
+- `piaware` - FlightAware has separate feeder binaries for 1090MHz and 978MHz.
+- `Airnav Radar` - Airnav Radar needs some additional parameters to support both 1090MHz and 978MHz.
 
 The additional configuration directives are discussed on each container's page.
 
 ## Advanced
 
-If you want to look at more options and examples for the `dump978` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-dump978).
+If you want to look at more options and examples for the `dump978` container, you can find the [docker-dump978 repository](https://github.com/sdr-enthusiasts/docker-dump978).

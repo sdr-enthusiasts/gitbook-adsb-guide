@@ -1,10 +1,10 @@
 ---
-description: 'If you wish to feed Radar1090 UK, follow the steps below.'
+description: "If you wish to feed Radar1090 UK, follow the steps below."
 ---
 
 # Feeding Radar1090 UK
 
-[`Radar1090 UK`] (https://www.1090mhz.uk/) is an aggregator based in the UK. They are mostly interested in getting data feeds from the UK, the Republic of Ireland, and its direct neighboring countries, so if you are located in their operating area, feel free to start feeding them.
+[Radar1090 UK](https://www.1090mhz.uk/) is an aggregator based in the UK. They are mostly interested in getting data feeds from the UK, the Republic of Ireland, and its direct neighboring countries, so if you are located in their operating area, feel free to start feeding them.
 
 The docker image [`ghcr.io/sdr-enthusiasts/docker-radar1090`](https://github.com/sdr-enthusiasts/docker-radar1090) contains the required feeder software and all required prerequisites and libraries. This needs to run in conjunction with `ultrafeeder`, `tar1090`, or another RAW provider.
 
@@ -14,9 +14,9 @@ The docker image [`ghcr.io/sdr-enthusiasts/docker-radar1090`](https://github.com
 
 First-time users should obtain a Radar1090 UK Feeder key. To request one, email [info@1090mhz.uk](mailto:info@1090mhz.uk) with the following information:
 
-* Your UUID:
-* A station name (3-12 characters):
-* Your antenna location (Latitude, Longitude) and height:
+- Your UUID:
+- A station name (3-12 characters):
+- Your antenna location (Latitude, Longitude) and height:
 
 ### Update `.env` file with Radar1090 UK Feeder Key
 
@@ -32,7 +32,7 @@ This file holds all of the commonly used variables (such as our latitude, longit
 RADAR1090_KEY=YOURFEEDERKEY
 ```
 
-* Replace `YOURFEEDERKEY` with the key you received in response to your email.
+- Replace `YOURFEEDERKEY` with the key you received in response to your email.
 
 For example:
 
@@ -47,33 +47,32 @@ Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`
 Append the following lines to the end of the file (inside the `services:` section).
 
 ```yaml
-  radar1090:
-    image: ghcr.io/sdr-enthusiasts/docker-radar1090:latest
-    container_name: radar1090
-    hostname: radar1090
-    restart: always
-    environment:
-      - TZ=${FEEDER_TZ}
-      - RADAR1090_KEY=${RADAR1090_KEY}
-      - VERBOSE=false
-      - BEASTHOST=ultrafeeder
-    tmpfs:
-      - /run:exec,size=256M
-      - /tmp:size=128M
-      - /var/log:size=32M
+radar1090:
+  image: ghcr.io/sdr-enthusiasts/docker-radar1090:latest
+  container_name: radar1090
+  hostname: radar1090
+  restart: always
+  environment:
+    - TZ=${FEEDER_TZ}
+    - RADAR1090_KEY=${RADAR1090_KEY}
+    - VERBOSE=false
+    - BEASTHOST=ultrafeeder
+  tmpfs:
+    - /run:exec,size=256M
+    - /tmp:size=128M
+    - /var/log:size=32M
 ```
 
 To explain what's going on in this addition:
 
-* We're creating a container called `radar1090`, from the image `ghcr.io/sdr-enthusiasts/docker-radar1090`.
-* We're passing several environment variables to the container:
-  * `TZ` contains the timezone of your container host to sync time with the server that you added to `.env` previously
-  * `RADAR1090_KEY` contains the key that you added to `.env` as per the instructions above
-  * `BEASTHOST` indicates where to get the RAW data from
-  * `RV_SERVER` is the address of the radar1090 server where your data will be sent. Please do not change this unless you're specifically instructed to
-  * `VERBOSE` can be `TRUE` (meaning: show lots of information in the docker logs) or `FALSE` (show only errors in the docker logs)
-* The mounted volumes make sure that the container will use the same timezone as your host system
-
+- We're creating a container called `radar1090`, from the image `ghcr.io/sdr-enthusiasts/docker-radar1090`.
+- We're passing several environment variables to the container:
+  - `TZ` contains the timezone of your container host to sync time with the server that you added to `.env` previously
+  - `RADAR1090_KEY` contains the key that you added to `.env` as per the instructions above
+  - `BEASTHOST` indicates where to get the RAW data from
+  - `RV_SERVER` is the address of the radar1090 server where your data will be sent. Please do not change this unless you're specifically instructed to
+  - `VERBOSE` can be `TRUE` (meaning: show lots of information in the docker logs) or `FALSE` (show only errors in the docker logs)
+- The mounted volumes make sure that the container will use the same timezone as your host system
 
 ## Refresh running containers
 
@@ -109,9 +108,9 @@ Most log messages are self-explanatory and have suggestions on how to trouble-sh
 
 ## Advanced
 
-If you want to look at more options and examples for the `radar1090` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-radar1090)
+If you want to look at more options and examples for the `radar1090` container, you can find the [docker-radar1090 repository](https://github.com/sdr-enthusiasts/docker-radar1090)
 
 ## More information and support
 
-* Please contact [info@1090mhz.uk](mailto:info@1090mhz.uk) for more help.
-* You can always find help on the #adsb-containers channel on the [SDR Enthusiasts Discord server](https://discord.gg/m42azbZydy). This channel is meant for Noobs (beginners) and Experts alike.
+- Please contact [info@1090mhz.uk](mailto:info@1090mhz.uk) for more help.
+- You can always find help on the #adsb-containers channel on the [SDR Enthusiasts Discord server](https://discord.gg/m42azbZydy). This channel is meant for Noobs (beginners) and Experts alike.

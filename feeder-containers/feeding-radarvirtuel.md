@@ -1,5 +1,5 @@
 ---
-description: 'If you wish to feed RadarVirtuel, follow the steps below.'
+description: "If you wish to feed RadarVirtuel, follow the steps below."
 ---
 
 # Feeding RadarVirtuel
@@ -14,10 +14,10 @@ The docker image [`ghcr.io/sdr-enthusiasts/docker-radarvirtuel`](https://github.
 
 First-time users should obtain a RadarVirtuel Feeder key. To request one, email [support@adsbnetwork.com](mailto:support@adsbnetwork.com) with the following information:
 
-* Your name
-* The Lat/Lon and nearest airport of your station
-* Your Raspberry Pi model (or other hardware if not Raspberry Pi)
-* Mention that you will feed using a Docker container.
+- Your name
+- The Lat/Lon and nearest airport of your station
+- Your Raspberry Pi model (or other hardware if not Raspberry Pi)
+- Mention that you will feed using a Docker container.
 
 ### Update `.env` file with RadarVirtuel Feeder Key
 
@@ -33,7 +33,7 @@ This file holds all of the commonly used variables (such as our latitude, longit
 RV_FEEDER_KEY=YOURFEEDERKEY
 ```
 
-* Replace `YOURFEEDERKEY` with the key you received in response to your email.
+- Replace `YOURFEEDERKEY` with the key you received in response to your email.
 
 For example:
 
@@ -48,39 +48,39 @@ Open the `docker-compose.yml` file that was created when deploying `ultrafeeder`
 Append the following lines to the end of the file (inside the `services:` section).
 
 ```yaml
-  radarvirtuel:
-    image: ghcr.io/sdr-enthusiasts/docker-radarvirtuel:latest
-    container_name: radarvirtuel
-    hostname: radarvirtuel
-    restart: unless-stopped
-    environment:
-      - FEEDER_KEY=${RV_FEEDER_KEY}
-      - SOURCE_HOST=ultrafeeder:30002
-      - RV_SERVER=mg22.adsbnetwork.com:50050
-      - VERBOSE=OFF
-      - MLAT_SERVER=mlat.adsbnetwork.com:50000
-      - MLAT_HOST=ultrafeeder:30005
-      - MLAT_RESULTS=beast,connect,ultrafeeder,31004
-      - LAT=${FEEDER_LAT}
-      - LON=${FEEDER_LONG}
-      - ALT=${FEEDER_ALT_M}
-    tmpfs:
-      - /tmp:rw,nosuid,nodev,noexec,relatime,size=128M
-    volumes:
-      - "/etc/localtime:/etc/localtime:ro"
-      - "/etc/timezone:/etc/timezone:ro"
+radarvirtuel:
+  image: ghcr.io/sdr-enthusiasts/docker-radarvirtuel:latest
+  container_name: radarvirtuel
+  hostname: radarvirtuel
+  restart: unless-stopped
+  environment:
+    - FEEDER_KEY=${RV_FEEDER_KEY}
+    - SOURCE_HOST=ultrafeeder:30002
+    - RV_SERVER=mg22.adsbnetwork.com:50050
+    - VERBOSE=OFF
+    - MLAT_SERVER=mlat.adsbnetwork.com:50000
+    - MLAT_HOST=ultrafeeder:30005
+    - MLAT_RESULTS=beast,connect,ultrafeeder,31004
+    - LAT=${FEEDER_LAT}
+    - LON=${FEEDER_LONG}
+    - ALT=${FEEDER_ALT_M}
+  tmpfs:
+    - /tmp:rw,nosuid,nodev,noexec,relatime,size=128M
+  volumes:
+    - "/etc/localtime:/etc/localtime:ro"
+    - "/etc/timezone:/etc/timezone:ro"
 ```
 
 To explain what's going on in this addition:
 
-* We're creating a container called `radarvirtuel`, from the image `ghcr.io/sdr-enthusiasts/docker-radarvirtuel`.
-* We're passing several environment variables to the container:
-  * `FEEDER_KEY` contains the key that you added to `.env` as per the instructions above
-  * `SOURCE_HOST` indicates where to get the RAW data from
-  * `RV_SERVER` is the address of the RadarVirtuel server where your data will be sent. Please do not change this unless you're specifically instructed to
-  * `VERBOSE` can be `ON` (meaning: show lots of information in the docker logs) or `OFF` (show only errors in the docker logs)
-  * Enabling receiving MLAT RAW data and sending latitude, longitude and altitude from the .env file
-* The mounted volumes make sure that the container will use the same timezone as your host system
+- We're creating a container called `radarvirtuel`, from the image `ghcr.io/sdr-enthusiasts/docker-radarvirtuel`.
+- We're passing several environment variables to the container:
+  - `FEEDER_KEY` contains the key that you added to `.env` as per the instructions above
+  - `SOURCE_HOST` indicates where to get the RAW data from
+  - `RV_SERVER` is the address of the RadarVirtuel server where your data will be sent. Please do not change this unless you're specifically instructed to
+  - `VERBOSE` can be `ON` (meaning: show lots of information in the docker logs) or `OFF` (show only errors in the docker logs)
+  - Enabling receiving MLAT RAW data and sending latitude, longitude and altitude from the .env file
+- The mounted volumes make sure that the container will use the same timezone as your host system
 
 ## Refresh running containers
 
@@ -115,17 +115,17 @@ Once running, you can visit <https://alpha.radarvirtuel.com/stations/xxxx> (repl
 
 Most log messages are self-explanatory and have suggestions on how to trouble-shoot your issue. Here is some additional information that may help:
 
-* Sometimes, the logs may show error messages that it cannot connect to your `SOURCE_HOST`. If these messages show every few seconds, you have a problem (read below). If there are no new messages after a bit, it means that your station finally connected to the `SOURCE_HOST`. This connection delay is often caused by RadarVirtuel becoming "up and running" before `tar1090` or `ultrafeeder` do. This will fix itself within less than a minute.
-* This message keeps on scrolling and it doesn't stop after a while. In that case, `tar1090` or `ultrafeeder` cannot be reached.
-  * If you configured `tar1090`, there's nothing else to configure. Make sure the `tar1090` container is up and running and is receiving data!
-* You see log messages about the Feeder Key being incorrect. This is quite self-explanatory: check your feeder key.
-* You see messages about not being able to reach the RadarVirtuel Server. This may be a temporary outage. If the message consists for several hours, please contact [support@adsbnetwork.com](mailto:support@adsbnetwork.com) to see if there's something going on.
+- Sometimes, the logs may show error messages that it cannot connect to your `SOURCE_HOST`. If these messages show every few seconds, you have a problem (read below). If there are no new messages after a bit, it means that your station finally connected to the `SOURCE_HOST`. This connection delay is often caused by RadarVirtuel becoming "up and running" before `tar1090` or `ultrafeeder` do. This will fix itself within less than a minute.
+- This message keeps on scrolling and it doesn't stop after a while. In that case, `tar1090` or `ultrafeeder` cannot be reached.
+  - If you configured `tar1090`, there's nothing else to configure. Make sure the `tar1090` container is up and running and is receiving data!
+- You see log messages about the Feeder Key being incorrect. This is quite self-explanatory: check your feeder key.
+- You see messages about not being able to reach the RadarVirtuel Server. This may be a temporary outage. If the message consists for several hours, please contact [support@adsbnetwork.com](mailto:support@adsbnetwork.com) to see if there's something going on.
 
 ## Advanced
 
-If you want to look at more options and examples for the `radarvirtuel` container, you can find the repository [here](https://github.com/sdr-enthusiasts/docker-radarvirtuel)
+If you want to look at more options and examples for the `radarvirtuel` container, you can find the [docker-radarvirtuel repository](https://github.com/sdr-enthusiasts/docker-radarvirtuel)
 
 ## More information and support
 
-* RadarVirtuel and ADSBNetwork are owned and operated by Laurent Duval, who can be reached at [support@adsbnetwork.com](mailto:support@adsbnetwork.com)
-* You can always find help on the #adsb-containers channel on the [SDR Enthusiasts Discord server](https://discord.gg/m42azbZydy). This channel is meant for Noobs (beginners) and Experts alike.
+- RadarVirtuel and ADSBNetwork are owned and operated by Laurent Duval, who can be reached at [support@adsbnetwork.com](mailto:support@adsbnetwork.com)
+- You can always find help on the #adsb-containers channel on the [SDR Enthusiasts Discord server](https://discord.gg/m42azbZydy). This channel is meant for Noobs (beginners) and Experts alike.
