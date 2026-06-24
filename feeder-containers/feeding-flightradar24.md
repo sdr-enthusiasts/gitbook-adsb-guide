@@ -36,7 +36,7 @@ Use the same email address as for your fr24 account if you already have one or p
 Run the command:
 
 ```shell
-docker run -it --rm ghcr.io/sdr-enthusiasts/docker-baseimage:qemu bash -c "$(curl -sSL https://raw.githubusercontent.com/sdr-enthusiasts/docker-flightradar24/main/get_adsb_key.sh)"
+docker run -it --rm --entrypoint /usr/bin/fr24feed ghcr.io/sdr-enthusiasts/docker-flightradar24:latest --signup --configfile=/tmp/config.txt
 ```
 
 This will start up a container. After installing a bunch of software (which may take a while depending on the speed of your machine and internet connection), it will take you through the sign-up process. Most of the answers don't matter as during normal operation the configuration will be set with environment variables. I would suggest answering as follows:
