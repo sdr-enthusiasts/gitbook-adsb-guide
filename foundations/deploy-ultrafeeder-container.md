@@ -63,6 +63,8 @@ services:
         adsb,dump978,30978,uat_in;
         adsb,feed.adsb.fi,30004,beast_reduce_plus_out;
         mlat,feed.adsb.fi,31090;
+        adsb,feed.planetrack.ai,30004,beast_reduce_plus_out;
+        mlat,feed.planetrack.ai,31090;        
         adsb,in.adsb.lol,30004,beast_reduce_plus_out;
         mlat,in.adsb.lol,31090;
         adsb,feed.airplanes.live,30004,beast_reduce_plus_out;
@@ -141,6 +143,7 @@ There are several aggregators, both non-profit and commercial, that can directly
 | ADSB.lol        | N                              | Run by an aviation enthusiast located in the Netherlands  | adsb:`in.adsb.lol` port `30004`<br/>mlat: `in.adsb.lol` port `31090`                       |
 | Planespotters   | N                              | planespotters.net                                         | adsb:`feed.planespotters.net` port `30004`<br/>mlat: `mlat.planespotters.net` port `31090` |
 | The Air Traffic | N                              | Run by an aviation enthusiast                             | adsb:`feed.theairtraffic.com` port `30004`<br/>mlat: `mlat.theairtraffic.com` port `31090` |
+| PlaneTrack      | C                              | Independent flight tracker run by one aviation enthusiast | adsb:`feed.planetrack.ai` port `30004`<br/>mlat: `feed.planetrack.ai` port `31090`         |
 | AVDelphi        | N                              | Aviation data-science company (non-profit)                | adsb:`data.avdelphi.com` port `24999`<br/>mlat: no MLAT                                    |
 | ADSB Exchange   | C                              | Large aggregator owned by JetNet                          | adsb:`feed1.adsbexchange.com` port `30004`<br/>mlat: `feed.adsbexchange.com` port `31090`  |
 | Fly Italy ADSB  | N                              | Run by a few aviation enthusiasts in Italy                | adsb: `dati.flyitalyadsb.com` port `4905`<br/>mlat: `dati.flyitalyadsb.com` port `30100`   |
