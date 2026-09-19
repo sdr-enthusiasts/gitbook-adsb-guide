@@ -64,7 +64,7 @@ services:
         adsb,feed.adsb.fi,30004,beast_reduce_plus_out;
         mlat,feed.adsb.fi,31090;
         adsb,feed.planetrack.ai,30004,beast_reduce_plus_out;
-        mlat,feed.planetrack.ai,31090;        
+        mlat,feed.planetrack.ai,31090;
         adsb,in.adsb.lol,30004,beast_reduce_plus_out;
         mlat,in.adsb.lol,31090;
         adsb,feed.airplanes.live,30004,beast_reduce_plus_out;
