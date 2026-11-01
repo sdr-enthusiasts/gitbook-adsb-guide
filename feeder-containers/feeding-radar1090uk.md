@@ -12,7 +12,7 @@ This container helps feeding your ADS-B data to [Radar1090 UK](https://www.1090m
 
 ## Getting a sharing key
 
-The following information was copied from the [Radar1090 UK website](https://www.1090mhz.uk/setup.html). Please go there for the most accurate and latest way to get a sharing key.
+The following information was copied from the [Radar1090 UK website](https://www.1090mhz.uk/sharing.php). Please go there for the most accurate and latest way to get a sharing key.
 
 > **Station name**
 > We need to give your receiver a "station name". Station names string of 3-9 characters in length which can be a placename, callsign, nickname, etc.
