@@ -71,7 +71,7 @@ influxdb:
     - influxdb_config:/etc/influxdb2
 
 grafana:
-  image: grafana/grafana-oss:latest
+  image: grafana/grafana:latest
   container_name: grafana
   hostname: grafana
   restart: unless-stopped
