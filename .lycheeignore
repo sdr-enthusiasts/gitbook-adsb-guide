@@ -1,0 +1,6 @@
+# Carried over from the former .markdown-link-check.json ignorePatterns.
+# (influxdb/prometheus hosts and YOUR... placeholders are covered by the
+# shared pre-commit-checks lychee config.)
+^https://www\.radarvirtuel\.com
+^https://alpha\.radarvirtuel\.com
+^https://www\.1090mhz\.uk/mystatus\.php
