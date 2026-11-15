@@ -235,7 +235,7 @@ We can view the logs for the environment with the command `docker logs opensky`,
 [opensky-feeder] [INFO] [TB] Setting ext squitter only filter: 1
 ```
 
-Once running, you can visit [https://opensky-network.org/receiver-profile](https://opensky-network.org/receiver-profile) to view the data you are feeding to OpenSky-Network.
+Once running, log in to the [OpenSky Network website](https://opensky-network.org/) to view your receiver and the data you are feeding to OpenSky-Network.
 
 ## Advanced
 
