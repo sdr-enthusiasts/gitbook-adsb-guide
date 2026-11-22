@@ -2,7 +2,7 @@
 
 ## What is Docker?
 
-[Docker](https://www.docker.com/) is a popular containerization platform used to package and deploy software applications. It allows developers to create self-contained, portable environments that can be easily shared and run on any machine, regardless of its underlying operating system or infrastructure. Docker uses a layered file system and minimal resource overhead, making it fast and efficient for creating, deploying and managing applications. For more details about Docker, please check out their [documentation](https://docs.docker.com/get-started/overview/).
+[Docker](https://www.docker.com/) is a popular containerization platform used to package and deploy software applications. It allows developers to create self-contained, portable environments that can be easily shared and run on any machine, regardless of its underlying operating system or infrastructure. Docker uses a layered file system and minimal resource overhead, making it fast and efficient for creating, deploying and managing applications. For more details about Docker, please check out their [documentation](https://docs.docker.com/learn/paths/get-started-with-docker-containers/).
 
 ## What is Docker Compose?
 
