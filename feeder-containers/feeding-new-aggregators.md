@@ -116,6 +116,7 @@ We can view the logs for the environment with the command `docker logs multifeed
 | [ADSB One](https://adsb.one/)                       | feed.adsb.one          | 64004           | feed.adsb.one          | 64006         |
 | [Planespotters.net](https://www.planespotters.net/) | feed.planespotters.net | 30004           | mlat.planespotters.net | 31090         |
 | [The Air Traffic](https://theairtraffic.com/)       | feed.theairtraffic.com | 30004           | feed.theairtraffic.com | 31090         |
+| [AvioADSB](https://avioadsb.org/)                   | feed.avioadsb.org      | 30004           | feed.avioadsb.org      | 31004         |
 
 ## More information and support
 
